@@ -58,12 +58,26 @@
 
       <!-- Snelle Acties Rechts -->
       <div class="nav-actions">
+        <!-- Knop Binnen 30 km (GPS) -->
+        <button id="btnRadius30km" class="pill-btn action-pill radius-pill" title="Uitluisteren binnen een straal van 30 km van uw huidige positie (GPS)">
+          <span class="pill-icon">📍</span>
+          <span class="action-label">Binnen 30 km</span>
+          <span id="radiusBadge" class="radius-live-badge" style="display:none;">ACTIEF</span>
+        </button>
+
+        <!-- Knop Radio Nodes (WebSDR / DMR / EchoLink / OpenWebRX) -->
+        <button id="btnOpenNodes" class="pill-btn action-pill nodes-pill" title="Uitluisteren via Radio Nodes in Nederland & Europa">
+          <span class="pill-icon">🌐</span>
+          <span class="action-label">Nodes</span>
+          <span class="nodes-count-badge">12</span>
+        </button>
+
         <button id="btnOpenFavs" class="pill-btn action-pill" title="Mijn Opgeslagen Favoriete Frequenties">
           <span class="pill-icon">⭐</span>
           <span class="action-label">Favorieten</span>
         </button>
         <button id="btnScanRandom" class="pill-btn action-pill" title="Scan & Verras Me: Zoek willekeurig actief kanaal">
-          <span class="pill-icon">📡</span>
+          <span class="pill-icon">🎲</span>
           <span class="action-label">Scan Kanaal</span>
         </button>
         <button id="btnOpenHelp" class="pill-btn action-pill help-pill" title="Help, Apparaatuitleg & Frequenties">
@@ -111,7 +125,65 @@
             </div>
           </div>
 
-          <!-- 2. Apparaten & Sectoren -->
+          <!-- 2. Locatie & Straal 30 km (GPS) -->
+          <div class="sidebar-section">
+            <span class="sidebar-section-title">Locatie & Nabijheid</span>
+            <div class="sidebar-nav-list">
+              <button class="sidebar-nav-item radius-sidebar-item" id="sbBtnRadius30km">
+                <span class="nav-item-icon">📍</span>
+                <span class="nav-item-label">Binnen 30 km (GPS)</span>
+                <span id="sbRadiusBadge" class="nav-item-badge radius-badge-status">UIT</span>
+              </button>
+              <button class="sidebar-nav-item" id="sbBtnSetCustomLoc">
+                <span class="nav-item-icon">🗺️</span>
+                <span class="nav-item-label">Polder / Referentiestad</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Radio Nodes & Gateways (WebSDR / DMR / EchoLink) -->
+          <div class="sidebar-section">
+            <span class="sidebar-section-title">Radio Nodes & Gateways</span>
+            <div class="sidebar-nav-list">
+              <button class="sidebar-nav-item" id="sbBtnAllNodes">
+                <span class="nav-item-icon">🌐</span>
+                <span class="nav-item-label">Alle Radio Nodes</span>
+                <span class="nav-item-badge">12</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-node-type="WebSDR">
+                <span class="nav-item-icon">📡</span>
+                <span class="nav-item-label">WebSDR Gateways</span>
+                <span class="nav-item-badge">3</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-node-type="OpenWebRX">
+                <span class="nav-item-icon">🛰️</span>
+                <span class="nav-item-label">OpenWebRX Haven/Air</span>
+                <span class="nav-item-badge">3</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-node-type="RailNode">
+                <span class="nav-item-icon">🚆</span>
+                <span class="nav-item-label">ProRail GSM-R Nodes</span>
+                <span class="nav-item-badge">2</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-node-type="DMR">
+                <span class="nav-item-icon">📟</span>
+                <span class="nav-item-label">BrandMeister DMR</span>
+                <span class="nav-item-badge">1</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-node-type="EchoLink">
+                <span class="nav-item-icon">🎙️</span>
+                <span class="nav-item-label">EchoLink Gerbrandytoren</span>
+                <span class="nav-item-badge">1</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-node-type="MeshLoRa">
+                <span class="nav-item-icon">📱</span>
+                <span class="nav-item-label">Polder Mesh & CB Node</span>
+                <span class="nav-item-badge">1</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Apparaten & Sectoren -->
           <div class="sidebar-section">
             <span class="sidebar-section-title">Apparaten & Sectoren</span>
             <div class="sidebar-nav-list">
@@ -257,6 +329,8 @@
             <!-- Regio & Band Snelfilters (Nederland & Europa) -->
             <div class="band-scroll-bar" role="group" aria-label="Regio en Band">
               <button class="band-pill active" data-region="">🌐 Alle Regio's</button>
+              <button class="band-pill radius-quick-pill" id="btnRadiusQuick" title="Toon alleen stations binnen 30 km van uw locatie (GPS)">📍 Binnen 30 km</button>
+              <button class="band-pill node-quick-pill" id="btnNodesQuick" title="Bekijk en kies actieve Radio Nodes">🌐 Radio Nodes (12)</button>
               <button class="band-pill" data-region="NL">🇳🇱 Nederland</button>
               <button class="band-pill" data-region="EU">🇪🇺 Europa / Transit</button>
               <button class="band-pill" data-region="BE">🇧🇪 België</button>
@@ -272,6 +346,44 @@
                 <span id="subbarVerText" class="subbar-ver-text">v1.2.0</span>
                 <button id="btnReloadChannels" class="refresh-sub-btn" title="Lijst verversen">↻ Ververs</button>
               </div>
+            </div>
+          </div>
+
+          <!-- Actieve Radius 30 km Radar Banner -->
+          <div id="radiusBanner" class="radius-active-banner" style="display: none;">
+            <div class="radius-banner-content">
+              <span class="radius-radar-pulse">📍</span>
+              <div class="radius-banner-text">
+                <div class="radius-banner-title-row">
+                  <strong id="radiusLocationName">Uitluisteren Binnen 30 km (GPS)</strong>
+                  <span class="radius-pill-tag">30 km Straal Actief</span>
+                </div>
+                <span id="radiusDistanceSummary" class="radius-banner-sub">
+                  Stations binnen 30 km worden live getoond, gesorteerd op afstand van dichtbij naar ver.
+                </span>
+              </div>
+            </div>
+            <div class="radius-banner-actions">
+              <button id="btnSetPolderLocation" class="radius-banner-btn" title="Kies een referentiestad of polder">🗺️ Wijzig Positie</button>
+              <button id="btnCloseRadiusBanner" class="radius-close-btn" title="Filter wissen">✕ Sluiten</button>
+            </div>
+          </div>
+
+          <!-- Actieve Node Filter Banner -->
+          <div id="nodeBanner" class="node-active-banner" style="display: none;">
+            <div class="node-banner-content">
+              <span class="node-pulse-icon">📡</span>
+              <div class="node-banner-text">
+                <div class="node-banner-title-row">
+                  <strong id="nodeBannerName">Ontvangen via Node: Maasbree WebSDR #01</strong>
+                  <span class="node-pill-tag">Node Filter</span>
+                </div>
+                <span id="nodeBannerSub" class="node-banner-sub">Toont alleen kanalen die via deze actieve gateway worden ontvangen.</span>
+              </div>
+            </div>
+            <div class="node-banner-actions">
+              <button id="btnSwitchNodeBanner" class="node-banner-btn">🌐 Andere Node</button>
+              <button id="btnCloseNodeBanner" class="radius-close-btn" title="Nodefilter wissen">✕ Sluiten</button>
             </div>
           </div>
 
@@ -358,6 +470,18 @@
                 <span id="vfoCallsign" class="vfo-callsign">TRDL-UTR</span>
                 <span id="vfoChannelDesc" class="vfo-desc">ProRail Treinverkeersleiding Midden • Utrecht Centraal</span>
                 <span id="vfoCtcss" class="vfo-ctcss">CTCSS: CSQ</span>
+              </div>
+
+              <!-- Actieve Ontvangst-Node & Afstand -->
+              <div class="vfo-node-meta-row">
+                <div class="vfo-node-meta-left">
+                  <span class="vfo-node-lbl">📡 Ontvangst Node:</span>
+                  <span id="vfoNodeName" class="vfo-node-val">ProRail GSM-R Node Midden #05</span>
+                  <span id="vfoNodeDistBadge" class="vfo-node-dist-badge">📍 8.4 km</span>
+                </div>
+                <button id="btnVfoSwitchNode" class="vfo-switch-node-pill" title="Kies een andere ontvangst node voor dit kanaal">
+                  <span>Wissel Node ▾</span>
+                </button>
               </div>
             </div>
 
@@ -570,6 +694,8 @@
               <h3>🚀 Snelstart & Vast Menu Links</h3>
               <ol class="help-steps">
                 <li><strong>Vast Menu Links:</strong> Gebruik het vaste menu aan de linkerzijde om met 1 klik te filteren op 🚆 Treinen, ⚓ Schepen, 📱 Mobiele Portofoons, 🚗 Mobilofoon of Europese Regio's.</li>
+                <li><strong>📍 Binnen 30 km (GPS):</strong> Waar u ook bent (op de fiets in de polder, onderweg of thuis), klik op 'Binnen 30 km' om alle stations binnen een straal van 30 km te vinden en direct live af te spelen.</li>
+                <li><strong>🌐 Radio Nodes:</strong> Luister mee via 12 gekoppelde WebSDR, OpenWebRX, ProRail GSM-R, BrandMeister DMR en EchoLink gateways in Nederland en Europa.</li>
                 <li><strong>Voorkant (Overzicht):</strong> Kies direct een kanaal om meteen te luisteren. Het laatst gekozen station staat altijd bovenaan.</li>
                 <li><strong>Zwevende Mini-HUD:</strong> Terwijl u luistert, blijft de speler onderin actief en kunt u met één klik naar de Cockpit.</li>
                 <li><strong>Cockpit & Studio:</strong> Bekijk de analoge S-meter, stem af met de VFO dial, regel de Squelch ruisonderdrukking of neem live audio op als MP3.</li>
@@ -688,6 +814,136 @@
         <div class="modal-footer">
           <button id="btnClearAllFavs" class="pill-btn danger-pill" style="display:none;">Alle Favorieten Wissen</button>
           <button id="btnCloseFavsDone" class="pill-btn primary-pill">Sluiten</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🌐 Radio Nodes & Gateways Modal -->
+    <div id="nodesModal" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="nodesTitle">
+      <div class="modal-sheet nodes-modal-sheet">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <span class="modal-icon">🌐</span>
+            <div>
+              <h2 id="nodesTitle" class="modal-title">Radio Nodes & Gateways Explorer</h2>
+              <span class="modal-subtitle">Luister live uit via 12 gekoppelde WebSDR, OpenWebRX, DMR, EchoLink & Mesh nodes</span>
+            </div>
+          </div>
+          <div class="modal-header-actions">
+            <span class="verified-badge">12 Nodes Online</span>
+            <button id="btnCloseNodes" class="btn-close-modal" aria-label="Sluiten">✕</button>
+          </div>
+        </div>
+
+        <!-- Node Type Snelfilters -->
+        <div class="modal-tabs node-modal-tabs">
+          <button class="node-tab active" data-node-filter="all">🌍 Alle Nodes (12)</button>
+          <button class="node-tab" data-node-filter="WebSDR">📡 WebSDR (3)</button>
+          <button class="node-tab" data-node-filter="OpenWebRX">🛰️ OpenWebRX Haven/Air (3)</button>
+          <button class="node-tab" data-node-filter="RailNode">🚆 ProRail GSM-R (2)</button>
+          <button class="node-tab" data-node-filter="DMR">📟 BrandMeister DMR (1)</button>
+          <button class="node-tab" data-node-filter="EchoLink">🎙️ EchoLink Relais (1)</button>
+          <button class="node-tab" data-node-filter="MeshLoRa">📱 Polder Mesh / CB (2)</button>
+        </div>
+
+        <div class="modal-body nodes-modal-body">
+          <div id="nodesGrid" class="nodes-grid">
+            <!-- Dynamisch opgebouwd in app.js -->
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <span class="footer-note">Elke node stuurt ongecomprimeerde echte ether-audio door met live spectrum monitoring.</span>
+          <button id="btnCloseNodesDone" class="pill-btn primary-pill">Klaar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🗺️ Kies Referentielocatie / Polder Modal -->
+    <div id="customLocationModal" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="locTitle">
+      <div class="modal-sheet custom-loc-sheet">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <span class="modal-icon">📍</span>
+            <div>
+              <h2 id="locTitle" class="modal-title">Kies Uw Locatie of Polder</h2>
+              <span class="modal-subtitle">Voor nauwkeurige scan binnen 30 km straal</span>
+            </div>
+          </div>
+          <button id="btnCloseCustomLoc" class="btn-close-modal" aria-label="Sluiten">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:14px;">
+            Geef toestemming voor uw GPS op de fiets/onderweg, of kies direct een referentiegebied hieronder om alle stations binnen 30 km uit te luisteren:
+          </p>
+
+          <button id="btnUseLiveGps" class="pill-btn primary-pill" style="width:100%; justify-content:center; margin-bottom:16px;">
+            📡 Gebruik Huidige GPS Positie (Live Peiling)
+          </button>
+
+          <div class="polder-presets-grid">
+            <button class="preset-loc-btn" data-lat="52.1550" data-lon="5.2500" data-name="Polder Midden-Nederland (Eemland / Nijkerk)">
+              <span class="loc-pin">🌾</span>
+              <div class="loc-info">
+                <strong>Polder Midden-Nederland</strong>
+                <span>Eemland / Nijkerk / Baarn</span>
+              </div>
+            </button>
+            <button class="preset-loc-btn" data-lat="52.4200" data-lon="5.5000" data-name="Flevopolder (Lelystad / Randmeren)">
+              <span class="loc-pin">🌊</span>
+              <div class="loc-info">
+                <strong>Flevopolder & Randmeren</strong>
+                <span>Almere / Lelystad / Zeewolde</span>
+              </div>
+            </button>
+            <button class="preset-loc-btn" data-lat="52.0894" data-lon="5.1103" data-name="Knooppunt Utrecht CS (Spoor & Stad)">
+              <span class="loc-pin">🚆</span>
+              <div class="loc-info">
+                <strong>Utrecht Knooppunt</strong>
+                <span>Utrecht CS / Lage Weide / Zeist</span>
+              </div>
+            </button>
+            <button class="preset-loc-btn" data-lat="52.3100" data-lon="4.7680" data-name="Randstad Schiphol & Haarlemmermeer">
+              <span class="loc-pin">✈️</span>
+              <div class="loc-info">
+                <strong>Schiphol & Haarlemmermeer</strong>
+                <span>Luchtvaart & Polderbaan</span>
+              </div>
+            </button>
+            <button class="preset-loc-btn" data-lat="51.9800" data-lon="4.1200" data-name="Rotterdam Haven & Europoort (Maasmond)">
+              <span class="loc-pin">⚓</span>
+              <div class="loc-info">
+                <strong>Rotterdam Haven & Kust</strong>
+                <span>Maasvlakte / Europoort / Hoek van Holland</span>
+              </div>
+            </button>
+            <button class="preset-loc-btn" data-lat="52.5050" data-lon="6.0910" data-name="Knooppunt Zwolle & IJssellijn">
+              <span class="loc-pin">🚆</span>
+              <div class="loc-info">
+                <strong>Zwolle & Noordoost</strong>
+                <span>Hanzelijn / IJssellijn / Meppel</span>
+              </div>
+            </button>
+            <button class="preset-loc-btn" data-lat="51.5600" data-lon="5.0800" data-name="Brabant Logistiek (Tilburg / Waalwijk)">
+              <span class="loc-pin">🚛</span>
+              <div class="loc-info">
+                <strong>Brabant Corridors</strong>
+                <span>Tilburg / Waalwijk / Breda (A58 / A59)</span>
+              </div>
+            </button>
+            <button class="preset-loc-btn" data-lat="51.3500" data-lon="4.2800" data-name="Haven van Antwerpen & Schelde">
+              <span class="loc-pin">🇧🇪</span>
+              <div class="loc-info">
+                <strong>Antwerpen & Westerschelde</strong>
+                <span>Zandvliet / Berendrecht / Schelde</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="btnCloseCustomLocDone" class="pill-btn primary-pill">Sluiten</button>
         </div>
       </div>
     </div>

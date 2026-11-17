@@ -9,7 +9,217 @@
   'use strict';
 
   // ==========================================================================
-  // 1. KANALEN DATABANK (Nederland & Europa: Treinen, Schepen, Mobiel, Trucks, Air, Ham)
+  // 1. RADIO NODES & GATEWAYS DATABANK (Nederland & Europa)
+  // ==========================================================================
+  const NODES = [
+    {
+      id: 'node_websdr_maasbree',
+      name: 'Maasbree WebSDR Gateway #01',
+      type: 'WebSDR',
+      typeBadge: '📡 WebSDR',
+      operator: 'Stichting Scoop Hobbyfonds',
+      location: 'Maasbree (Limburg, NL)',
+      lat: 51.3570,
+      lon: 5.9980,
+      bands: '144 - 432 MHz & HF',
+      freqCoverage: '2m / 70cm / 27MC / PMR / Rijnvaart',
+      status: 'ONLINE',
+      ping: '18ms',
+      listeners: 42,
+      desc: 'Bovenregionale SDR ontvanger met richtantennes voor Zuid-Nederland, Vlaanderen en Nordrhein-Westfalen.',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
+    },
+    {
+      id: 'node_websdr_twente',
+      name: 'Universiteit Twente SDR Node #02',
+      type: 'WebSDR',
+      typeBadge: '📡 WebSDR',
+      operator: 'Amateur Radio Club ETGD Twente',
+      location: 'Enschede (Overijssel, NL)',
+      lat: 52.2435,
+      lon: 6.8530,
+      bands: '0 - 30 MHz HF Korte Golf',
+      freqCoverage: 'HF DX / 40m / 20m / 11m CB / Hamburg Marine',
+      status: 'ONLINE',
+      ping: '12ms',
+      listeners: 186,
+      desc: 'Wereldberoemde SDR antenne-ontvanger op de campus van TU Enschede. Vangt radiosignalen uit heel Europa op.',
+      streamUrl: 'audio/atc_tracon_real.ogg'
+    },
+    {
+      id: 'node_sdr_schiphol',
+      name: 'Randstad Schiphol Air & Marine #03',
+      type: 'OpenWebRX',
+      typeBadge: '✈️ OpenWebRX',
+      operator: 'AeroTraffic Netherlands',
+      location: 'Haarlemmermeer / Schiphol (NH, NL)',
+      lat: 52.3100,
+      lon: 4.7680,
+      bands: '118 - 137 MHz VHF Air & 156 MHz Marifoon',
+      freqCoverage: 'Schiphol Tower, Approach, Noordzeekanaal, K16',
+      status: 'ONLINE',
+      ping: '9ms',
+      listeners: 94,
+      desc: 'Directe ontvangst van Kaagbaan, Polderbaan, Schiphol Approach en verkeer langs het Noordzeekanaal.',
+      streamUrl: 'audio/atc_jfk_real.ogg'
+    },
+    {
+      id: 'node_sdr_rotterdam',
+      name: 'Rotterdam Maasmond Gateway #04',
+      type: 'OpenWebRX',
+      typeBadge: '⚓ OpenWebRX',
+      operator: 'Havenbedrijf Rotterdam VTS',
+      location: 'Hoek van Holland / Europoort (ZH, NL)',
+      lat: 51.9800,
+      lon: 4.1200,
+      bands: '156.000 - 162.000 MHz VHF Marine & Spoor',
+      freqCoverage: 'Sector Maasmond, Calandkanaal, Kijfhoek Betuwe',
+      status: 'ONLINE',
+      ping: '14ms',
+      listeners: 65,
+      desc: 'Havenmonding Rotterdam, Europoort, Maasvlakte en naderende zeeschepen op de Noordzee.',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
+    },
+    {
+      id: 'node_prorail_utrecht',
+      name: 'ProRail GSM-R Node Midden #05',
+      type: 'RailNode',
+      typeBadge: '🚆 RailNode',
+      operator: 'Railverkeersleiding Nederland',
+      location: 'Utrecht Centraal Verkeersleidingspost (UT, NL)',
+      lat: 52.0894,
+      lon: 5.1103,
+      bands: '457 - 468 MHz GSM-R & Rangeer',
+      freqCoverage: 'Utrecht CS, Blauwkapel, Gouda, Hilversum',
+      status: 'ONLINE',
+      ping: '6ms',
+      listeners: 78,
+      desc: 'Centrale knooppuntontvanger voor machinisten en treindienstleiders in het hart van het Nederlandse spoornet.',
+      streamUrl: 'audio/scanner_police_real.mp3'
+    },
+    {
+      id: 'node_dmr_bm204',
+      name: 'BrandMeister DMR Master Node 2041 #06',
+      type: 'DMR',
+      typeBadge: '📟 DMR Master',
+      operator: 'BrandMeister Network NL',
+      location: 'Landelijke DMR Server Amsterdam (NH, NL)',
+      lat: 52.3676,
+      lon: 4.9041,
+      bands: 'Digital Mobile Radio (DMR Tier II)',
+      freqCoverage: 'Talkgroup 204 (Landelijk), TG 2041, 2042, Evenementen',
+      status: 'ONLINE',
+      ping: '8ms',
+      listeners: 142,
+      desc: 'Centrale digitale node voor professionele portofoons, beveiliging en mobiele communicatie.',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
+    },
+    {
+      id: 'node_el_pi2nos',
+      name: 'EchoLink Gerbrandytoren Node #257088 #07',
+      type: 'EchoLink',
+      typeBadge: '🎙️ EchoLink',
+      operator: 'Vereniging Experimenteel Radio Onderzoek',
+      location: 'IJsselstein Lopikertoren (366m NAP, NL)',
+      lat: 52.0100,
+      lon: 5.0533,
+      bands: '145.575 MHz FM Repeater',
+      freqCoverage: 'Heel Nederland, Randstad & Vlaanderen',
+      status: 'ONLINE',
+      ping: '15ms',
+      listeners: 110,
+      desc: 'Hoogste zendmast van Nederland. Biedt landelijke dekking voor mobiele zenders in auto’s en handheld portofoons.',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
+    },
+    {
+      id: 'node_dwingeloo_sdr',
+      name: 'CAMRAS Dwingeloo Node #08',
+      type: 'WebSDR',
+      typeBadge: '🛰️ WebSDR',
+      operator: 'CAMRAS Dwingeloo',
+      location: 'Dwingeloo (Drenthe, NL)',
+      lat: 52.8122,
+      lon: 6.3961,
+      bands: '144 / 432 / 1296 MHz & Spoor',
+      freqCoverage: 'Knooppunt Zwolle, Noordoost-NL, Ruimtevaart',
+      status: 'ONLINE',
+      ping: '22ms',
+      listeners: 31,
+      desc: '25-meter historische radiotelescoop ingezet als uiterst gevoelige radio-ontvangstnode voor Noord-Europa.',
+      streamUrl: 'audio/atc_tracon_real.ogg'
+    },
+    {
+      id: 'node_antwerp_port',
+      name: 'Port of Antwerp Schelde Gateway #09',
+      type: 'OpenWebRX',
+      typeBadge: '⚓ OpenWebRX',
+      operator: 'Brabo Loodsdienst & Scheepvaartbegeleiding',
+      location: 'Zandvliet / Antwerpen (Vlaanderen, BE)',
+      lat: 51.3500,
+      lon: 4.2800,
+      bands: '156.000 - 162.000 MHz VHF Marine & Spoor',
+      freqCoverage: 'Westerschelde, Zandvlietsluis, NMBS Brussel',
+      status: 'ONLINE',
+      ping: '19ms',
+      listeners: 47,
+      desc: 'Scheepvaartbegeleiding langs de Westerschelde en de havenbekkens van Antwerpen en spoorlijnen naar Brussel.',
+      streamUrl: 'audio/scanner_police_real.mp3'
+    },
+    {
+      id: 'node_eifel_aachen',
+      name: 'Grenz-Node Eifel / DB Netze #10',
+      type: 'RailNode',
+      typeBadge: '🇩🇪 Relais / Zugfunk',
+      operator: 'Eifel Radio & DB Netze Funk',
+      location: 'Aachen / Hürtgenwald (NRW, DE)',
+      lat: 50.7753,
+      lon: 6.0839,
+      bands: '438.850 MHz & DB Zugfunk 457 MHz',
+      freqCoverage: 'ICE Arnhem - Keulen, Alpen Noodkanaal, Eifel',
+      status: 'ONLINE',
+      ping: '24ms',
+      listeners: 39,
+      desc: 'Grensnode voor internationaal spoorverkeer, ICE-treinen en regionale mobilofoons in het drielandenpunt.',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
+    },
+    {
+      id: 'node_eurotunnel_calais',
+      name: 'Calais Pas-de-Calais Coast Node #11',
+      type: 'OpenWebRX',
+      typeBadge: '🇫🇷 OpenWebRX',
+      operator: 'Cross-Channel Maritime Safety',
+      location: 'Coquelles / Cap Gris-Nez (Calais, FR)',
+      lat: 50.9200,
+      lon: 1.8000,
+      bands: 'Kanaaltunnel 467 MHz & Dover Marine K11',
+      freqCoverage: 'Nauw van Calais, Eurotunnel Shuttle, Dover',
+      status: 'ONLINE',
+      ping: '27ms',
+      listeners: 53,
+      desc: 'Overziet de scheepvaart in het Nauw van Calais en treinen door de Kanaaltunnel naar Engeland.',
+      streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3'
+    },
+    {
+      id: 'node_mesh_polder',
+      name: 'Polder Mesh & Mobile CB Node #12',
+      type: 'MeshLoRa',
+      typeBadge: '📱 Mesh / CB Node',
+      operator: 'Polder Comms Community',
+      location: 'Flevoland / Eemland Randmeren (FL, NL)',
+      lat: 52.4200,
+      lon: 5.5000,
+      bands: '27 MHz CB & PMR446 Outdoor',
+      freqCoverage: 'Polders, dijkwegen, truckers A6/A27, fietsers',
+      status: 'ONLINE',
+      ping: '16ms',
+      listeners: 68,
+      desc: 'Lokale gateway voor buitengebieden, polders, recreanten, fietsers en mobiele zenders in landelijke gebieden.',
+      streamUrl: 'audio/scanner_police_real.mp3'
+    }
+  ];
+
+  // ==========================================================================
+  // 2. KANALEN DATABANK (Nederland & Europa: Treinen, Schepen, Mobiel, Trucks, Air, Ham)
   // ==========================================================================
   const CHANNELS = [
     // --- 🚆 TREINEN & SPOORWEGEN (GSM-R & Rangeerdiensten NL & Europa) ---
@@ -710,8 +920,70 @@
     }
   ];
 
+  // Koppel Geografische Coördinaten en Primaire Ontvangst-Nodes aan elk kanaal
+  const CHANNEL_LOCATIONS = {
+    train_prorail_utr: { lat: 52.0894, lon: 5.1103, primaryNodeId: 'node_prorail_utrecht', nodeName: 'ProRail GSM-R Node Midden #05' },
+    train_prorail_zwolle: { lat: 52.5050, lon: 6.0910, primaryNodeId: 'node_dwingeloo_sdr', nodeName: 'CAMRAS Dwingeloo Node #08' },
+    train_kijfhoek_shunting: { lat: 51.8267, lon: 4.6033, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
+    train_db_ice: { lat: 51.9851, lon: 5.8987, primaryNodeId: 'node_eifel_aachen', nodeName: 'Grenz-Node Eifel / DB Netze #10' },
+    train_sncb_brussels: { lat: 50.8503, lon: 4.3517, primaryNodeId: 'node_antwerp_port', nodeName: 'Port of Antwerp Schelde Gateway #09' },
+    train_eurotunnel: { lat: 50.9200, lon: 1.8000, primaryNodeId: 'node_eurotunnel_calais', nodeName: 'Calais Pas-de-Calais Coast Node #11' },
+    mar_k16: { lat: 52.9560, lon: 4.7600, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
+    mar_maasmond_k01: { lat: 51.9890, lon: 4.0750, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
+    mar_antwerp_k62: { lat: 51.3500, lon: 4.2800, primaryNodeId: 'node_antwerp_port', nodeName: 'Port of Antwerp Schelde Gateway #09' },
+    mar_hamburg_k71: { lat: 53.5511, lon: 9.9937, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' },
+    mar_dover_k11: { lat: 51.1279, lon: 1.3134, primaryNodeId: 'node_eurotunnel_calais', nodeName: 'Calais Pas-de-Calais Coast Node #11' },
+    mar_rhein_k10: { lat: 51.8420, lon: 5.8600, primaryNodeId: 'node_websdr_maasbree', nodeName: 'Maasbree WebSDR Gateway #01' },
+    mar_adam_k14: { lat: 52.4630, lon: 4.5900, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
+    pmr_ch1: { lat: 52.1550, lon: 5.2500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
+    pmr_ch8_sos: { lat: 46.5000, lon: 8.0000, primaryNodeId: 'node_eifel_aachen', nodeName: 'Grenz-Node Eifel / Alpen #10' },
+    pmr_ch2_event: { lat: 52.3700, lon: 4.8900, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06' },
+    pmr_ch4_security: { lat: 52.0900, lon: 5.1200, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06' },
+    port_bhv_calamiteit: { lat: 51.9500, lon: 4.1500, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
+    port_logistiek_dc: { lat: 51.5600, lon: 5.0800, primaryNodeId: 'node_websdr_maasbree', nodeName: 'Maasbree WebSDR Gateway #01' },
+    cb_k19_truckers: { lat: 52.1550, lon: 5.3878, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
+    cb_k28_transit: { lat: 52.0500, lon: 5.1000, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
+    cb_k14_oproep: { lat: 52.2000, lon: 5.2500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
+    cb_k9_sos: { lat: 52.0000, lon: 5.0000, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
+    cb_k4_4x4: { lat: 52.1326, lon: 5.8500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
+    mob_berging_takel: { lat: 51.8500, lon: 4.7000, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
+    air_eurocontrol_muac: { lat: 50.8500, lon: 5.6900, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
+    air_eham_twr: { lat: 52.3086, lon: 4.7639, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
+    air_eham_app: { lat: 52.3100, lon: 4.7600, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
+    air_ebbr_twr: { lat: 50.9014, lon: 4.4844, primaryNodeId: 'node_antwerp_port', nodeName: 'Port of Antwerp Schelde Gateway #09' },
+    ham_pi2nos: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
+    ham_pi3utr: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
+    ham_db0dx: { lat: 50.7753, lon: 6.0839, primaryNodeId: 'node_eifel_aachen', nodeName: 'Grenz-Node Eifel / DB Netze #10' },
+    ham_websdr_20m: { lat: 52.2435, lon: 6.8530, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' },
+    ham_websdr_40m: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' }
+  };
+
+  CHANNELS.forEach(c => {
+    if (CHANNEL_LOCATIONS[c.id]) {
+      Object.assign(c, CHANNEL_LOCATIONS[c.id]);
+    }
+  });
+
+  // Haversine formule voor exacte kilometerafstand tussen twee GPS-coördinaten
+  function haversineDistance(lat1, lon1, lat2, lon2) {
+    if (lat1 === null || lon1 === null || lat2 === null || lon2 === null) return 9999;
+    const R = 6371; // Aardstraal in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  }
+
+  function getNodeById(id) {
+    return NODES.find(n => n.id === id) || NODES[0];
+  }
+
   // ==========================================================================
-  // 2. APPLICATIE STATUS & VOORKEUREN
+  // 3. APPLICATIE STATUS & VOORKEUREN
   // ==========================================================================
   const STORAGE_KEYS = {
     LAST_CHANNEL: 'pv_comstudio_last_channel',
@@ -721,7 +993,9 @@
     ROGER_BEEP: 'pv_comstudio_roger_beep',
     NOISE: 'pv_comstudio_noise',
     VIEW_MODE: 'pv_comstudio_view_mode',
-    AUTO_DOWNLOAD: 'pv_comstudio_autodownload'
+    AUTO_DOWNLOAD: 'pv_comstudio_autodownload',
+    RADIUS_FILTER: 'pv_comstudio_radius_filter',
+    USER_LOC: 'pv_comstudio_user_loc'
   };
 
   const state = {
@@ -736,6 +1010,14 @@
     filterCategory: 'all',
     filterRegion: '',
     searchQuery: '',
+    // 📍 Straal van 30 km (GPS) & Locatie
+    radiusFilterActive: false,
+    userLat: 52.1550, // Standaard Polder Midden-Nederland
+    userLon: 5.2500,
+    userLocationLabel: 'Polder Midden-Nederland',
+    // 🌐 Radio Nodes Filter
+    filterNodeId: null,
+    filterNodeType: null,
     favorites: [],
     recordings: [],
     isRecording: false,
@@ -900,6 +1182,46 @@
 
     // Audio Element
     DOM.audioPlayer = document.getElementById('audioPlayer');
+
+    // 📍 Straal 30 km (GPS) & Locatie
+    DOM.btnRadius30km = document.getElementById('btnRadius30km');
+    DOM.radiusBadge = document.getElementById('radiusBadge');
+    DOM.sbBtnRadius30km = document.getElementById('sbBtnRadius30km');
+    DOM.sbRadiusBadge = document.getElementById('sbRadiusBadge');
+    DOM.btnRadiusQuick = document.getElementById('btnRadiusQuick');
+    DOM.radiusBanner = document.getElementById('radiusBanner');
+    DOM.radiusLocationName = document.getElementById('radiusLocationName');
+    DOM.radiusDistanceSummary = document.getElementById('radiusDistanceSummary');
+    DOM.btnSetPolderLocation = document.getElementById('btnSetPolderLocation');
+    DOM.btnCloseRadiusBanner = document.getElementById('btnCloseRadiusBanner');
+
+    // 🌐 Radio Nodes & Gateways
+    DOM.nodeBanner = document.getElementById('nodeBanner');
+    DOM.nodeBannerName = document.getElementById('nodeBannerName');
+    DOM.nodeBannerSub = document.getElementById('nodeBannerSub');
+    DOM.btnSwitchNodeBanner = document.getElementById('btnSwitchNodeBanner');
+    DOM.btnCloseNodeBanner = document.getElementById('btnCloseNodeBanner');
+    DOM.btnOpenNodes = document.getElementById('btnOpenNodes');
+    DOM.sbBtnAllNodes = document.getElementById('sbBtnAllNodes');
+    DOM.btnNodesQuick = document.getElementById('btnNodesQuick');
+    DOM.nodesModal = document.getElementById('nodesModal');
+    DOM.btnCloseNodes = document.getElementById('btnCloseNodes');
+    DOM.btnCloseNodesDone = document.getElementById('btnCloseNodesDone');
+    DOM.nodesGrid = document.getElementById('nodesGrid');
+    DOM.nodeTabs = document.querySelectorAll('.node-tab');
+
+    // Cockpit Node Elements
+    DOM.vfoNodeName = document.getElementById('vfoNodeName');
+    DOM.vfoNodeDistBadge = document.getElementById('vfoNodeDistBadge');
+    DOM.btnVfoSwitchNode = document.getElementById('btnVfoSwitchNode');
+
+    // Referentielocatie / Polder Modal
+    DOM.customLocationModal = document.getElementById('customLocationModal');
+    DOM.btnCloseCustomLoc = document.getElementById('btnCloseCustomLoc');
+    DOM.btnCloseCustomLocDone = document.getElementById('btnCloseCustomLocDone');
+    DOM.btnUseLiveGps = document.getElementById('btnUseLiveGps');
+    DOM.sbBtnSetCustomLoc = document.getElementById('sbBtnSetCustomLoc');
+    DOM.presetLocBtns = document.querySelectorAll('.preset-loc-btn');
 
     // Modals
     DOM.helpModal = document.getElementById('helpModal');
@@ -1452,8 +1774,33 @@
   function renderChannelList() {
     if (!DOM.channelList) return;
 
-    // 1. Filter kanalen op categorie, regio en zoekopdracht
+    // 1. Bereken afstand tot elk kanaal indien gebruikerscoördinaten bekend zijn
+    CHANNELS.forEach(c => {
+      if (state.userLat !== null && state.userLon !== null && c.lat && c.lon) {
+        c.distKm = haversineDistance(state.userLat, state.userLon, c.lat, c.lon);
+      } else {
+        c.distKm = null;
+      }
+    });
+
+    // 2. Filter kanalen op radius 30km, node, categorie, regio en zoekopdracht
     let filtered = CHANNELS.filter(c => {
+      // Radius filter: alleen stations binnen straal van 30 km
+      if (state.radiusFilterActive) {
+        if (c.distKm === null || c.distKm > 30) return false;
+      }
+
+      // Specifieke Node filter
+      if (state.filterNodeId) {
+        if (c.primaryNodeId !== state.filterNodeId) return false;
+      }
+
+      // Node Type filter (WebSDR, OpenWebRX, RailNode, DMR, EchoLink, MeshLoRa)
+      if (state.filterNodeType) {
+        const nodeObj = getNodeById(c.primaryNodeId);
+        if (!nodeObj || nodeObj.type !== state.filterNodeType) return false;
+      }
+
       // Categorie filter
       if (state.filterCategory !== 'all' && c.category !== state.filterCategory) {
         return false;
@@ -1477,13 +1824,19 @@
           c.callsign.toLowerCase().includes(q) ||
           c.location.toLowerCase().includes(q) ||
           c.desc.toLowerCase().includes(q) ||
+          (c.nodeName && c.nodeName.toLowerCase().includes(q)) ||
           c.region.toLowerCase().includes(q);
         if (!match) return false;
       }
       return true;
     });
 
-    // 2. Laatst gekozen kanaal ALTIJD op positie 1 plaatsen conform de regel!
+    // 3. Sorteren: bij actieve radius van 30 km sorteren op afstand van dichtbij naar ver
+    if (state.radiusFilterActive) {
+      filtered.sort((a, b) => (a.distKm || 0) - (b.distKm || 0));
+    }
+
+    // 4. Laatst gekozen kanaal ALTIJD op positie 1 plaatsen conform de regel!
     if (state.activeChannelId) {
       const activeIdx = filtered.findIndex(c => c.id === state.activeChannelId);
       if (activeIdx > 0) {
@@ -1492,12 +1845,21 @@
       }
     }
 
-    // 3. Update count badge
+    // 5. Update count badge
     if (DOM.channelCountText) {
-      DOM.channelCountText.textContent = `${filtered.length} kanalen gevonden in Nederland & Europa`;
+      let countLabel = `${filtered.length} kanalen gevonden in Nederland & Europa`;
+      if (state.radiusFilterActive) {
+        countLabel = `📍 ${filtered.length} stations binnen 30 km rondom ${state.userLocationLabel}`;
+      } else if (state.filterNodeId) {
+        const n = getNodeById(state.filterNodeId);
+        countLabel = `📡 ${filtered.length} kanalen via ${n.name}`;
+      } else if (state.filterNodeType) {
+        countLabel = `🌐 ${filtered.length} kanalen via ${state.filterNodeType} nodes`;
+      }
+      DOM.channelCountText.textContent = countLabel;
     }
 
-    // 4. Render kaarten
+    // 6. Render kaarten
     if (filtered.length === 0) {
       DOM.channelList.innerHTML = '';
       if (DOM.emptyState) DOM.emptyState.style.display = 'flex';
@@ -1521,6 +1883,14 @@
       };
       const flag = flagMap[c.region] || '🌍';
 
+      const distBadgeHtml = c.distKm !== null
+        ? `<span class="card-distance-badge ${c.distKm <= 15 ? 'near' : ''}" title="Afstand tot uw referentie/GPS positie">📍 ${c.distKm < 1 ? '< 1 km' : c.distKm.toFixed(1) + ' km'}</span>`
+        : '';
+
+      const nodeBadgeHtml = c.nodeName
+        ? `<span class="card-node-badge" title="Ontvangen via gateway ${escapeHtml(c.nodeName)}">📡 ${escapeHtml(c.nodeName)}</span>`
+        : '';
+
       return `
         <div class="channel-card ${isActive ? 'active' : ''}" data-id="${c.id}" role="button" tabindex="0">
           <div class="card-left">
@@ -1530,10 +1900,11 @@
                 <span class="card-freq">${c.freq} MHz</span>
                 <span class="card-badge badge-${c.mod.toLowerCase()}">${c.mod}</span>
                 <span class="card-badge" style="background:rgba(255,255,255,0.08);">${flag} ${c.region}</span>
+                ${distBadgeHtml}
                 ${isLastListened ? '<span class="badge-last-listened">🕒 Laatst Geluisterd</span>' : ''}
               </div>
               <div class="card-name">${escapeHtml(c.name)}</div>
-              <div class="card-subtext">${escapeHtml(c.callsign)} • ${escapeHtml(c.location)}</div>
+              <div class="card-subtext">${escapeHtml(c.callsign)} • ${escapeHtml(c.location)} ${nodeBadgeHtml ? '• ' + nodeBadgeHtml : ''}</div>
             </div>
           </div>
           <div class="card-right">
@@ -1585,6 +1956,19 @@
     if (DOM.vfoCallsign) DOM.vfoCallsign.textContent = channel.callsign;
     if (DOM.vfoChannelDesc) DOM.vfoChannelDesc.textContent = `${channel.name} • ${channel.desc}`;
     if (DOM.vfoCtcss) DOM.vfoCtcss.textContent = `CTCSS: ${channel.ctcss}`;
+
+    // Actieve Ontvangst-Node & Afstand
+    if (DOM.vfoNodeName) {
+      DOM.vfoNodeName.textContent = channel.nodeName || 'ProRail GSM-R Node Midden #05';
+    }
+    if (DOM.vfoNodeDistBadge) {
+      if (channel.distKm !== null && channel.distKm !== undefined) {
+        DOM.vfoNodeDistBadge.textContent = `📍 ${channel.distKm < 1 ? '< 1 km' : channel.distKm.toFixed(1) + ' km'}`;
+        DOM.vfoNodeDistBadge.style.display = 'inline-flex';
+      } else {
+        DOM.vfoNodeDistBadge.style.display = 'none';
+      }
+    }
 
     if (DOM.mainPlayIcon && DOM.mainPlayText) {
       if (state.isPlaying) {
@@ -2021,6 +2405,87 @@
     if (DOM.btnScanRandom) DOM.btnScanRandom.addEventListener('click', tuneRandomChannel);
 
     // ========================================================================
+    // 📍 STRAAL VAN 30 KM EVENT BINDINGS (GPS & LOCATIE RADAR)
+    // ========================================================================
+    if (DOM.btnRadius30km) DOM.btnRadius30km.addEventListener('click', toggleRadius30km);
+    if (DOM.btnRadiusQuick) DOM.btnRadiusQuick.addEventListener('click', toggleRadius30km);
+    if (DOM.sbBtnRadius30km) {
+      DOM.sbBtnRadius30km.addEventListener('click', () => {
+        toggleRadius30km();
+        closeMobileSidebar();
+      });
+    }
+    if (DOM.btnCloseRadiusBanner) DOM.btnCloseRadiusBanner.addEventListener('click', deactivateRadiusFilter);
+    if (DOM.btnSetPolderLocation) DOM.btnSetPolderLocation.addEventListener('click', openCustomLocationModal);
+    if (DOM.sbBtnSetCustomLoc) {
+      DOM.sbBtnSetCustomLoc.addEventListener('click', () => {
+        openCustomLocationModal();
+        closeMobileSidebar();
+      });
+    }
+    if (DOM.btnCloseCustomLoc) DOM.btnCloseCustomLoc.addEventListener('click', closeCustomLocationModal);
+    if (DOM.btnCloseCustomLocDone) DOM.btnCloseCustomLocDone.addEventListener('click', closeCustomLocationModal);
+    if (DOM.customLocationModal) {
+      DOM.customLocationModal.addEventListener('click', (e) => {
+        if (e.target === DOM.customLocationModal) closeCustomLocationModal();
+      });
+    }
+    if (DOM.btnUseLiveGps) {
+      DOM.btnUseLiveGps.addEventListener('click', () => {
+        closeCustomLocationModal();
+        requestLiveLocationAndActivateRadius();
+      });
+    }
+    if (DOM.presetLocBtns) {
+      DOM.presetLocBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lat = parseFloat(btn.dataset.lat);
+          const lon = parseFloat(btn.dataset.lon);
+          const name = btn.dataset.name;
+          closeCustomLocationModal();
+          activateRadiusFilter(lat, lon, name);
+        });
+      });
+    }
+
+    // ========================================================================
+    // 🌐 RADIO NODES & GATEWAYS EVENT BINDINGS
+    // ========================================================================
+    if (DOM.btnOpenNodes) DOM.btnOpenNodes.addEventListener('click', () => openNodesModal('all'));
+    if (DOM.btnNodesQuick) DOM.btnNodesQuick.addEventListener('click', () => openNodesModal('all'));
+    if (DOM.sbBtnAllNodes) {
+      DOM.sbBtnAllNodes.addEventListener('click', () => {
+        openNodesModal('all');
+        closeMobileSidebar();
+      });
+    }
+    if (DOM.btnVfoSwitchNode) DOM.btnVfoSwitchNode.addEventListener('click', () => openNodesModal('all'));
+    if (DOM.btnSwitchNodeBanner) DOM.btnSwitchNodeBanner.addEventListener('click', () => openNodesModal('all'));
+    if (DOM.btnCloseNodeBanner) DOM.btnCloseNodeBanner.addEventListener('click', clearNodeFilter);
+    if (DOM.btnCloseNodes) DOM.btnCloseNodes.addEventListener('click', closeNodesModal);
+    if (DOM.btnCloseNodesDone) DOM.btnCloseNodesDone.addEventListener('click', closeNodesModal);
+    if (DOM.nodesModal) {
+      DOM.nodesModal.addEventListener('click', (e) => {
+        if (e.target === DOM.nodesModal) closeNodesModal();
+      });
+    }
+    if (DOM.nodeTabs) {
+      DOM.nodeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          DOM.nodeTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          renderNodesGrid(tab.dataset.nodeFilter);
+        });
+      });
+    }
+    document.querySelectorAll('[data-sidebar-node-type]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openNodesModal(btn.dataset.sidebarNodeType);
+        closeMobileSidebar();
+      });
+    });
+
+    // ========================================================================
     // VAST MENU LINKS (Sidebar Interactie & Mobile Drawer)
     // ========================================================================
     function closeMobileSidebar() {
@@ -2265,7 +2730,202 @@
   }
 
   // ==========================================================================
-  // 13. MODALS (HELP & FAVORIETEN)
+  // 13. 📍 STRAAL VAN 30 KM UITLUISTEREN (GPS & LOCATIE RADAR)
+  // ==========================================================================
+  function toggleRadius30km() {
+    if (state.radiusFilterActive) {
+      deactivateRadiusFilter();
+    } else {
+      requestLiveLocationAndActivateRadius();
+    }
+  }
+
+  function requestLiveLocationAndActivateRadius() {
+    showToast('📍 Huidige GPS positie opvragen...');
+    if (navigator.geolocation && navigator.geolocation.getCurrentPosition) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          activateRadiusFilter(pos.coords.latitude, pos.coords.longitude, 'Mijn Huidige Positie (GPS)');
+        },
+        (err) => {
+          console.warn('GPS niet beschikbaar of geweigerd, val terug op Polder Midden-Nederland:', err);
+          activateRadiusFilter(52.1550, 5.2500, 'Polder Midden-Nederland (Eemland / Randmeren)');
+          showToast('📍 GPS niet vrijgegeven: afgestemd op Polder Midden-Nederland (30 km)');
+        },
+        { timeout: 7000, enableHighAccuracy: true }
+      );
+    } else {
+      activateRadiusFilter(52.1550, 5.2500, 'Polder Midden-Nederland');
+    }
+  }
+
+  function activateRadiusFilter(lat, lon, label) {
+    state.radiusFilterActive = true;
+    state.userLat = lat;
+    state.userLon = lon;
+    state.userLocationLabel = label;
+
+    // Knoppen visueel actief zetten
+    if (DOM.btnRadius30km) DOM.btnRadius30km.classList.add('active');
+    if (DOM.radiusBadge) DOM.radiusBadge.style.display = 'inline-block';
+    if (DOM.sbBtnRadius30km) DOM.sbBtnRadius30km.classList.add('active');
+    if (DOM.sbRadiusBadge) DOM.sbRadiusBadge.textContent = '30 KM';
+    if (DOM.btnRadiusQuick) DOM.btnRadiusQuick.classList.add('active');
+
+    // Toon Banner
+    if (DOM.radiusBanner) {
+      DOM.radiusBanner.style.display = 'flex';
+      if (DOM.radiusLocationName) DOM.radiusLocationName.textContent = `Uitluisteren Binnen 30 km rondom ${label}`;
+      if (DOM.radiusDistanceSummary) {
+        DOM.radiusDistanceSummary.textContent = `Alleen stations, schepen, treinen en mobiele zenders binnen 30 km worden getoond, gesorteerd op afstand.`;
+      }
+    }
+
+    renderChannelList();
+
+    // Zoek het dichtstbijzijnde station binnen 30 km en begin direct met luisteren!
+    const within30 = CHANNELS.filter(c => c.distKm !== null && c.distKm <= 30);
+    if (within30.length > 0) {
+      within30.sort((a, b) => a.distKm - b.distKm);
+      const closest = within30[0];
+      selectChannel(closest.id, true);
+      showToast(`📍 30 km Scanner actief: afgestemd op ${closest.name} (${closest.distKm.toFixed(1)} km)`);
+    } else {
+      showToast(`📍 Geen kanalen binnen 30 km van ${label}. Kies een referentiegebied via 'Wijzig Positie'.`);
+    }
+  }
+
+  function deactivateRadiusFilter() {
+    state.radiusFilterActive = false;
+
+    if (DOM.btnRadius30km) DOM.btnRadius30km.classList.remove('active');
+    if (DOM.radiusBadge) DOM.radiusBadge.style.display = 'none';
+    if (DOM.sbBtnRadius30km) DOM.sbBtnRadius30km.classList.remove('active');
+    if (DOM.sbRadiusBadge) DOM.sbRadiusBadge.textContent = 'UIT';
+    if (DOM.btnRadiusQuick) DOM.btnRadiusQuick.classList.remove('active');
+
+    if (DOM.radiusBanner) DOM.radiusBanner.style.display = 'none';
+
+    renderChannelList();
+    showToast('📍 Straalfilter uitgeschakeld • Alle kanalen getoond');
+  }
+
+  function openCustomLocationModal() {
+    if (DOM.customLocationModal) DOM.customLocationModal.style.display = 'flex';
+  }
+
+  function closeCustomLocationModal() {
+    if (DOM.customLocationModal) DOM.customLocationModal.style.display = 'none';
+  }
+
+  // ==========================================================================
+  // 14. 🌐 RADIO NODES & GATEWAYS EXPLORER
+  // ==========================================================================
+  function openNodesModal(filterType = 'all') {
+    renderNodesGrid(filterType);
+    if (DOM.nodesModal) DOM.nodesModal.style.display = 'flex';
+  }
+
+  function closeNodesModal() {
+    if (DOM.nodesModal) DOM.nodesModal.style.display = 'none';
+  }
+
+  function renderNodesGrid(filterType = 'all') {
+    if (!DOM.nodesGrid) return;
+
+    let list = NODES;
+    if (filterType !== 'all') {
+      list = NODES.filter(n => n.type === filterType);
+    }
+
+    DOM.nodesGrid.innerHTML = list.map(node => {
+      const distKm = state.userLat !== null && state.userLon !== null
+        ? haversineDistance(state.userLat, state.userLon, node.lat, node.lon)
+        : null;
+
+      const isCurrentNode = CHANNELS.some(c => c.id === state.activeChannelId && c.primaryNodeId === node.id);
+
+      return `
+        <div class="node-card ${isCurrentNode ? 'active-node' : ''}">
+          <div>
+            <div class="node-card-top">
+              <div class="node-card-title-group">
+                <span class="node-card-name">${escapeHtml(node.name)}</span>
+                <span class="node-card-loc">📍 ${escapeHtml(node.location)} ${distKm !== null ? `(${distKm.toFixed(1)} km)` : ''}</span>
+              </div>
+              <span class="node-type-pill">${escapeHtml(node.typeBadge)}</span>
+            </div>
+            <div class="node-card-meta">
+              <div class="node-meta-item"><span>Beheerder:</span> <strong>${escapeHtml(node.operator)}</strong></div>
+              <div class="node-meta-item"><span>Frequentiebereik:</span> <strong>${escapeHtml(node.bands)}</strong></div>
+              <div class="node-meta-item"><span>Dekkingsgebied:</span> <strong>${escapeHtml(node.freqCoverage)}</strong></div>
+            </div>
+            <p class="node-card-desc">${escapeHtml(node.desc)}</p>
+          </div>
+          <div class="node-card-bottom">
+            <div class="node-status-group">
+              <span class="node-status-dot"></span>
+              <span>${node.status} • Ping: ${node.ping} • 👥 ${node.listeners}</span>
+            </div>
+            <div class="node-card-actions">
+              <button class="node-filter-btn" onclick="window.filterBySpecificNode('${node.id}')">Kanalen</button>
+              <button class="node-listen-btn" onclick="window.listenViaSpecificNode('${node.id}')">▶ Luister</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  window.filterBySpecificNode = (nodeId) => {
+    closeNodesModal();
+    const node = getNodeById(nodeId);
+    state.filterNodeId = nodeId;
+    state.filterNodeType = null;
+
+    if (DOM.nodeBanner) {
+      DOM.nodeBanner.style.display = 'flex';
+      if (DOM.nodeBannerName) DOM.nodeBannerName.textContent = `Ontvangen via Node: ${node.name}`;
+      if (DOM.nodeBannerSub) DOM.nodeBannerSub.textContent = `Toont alleen kanalen die via deze actieve gateway worden ontvangen (${node.freqCoverage}).`;
+    }
+
+    renderChannelList();
+    showToast(`🌐 Filter actief: kanalen via ${node.name}`);
+  };
+
+  window.listenViaSpecificNode = (nodeId) => {
+    closeNodesModal();
+    const node = getNodeById(nodeId);
+    state.filterNodeId = nodeId;
+    state.filterNodeType = null;
+
+    if (DOM.nodeBanner) {
+      DOM.nodeBanner.style.display = 'flex';
+      if (DOM.nodeBannerName) DOM.nodeBannerName.textContent = `Ontvangen via Node: ${node.name}`;
+    }
+
+    // Zoek kanaal op deze node
+    const chanOnNode = CHANNELS.find(c => c.primaryNodeId === nodeId);
+    if (chanOnNode) {
+      selectChannel(chanOnNode.id, true);
+    } else {
+      selectChannel(CHANNELS[0].id, true);
+    }
+
+    renderChannelList();
+    showToast(`📡 Live verbonden met ${node.name} (${node.ping})`);
+  };
+
+  function clearNodeFilter() {
+    state.filterNodeId = null;
+    state.filterNodeType = null;
+    if (DOM.nodeBanner) DOM.nodeBanner.style.display = 'none';
+    renderChannelList();
+    showToast('🌐 Nodefilter uitgeschakeld');
+  }
+
+  // ==========================================================================
+  // 15. MODALS (HELP & FAVORIETEN)
   // ==========================================================================
   function openHelpModal() {
     DOM.helpModal.style.display = 'flex';
