@@ -1,4 +1,4 @@
-name: Deploy Peter Vroon Uitluisteren naar GitHub Pages
+name: Deploy Peter Vroon ComStudio naar GitHub Pages
 
 on:
   push:

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Peter Vroon Uitluisteren Build & Release Compiler
-=================================================
-Valideert en assembleert de release-artefacten voor 'Peter Vroon Uitluisteren':
+Peter Vroon ComStudio Build & Release Compiler
+==============================================
+Valideert en assembleert de release-artefacten voor 'Peter Vroon ComStudio':
 - Controleert integriteit van index.html, app.js, style.css, lame.min.js
 - Werkt version.json bij met nieuwste build-nummer, git-hash en tijdstempel
 - Garandeert dat de Help-modal direct 100% up-to-date blijft conform AGENTS.md
@@ -15,8 +15,8 @@ import argparse
 import subprocess
 from datetime import datetime, timezone
 
-APP_NAME = "Peter Vroon Uitluisteren"
-DEFAULT_VERSION = "1.0.0"
+APP_NAME = "Peter Vroon ComStudio"
+DEFAULT_VERSION = "1.0.1"
 
 def get_git_hash() -> str:
     try:

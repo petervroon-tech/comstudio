@@ -1,7 +1,7 @@
 {
-  "name": "Peter Vroon Uitluisteren",
-  "short_name": "Uitluisteren",
-  "description": "Live Uitluisteren naar Portofoon, Mobilofoon, Zendontvanger & Scanner",
+  "name": "Peter Vroon ComStudio",
+  "short_name": "ComStudio",
+  "description": "Live Communicatie Studio: Portofoon, Mobilofoon, Zendontvanger & Scanner",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#070b13",

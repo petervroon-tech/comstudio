@@ -1,5 +1,5 @@
 /**
- * Peter Vroon Uitluisteren • app.js
+ * Peter Vroon ComStudio • app.js
  * Live Radio Scanner, Portofoon, Mobilofoon & Zendontvanger Platform
  * Ontworpen conform AGENTS.md & app_architectuur_en_bediening_gids.md
  */
@@ -545,7 +545,7 @@
 
     // Toon start-notificatie
     const lastChan = getChannelById(state.activeChannelId);
-    showToast(`📻 Peter Vroon Uitluisteren gestart • ${lastChan ? lastChan.name : 'Klaar om uit te luisteren'}`);
+    showToast(`📻 Peter Vroon ComStudio gestart • ${lastChan ? lastChan.name : 'Klaar om uit te luisteren'}`);
   });
 
   function cacheDomElements() {
@@ -1112,7 +1112,7 @@
     const mp3Blob = new Blob(state.mp3Data, { type: 'audio/mp3' });
     const channel = getChannelById(state.activeChannelId);
     const dateStr = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-    const fileName = `PeterVroon-Uitluisteren-${channel ? channel.freq : 'Radio'}-${dateStr}.mp3`;
+    const fileName = `PeterVroon-ComStudio-${channel ? channel.freq : 'Radio'}-${dateStr}.mp3`;
     const fileSizeMb = (mp3Blob.size / (1024 * 1024)).toFixed(2);
     const blobUrl = URL.createObjectURL(mp3Blob);
 

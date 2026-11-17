@@ -1,4 +1,4 @@
-# Antigravity Project Richtlijnen & UI Voorkeuren - Peter Vroon Uitluisteren
+# Antigravity Project Richtlijnen & UI Voorkeuren - Peter Vroon ComStudio
 
 Deze richtlijnen gelden voor alle aanpassingen en uitbreidingen in deze repository.
 
@@ -20,5 +20,5 @@ Deze richtlijnen gelden voor alle aanpassingen en uitbreidingen in deze reposito
 - Direct toegankelijke Help-modal (`💡 Help`) met dynamische functielijst gesynchroniseerd via `version.json` en `build.py` met de `✓ Altijd Actueel` badge.
 
 ## 4. Deployment & GitHub Online Standaard: Alleen Online via GitHub
-- **Niet lokaal, alleen online via GitHub Pages:** Alle updates worden direct vastgelegd in Git en gepusht naar de `main` branch op GitHub (`https://petervroon-tech.github.io/uitluisteren/`), waarna GitHub Actions CI/CD de nieuwste versie direct live zet.
+- **Niet lokaal, alleen online via GitHub Pages:** Alle updates worden direct vastgelegd in Git en gepusht naar de `main` branch op GitHub (`https://petervroon-tech.github.io/comstudio/`), waarna GitHub Actions CI/CD de nieuwste versie direct live zet.
 - **Automatische live update:** Apps controleren via `version.json` periodiek of er online een nieuwere build beschikbaar is en verversen direct met 1 klik.
