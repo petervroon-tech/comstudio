@@ -1,0 +1,16 @@
+{
+  "name": "Peter Vroon Uitluisteren",
+  "short_name": "Uitluisteren",
+  "description": "Live Uitluisteren naar Portofoon, Mobilofoon, Zendontvanger & Scanner",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#070b13",
+  "theme_color": "#00f2fe",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

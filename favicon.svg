@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="radioGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <!-- Achtergrond cirkel -->
+  <circle cx="32" cy="32" r="30" fill="url(#bodyGrad)" stroke="#00f2fe" stroke-width="2" />
+  <!-- Antenne -->
+  <line x1="22" y1="20" x2="16" y2="6" stroke="#00f2fe" stroke-width="3" stroke-linecap="round" />
+  <circle cx="16" cy="6" r="2.5" fill="#38bdf8" />
+  <!-- Portofoon / Scanner behuizing -->
+  <rect x="20" y="20" width="24" height="34" rx="4" fill="#0d1424" stroke="url(#radioGrad)" stroke-width="1.8" />
+  <!-- Display -->
+  <rect x="23" y="24" width="18" height="10" rx="2" fill="#021c27" stroke="#00f2fe" stroke-width="0.8" />
+  <!-- Frequentietekst op display -->
+  <text x="32" y="31.5" font-family="monospace" font-size="5" font-weight="bold" fill="#00f2fe" text-anchor="middle">119.22</text>
+  <!-- Speaker grill -->
+  <line x1="24" y1="38" x2="40" y2="38" stroke="#334155" stroke-width="1.5" stroke-linecap="round" />
+  <line x1="26" y1="42" x2="38" y2="42" stroke="#334155" stroke-width="1.5" stroke-linecap="round" />
+  <line x1="28" y1="46" x2="36" y2="46" stroke="#334155" stroke-width="1.5" stroke-linecap="round" />
+  <!-- Zend- / Ontvang golven -->
+  <path d="M 46 22 A 16 16 0 0 1 46 42" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" opacity="0.85" />
+  <path d="M 50 18 A 22 22 0 0 1 50 46" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.5" />
+</svg>

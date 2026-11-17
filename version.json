@@ -1,0 +1,20 @@
+{
+  "app_name": "Peter Vroon Uitluisteren",
+  "version": "1.0.0",
+  "build": 1,
+  "timestamp": "2026-11-17T11:35:34.529506+00:00",
+  "git_hash": "ea93b7d",
+  "features": [
+    "🚀 Officiële Lancering van Peter Vroon Uitluisteren (v1.0.0): Het ultieme online platform om live mee te luisteren naar radiocommunicatie op Portofoon, Mobilofoon, Zendontvanger (Transceiver) en Scanner.",
+    "📻 4 Apparaatcategorieën & Uitluisterkanalen: Direct luisteren naar Luchtvaart (Schiphol Tower, Approach, Radar), Scheepvaart/Marifoon (Kanaal 16, Rotterdam Haven, Maasmond), Zendamateurs (PI2NOS 2m, PI3UTR 70cm repeaters, WebSDR HF), Mobilofoon (27 MHz CB Kanaal 19 & 14) en Portofoons (PMR446, Beveiliging, Evenementen).",
+    "🎯 Altijd Starten met de Voorkant (Zenderoverzicht): Peter Vroon Uitluisteren start conform onze vaste standaard altijd direct met het ruime, overzichtelijke zenderoverzicht met categoriefilters en zoekbalk. De technische achterkant wordt nooit ongevraagd getoond.",
+    "💾 Onthouden van Laatst Beluisterde Kanaal: De app onthoudt automatisch het laatst gekozen kanaal en plaatst dit bij herstart direct bovenaan op positie 1 met een gouden '🕒 Laatst Geluisterd' en 'ACTIEF' badge.",
+    "🎛️ 3-in-1 Weergave Model: Vrij schakelen met 1 klik tussen 'Voorkant (Overzicht)', 'Achterkant (Cockpit & Studio)' en 'Split Screen' (op desktops en tablets).",
+    "🎧 Zwevende Mini-HUD: Blijf luisteren op het overzicht terwijl een zwevende, donkerglazen mini-balk onderin de actuele frequentie, signaalsterkte (S-meter) en audiodata toont.",
+    "🎚️ Realistische Radio DSP Effecten: Instelbare Squelch (ruisdrempel), authentieke Roger Beep, ruis- en bandpassfilters, plus een interactieve PTT testmicrofoon om uw eigen stem door het portofoonfilter te horen.",
+    "📊 60 FPS Audio Visualizer & Waterval (Waterfall): Realtime spectrum visualizer en watervalscherm om radiotransmissies visueel over het scherm te zien vloeien.",
+    "🎙️ Live MP3 Opname Studio: Neem live radiocommunicatie met 1 klik op en download direct als authentiek MP3-bestand (128 / 192 / 320 kbps).",
+    "📱 Universeel Responsief Donker Glas Design: 100% geoptimaliseerd voor smartphones (met handige touch-knoppen), iPads en brede desktopmonitoren.",
+    "💡 Dynamische Help & Handleiding: Direct toegankelijke Help-modal met ✓ Altijd Actueel badge, gesynchroniseerd na elke GitHub Actions build."
+  ]
+}
