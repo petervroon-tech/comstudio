@@ -16,7 +16,7 @@ import subprocess
 from datetime import datetime, timezone
 
 APP_NAME = "Peter Vroon ComStudio"
-DEFAULT_VERSION = "1.5.0"
+DEFAULT_VERSION = "1.6.0"
 
 def get_git_hash() -> str:
     try:
@@ -70,6 +70,7 @@ def verify_assets():
         "index.html",
         "app.js",
         "style.css",
+        "HELP.md",
         "version.json",
         "favicon.svg"
     ]

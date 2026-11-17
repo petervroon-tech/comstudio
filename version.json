@@ -1,10 +1,11 @@
 {
   "app_name": "Peter Vroon ComStudio",
-  "version": "1.5.0",
-  "build": 6,
-  "timestamp": "2026-11-17T13:22:13.705206+00:00",
-  "git_hash": "1de415e",
+  "version": "1.6.0",
+  "build": 7,
+  "timestamp": "2026-11-17T13:28:19.539492+00:00",
+  "git_hash": "d768c10",
   "features": [
+    "📘 Officiële Helpfile & RDI Etherwetgeving (HELP.md): Volledige en geldige documentatie conform de Telecommunicatiewet (RDI, voorheen Agentschap Telecom), inclusief zendvermogens (0.5W PMR / 4W CB), officiële noodprocedures (MAYDAY, PAN-PAN, SECURITE, Alpen Noodkanaal 8 CTCSS 16), CTCSS-tabellen en een 6e dedicated help-tab in de app.",
     "📍 Straal van 30 km Scanner (GPS & Polder): Waar u ook bent (op de fiets in de polder, onderweg in Nederland of Europa), met 1 klik op 'Binnen 30 km' scant u direct alle zenders binnen een straal van 30 km. U hoort meteen echte mensen praten op het dichtstbijzijnde station!",
     "🌐 Uitluisteren via Allerhande Nodes: Directe integratie met 12 live Radio Nodes en Gateways in Nederland en Europa (WebSDR Maasbree & Twente, OpenWebRX Schiphol & Rotterdam Haven, ProRail Spoor GSM-R Midden, BrandMeister DMR Master 2041, EchoLink Gerbrandytoren #257088, Dwingeloo Radiotelescoop, en Polder Mesh & CB Node).",
     "🧭 Exacte Afstandsberekening: Realtime kilometerafstand (Haversine formule) en richting tot elk station en elke gateway direct op de kanaalkaarten en in de cockpit.",
