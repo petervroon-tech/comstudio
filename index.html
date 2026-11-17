@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Peter Vroon ComStudio • Live Radio Scanner, Treinen, Schepen & Mobiel</title>
-  <meta name="description" content="Peter Vroon ComStudio: Luister live mee naar Schepen, Treinen (GSM-R), Mobiele Portofoons, 27 MHz Mobilofoons en Luchtvaart in Nederland en Europa. Inclusief Squelch, Roger Beep, Waterval display en MP3 opnamestudio.">
+  <title>Peter Vroon ComStudio • Live Radio Scanner, Treinen, Schepen & Mobiel Nederland</title>
+  <meta name="description" content="Peter Vroon ComStudio: Luister live mee naar Schepen, Treinen (GSM-R), Mobiele Portofoons, 27 MHz Mobilofoons en Luchtvaart in Nederland. Inclusief Squelch, Roger Beep, Waterval display en MP3 opnamestudio.">
   <meta name="theme-color" content="#00f2fe">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
@@ -35,7 +35,7 @@
                 <span id="verPillText">v1.2.0</span>
               </button>
             </div>
-            <span class="brand-subtitle">Schepen • Treinen • Mobiel • Trucks • Scanner • Europa</span>
+            <span class="brand-subtitle">Schepen • Treinen • Mobiel • Trucks • Scanner • Nederland</span>
           </div>
         </div>
       </div>
@@ -66,7 +66,7 @@
         </button>
 
         <!-- Knop Radio Nodes (WebSDR / DMR / EchoLink / OpenWebRX) -->
-        <button id="btnOpenNodes" class="pill-btn action-pill nodes-pill" title="Uitluisteren via Radio Nodes in Nederland & Europa">
+        <button id="btnOpenNodes" class="pill-btn action-pill nodes-pill" title="Uitluisteren via Radio Nodes in Nederland">
           <span class="pill-icon">🌐</span>
           <span class="action-label">Nodes</span>
           <span class="nodes-count-badge">12</span>
@@ -232,37 +232,33 @@
             </div>
           </div>
 
-          <!-- 3. Regio's (Nederland & Europa) -->
+          <!-- 3. Regio's (Nederland) -->
           <div class="sidebar-section">
-            <span class="sidebar-section-title">Regio's (NL & Europa)</span>
+            <span class="sidebar-section-title">Nederlandse Regio's</span>
             <div class="sidebar-nav-list">
               <button class="sidebar-nav-item active" data-sidebar-region="">
                 <span class="nav-item-icon">🌐</span>
-                <span class="nav-item-label">Alle Regio's</span>
+                <span class="nav-item-label">Heel Nederland</span>
               </button>
-              <button class="sidebar-nav-item" data-sidebar-region="NL">
-                <span class="nav-item-icon">🇳🇱</span>
-                <span class="nav-item-label">Nederland</span>
+              <button class="sidebar-nav-item" data-sidebar-region="Randstad">
+                <span class="nav-item-icon">🏙️</span>
+                <span class="nav-item-label">Randstad & Midden</span>
               </button>
-              <button class="sidebar-nav-item" data-sidebar-region="EU">
-                <span class="nav-item-icon">🇪🇺</span>
-                <span class="nav-item-label">Europa / Transit</span>
+              <button class="sidebar-nav-item" data-sidebar-region="Kust">
+                <span class="nav-item-icon">⚓</span>
+                <span class="nav-item-label">Kust, Havens & Zee</span>
               </button>
-              <button class="sidebar-nav-item" data-sidebar-region="BE">
-                <span class="nav-item-icon">🇧🇪</span>
-                <span class="nav-item-label">België</span>
+              <button class="sidebar-nav-item" data-sidebar-region="Polder">
+                <span class="nav-item-icon">🌾</span>
+                <span class="nav-item-label">Polders & Veluwe</span>
               </button>
-              <button class="sidebar-nav-item" data-sidebar-region="DE">
-                <span class="nav-item-icon">🇩🇪</span>
-                <span class="nav-item-label">Duitsland</span>
+              <button class="sidebar-nav-item" data-sidebar-region="NoordOost">
+                <span class="nav-item-icon">🌲</span>
+                <span class="nav-item-label">Oost & Noord-NL</span>
               </button>
-              <button class="sidebar-nav-item" data-sidebar-region="FR">
-                <span class="nav-item-icon">🇫🇷</span>
-                <span class="nav-item-label">Frankrijk / Kanaal</span>
-              </button>
-              <button class="sidebar-nav-item" data-sidebar-region="CH">
-                <span class="nav-item-icon">🏔️</span>
-                <span class="nav-item-label">Alpen / Outdoor</span>
+              <button class="sidebar-nav-item" data-sidebar-region="Zuid">
+                <span class="nav-item-icon">🏭</span>
+                <span class="nav-item-label">Zuid-NL & Brabant</span>
               </button>
             </div>
           </div>
@@ -338,17 +334,16 @@
               <button class="cat-pill" data-category="transceiver">📻 Zendontvangers</button>
             </div>
 
-            <!-- Regio & Band Snelfilters (Nederland & Europa) -->
-            <div class="band-scroll-bar" role="group" aria-label="Regio en Band">
-              <button class="band-pill active" data-region="">🌐 Alle Regio's</button>
+            <!-- Regio & Deelgebied Snelfilters (Nederland) -->
+            <div class="band-scroll-bar" role="group" aria-label="Regio en Deelgebied">
+              <button class="band-pill active" data-region="">🌐 Heel Nederland</button>
               <button class="band-pill radius-quick-pill" id="btnRadiusQuick" title="Toon alleen stations binnen 30 km van uw locatie (GPS)">📍 Binnen 30 km</button>
               <button class="band-pill node-quick-pill" id="btnNodesQuick" title="Bekijk en kies actieve Radio Nodes">🌐 Radio Nodes (12)</button>
-              <button class="band-pill" data-region="NL">🇳🇱 Nederland</button>
-              <button class="band-pill" data-region="EU">🇪🇺 Europa / Transit</button>
-              <button class="band-pill" data-region="BE">🇧🇪 België</button>
-              <button class="band-pill" data-region="DE">🇩🇪 Duitsland</button>
-              <button class="band-pill" data-region="FR">🇫🇷 Frankrijk / Kanaal</button>
-              <button class="band-pill" data-region="CH">🏔️ Alpen / Outdoor</button>
+              <button class="band-pill" data-region="Randstad">🏙️ Randstad & Midden</button>
+              <button class="band-pill" data-region="Kust">⚓ Kust & Havens</button>
+              <button class="band-pill" data-region="Polder">🌾 Polders & Veluwe</button>
+              <button class="band-pill" data-region="NoordOost">🌲 Oost & Noord-NL</button>
+              <button class="band-pill" data-region="Zuid">🏭 Zuid-NL & Brabant</button>
             </div>
 
             <!-- Subbar: Aantal kanalen & Verversknop -->
@@ -920,7 +915,7 @@
 
         <!-- Node Type Snelfilters -->
         <div class="modal-tabs node-modal-tabs">
-          <button class="node-tab active" data-node-filter="all">🌍 Alle Nodes (12)</button>
+          <button class="node-tab active" data-node-filter="all">🇳🇱 Alle Nodes Nederland (12)</button>
           <button class="node-tab" data-node-filter="WebSDR">📡 WebSDR (3)</button>
           <button class="node-tab" data-node-filter="OpenWebRX">🛰️ OpenWebRX Haven/Air (3)</button>
           <button class="node-tab" data-node-filter="RailNode">🚆 ProRail GSM-R (2)</button>
@@ -1015,11 +1010,11 @@
                 <span>Tilburg / Waalwijk / Breda (A58 / A59)</span>
               </div>
             </button>
-            <button class="preset-loc-btn" data-lat="51.3500" data-lon="4.2800" data-name="Haven van Antwerpen & Schelde">
-              <span class="loc-pin">🇧🇪</span>
+            <button class="preset-loc-btn" data-lat="52.9560" data-lon="4.7590" data-name="Den Helder & Waddenzee (Kustwacht / Texel)">
+              <span class="loc-pin">⚓</span>
               <div class="loc-info">
-                <strong>Antwerpen & Westerschelde</strong>
-                <span>Zandvliet / Berendrecht / Schelde</span>
+                <strong>Den Helder & Waddenzee</strong>
+                <span>Texelstroom / Vliestroom / Kustwacht</span>
               </div>
             </button>
           </div>

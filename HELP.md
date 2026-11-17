@@ -82,7 +82,7 @@ Veel portofoons (PMR446) gebruiken **CTCSS (Continuous Tone Coded Squelch System
 * **Referentiegebieden:** Geen GPS bij de hand? Kies via `[ 🗺️ Wijzig Positie ]` met één klik een referentiegebied (zoals *Polder Midden-Nederland*, *Flevopolder*, *Rotterdam Haven*, *Utrecht CS*, *Schiphol*, *Zwolle* of *Antwerpen*).
 
 ### 5.2 🌐 Uitluisteren via Allerhande Nodes
-ComStudio is direct gekoppeld aan **12 actieve Radio Nodes en Gateways** in Nederland en Europa:
+ComStudio is direct gekoppeld aan **12 actieve Radio Nodes en Gateways** in heel Nederland:
 1. **Maasbree WebSDR #01 (Limburg, NL):** VHF/UHF amateurrepeaters, 27MC en Rijnvaart.
 2. **Univ. Twente SDR #02 (Overijssel, NL):** Wereldberoemde campus-SDR voor HF korte golf (0-30 MHz).
 3. **Randstad Schiphol Air & Marine #03 (NH, NL):** Luchtvaartverkeer Kaagbaan/Polderbaan en Noordzeekanaal.
@@ -91,9 +91,9 @@ ComStudio is direct gekoppeld aan **12 actieve Radio Nodes en Gateways** in Nede
 6. **BrandMeister DMR Master 2041 #06 (Amsterdam, NL):** Digitale mobilofoons, beveiliging en talkgroups.
 7. **EchoLink Gerbrandytoren Lopik #07 (IJsselstein, NL - 366m NAP):** Hoogste zendmast van Nederland.
 8. **CAMRAS Dwingeloo Node #08 (Drenthe, NL):** 25-meter radiotelescoop voor Noord-Nederland.
-9. **Port of Antwerp Schelde Gateway #09 (Antwerpen, BE):** Scheepvaartbegeleiding Westerschelde en spoor naar Brussel.
-10. **Grenz-Node Eifel / DB Netze #10 (Aachen, DE):** Grensgebied Duitsland/België/Limburg en ICE-treinen.
-11. **Calais Pas-de-Calais Coast Node #11 (Calais, FR):** Kanaaltunnel Eurotunnel Shuttle en Straat van Dover.
+9. **Kustwacht Den Helder & Waddenzee #09 (Den Helder, NH, NL):** Scheepvaartbegeleiding Waddenzee, Vliestroom en SAR.
+10. **Brainport Eindhoven Gateway #10 (Eindhoven, NB, NL):** Spoorwegknooppunt Zuid, Brabantse corridors en mobilofoons.
+11. **Zeehaven IJmuiden & Sluizen Node #11 (IJmuiden, NH, NL):** Zeesluis IJmuiden, Vissershaven en Noordzeekanaal.
 12. **Polder Mesh & Mobile CB Node #12 (Flevoland, NL):** Landelijke gebieden, dijkwegen, polders en fietsers.
 
 ### 5.3 🎛️ VFO Cockpit & Audio DSP

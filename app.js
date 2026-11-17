@@ -149,54 +149,54 @@
       streamUrl: 'audio/atc_tracon_real.ogg'
     },
     {
-      id: 'node_antwerp_port',
-      name: 'Port of Antwerp Schelde Gateway #09',
+      id: 'node_maritiem_denhelder',
+      name: 'Kustwacht Den Helder & Waddenzee #09',
       type: 'OpenWebRX',
       typeBadge: '⚓ OpenWebRX',
-      operator: 'Brabo Loodsdienst & Scheepvaartbegeleiding',
-      location: 'Zandvliet / Antwerpen (Vlaanderen, BE)',
-      lat: 51.3500,
-      lon: 4.2800,
-      bands: '156.000 - 162.000 MHz VHF Marine & Spoor',
-      freqCoverage: 'Westerschelde, Zandvlietsluis, NMBS Brussel',
+      operator: 'Kustwacht Nederland & KNRM',
+      location: 'Den Helder & Texelstroom (NH, NL)',
+      lat: 52.9560,
+      lon: 4.7590,
+      bands: '156 - 162 MHz VHF Marine & SAR',
+      freqCoverage: 'Kustwacht K16, Waddenzee, Vliestroom, Noordzee',
       status: 'ONLINE',
-      ping: '19ms',
-      listeners: 47,
-      desc: 'Scheepvaartbegeleiding langs de Westerschelde en de havenbekkens van Antwerpen en spoorlijnen naar Brussel.',
+      ping: '11ms',
+      listeners: 64,
+      desc: 'Directe ontvangst van Kustwachtcentrum Den Helder, KNRM reddingboten en marifoonverkeer op de Noordzee en Waddenzee.',
       streamUrl: 'audio/scanner_police_real.mp3'
     },
     {
-      id: 'node_eifel_aachen',
-      name: 'Grenz-Node Eifel / DB Netze #10',
+      id: 'node_openwebrx_eindhoven',
+      name: 'Brainport Eindhoven Gateway #10',
       type: 'RailNode',
-      typeBadge: '🇩🇪 Relais / Zugfunk',
-      operator: 'Eifel Radio & DB Netze Funk',
-      location: 'Aachen / Hürtgenwald (NRW, DE)',
-      lat: 50.7753,
-      lon: 6.0839,
-      bands: '438.850 MHz & DB Zugfunk 457 MHz',
-      freqCoverage: 'ICE Arnhem - Keulen, Alpen Noodkanaal, Eifel',
+      typeBadge: '🚆 Spoor & Mobilofoon',
+      operator: 'Zuidoost-NL Spoor & Verkeersregie',
+      location: 'Eindhoven Knooppunt (NB, NL)',
+      lat: 51.4416,
+      lon: 5.4697,
+      bands: '457 MHz GSM-R & RWS Mobilofoon 467 MHz',
+      freqCoverage: 'Knooppunt Eindhoven, Venlo, A2/A58/A67 corridors',
       status: 'ONLINE',
-      ping: '24ms',
-      listeners: 39,
-      desc: 'Grensnode voor internationaal spoorverkeer, ICE-treinen en regionale mobilofoons in het drielandenpunt.',
+      ping: '14ms',
+      listeners: 52,
+      desc: 'Ontvangstnode voor treinverkeer in Brabant en Limburg, Rijkswaterstaat weginspecteurs en logistieke mobilofoons.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
-      id: 'node_eurotunnel_calais',
-      name: 'Calais Pas-de-Calais Coast Node #11',
+      id: 'node_openwebrx_ijmuiden',
+      name: 'Zeehaven IJmuiden & Sluizen Node #11',
       type: 'OpenWebRX',
-      typeBadge: '🇫🇷 OpenWebRX',
-      operator: 'Cross-Channel Maritime Safety',
-      location: 'Coquelles / Cap Gris-Nez (Calais, FR)',
-      lat: 50.9200,
-      lon: 1.8000,
-      bands: 'Kanaaltunnel 467 MHz & Dover Marine K11',
-      freqCoverage: 'Nauw van Calais, Eurotunnel Shuttle, Dover',
+      typeBadge: '⚓ OpenWebRX',
+      operator: 'Rijkswaterstaat & Havenbedrijf Amsterdam',
+      location: 'IJmuiden Zeesluis & Vissershaven (NH, NL)',
+      lat: 52.4630,
+      lon: 4.5880,
+      bands: '156.100 - 156.800 MHz VHF Marine',
+      freqCoverage: 'Zeesluis IJmuiden K22, Noordzeekanaal, Vissersvloot',
       status: 'ONLINE',
-      ping: '27ms',
-      listeners: 53,
-      desc: 'Overziet de scheepvaart in het Nauw van Calais en treinen door de Kanaaltunnel naar Engeland.',
+      ping: '10ms',
+      listeners: 58,
+      desc: 'Grootste zeesluis ter wereld, Noordzeekanaalverbinding naar Amsterdam en inkomende zeeschepen vanaf de Noordzee.',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3'
     },
     {
@@ -219,10 +219,10 @@
   ];
 
   // ==========================================================================
-  // 2. KANALEN DATABANK (Nederland & Europa: Treinen, Schepen, Mobiel, Trucks, Air, Ham)
+  // 2. KANALEN DATABANK (Nederland: Treinen, Schepen, Mobiel, Trucks, Air, Ham)
   // ==========================================================================
   const CHANNELS = [
-    // --- 🚆 TREINEN & SPOORWEGEN (GSM-R & Rangeerdiensten NL & Europa) ---
+    // --- 🚆 TREINEN & SPOORWEGEN (GSM-R & Rangeerdiensten Nederland) ---
     {
       id: 'train_prorail_utr',
       name: 'ProRail Treinverkeersleiding Midden (Utrecht CS)',
@@ -230,6 +230,7 @@
       freqDisplay: '457.650.00',
       category: 'train',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'rail',
       mod: 'FM',
       callsign: 'TRDL-UTR',
@@ -252,6 +253,7 @@
       freqDisplay: '457.700.00',
       category: 'train',
       region: 'NL',
+      subregion: 'NoordOost',
       band: 'rail',
       mod: 'FM',
       callsign: 'TRDL-ZWL',
@@ -272,6 +274,7 @@
       freqDisplay: '458.125.00',
       category: 'train',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'rail',
       mod: 'FM',
       callsign: 'KIJFHOEK-OPS',
@@ -282,71 +285,74 @@
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Heuvelmeester voor rangeerloc 6400: heuvelproces spoor 24 gestart, afremmen via railremmen.',
-        'Kijfhoek Post voor Betuweroute goederentrein 41200: rijweg naar Duitsland via Zevenaar gereed.'
+        'Kijfhoek Post voor Betuweroute goederentrein 41200: rijweg naar Zevenaar gereed.'
       ]
     },
     {
-      id: 'train_db_ice',
-      name: 'DB Netze ICE International (Arnhem - Duisburg / Ruhr)',
-      freq: '457.800',
-      freqDisplay: '457.800.00',
+      id: 'train_prorail_ams',
+      name: 'ProRail Verkeersleiding Noordwest (Amsterdam CS & Schiphol)',
+      freq: '457.725',
+      freqDisplay: '457.725.00',
       category: 'train',
-      region: 'DE',
+      region: 'NL',
+      subregion: 'Randstad',
       band: 'rail',
       mod: 'FM',
-      callsign: 'ZUGFUNK-DB',
-      location: 'Grenstraject Arnhem - Emmerich - Oberhausen',
-      desc: 'Duitse DB Zugfunk & GSM-R voor ICE en grensoverschrijdend Europees spoorverkeer',
+      callsign: 'TRDL-AMS',
+      location: 'Amsterdam Centraal & Schipholboog Corridor',
+      desc: 'Treindienstleiderspost Noordwest voor Intercity Direct, Schiphol Tunnel en Zaanlijn',
       ctcss: 'CSQ',
       deviceIcon: '🚆',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
-        'ICE 124 an Fahrdienstleiter Emmerich: Systemwechsel Oberleitung 1.5 kV zu 15 kV erfolgreich.',
-        'Fahrdienstleiter Oberhausen für ICE 157: Ausfahrt frei, Gleis 3 Richtung Duisburg Hauptbahnhof.'
+        'Intercity Direct 9228 voor TRDL Amsterdam: Schiphol Tunnel spoor 3 vrij, vertrek naar Rotterdam.',
+        'Machinist Sprinter 4614, wissel bij Sloterdijk gereed, binnenrijden op spoor 8.'
       ]
     },
     {
-      id: 'train_sncb_brussels',
-      name: 'SNCB / NMBS Spoor Dispatching Brussel - Antwerpen',
-      freq: '457.750',
-      freqDisplay: '457.750.00',
+      id: 'train_prorail_ehv',
+      name: 'ProRail Verkeersleiding Zuid (Knooppunt Eindhoven & Brabant)',
+      freq: '457.825',
+      freqDisplay: '457.825.00',
       category: 'train',
-      region: 'BE',
+      region: 'NL',
+      subregion: 'Zuid',
       band: 'rail',
       mod: 'FM',
-      callsign: 'INFRABEL-DISP',
-      location: 'Noord-Zuidverbinding Brussel & Spoorlijn 25',
-      desc: 'Belgische spoorverkeersleiding Infrabel op de drukke as Brussel - Mechelen - Antwerpen',
+      callsign: 'TRDL-EHV',
+      location: 'Eindhoven Centraal & Brabant Corridors',
+      desc: 'Spoorverkeersleiding Zuid-Nederland voor Brabantroute, Venlo en Limburglijnen',
       ctcss: 'CSQ',
       deviceIcon: '🚆',
       streamUrl: 'audio/scanner_police_real.mp3',
       chatter: [
-        'Dispatching Brussel Noord voor IC 2014: perronspoor 5 vrij, doorkomst Noord-Zuidverbinding.',
-        'Conducteur trein 9212, sein op dubbel geel nabij Vilvoorde, vertraging 2 minuten.'
+        'TRDL Eindhoven voor Intercity 3540: sein 208 groen, vertrek richting Tilburg en Breda.',
+        'Goederentrein 60041, opstellen op wisselspoor Acht voor passage reizigerstrein.'
       ]
     },
     {
-      id: 'train_eurotunnel',
-      name: 'Eurotunnel Shuttle Kanaaltunnel (Calais - Folkestone)',
-      freq: '467.525',
-      freqDisplay: '467.525.00',
+      id: 'train_prorail_arnhem',
+      name: 'ProRail Verkeersleiding Oost (Knooppunt Arnhem & Betuweroute)',
+      freq: '457.675',
+      freqDisplay: '457.675.00',
       category: 'train',
-      region: 'FR',
+      region: 'NL',
+      subregion: 'NoordOost',
       band: 'rail',
       mod: 'FM',
-      callsign: 'TUNNEL-CONTROL',
-      location: 'Kanaaltunnel Coquelles (Calais) - Folkestone',
-      desc: 'Treinradio van de autoschutles en Eurostar onder het Kanaal (Noordzee)',
+      callsign: 'TRDL-ARN',
+      location: 'Arnhem Centraal & Vallei / Betuwe Knooppunt',
+      desc: 'Treindienstleiding Gelderland, verbinding Arnhem - Nijmegen en Betuweroute overgang',
       ctcss: 'CSQ',
       deviceIcon: '🚆',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3',
       chatter: [
-        'Eurotunnel Shuttle 410, passage tunnelbuis Zuid goedgekeurd, snelheid 140 km/h.',
-        'Tunnel Control: Cross-over camera check complete, safety track clear for Eurostar 9044.'
+        'TRDL Arnhem voor trein 3624: sein op Arnhem Berg veilig, baanvaksnelheid 130 km/u.',
+        'Betuweroute verkeersleiding: doorkomst goederenkonvooi bij Zevenaar op schema.'
       ]
     },
 
-    // --- ⚓ SCHEPEN (Zeevaart, Kustwacht & Binnenvaart NL & Europa) ---
+    // --- ⚓ SCHEPEN (Zeevaart, Kustwacht & Binnenvaart Nederland) ---
     {
       id: 'mar_k16',
       name: 'Kustwacht Centrum Den Helder (Kanaal 16 Nood & Oproep)',
@@ -354,6 +360,7 @@
       freqDisplay: '156.800.00',
       category: 'marine',
       region: 'NL',
+      subregion: 'Kust',
       band: 'marine',
       mod: 'FM',
       callsign: 'PBK / DEN HELDER',
@@ -375,6 +382,7 @@
       freqDisplay: '156.050.00',
       category: 'marine',
       region: 'NL',
+      subregion: 'Kust',
       band: 'marine',
       mod: 'FM',
       callsign: 'SECTOR MAASMOND',
@@ -390,76 +398,80 @@
       ]
     },
     {
-      id: 'mar_antwerp_k62',
-      name: 'Port of Antwerp-Bruges Verkeerscentrale Zandvliet',
-      freq: '156.125',
-      freqDisplay: '156.125.00',
+      id: 'mar_ijmuiden_k22',
+      name: 'Zeehaven IJmuiden & Sluizen Noordzeekanaal (Kanaal 22)',
+      freq: '156.100',
+      freqDisplay: '156.100.00',
       category: 'marine',
-      region: 'BE',
+      region: 'NL',
+      subregion: 'Kust',
       band: 'marine',
       mod: 'FM',
-      callsign: 'ANTWERP-PORT',
-      location: 'Haven van Antwerpen & Westerschelde',
-      desc: 'Marifoonkanaal Zandvlietsluis en Berendrechtsluis op de Schelde',
+      callsign: 'IJMUIDEN-SLUIS',
+      location: 'Zeesluis IJmuiden & Noordzeekanaal',
+      desc: 'Marifoonkanaal grootste zeesluis ter wereld en scheepvaartverbinding naar Amsterdam',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'audio/scanner_police_real.mp3',
       chatter: [
-        'Antwerpen Traffic voor motorschip Brabo: passage Zandvlietsluis gereed over 10 minuten.',
-        'Sleepboot Schelde 12 assisteert bulkcarrier bij het afmeren aan Kaai 420.'
+        'IJmuiden Sluizen voor motortankschip Stella: Noorderkolk loopt vol, gereed voor binnenvaren.',
+        'Sleepboot Svitzer Tempest assisteert bulkcarrier bij het afmeren in de Vissershaven.'
       ]
     },
     {
-      id: 'mar_hamburg_k71',
-      name: 'Hamburg Port Authority Elbe Traffic K71',
-      freq: '156.575',
-      freqDisplay: '156.575.00',
+      id: 'mar_terschelling_k02',
+      name: 'Verkeerscentrale Brandaris Waddenzee (Kanaal 2)',
+      freq: '156.100',
+      freqDisplay: '156.100.00',
       category: 'marine',
-      region: 'DE',
+      region: 'NL',
+      subregion: 'Kust',
       band: 'marine',
       mod: 'FM',
-      callsign: 'HAMBURG-TRAFFIC',
-      location: 'Elbe Estuarium & Haven van Hamburg',
-      desc: 'Duitse maritieme scheepvaartbegeleiding langs de Elbe van Cuxhaven naar Hamburg',
+      callsign: 'BRANDARIS-VTS',
+      location: 'Terschelling, Vlieland & Schuitengat',
+      desc: 'Verkeerspost Brandaris voor veerboten, garnalenvissers en jachten op de Waddenzee',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
-        'Hamburg Traffic, hier Feeder CMA CGM Paris, passiere Teufelsbrück einlaufend.',
-        'CMA CGM Paris, Einfahrt Waltershofer Hafen frei, Schlepper Fairplay 30 steht bereit.'
+        'Brandaris voor snelveerboot Koegelwieck: vaarwater Schuitengat vrij, wind zuidwest 6.',
+        'Garnalenkotter TX-32 meldt positie nadering Vliestroom, diepgang 2.10 meter.'
       ]
     },
     {
-      id: 'mar_dover_k11',
-      name: 'Dover Coastguard & Pas-de-Calais VTS (Straat van Dover)',
-      freq: '156.550',
-      freqDisplay: '156.550.00',
+      id: 'mar_zeeland_k14',
+      name: 'Verkeerscentrale Hansweert / Vlissingen (Westerschelde K14)',
+      freq: '156.700',
+      freqDisplay: '156.700.00',
       category: 'marine',
-      region: 'FR',
+      region: 'NL',
+      subregion: 'Kust',
       band: 'marine',
       mod: 'FM',
-      callsign: 'DOVER-COASTGUARD',
-      location: 'Nauw van Calais & Kanaal Dover',
-      desc: 'Drukst bevaren scheepvaartroute ter wereld: radar- en verkeersbegeleiding ferries en tankers',
+      callsign: 'VTS-HANSWEERT',
+      location: 'Westerschelde, Vlissingen & Zeeland',
+      desc: 'Radar- en verkeersbegeleiding van zeeschepen op de druk bevaren Westerschelde',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3',
       chatter: [
-        'All ships, all ships, this is Dover Coastguard. Vessel traffic separation scheme active.',
-        'Cap Gris-Nez Traffic to tanker Nord Star, you are approaching the south-west lane, maintain course.'
+        'Verkeerscentrale Hansweert voor containerschip Maersk: stroming 2 knopen eb, passeer boei 44.',
+        'Loodsboot Vlissingen brengt loods over bij Steenbank station, over.'
       ]
     },
     {
       id: 'mar_rhein_k10',
-      name: 'Rijnvaart & Binnenvaart Verkeerspost Nijmegen K10',
+      name: 'Rijnvaart & Binnenvaart Verkeerspost Nijmegen (Kanaal 10)',
       freq: '156.500',
       freqDisplay: '156.500.00',
       category: 'marine',
       region: 'NL',
+      subregion: 'NoordOost',
       band: 'marine',
       mod: 'FM',
       callsign: 'POST-NIJMEGEN',
-      location: 'Waal & Boven-Rijn (Nederland - Duitsland grens)',
+      location: 'Waal & Boven-Rijn Corridor',
       desc: 'Binnenvaartcommunicatie en blauwe borden verkeer langs de drukke Rijn-corridor',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
@@ -471,38 +483,40 @@
     },
     {
       id: 'mar_adam_k14',
-      name: 'Amsterdam Havendienst & IJmuiden Zeesluizen',
+      name: 'Amsterdam Havendienst & Noordzeekanaal (Kanaal 14)',
       freq: '156.700',
       freqDisplay: '156.700.00',
       category: 'marine',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'marine',
       mod: 'FM',
       callsign: 'HAVENDIENST-14',
-      location: 'Noordzeekanaal & Zeesluis IJmuiden',
+      location: 'Noordzeekanaal & Haven Amsterdam',
       desc: 'Scheepvaartbegeleiding zeeschepen en binnenvaart Noordzeekanaalgebied',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
-        'IJmuiden Zeesluis voor vrachtschip Stella Polaris, kolk 2 loopt vol, gereed voor schutten.',
+        'Havendienst Amsterdam voor vrachtschip Stella Polaris, ligplaats Houtrak beschikbaar.',
         'Havendienst Amsterdam meldt cruiseschip passeert Houthavens op weg naar PTA.'
       ]
     },
 
-    // --- 📱 MOBIELE PORTOFOONS (Waar je ook bent in NL & Europa) ---
+    // --- 📱 MOBIELE PORTOFOONS (Nederland Landelijk & Lokaal) ---
     {
       id: 'pmr_ch1',
-      name: 'PMR446 Kanaal 1 (Mobiel / Vrije Recreatie NL & Europa)',
+      name: 'PMR446 Kanaal 1 (Mobiele Portofoon Nederland Landelijk)',
       freq: '446.00625',
       freqDisplay: '446.006.25',
       category: 'portofoon',
-      region: 'EU',
+      region: 'NL',
+      subregion: 'Polder',
       band: 'pmr',
       mod: 'FM',
       callsign: 'PMR-CH01',
-      location: 'Mobiel in heel Europa (Vergunningsvrij)',
-      desc: 'Standaard draagbare portofoonfrequentie voor wandelaars, vakantiegangers en logistiek (0.5W)',
+      location: 'Mobiel in Nederland (Vergunningsvrij)',
+      desc: 'Standaard draagbare portofoonfrequentie voor wandelaars, vakantiegangers en polderrecreanten (0.5W)',
       ctcss: '67.0 Hz (Tone 01)',
       deviceIcon: '📱',
       streamUrl: 'audio/scanner_police_real.mp3',
@@ -514,35 +528,37 @@
     },
     {
       id: 'pmr_ch8_sos',
-      name: 'PMR446 Kanaal 8 (Europese Noodoproep Alpen / Outdoor)',
+      name: 'PMR446 Kanaal 8 (Veluwe & Heuvelrug Outdoor Recreatie & Nood)',
       freq: '446.09375',
       freqDisplay: '446.093.75',
       category: 'portofoon',
-      region: 'CH',
+      region: 'NL',
+      subregion: 'Polder',
       band: 'pmr',
       mod: 'FM',
       callsign: 'SOS-OUTDOOR',
-      location: 'Alpen, Ardennen & Europese Berggebieden',
-      desc: 'Officieel outdoor nood- en oproepkanaal PMR (Kanaal 8 CTCSS 16 = 114.8 Hz)',
+      location: 'Veluwe, Utrechtse Heuvelrug & Polders',
+      desc: 'Outdoor nood- en recreatiekanaal PMR (Kanaal 8 CTCSS 16 = 114.8 Hz) in Nederlandse natuurgebieden',
       ctcss: '114.8 Hz (Tone 16)',
       deviceIcon: '📱',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3',
       chatter: [
-        'Oproep op noodkanaal 8: bergwandelaar met verstuiking nabij berghut hoogte 1800m.',
-        'Bergrettung empfängt Notruf: Rettungshubschrauber ist informiert, halten Sie Kanal 8 frei.'
+        'Oproep op recreatiekanaal 8: fietser met pech in het bosgebied nabij Lage Vuursche.',
+        'Boswachterspost ontvangt oproep: mobiele eenheid is onderweg, kanaal vrijhouden.'
       ]
     },
     {
       id: 'pmr_ch2_event',
-      name: 'PMR446 Kanaal 2 (Evenementen Coördinatie & Crew)',
+      name: 'PMR446 Kanaal 2 (Evenementen Coördinatie Jaarbeurs & Ziggo)',
       freq: '446.01875',
       freqDisplay: '446.018.75',
       category: 'portofoon',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'pmr',
       mod: 'FM',
       callsign: 'EVENT-CREW',
-      location: 'Festivalweides, Beurshallen & Stadsevenementen',
+      location: 'Evenementen & Beurshallen Utrecht & Amsterdam',
       desc: 'Mobiele portofoonverbinding voor podiumbeheer, artiestenbegeleiding en publieksstromen',
       ctcss: '100.0 Hz (Tone 12)',
       deviceIcon: '📱',
@@ -559,10 +575,11 @@
       freqDisplay: '446.043.75',
       category: 'portofoon',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'pmr',
       mod: 'FM',
       callsign: 'SURV-04',
-      location: 'Winkelcentra, Bedrijventerreinen & Ziekenhuizen',
+      location: 'Winkelcentra & Bedrijventerreinen Randstad',
       desc: 'Beveiligingsrondes, toegangscontrole en alarmopvolging',
       ctcss: '131.8 Hz (Tone 20)',
       deviceIcon: '📱',
@@ -579,6 +596,7 @@
       freqDisplay: '446.150.00',
       category: 'portofoon',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'pmr',
       mod: 'FM',
       callsign: 'BHV-HAVEN',
@@ -598,11 +616,12 @@
       freqDisplay: '446.068.75',
       category: 'portofoon',
       region: 'NL',
+      subregion: 'Zuid',
       band: 'pmr',
       mod: 'FM',
       callsign: 'DC-LOGISTIEK',
       location: 'Distributiecentra Tilburg & Waalwijk',
-      desc: 'Orderpickers, expeditie laaddocks en heftruckchauffeurs',
+      desc: 'Orderpickers, expeditie laaddocks en heftruckchauffeurs in Brabant',
       ctcss: '77.0 Hz (Tone 04)',
       deviceIcon: '📱',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
@@ -612,59 +631,62 @@
       ]
     },
 
-    // --- 🚗 MOBILOFOONS (Truckers, Vloten & Konvooien NL & Europa) ---
+    // --- 🚗 MOBILOFOONS (Truckers, Vloten & Konvooien Nederland) ---
     {
       id: 'cb_k19_truckers',
-      name: '27 MHz Kanaal 19 (Truckers Benelux & Duitsland A1/A2/A3/E30)',
+      name: '27 MHz Kanaal 19 (Truckers Nederland A1/A2/A12/A15/A27)',
       freq: '27.185',
       freqDisplay: '27.185.00',
       category: 'mobilofoon',
-      region: 'EU',
+      region: 'NL',
+      subregion: 'Randstad',
       band: 'cb',
       mod: 'FM',
       callsign: 'TRUCK-19',
-      location: 'Europese Hoofdwegen A1, A2, A12, A15 & Bundesautobahnen',
-      desc: 'Hét internationale mobilofoonkanaal voor vrachtwagenchauffeurs en live filewaarschuwingen',
+      location: 'Nederlandse Snelwegen A1, A2, A12, A15, A27',
+      desc: 'Hét Nederlandse mobilofoonkanaal voor vrachtwagenchauffeurs en live filewaarschuwingen',
       ctcss: 'CSQ',
       deviceIcon: '🚛',
       streamUrl: 'audio/scanner_police_real.mp3',
       chatter: [
         'Middag collega’s op de 19, let op bij knooppunt Hoevelaken, remmen voor file op de rechterbaan.',
         'Bedankt voor de tip chauffeur, ik pak binnendoor via Amersfoort. Goeie reis!',
-        'Achtung auf der A3 Köln Richtung Frankfurt, Stau nach Baustelle, Spur 2 blockiert.'
+        'Attentie op de A2 richting Utrecht, pechgeval op de vluchtstrook bij Maarssen.'
       ]
     },
     {
       id: 'cb_k28_transit',
-      name: '27 MHz Kanaal 28 (Internationale Transitcorridor A12/E30)',
+      name: '27 MHz Kanaal 28 (Polders & Buitengebied Flevoland/Eemland)',
       freq: '27.280',
       freqDisplay: '27.280.00',
       category: 'mobilofoon',
-      region: 'EU',
+      region: 'NL',
+      subregion: 'Polder',
       band: 'cb',
-      mod: 'AM',
-      callsign: 'TRANSIT-28',
-      location: 'Oost-West As Rotterdam - Berlijn - Warschau',
-      desc: 'Mobilofoonkanaal voor internationaal goederentransport over lange afstanden',
+      mod: 'FM',
+      callsign: 'POLDER-28',
+      location: 'Polders, Dijkwegen en Buitengebied Midden-Nederland',
+      desc: 'Mobilofoonkanaal voor agrarisch transport, dijkwegen en mobiele stations in de polders',
       ctcss: 'CSQ',
       deviceIcon: '🚛',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
-        'Attention transit drivers, heavy crosswinds near Hannover bridge, drive carefully.',
-        'Pozdrowienia na kanale 28, szerokiej drogi kolego!'
+        'Break voor de polderrijders, zwaar transport op de dijk Lelystad - Enkhuizen, tegenliggers voorzichtig.',
+        'Begrepen collega, we wachten even bij de uitwijkstrook.'
       ]
     },
     {
       id: 'cb_k14_oproep',
-      name: '27 MHz Kanaal 14 (Algemene Oproep Bakkies)',
+      name: '27 MHz Kanaal 14 (Algemene Oproep Bakkies Nederland)',
       freq: '27.125',
       freqDisplay: '27.125.00',
       category: 'mobilofoon',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'cb',
       mod: 'FM',
       callsign: 'CB-NL14',
-      location: 'Landelijk 11m Band',
+      location: 'Landelijk 11m Band Nederland',
       desc: 'Standaard oproepkanaal voor 27MC mobiele zendontvangers in auto\'s en bestelbussen',
       ctcss: 'CSQ',
       deviceIcon: '🚗',
@@ -676,15 +698,16 @@
     },
     {
       id: 'cb_k9_sos',
-      name: '27 MHz Kanaal 9 (Internationaal Noodkanaal)',
+      name: '27 MHz Kanaal 9 (Landelijk Noodkanaal Nederland)',
       freq: '27.065',
       freqDisplay: '27.065.00',
       category: 'mobilofoon',
-      region: 'EU',
+      region: 'NL',
+      subregion: 'Randstad',
       band: 'cb',
       mod: 'AM',
       callsign: 'EMERGENCY-09',
-      location: 'Internationaal Noodkanaal Europa',
+      location: 'Landelijk Noodkanaal Nederland',
       desc: 'Historisch en actueel noodoproepkanaal voor pech onderweg, konvooien en polders',
       ctcss: 'CSQ',
       deviceIcon: '🚗',
@@ -695,16 +718,17 @@
     },
     {
       id: 'cb_k4_4x4',
-      name: '27 MHz Kanaal 4 (Terreinwagens & 4x4 Offroad)',
+      name: '27 MHz Kanaal 4 (Terreinwagens & 4x4 Offroad Veluwe)',
       freq: '27.005',
       freqDisplay: '27.005.00',
       category: 'mobilofoon',
       region: 'NL',
+      subregion: 'Polder',
       band: 'cb',
       mod: 'FM',
       callsign: '4X4-TRAIL',
-      location: 'Veluwe, Ardennen & Offroad Parcoursen',
-      desc: 'Mobilofoons in terreinwagens voor konvooirijden, lieren en zandkuilen',
+      location: 'Veluwe, Zandpaden & Offroad Parcoursen',
+      desc: 'Mobilofoons in terreinwagens voor konvooirijden, lieren en zandkuilen in Nederland',
       ctcss: 'CSQ',
       deviceIcon: '🚙',
       streamUrl: 'audio/scanner_police_real.mp3',
@@ -715,16 +739,17 @@
     },
     {
       id: 'mob_berging_takel',
-      name: 'Bergingsbedrijf & Takeldienst Mobilofoon',
+      name: 'Bergingsbedrijf & Takeldienst Mobilofoon Nederland',
       freq: '27.225',
       freqDisplay: '27.225.00',
       category: 'mobilofoon',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'cb',
       mod: 'FM',
       callsign: 'TAKELD-22',
-      location: 'Rijkswegen & Knooppunten Benelux',
-      desc: 'Takelwagens en pechhulpvoertuigen vlootcommunicatie',
+      location: 'Rijkswegen & Knooppunten Nederland',
+      desc: 'Takelwagens en pechhulpvoertuigen vlootcommunicatie Incident Management',
       ctcss: 'CSQ',
       deviceIcon: '🛻',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
@@ -733,35 +758,36 @@
       ]
     },
 
-    // --- ✈️ LUCHTVAART & EUROCONTROL (Bovenluchtruim Europa) ---
+    // --- ✈️ LUCHTVAART SCANNERS (Nederlandse Luchthavens & Luchtruim) ---
     {
-      id: 'air_eurocontrol_muac',
-      name: 'Eurocontrol Maastricht Upper Area Control (MUAC)',
-      freq: '132.855',
-      freqDisplay: '132.855.00',
+      id: 'air_amsterdam_radar',
+      name: 'Amsterdam Radar (Schiphol Terminal Control Area)',
+      freq: '124.300',
+      freqDisplay: '124.300.00',
       category: 'air',
-      region: 'EU',
+      region: 'NL',
+      subregion: 'Randstad',
       band: 'air',
       mod: 'AM',
-      callsign: 'MAASTRICHT-RADAR',
-      location: 'Bovenluchtruim Benelux & Noordwest-Duitsland',
-      desc: 'Internationale civiele en militaire verkeersleiding boven vliegniveau FL245 (7.5 km hoogte)',
+      callsign: 'AMS-RADAR',
+      location: 'LVNL Schiphol Oost & Boven West-Nederland',
+      desc: 'Algemene radar- en routebegeleiding voor al het luchtverkeer boven West- en Midden-Nederland',
       ctcss: 'CSQ',
       deviceIcon: '✈️',
       streamUrl: 'audio/atc_tracon_real.ogg',
       chatter: [
-        'Lufthansa 450 heavy, Maastricht Radar, climb to flight level 370, direct SPY.',
-        'KLM 602, radar contact, descend to flight level 280, speed 280 knots.',
-        'Air France 218, contact Brussels Control on 131.100, good day.'
+        'Amsterdam Radar voor KLM 1243: klim naar vliegniveau 180, directe koers naar SPYKER.',
+        'Transavia 439, radarcontact bevestigd, daal naar 3000 voet, QNH 1018.'
       ]
     },
     {
       id: 'air_eham_twr',
-      name: 'Schiphol Toren (EHAM Tower)',
+      name: 'Schiphol Toren (EHAM Tower Kaagbaan / Polderbaan)',
       freq: '119.225',
       freqDisplay: '119.225.00',
       category: 'air',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'air',
       mod: 'AM',
       callsign: 'EHAM TWR',
@@ -771,9 +797,8 @@
       deviceIcon: '✈️',
       streamUrl: 'audio/atc_tracon_real.ogg',
       chatter: [
-        'KLM 1243, wind 240 degrees at 12 knots, runway 24 cleared to land.',
-        'Speedbird 438, turn right next taxiway, contact ground on 121.800.',
-        'Delta 47 heavy, wind 230 at 14 knots, runway 24, line up and wait.'
+        'KLM 1243, wind 240 graden 12 knopen, baan 24 vrij om te landen.',
+        'Transavia 692, verlaat de baan via taxibaan Victor, contact grond op 121.800.'
       ]
     },
     {
@@ -783,53 +808,56 @@
       freqDisplay: '121.200.00',
       category: 'air',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'air',
       mod: 'AM',
       callsign: 'EHAM APP',
       location: 'Schiphol TMA Nadering',
-      desc: 'Naderingsverkeersleiding voor inkomende internationale vluchten',
+      desc: 'Naderingsverkeersleiding voor inkomende vluchten naar Schiphol',
       ctcss: 'CSQ',
       deviceIcon: '✈️',
       streamUrl: 'audio/atc_jfk_real.ogg',
       chatter: [
-        'EasyJet 7821, descend altitude 3000 feet, QNH 1018, intercept localizer 18R.',
-        'Transavia 411, reduce to minimum clean speed, report established ILS.'
+        'Inbound vlucht, daal naar 2000 voet, onderschep ILS lokaal baken baan 18 rechts.',
+        'Meld wanneer gevestigd op de glijbaan, snelheid reduceren tot 160 knopen.'
       ]
     },
     {
-      id: 'air_ebbr_twr',
-      name: 'Brussels Airport Tower (EBBR Zaventem)',
-      freq: '118.600',
-      freqDisplay: '118.600.00',
+      id: 'air_rotterdam_twr',
+      name: 'Rotterdam The Hague Airport Toren (Zestienhoven)',
+      freq: '118.200',
+      freqDisplay: '118.200.00',
       category: 'air',
-      region: 'BE',
+      region: 'NL',
+      subregion: 'Randstad',
       band: 'air',
       mod: 'AM',
-      callsign: 'BRUSSELS-TWR',
-      location: 'Brussels Airport Zaventem',
-      desc: 'Luchtverkeersleiding van de nationale luchthaven van België Runway 25L/01',
+      callsign: 'EHRD-TWR',
+      location: 'Rotterdam The Hague Airport',
+      desc: 'Toren- en grondverkeersleiding vliegveld Rotterdam en traumahelikopter Lifeliner 2',
       ctcss: 'CSQ',
       deviceIcon: '✈️',
       streamUrl: 'audio/atc_tracon_real.ogg',
       chatter: [
-        'Brussels Tower, Brussels Airlines 330 ready for departure runway 25R.',
-        'Brussels Airlines 330, wind 230 11 knots, runway 25R cleared for takeoff.'
+        'Rotterdam Toren voor PH-TVS: wind 230 graden 10 knopen, baan 24 vrij voor vertrek.',
+        'Traumahelikopter Lifeliner 2 vertrekt vanaf platform naar incident A15, uitklimmen goedgekeurd.'
       ]
     },
 
-    // --- 📻 ZENDONTVANGERS / TRANSCEIVERS (NL & Europa WebSDR) ---
+    // --- 📻 ZENDONTVANGERS / TRANSCEIVERS (Nederlandse Repeaters & VERON) ---
     {
       id: 'ham_pi2nos',
-      name: 'PI2NOS Bovenregionale Relaiszender (2m Ham)',
+      name: 'PI2NOS Bovenregionale Relaiszender (2m Lopikertoren)',
       freq: '145.575',
       freqDisplay: '145.575.00',
       category: 'transceiver',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'ham_2m',
       mod: 'FM',
       callsign: 'PI2NOS',
       location: 'Gerbrandytoren IJsselstein (366m NAP)',
-      desc: 'Grootste zendamateur FM repeater van West-Europa, dekt heel Nederland en Vlaanderen',
+      desc: 'Grootste zendamateur FM repeater van Nederland, dekt heel het land van Groningen tot Zeeland',
       ctcss: '77.0 / 88.5 Hz',
       deviceIcon: '📻',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
@@ -841,11 +869,12 @@
     },
     {
       id: 'ham_pi3utr',
-      name: 'PI3UTR Utrecht Relaiszender (70cm Ham)',
+      name: 'PI3UTR Midden-Nederland Relaiszender (70cm Lopik)',
       freq: '430.125',
       freqDisplay: '430.125.00',
       category: 'transceiver',
       region: 'NL',
+      subregion: 'Randstad',
       band: 'ham_70cm',
       mod: 'FM',
       callsign: 'PI3UTR',
@@ -856,106 +885,109 @@
       streamUrl: 'audio/atc_tracon_real.ogg',
       chatter: [
         'PI3UTR, PA2XYZ voor een signaalrapport, transceiver test op 10 watt.',
-        'PA2XYZ hier PE1AAA, prima audiosignaal, helder en zuiver.'
+        'PA2XYZ hier PE1AAA, prima audiosignaal, helder en zuiver over de Utrechtse Heuvelrug.'
       ]
     },
     {
-      id: 'ham_db0dx',
-      name: 'DB0DX Eifel / Aachen Repeater (70cm Duitsland)',
-      freq: '438.850',
-      freqDisplay: '438.850.00',
+      id: 'ham_pi1nos_dstar',
+      name: 'PI1NOS Digitale D-Star & DMR Gateway Nederland',
+      freq: '438.350',
+      freqDisplay: '438.350.00',
       category: 'transceiver',
-      region: 'DE',
+      region: 'NL',
+      subregion: 'Randstad',
       band: 'ham_70cm',
       mod: 'FM',
-      callsign: 'DB0DX',
-      location: 'Aachen / Eifel Grensgebied',
-      desc: 'Duitse zendamateur relaiszender bereikbaar in Oost-België, Zuid-Limburg en NRW',
-      ctcss: '67.0 Hz',
+      callsign: 'PI1NOS',
+      location: 'Gerbrandytoren IJsselstein',
+      desc: 'Landelijke digitale repeater gateway voor digitale spraakverbindingen van Nederlandse zendamateurs',
+      ctcss: 'DMR TG204',
       deviceIcon: '📻',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
-        'Hier ist DB0DX Relais Eifel, DL1ABC ruft CQ über die Grenze nach Limburg.',
-        'Guten Abend DL1ABC, hier PA3XYZ aus Maastricht, Signal 5 und 9.'
+        'PI1NOS digitale reflector gateway gekoppeld met Groningen en Eindhoven, modulatie 100 procent.',
+        'Hallo amateurs, PD1VRN meldt zich in via de digitale reflector vanuit Flevoland.'
       ]
     },
     {
-      id: 'ham_websdr_20m',
-      name: '20m Wereldwijde DX Ronde WebSDR (14.200 MHz)',
-      freq: '14.200',
-      freqDisplay: '014.200.00',
+      id: 'ham_veron_pi4aa',
+      name: 'PI4AA Landelijke VERON Uitzending & Amateurnet',
+      freq: '3.650',
+      freqDisplay: '003.650.00',
       category: 'transceiver',
-      region: 'EU',
+      region: 'NL',
+      subregion: 'Polder',
       band: 'hf',
-      mod: 'USB',
-      callsign: 'DX-20M',
-      location: 'Universiteit Twente WebSDR',
-      desc: 'Korte Golf Wereldwijde verbindingen via ionosfeerreflectie over heel Europa en de wereld',
+      mod: 'LSB',
+      callsign: 'PI4AA',
+      location: 'Landelijke Verenigingszender VERON',
+      desc: 'Wekelijkse landelijke radio-uitzending voor alle Nederlandse radio-amateurs en luisteraars',
       ctcss: 'None',
-      deviceIcon: '🌐',
+      deviceIcon: '📻',
       streamUrl: 'audio/atc_jfk_real.ogg',
       chatter: [
-        'CQ 20 meter, CQ 20 meter, this is PA0VRO calling CQ DX from the Netherlands.',
-        'PA0VRO, this is W1AW in Connecticut, you are 5 and 9 into the United States, 73s!'
+        'Dit is verenigingsstation PI4AA met het landelijke amateurnet nieuws voor Nederland.',
+        'Rapport 5 en 9 ontvangen vanuit alle Nederlandse provincies, microfoon gaat rond.'
       ]
     },
     {
       id: 'ham_websdr_40m',
-      name: '40m Benelux Avondronde WebSDR (7.085 MHz)',
+      name: '40m Nederlandse Avondronde WebSDR (7.085 MHz)',
       freq: '7.085',
       freqDisplay: '007.085.00',
       category: 'transceiver',
       region: 'NL',
+      subregion: 'NoordOost',
       band: 'hf',
       mod: 'LSB',
       callsign: 'RONDE-40M',
-      location: 'Korte Golf HF Benelux',
-      desc: 'Dagelijkse praatronde van Nederlandse en Vlaamse zendamateurs op de 40 meter band',
+      location: 'Korte Golf HF Nederland via Twente WebSDR',
+      desc: 'Dagelijkse praatronde van Nederlandse zendamateurs op de 40 meter band',
       ctcss: 'None',
       deviceIcon: '🌐',
       streamUrl: 'audio/atc_tracon_real.ogg',
       chatter: [
-        'Goedenavond allemaal in de 40 meter ronde, condities zijn uitstekend over heel de Benelux vanavond.'
+        'Goedenavond allemaal in de 40 meter ronde, condities zijn uitstekend over heel Nederland vanavond.'
       ]
     }
   ];
 
-  // Koppel Geografische Coördinaten en Primaire Ontvangst-Nodes aan elk kanaal
+  // Koppel Geografische Coördinaten en Primaire Ontvangst-Nodes aan elk kanaal (100% NL)
   const CHANNEL_LOCATIONS = {
     train_prorail_utr: { lat: 52.0894, lon: 5.1103, primaryNodeId: 'node_prorail_utrecht', nodeName: 'ProRail GSM-R Node Midden #05' },
     train_prorail_zwolle: { lat: 52.5050, lon: 6.0910, primaryNodeId: 'node_dwingeloo_sdr', nodeName: 'CAMRAS Dwingeloo Node #08' },
     train_kijfhoek_shunting: { lat: 51.8267, lon: 4.6033, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    train_db_ice: { lat: 51.9851, lon: 5.8987, primaryNodeId: 'node_eifel_aachen', nodeName: 'Grenz-Node Eifel / DB Netze #10' },
-    train_sncb_brussels: { lat: 50.8503, lon: 4.3517, primaryNodeId: 'node_antwerp_port', nodeName: 'Port of Antwerp Schelde Gateway #09' },
-    train_eurotunnel: { lat: 50.9200, lon: 1.8000, primaryNodeId: 'node_eurotunnel_calais', nodeName: 'Calais Pas-de-Calais Coast Node #11' },
-    mar_k16: { lat: 52.9560, lon: 4.7600, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
+    train_prorail_ams: { lat: 52.3792, lon: 4.9003, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
+    train_prorail_ehv: { lat: 51.4416, lon: 5.4697, primaryNodeId: 'node_openwebrx_eindhoven', nodeName: 'Brainport Eindhoven Gateway #10' },
+    train_prorail_arnhem: { lat: 51.9851, lon: 5.8987, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' },
+    mar_k16: { lat: 52.9560, lon: 4.7600, primaryNodeId: 'node_maritiem_denhelder', nodeName: 'Kustwacht Den Helder & Waddenzee #09' },
     mar_maasmond_k01: { lat: 51.9890, lon: 4.0750, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    mar_antwerp_k62: { lat: 51.3500, lon: 4.2800, primaryNodeId: 'node_antwerp_port', nodeName: 'Port of Antwerp Schelde Gateway #09' },
-    mar_hamburg_k71: { lat: 53.5511, lon: 9.9937, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' },
-    mar_dover_k11: { lat: 51.1279, lon: 1.3134, primaryNodeId: 'node_eurotunnel_calais', nodeName: 'Calais Pas-de-Calais Coast Node #11' },
+    mar_ijmuiden_k22: { lat: 52.4630, lon: 4.5880, primaryNodeId: 'node_openwebrx_ijmuiden', nodeName: 'Zeehaven IJmuiden & Sluizen Node #11' },
+    mar_terschelling_k02: { lat: 53.3610, lon: 5.2150, primaryNodeId: 'node_maritiem_denhelder', nodeName: 'Kustwacht Den Helder & Waddenzee #09' },
+    mar_zeeland_k14: { lat: 51.4480, lon: 4.0080, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
     mar_rhein_k10: { lat: 51.8420, lon: 5.8600, primaryNodeId: 'node_websdr_maasbree', nodeName: 'Maasbree WebSDR Gateway #01' },
     mar_adam_k14: { lat: 52.4630, lon: 4.5900, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
     pmr_ch1: { lat: 52.1550, lon: 5.2500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
-    pmr_ch8_sos: { lat: 46.5000, lon: 8.0000, primaryNodeId: 'node_eifel_aachen', nodeName: 'Grenz-Node Eifel / Alpen #10' },
-    pmr_ch2_event: { lat: 52.3700, lon: 4.8900, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06' },
-    pmr_ch4_security: { lat: 52.0900, lon: 5.1200, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06' },
+    pmr_ch8_sos: { lat: 52.1326, lon: 5.8500, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
+    pmr_ch2_event: { lat: 52.0900, lon: 5.1100, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06' },
+    pmr_ch4_security: { lat: 52.3700, lon: 4.8900, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06' },
     port_bhv_calamiteit: { lat: 51.9500, lon: 4.1500, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    port_logistiek_dc: { lat: 51.5600, lon: 5.0800, primaryNodeId: 'node_websdr_maasbree', nodeName: 'Maasbree WebSDR Gateway #01' },
+    port_logistiek_dc: { lat: 51.5600, lon: 5.0800, primaryNodeId: 'node_openwebrx_eindhoven', nodeName: 'Brainport Eindhoven Gateway #10' },
     cb_k19_truckers: { lat: 52.1550, lon: 5.3878, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
-    cb_k28_transit: { lat: 52.0500, lon: 5.1000, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
+    cb_k28_transit: { lat: 52.4200, lon: 5.5000, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
     cb_k14_oproep: { lat: 52.2000, lon: 5.2500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
-    cb_k9_sos: { lat: 52.0000, lon: 5.0000, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
+    cb_k9_sos: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
     cb_k4_4x4: { lat: 52.1326, lon: 5.8500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
     mob_berging_takel: { lat: 51.8500, lon: 4.7000, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    air_eurocontrol_muac: { lat: 50.8500, lon: 5.6900, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
+    air_amsterdam_radar: { lat: 52.3086, lon: 4.7639, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
     air_eham_twr: { lat: 52.3086, lon: 4.7639, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
     air_eham_app: { lat: 52.3100, lon: 4.7600, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
-    air_ebbr_twr: { lat: 50.9014, lon: 4.4844, primaryNodeId: 'node_antwerp_port', nodeName: 'Port of Antwerp Schelde Gateway #09' },
+    air_rotterdam_twr: { lat: 51.9569, lon: 4.4372, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
     ham_pi2nos: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
     ham_pi3utr: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
-    ham_db0dx: { lat: 50.7753, lon: 6.0839, primaryNodeId: 'node_eifel_aachen', nodeName: 'Grenz-Node Eifel / DB Netze #10' },
-    ham_websdr_20m: { lat: 52.2435, lon: 6.8530, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' },
-    ham_websdr_40m: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' }
+    ham_pi1nos_dstar: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
+    ham_veron_pi4aa: { lat: 52.1550, lon: 5.3878, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' },
+    ham_websdr_40m: { lat: 52.2435, lon: 6.8530, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' }
   };
 
   CHANNELS.forEach(c => {
@@ -1687,51 +1719,60 @@
     ],
     air: [
       (c) => ({
-        sender: `${c.location || 'Amsterdam'} Tower`,
-        target: `${pickRandomItem(['KLM', 'Transavia', 'EasyJet', 'Delta'])} ${pickRandomItem([418, 1224, 692, 331])}`,
-        msg: `Wind ${pickRandomItem([210, 230, 250])} degrees ${pickRandomItem([12, 15, 18])} knots, runway ${pickRandomItem(['18R', '36C', '24', '06'])}, cleared to land, contact ground when vacated.`,
-        lang: 'en-US'
+        sender: `${c.location || 'Schiphol'} Toren`,
+        target: `${pickRandomItem(['KLM 1242', 'Transavia 692', 'PH-BXB', 'Lifeliner 1'])}`,
+        msg: `Wind ${pickRandomItem([210, 230, 250])} graden ${pickRandomItem([12, 15, 18])} knopen, baan ${pickRandomItem(['18 rechts', '24', '36 centrum', '06'])}, landingsklaring verleend, verlaat de baan via taxibaan Bravo, over.`,
+        lang: 'nl-NL'
       }),
       (c) => ({
-        sender: `${pickRandomItem(['KLM', 'Lufthansa', 'British Airways'])} ${pickRandomItem([842, 1735, 439])}`,
-        target: `${c.location || 'Amsterdam'} Radar`,
-        msg: `Passing flight level ${pickRandomItem([180, 220, 280])} climbing to flight level ${pickRandomItem([320, 360])}, direct SPYKER, over.`,
-        lang: 'en-US'
+        sender: `Amsterdam Radar Luchtverkeersleiding`,
+        target: `${pickRandomItem(['KLM 842', 'Transavia 439', 'PH-TVS'])}`,
+        msg: `Radarcontact bevestigd, klim naar vliegniveau ${pickRandomItem([180, 220, 260])}, directe koers naar baken SPYKER, over.`,
+        lang: 'nl-NL'
       }),
       (c) => ({
-        sender: `Maastricht Upper Area Control`,
-        target: `Air France ${pickRandomItem([1148, 1622])}`,
-        msg: `Identified radar, turn left heading ${pickRandomItem(['040', '080', '110'])}, maintain Mach decimal ${pickRandomItem(['78', '80', '82'])}, good day.`,
-        lang: 'en-US'
-      }),
-      (c) => ({
-        sender: `${c.location || 'Rotterdam'} Ground`,
+        sender: `Rotterdam The Hague Toren`,
         target: `Cessna ${pickRandomItem(['PH-TVS', 'PH-KNA', 'PH-JBL'])}`,
-        msg: `Taxi via taxiway Alpha to holding point runway ${pickRandomItem(['24', '06'])}, QNH 1018, squawk ${pickRandomItem([7000, 4215])}.`,
-        lang: 'en-US'
+        msg: `Taxie via taxibaan Alpha naar wachtplaats baan 24, QNH 1018, transponder ${pickRandomItem([7000, 4215])}, over.`,
+        lang: 'nl-NL'
+      }),
+      (c) => ({
+        sender: `Groningen Eelde Nadering`,
+        target: `Traumahelikopter Lifeliner 4`,
+        msg: `Aanvliegroute goedgekeurd richting Universitair Medisch Centrum Groningen, wind zuidwest 10 knopen, over.`,
+        lang: 'nl-NL'
+      }),
+      (c) => ({
+        sender: `Eindhoven Toren`,
+        target: `Vliegbasis verkeer`,
+        msg: `Baan 03 gereed voor vertrek, wind 220 graden 8 knopen, vertrek goedgekeurd, over.`,
+        lang: 'nl-NL'
       })
     ],
     transceiver: [
       (c) => ({
         sender: `${pickRandomItem(['PA3ABC', 'PD0XYZ', 'PE1NOP', 'PA2M', 'PB0T'])}`,
-        target: `Ronde via Repeater ${c.location || 'PI2NOS'}`,
-        msg: `Goedenavond amateurs, modulatiecheck vanaf de vaste mast in ${c.location || 'Midden-Nederland'}, signaalmeter staat op 9 plus 20dB, 73.`
+        target: `Ronde via Repeater ${c.location || 'PI2NOS Lopik'}`,
+        msg: `Goedenavond amateurs, modulatiecheck vanaf de vaste mast in ${c.location || 'Midden-Nederland'}, signaalmeter staat op 9 plus 20dB, 73.`,
+        lang: 'nl-NL'
       }),
       (c) => ({
         sender: `${pickRandomItem(['PA1PET', 'PD2VR', 'PE3HAM', 'PA0VRN'])}`,
-        target: `CQ CQ 2 meter band`,
-        msg: `Algemene oproep op frequentie ${c.freq} MHz, luisterend voor stations in de regio, Peter Vroon ComStudio gateway actief, over.`
+        target: `CQ CQ 2 meter band Nederland`,
+        msg: `Algemene oproep op frequentie ${c.freq} MHz, luisterend voor stations in de regio, Peter Vroon ComStudio gateway actief, over.`,
+        lang: 'nl-NL'
       }),
       (c) => ({
-        sender: `Repeater Gateway ${c.location || 'PI1UTR'}`,
-        target: `Alle luisteraars`,
-        msg: `Bakenmelding repeater operationeel op ${c.freq} MHz met subtoon ${c.ctcss || '88.5 Hz'}, shift min 600 kHz, 73.`
+        sender: `Repeater Gateway ${c.location || 'PI1UTR Lopikertoren'}`,
+        target: `Alle Nederlandse luisteraars`,
+        msg: `Bakenmelding repeater operationeel op ${c.freq} MHz met subtoon ${c.ctcss || '88.5 Hz'}, shift min 600 kHz, 73.`,
+        lang: 'nl-NL'
       }),
       (c) => ({
-        sender: `${pickRandomItem(['ON4KST', 'DL1ABC', 'G4ABC'])}`,
-        target: `CQ DX Europe`,
-        msg: `Calling CQ 20 meter band from ${pickRandomItem(['Belgium', 'Germany', 'England'])}, signal report 5 and 9 into the Netherlands, 73!`,
-        lang: 'en-US'
+        sender: `VERON Afdeling Midden-Nederland`,
+        target: `Landelijke Luisterronde`,
+        msg: `Dit is verenigingsstation PI4AA in de landelijke amateurnet uitzending, microfoon gaat rond naar de provincies, 73 aan alle luisteraars!`,
+        lang: 'nl-NL'
       })
     ]
   };
@@ -1768,7 +1809,7 @@
       sender: data.sender,
       target: data.target,
       msg: data.msg,
-      lang: data.lang || (cat === 'air' ? 'en-US' : 'nl-NL'),
+      lang: data.lang || 'nl-NL',
       freq: channel.freq,
       freqDisplay: channel.freqDisplay,
       channelName: channel.name,
@@ -2344,12 +2385,11 @@
         return false;
       }
 
-      // Regio filter (NL, EU, BE, DE, FR, CH)
+      // Regio filter (Nederland & Nederlandse Deelgebieden)
       if (state.filterRegion) {
-        if (state.filterRegion === 'EU') {
-          // 'EU' filter toont internationale en pan-Europese zenders
-          if (!['EU', 'BE', 'DE', 'FR', 'CH'].includes(c.region)) return false;
-        } else if (c.region !== state.filterRegion) {
+        if (state.filterRegion === 'NL') {
+          if (c.region !== 'NL') return false;
+        } else if (c.subregion !== state.filterRegion && c.region !== state.filterRegion) {
           return false;
         }
       }
@@ -2362,6 +2402,7 @@
           c.callsign.toLowerCase().includes(q) ||
           c.location.toLowerCase().includes(q) ||
           c.desc.toLowerCase().includes(q) ||
+          (c.subregion && c.subregion.toLowerCase().includes(q)) ||
           (c.nodeName && c.nodeName.toLowerCase().includes(q)) ||
           c.region.toLowerCase().includes(q);
         if (!match) return false;
@@ -2385,7 +2426,7 @@
 
     // 5. Update count badge
     if (DOM.channelCountText) {
-      let countLabel = `${filtered.length} kanalen gevonden in Nederland & Europa`;
+      let countLabel = `${filtered.length} kanalen gevonden in Nederland`;
       if (state.radiusFilterActive) {
         countLabel = `📍 ${filtered.length} stations binnen 30 km rondom ${state.userLocationLabel}`;
       } else if (state.filterNodeId) {
@@ -2406,20 +2447,19 @@
 
     if (DOM.emptyState) DOM.emptyState.style.display = 'none';
 
+    const subregionLabels = {
+      Randstad: 'Randstad & Midden',
+      Kust: 'Kust & Havens',
+      Polder: 'Polder & Veluwe',
+      NoordOost: 'Oost & Noord-NL',
+      Zuid: 'Zuid-NL & Brabant'
+    };
+
     DOM.channelList.innerHTML = filtered.map(c => {
       const isActive = c.id === state.activeChannelId;
       const isFav = state.favorites.includes(c.id);
       const isLastListened = c.id === state.activeChannelId;
-
-      const flagMap = {
-        NL: '🇳🇱',
-        EU: '🇪🇺',
-        BE: '🇧🇪',
-        DE: '🇩🇪',
-        FR: '🇫🇷',
-        CH: '🇨🇭'
-      };
-      const flag = flagMap[c.region] || '🌍';
+      const regionBadgeText = subregionLabels[c.subregion] || 'Nederland';
 
       const distBadgeHtml = c.distKm !== null
         ? `<span class="card-distance-badge ${c.distKm <= 15 ? 'near' : ''}" title="Afstand tot uw referentie/GPS positie">📍 ${c.distKm < 1 ? '< 1 km' : c.distKm.toFixed(1) + ' km'}</span>`
@@ -2437,7 +2477,7 @@
               <div class="card-freq-row">
                 <span class="card-freq">${c.freq} MHz</span>
                 <span class="card-badge badge-${c.mod.toLowerCase()}">${c.mod}</span>
-                <span class="card-badge" style="background:rgba(255,255,255,0.08);">${flag} ${c.region}</span>
+                <span class="card-badge" style="background:rgba(255,255,255,0.08);">🇳🇱 ${regionBadgeText}</span>
                 ${distBadgeHtml}
                 ${isLastListened ? '<span class="badge-last-listened">🕒 Laatst Geluisterd</span>' : ''}
               </div>
@@ -2486,7 +2526,15 @@
     const channel = getChannelById(state.activeChannelId);
     if (!channel) return;
 
-    if (DOM.vfoDeviceType) DOM.vfoDeviceType.textContent = `${channel.deviceIcon} ${channel.category.toUpperCase()} • ${channel.region}`;
+    const subregionLabels = {
+      Randstad: 'Randstad & Midden',
+      Kust: 'Kust & Havens',
+      Polder: 'Polders & Veluwe',
+      NoordOost: 'Oost & Noord-NL',
+      Zuid: 'Zuid-NL & Brabant'
+    };
+    const regText = subregionLabels[channel.subregion] || 'Nederland';
+    if (DOM.vfoDeviceType) DOM.vfoDeviceType.textContent = `${channel.deviceIcon} ${channel.category.toUpperCase()} • 🇳🇱 ${regText}`;
     if (DOM.vfoBandText) DOM.vfoBandText.textContent = channel.band.toUpperCase();
     if (DOM.vfoFilterText) DOM.vfoFilterText.textContent = `BANDPASS: 300-3000 Hz`;
     if (DOM.vfoFreqMain) DOM.vfoFreqMain.textContent = channel.freqDisplay;
