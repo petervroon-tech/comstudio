@@ -1,6 +1,7 @@
 /**
  * Peter Vroon ComStudio • app.js
- * Live Radio Scanner, Portofoon, Mobilofoon & Zendontvanger Platform
+ * Live Radio Scanner, Portofoon, Mobilofoon, Treinen & Schepen Platform
+ * Volledige dekking van Schepen, Treinen & Mobiele apparaten in Nederland en Europa
  * Ontworpen conform AGENTS.md & app_architectuur_en_bediening_gids.md
  */
 
@@ -8,86 +9,144 @@
   'use strict';
 
   // ==========================================================================
-  // 1. KANALEN DATABANK (24 Realistische Kanalen over 4 Apparaatgroepen)
+  // 1. KANALEN DATABANK (Nederland & Europa: Treinen, Schepen, Mobiel, Trucks, Air, Ham)
   // ==========================================================================
   const CHANNELS = [
-    // --- 📡 SCANNERS (Luchtvaart & Maritiem) ---
+    // --- 🚆 TREINEN & SPOORWEGEN (GSM-R & Rangeerdiensten NL & Europa) ---
     {
-      id: 'air_eham_twr',
-      name: 'Schiphol Toren (EHAM Tower)',
-      freq: '119.225',
-      freqDisplay: '119.225.00',
-      category: 'scanner',
-      band: 'air',
-      mod: 'AM',
-      callsign: 'EHAM TWR',
-      location: 'Amsterdam Airport Schiphol',
-      desc: 'Verkeersleiding Start- & Landingsbanen (Kaagbaan & Polderbaan)',
+      id: 'train_prorail_utr',
+      name: 'ProRail Treinverkeersleiding Midden (Utrecht CS)',
+      freq: '457.650',
+      freqDisplay: '457.650.00',
+      category: 'train',
+      region: 'NL',
+      band: 'rail',
+      mod: 'FM',
+      callsign: 'TRDL-UTR',
+      location: 'Utrecht Centraal Verkeersleidingspost',
+      desc: 'GSM-R treinradiokanaal voor machinisten en treindienstleiders rond knooppunt Utrecht',
       ctcss: 'CSQ',
-      deviceIcon: '📡',
-      streamUrl: 'https://audio.broadcastify.com/live',
+      deviceIcon: '🚆',
       chatter: [
-        'KLM 1243, wind 240 degrees at 12 knots, runway 24 cleared to land.',
-        'Speedbird 438, turn right next taxiway, contact ground on 121.800.',
-        'Delta 47 heavy, wind 230 at 14 knots, runway 24, line up and wait.',
-        'Transavia 612, hold short of runway 18L, cross after Boeing 737.'
+        'Trein 3042 voor Treindienstleider Utrecht: sein 412 toont geel, snelheid verlagen naar 40 km/u voor spoor 5a.',
+        'Machinist Intercity 835, u heeft groen sein bij overloopwissel Blauwkapel, doorkomst op schema.',
+        'TRDL Utrecht aan Sprinter 7440: vertrekspoor gewijzigd naar spoor 14, deuren sluiten en vertrekken.',
+        'Centrale post Utrecht: wisselstoring bij Vleuten opgelost, baanvak weer vrijgegeven.'
       ]
     },
     {
-      id: 'air_eham_app',
-      name: 'Schiphol Approach (Inbound Radar)',
-      freq: '121.200',
-      freqDisplay: '121.200.00',
-      category: 'scanner',
-      band: 'air',
-      mod: 'AM',
-      callsign: 'EHAM APP',
-      location: 'Schiphol Radar TMA',
-      desc: 'Naderingsverkeersleiding & daalinstructies voor inkomende vluchten',
+      id: 'train_prorail_zwolle',
+      name: 'ProRail Verkeersleiding Knooppunt Zwolle & Noordoost',
+      freq: '457.700',
+      freqDisplay: '457.700.00',
+      category: 'train',
+      region: 'NL',
+      band: 'rail',
+      mod: 'FM',
+      callsign: 'TRDL-ZWL',
+      location: 'Zwolle Centraal & Hanzelijn',
+      desc: 'Spoorverkeersleiding Noordoost-Nederland, verbinding Hanzelijn en IJssellijn',
       ctcss: 'CSQ',
-      deviceIcon: '📡',
-      streamUrl: '',
+      deviceIcon: '🚆',
       chatter: [
-        'Lufthansa 986, descend to altitude 3000 feet, QNH 1018, heading 210.',
-        'EasyJet 7821, reduce speed to 210 knots, intercept localizer 18R.',
-        'Air France 1340, report established on ILS runway 24.'
+        'Intercity 553 voor TRDL Zwolle: nadering Meppel, wachten op aansluiting Leeuwarden.',
+        'Machinist 12644, Hanzelijn baanvaksnelheid 140 km/u goedgekeurd na Drontermeertunnel.'
       ]
     },
     {
-      id: 'air_ehrd_twr',
-      name: 'Rotterdam The Hague Toren (EHRD)',
-      freq: '118.200',
-      freqDisplay: '118.200.00',
-      category: 'scanner',
-      band: 'air',
-      mod: 'AM',
-      callsign: 'EHRD TWR',
-      location: 'Rotterdam The Hague Airport',
-      desc: 'Plaatselijke verkeersleiding Zestienhoven Runway 24/06',
-      ctcss: 'CSQ',
-      deviceIcon: '📡',
-      streamUrl: '',
+      id: 'train_kijfhoek_shunting',
+      name: 'Rangeerterrein Kijfhoek & Betuweroute (Goederen)',
+      freq: '458.125',
+      freqDisplay: '458.125.00',
+      category: 'train',
+      region: 'NL',
+      band: 'rail',
+      mod: 'FM',
+      callsign: 'KIJFHOEK-OPS',
+      location: 'Kijfhoek Rangeerterrein Zwijndrecht',
+      desc: 'Rangeercommunicatie en heuvelproces grootste goederenemplacement van Nederland',
+      ctcss: '118.8 Hz',
+      deviceIcon: '🚆',
       chatter: [
-        'Rotterdam Tower, PH-TFD, ready for departure runway 24.',
-        'PH-TFD, wind 220 9 knots, runway 24 cleared for takeoff, right turn out.'
+        'Heuvelmeester voor rangeerloc 6400: heuvelproces spoor 24 gestart, afremmen via railremmen.',
+        'Kijfhoek Post voor Betuweroute goederentrein 41200: rijweg naar Duitsland via Zevenaar gereed.'
       ]
     },
+    {
+      id: 'train_db_ice',
+      name: 'DB Netze ICE International (Arnhem - Duisburg / Ruhr)',
+      freq: '457.800',
+      freqDisplay: '457.800.00',
+      category: 'train',
+      region: 'DE',
+      band: 'rail',
+      mod: 'FM',
+      callsign: 'ZUGFUNK-DB',
+      location: 'Grenstraject Arnhem - Emmerich - Oberhausen',
+      desc: 'Duitse DB Zugfunk & GSM-R voor ICE en grensoverschrijdend Europees spoorverkeer',
+      ctcss: 'CSQ',
+      deviceIcon: '🚆',
+      chatter: [
+        'ICE 124 an Fahrdienstleiter Emmerich: Systemwechsel Oberleitung 1.5 kV zu 15 kV erfolgreich.',
+        'Fahrdienstleiter Oberhausen für ICE 157: Ausfahrt frei, Gleis 3 Richtung Duisburg Hauptbahnhof.'
+      ]
+    },
+    {
+      id: 'train_sncb_brussels',
+      name: 'SNCB / NMBS Spoor Dispatching Brussel - Antwerpen',
+      freq: '457.750',
+      freqDisplay: '457.750.00',
+      category: 'train',
+      region: 'BE',
+      band: 'rail',
+      mod: 'FM',
+      callsign: 'INFRABEL-DISP',
+      location: 'Noord-Zuidverbinding Brussel & Spoorlijn 25',
+      desc: 'Belgische spoorverkeersleiding Infrabel op de drukke as Brussel - Mechelen - Antwerpen',
+      ctcss: 'CSQ',
+      deviceIcon: '🚆',
+      chatter: [
+        'Dispatching Brussel Noord voor IC 2014: perronspoor 5 vrij, doorkomst Noord-Zuidverbinding.',
+        'Conducteur trein 9212, sein op dubbel geel nabij Vilvoorde, vertraging 2 minuten.'
+      ]
+    },
+    {
+      id: 'train_eurotunnel',
+      name: 'Eurotunnel Shuttle Kanaaltunnel (Calais - Folkestone)',
+      freq: '467.525',
+      freqDisplay: '467.525.00',
+      category: 'train',
+      region: 'FR',
+      band: 'rail',
+      mod: 'FM',
+      callsign: 'TUNNEL-CONTROL',
+      location: 'Kanaaltunnel Coquelles (Calais) - Folkestone',
+      desc: 'Treinradio van de autoschutles en Eurostar onder het Kanaal (Noordzee)',
+      ctcss: 'CSQ',
+      deviceIcon: '🚆',
+      chatter: [
+        'Eurotunnel Shuttle 410, passage tunnelbuis Zuid goedgekeurd, snelheid 140 km/h.',
+        'Tunnel Control: Cross-over camera check complete, safety track clear for Eurostar 9044.'
+      ]
+    },
+
+    // --- ⚓ SCHEPEN (Zeevaart, Kustwacht & Binnenvaart NL & Europa) ---
     {
       id: 'mar_k16',
-      name: 'Kustwacht Marifoon Kanaal 16 (Nood & Oproep)',
+      name: 'Kustwacht Centrum Den Helder (Kanaal 16 Nood & Oproep)',
       freq: '156.800',
       freqDisplay: '156.800.00',
-      category: 'scanner',
+      category: 'marine',
+      region: 'NL',
       band: 'marine',
       mod: 'FM',
-      callsign: 'PBK / KUSTWACHT',
-      location: 'Nederlandse Kustlijn & Noordzee',
-      desc: 'Internationaal marifoonkanaal voor nood-, spoed- en veiligheidsverkeer',
+      callsign: 'PBK / DEN HELDER',
+      location: 'Nederlandse Kust & Noordzee',
+      desc: 'Internationaal VHF marifoonkanaal voor nood-, spoed- en veiligheidsverkeer',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
-      streamUrl: '',
       chatter: [
-        'Hier het Kustwachtcentrum Den Helder voor alle schepen. Weerbericht Noordzee...',
+        'Hier het Kustwachtcentrum Den Helder voor alle schepen. Weerbericht Noordzee: ZW 6 tot 7.',
         'Securite, Securite, Securite. Navigatie waarschuwing 244, drijvend wrakhout nabij Texel.',
         'Pan-Pan, Pan-Pan, Pan-Pan. Zeiljacht Albatros meldt motorstoring nabij Maasvlakte.'
       ]
@@ -97,55 +156,132 @@
       name: 'Sector Maasmond (Havenbedrijf Rotterdam)',
       freq: '156.050',
       freqDisplay: '156.050.00',
-      category: 'scanner',
+      category: 'marine',
+      region: 'NL',
       band: 'marine',
       mod: 'FM',
       callsign: 'SECTOR MAASMOND',
-      location: 'Rotterdam Havenmonding',
-      desc: 'Verkeersbegeleiding binnenlopende zeeschepen en loodsboten',
+      location: 'Rotterdam Havenmonding & Europoort',
+      desc: 'Verkeersbegeleiding binnenlopende containerschepen, tankers en loodsboten',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
-      streamUrl: '',
       chatter: [
         'Maasmond, hier containerschip Ever Given, positie boei 3, loods aan boord.',
-        'Ever Given, goedgekeurd, doorvaren naar Calandkanaal, tegenverkeer Smit Denemarken.'
+        'Ever Given, goedgekeurd, doorvaren naar Calandkanaal, tegenverkeer Smit Denemarken.',
+        'Loodsboot Explorer verlaat steiger Pistoolhaven voor inkomende tanker.'
+      ]
+    },
+    {
+      id: 'mar_antwerp_k62',
+      name: 'Port of Antwerp-Bruges Verkeerscentrale Zandvliet',
+      freq: '156.125',
+      freqDisplay: '156.125.00',
+      category: 'marine',
+      region: 'BE',
+      band: 'marine',
+      mod: 'FM',
+      callsign: 'ANTWERP-PORT',
+      location: 'Haven van Antwerpen & Westerschelde',
+      desc: 'Marifoonkanaal Zandvlietsluis en Berendrechtsluis op de Schelde',
+      ctcss: 'CSQ',
+      deviceIcon: '⚓',
+      chatter: [
+        'Antwerpen Traffic voor motorschip Brabo: passage Zandvlietsluis gereed over 10 minuten.',
+        'Sleepboot Schelde 12 assisteert bulkcarrier bij het afmeren aan Kaai 420.'
+      ]
+    },
+    {
+      id: 'mar_hamburg_k71',
+      name: 'Hamburg Port Authority Elbe Traffic K71',
+      freq: '156.575',
+      freqDisplay: '156.575.00',
+      category: 'marine',
+      region: 'DE',
+      band: 'marine',
+      mod: 'FM',
+      callsign: 'HAMBURG-TRAFFIC',
+      location: 'Elbe Estuarium & Haven van Hamburg',
+      desc: 'Duitse maritieme scheepvaartbegeleiding langs de Elbe van Cuxhaven naar Hamburg',
+      ctcss: 'CSQ',
+      deviceIcon: '⚓',
+      chatter: [
+        'Hamburg Traffic, hier Feeder CMA CGM Paris, passiere Teufelsbrück einlaufend.',
+        'CMA CGM Paris, Einfahrt Waltershofer Hafen frei, Schlepper Fairplay 30 steht bereit.'
+      ]
+    },
+    {
+      id: 'mar_dover_k11',
+      name: 'Dover Coastguard & Pas-de-Calais VTS (Straat van Dover)',
+      freq: '156.550',
+      freqDisplay: '156.550.00',
+      category: 'marine',
+      region: 'FR',
+      band: 'marine',
+      mod: 'FM',
+      callsign: 'DOVER-COASTGUARD',
+      location: 'Nauw van Calais & Kanaal Dover',
+      desc: 'Drukst bevaren scheepvaartroute ter wereld: radar- en verkeersbegeleiding ferries en tankers',
+      ctcss: 'CSQ',
+      deviceIcon: '⚓',
+      chatter: [
+        'All ships, all ships, this is Dover Coastguard. Vessel traffic separation scheme active.',
+        'Cap Gris-Nez Traffic to tanker Nord Star, you are approaching the south-west lane, maintain course.'
+      ]
+    },
+    {
+      id: 'mar_rhein_k10',
+      name: 'Rijnvaart & Binnenvaart Verkeerspost Nijmegen K10',
+      freq: '156.500',
+      freqDisplay: '156.500.00',
+      category: 'marine',
+      region: 'NL',
+      band: 'marine',
+      mod: 'FM',
+      callsign: 'POST-NIJMEGEN',
+      location: 'Waal & Boven-Rijn (Nederland - Duitsland grens)',
+      desc: 'Binnenvaartcommunicatie en blauwe borden verkeer langs de drukke Rijn-corridor',
+      ctcss: 'CSQ',
+      deviceIcon: '⚓',
+      chatter: [
+        'Verkeerspost Nijmegen voor afvarig koppelverband Rijnland: blauw bord getoond aan stuurboord.',
+        'Begrepen Nijmegen, stuurboord-stuurboord passage bij kilometerraai 884.'
       ]
     },
     {
       id: 'mar_adam_k14',
-      name: 'Amsterdam Havendienst (Sector Centraal)',
+      name: 'Amsterdam Havendienst & IJmuiden Zeesluizen',
       freq: '156.700',
       freqDisplay: '156.700.00',
-      category: 'scanner',
+      category: 'marine',
+      region: 'NL',
       band: 'marine',
       mod: 'FM',
-      callsign: 'HAVENDIENST 14',
-      location: 'Noordzeekanaal & IJ Amsterdam',
-      desc: 'Binnenvaart en rondvaart coördinatie IJ, Oranjesluizen & Houthavens',
+      callsign: 'HAVENDIENST-14',
+      location: 'Noordzeekanaal & Zeesluis IJmuiden',
+      desc: 'Scheepvaartbegeleiding zeeschepen en binnenvaart Noordzeekanaalgebied',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
-      streamUrl: '',
       chatter: [
-        'Havendienst Amsterdam voor motorschip Rijnstroom, u kunt schutten in de middenkolk.',
-        'Rondvaartboot Lovers 4, passeert Centraal Station oostwaarts.'
+        'IJmuiden Zeesluis voor vrachtschip Stella Polaris, kolk 2 loopt vol, gereed voor schutten.',
+        'Havendienst Amsterdam meldt cruiseschip passeert Houthavens op weg naar PTA.'
       ]
     },
 
-    // --- 📱 PORTOFOONS (PMR446, Beveiliging & BHV) ---
+    // --- 📱 MOBIELE PORTOFOONS (Waar je ook bent in NL & Europa) ---
     {
       id: 'pmr_ch1',
-      name: 'PMR446 Kanaal 1 (Algemeen / Recreatie)',
+      name: 'PMR446 Kanaal 1 (Mobiel / Vrije Recreatie NL & Europa)',
       freq: '446.00625',
       freqDisplay: '446.006.25',
       category: 'portofoon',
+      region: 'EU',
       band: 'pmr',
       mod: 'FM',
       callsign: 'PMR-CH01',
-      location: 'Landelijk Vergunningsvrij',
-      desc: 'Draagbare portofoons, buitensport, magazijn & familiecontact (0.5W ERP)',
+      location: 'Mobiel in heel Europa (Vergunningsvrij)',
+      desc: 'Standaard draagbare portofoonfrequentie voor wandelaars, vakantiegangers en logistiek (0.5W)',
       ctcss: '67.0 Hz (Tone 01)',
       deviceIcon: '📱',
-      streamUrl: '',
       chatter: [
         'Post 1 voor Post 3, kom er maar in. Alles rustig bij de noordingang.',
         'Begrepen Post 1, we lopen nu ronde langs het achterterrein. Over.',
@@ -153,156 +289,175 @@
       ]
     },
     {
+      id: 'pmr_ch8_sos',
+      name: 'PMR446 Kanaal 8 (Europese Noodoproep Alpen / Outdoor)',
+      freq: '446.09375',
+      freqDisplay: '446.093.75',
+      category: 'portofoon',
+      region: 'CH',
+      band: 'pmr',
+      mod: 'FM',
+      callsign: 'SOS-OUTDOOR',
+      location: 'Alpen, Ardennen & Europese Berggebieden',
+      desc: 'Officieel outdoor nood- en oproepkanaal PMR (Kanaal 8 CTCSS 16 = 114.8 Hz)',
+      ctcss: '114.8 Hz (Tone 16)',
+      deviceIcon: '📱',
+      chatter: [
+        'Oproep op noodkanaal 8: bergwandelaar met verstuiking nabij berghut hoogte 1800m.',
+        'Bergrettung empfängt Notruf: Rettungshubschrauber ist informiert, halten Sie Kanal 8 frei.'
+      ]
+    },
+    {
       id: 'pmr_ch2_event',
-      name: 'PMR446 Kanaal 2 (Evenementencoördinatie)',
+      name: 'PMR446 Kanaal 2 (Evenementen Coördinatie & Crew)',
       freq: '446.01875',
       freqDisplay: '446.018.75',
       category: 'portofoon',
+      region: 'NL',
       band: 'pmr',
       mod: 'FM',
-      callsign: 'EVENT-PORT',
-      location: 'Festivalterrein & Beurshallen',
-      desc: 'Portofoonnetwerk voor crew, podia en publiekstromen',
+      callsign: 'EVENT-CREW',
+      location: 'Festivalweides, Beurshallen & Stadsevenementen',
+      desc: 'Mobiele portofoonverbinding voor podiumbeheer, artiestenbegeleiding en publieksstromen',
       ctcss: '100.0 Hz (Tone 12)',
       deviceIcon: '📱',
-      streamUrl: '',
       chatter: [
-        'Podium B voor Hoofdregie, artiest staat gereed voor soundcheck.',
+        'Podium B voor Hoofdregie: artiest staat gereed voor soundcheck.',
         'Regie begrepen, microfoons staan open, lichtshow start over 2 minuten.'
       ]
     },
     {
       id: 'pmr_ch4_security',
-      name: 'PMR446 Kanaal 4 (Bedrijfsbeveiliging & Surveillance)',
+      name: 'PMR446 Kanaal 4 (Surveillance & Bedrijfsbeveiliging)',
       freq: '446.04375',
       freqDisplay: '446.043.75',
       category: 'portofoon',
+      region: 'NL',
       band: 'pmr',
       mod: 'FM',
       callsign: 'SURV-04',
-      location: 'Bedrijventerrein & Winkelcentrum',
-      desc: 'Beveiligingssurveillance, sluitrondes en alarmopvolging',
+      location: 'Winkelcentra, Bedrijventerreinen & Ziekenhuizen',
+      desc: 'Beveiligingsrondes, toegangscontrole en alarmopvolging',
       ctcss: '131.8 Hz (Tone 20)',
       deviceIcon: '📱',
-      streamUrl: '',
       chatter: [
-        'Surveillance 2 voor Meldkamer, controle parkeergarage afgerond, geen bijzonderheden.',
+        'Surveillance 2 voor Meldkamer: controle parkeergarage afgerond, geen bijzonderheden.',
         'Meldkamer ontvangt, sluitronde hoofdgebouw kan gestart worden. Over.'
       ]
     },
     {
-      id: 'pmr_ch8_sos',
-      name: 'PMR446 Kanaal 8 (Noodkanaal & Outdoor Bergredding)',
-      freq: '446.09375',
-      freqDisplay: '446.093.75',
-      category: 'portofoon',
-      band: 'pmr',
-      mod: 'FM',
-      callsign: 'SOS-OUTDOOR',
-      location: 'Outdoor & Bergsport Noodoproep',
-      desc: 'Standaard nood- en oproepkanaal PMR (Kanaal 8 CTCSS 16 = 114.8 Hz)',
-      ctcss: '114.8 Hz (Tone 16)',
-      deviceIcon: '📱',
-      streamUrl: '',
-      chatter: [
-        'Oproep op kanaal 8, wandelaar met verstuikte enkel nabij paal 42.',
-        'Reddingsteam ontvangt oproep, eerste hulppost is onderweg via zuidpad.'
-      ]
-    },
-    {
       id: 'port_bhv_calamiteit',
-      name: 'Haven BHV & Calamiteitenteam',
+      name: 'Haven BHV & Calamiteitenteam Europoort',
       freq: '446.15000',
       freqDisplay: '446.150.00',
       category: 'portofoon',
+      region: 'NL',
       band: 'pmr',
       mod: 'FM',
       callsign: 'BHV-HAVEN',
-      location: 'Industrieterrein Europoort',
-      desc: 'Interne portofoonverbinding voor bedrijfshulpverleners en EHBO',
+      location: 'Industrieterrein Maasvlakte & Europoort',
+      desc: 'Interne portofoonverbinding bedrijfshulpverlening, ontruiming en eerste hulp',
       ctcss: '88.5 Hz (Tone 08)',
       deviceIcon: '📱',
-      streamUrl: '',
       chatter: [
-        'BHV Coördinator aan alle posten: oefening ontruiming hal C geslaagd, verzamelpunt vrij.'
+        'BHV Coördinator aan alle posten: ontruimingsoefening hal C geslaagd, verzamelpunt vrij.'
       ]
     },
     {
       id: 'port_logistiek_dc',
-      name: 'Logistiek DC Heftrucks & Magazijn',
+      name: 'Logistiek Distributiecentrum Heftrucks & Magazijn',
       freq: '446.06875',
       freqDisplay: '446.068.75',
       category: 'portofoon',
+      region: 'NL',
       band: 'pmr',
       mod: 'FM',
       callsign: 'DC-LOGISTIEK',
-      location: 'Distributiecentrum Waalwijk',
-      desc: 'Orderpickers, heftruckchauffeurs en expeditie laaddocks',
+      location: 'Distributiecentra Tilburg & Waalwijk',
+      desc: 'Orderpickers, expeditie laaddocks en heftruckchauffeurs',
       ctcss: '77.0 Hz (Tone 04)',
       deviceIcon: '📱',
-      streamUrl: '',
       chatter: [
-        'Heftruck 4 naar dock 12, oplegger met pallets gereed voor lossen.',
+        'Heftruck 4 naar dock 12, trailer met pallets gereed voor lossen.',
         'Onderweg, dock 12 binnen 1 minuut vrij.'
       ]
     },
 
-    // --- 🚗 MOBILOFOONS (27 MHz CB & Voertuigzendontvangers) ---
+    // --- 🚗 MOBILOFOONS (Truckers, Vloten & Konvooien NL & Europa) ---
     {
       id: 'cb_k19_truckers',
-      name: '27 MHz Kanaal 19 (Truckers & Vrachtverkeer)',
+      name: '27 MHz Kanaal 19 (Truckers Benelux & Duitsland A1/A2/A3/E30)',
       freq: '27.185',
       freqDisplay: '27.185.00',
       category: 'mobilofoon',
+      region: 'EU',
       band: 'cb',
       mod: 'FM',
       callsign: 'TRUCK-19',
-      location: 'Snelwegen A1, A2, A12, A15 & A16',
-      desc: 'Traditioneel mobilofoonkanaal voor vrachtwagenchauffeurs en filewaarschuwingen',
+      location: 'Europese Hoofdwegen A1, A2, A12, A15 & Bundesautobahnen',
+      desc: 'Hét internationale mobilofoonkanaal voor vrachtwagenchauffeurs en live filewaarschuwingen',
       ctcss: 'CSQ',
       deviceIcon: '🚛',
-      streamUrl: '',
       chatter: [
         'Middag collega’s op de 19, let op bij knooppunt Hoevelaken, remmen voor file op de rechterbaan.',
         'Bedankt voor de tip chauffeur, ik pak binnendoor via Amersfoort. Goeie reis!',
-        'Breaker breaker, mooie Scania die net passeert, goeie middag!'
+        'Achtung auf der A3 Köln Richtung Frankfurt, Stau nach Baustelle, Spur 2 blockiert.'
+      ]
+    },
+    {
+      id: 'cb_k28_transit',
+      name: '27 MHz Kanaal 28 (Internationale Transitcorridor A12/E30)',
+      freq: '27.280',
+      freqDisplay: '27.280.00',
+      category: 'mobilofoon',
+      region: 'EU',
+      band: 'cb',
+      mod: 'AM',
+      callsign: 'TRANSIT-28',
+      location: 'Oost-West As Rotterdam - Berlijn - Warschau',
+      desc: 'Mobilofoonkanaal voor internationaal goederentransport over lange afstanden',
+      ctcss: 'CSQ',
+      deviceIcon: '🚛',
+      chatter: [
+        'Attention transit drivers, heavy crosswinds near Hannover bridge, drive carefully.',
+        'Pozdrowienia na kanale 28, szerokiej drogi kolego!'
       ]
     },
     {
       id: 'cb_k14_oproep',
-      name: '27 MHz Kanaal 14 (Algemene Oproep & Bakkies)',
+      name: '27 MHz Kanaal 14 (Algemene Oproep Bakkies)',
       freq: '27.125',
       freqDisplay: '27.125.00',
       category: 'mobilofoon',
+      region: 'NL',
       band: 'cb',
       mod: 'FM',
       callsign: 'CB-NL14',
       location: 'Landelijk 11m Band',
-      desc: 'Standaard oproepkanaal voor 27MC mobiele zendontvangers in personenauto\'s',
+      desc: 'Standaard oproepkanaal voor 27MC mobiele zendontvangers in auto\'s en bestelbussen',
       ctcss: 'CSQ',
       deviceIcon: '🚗',
-      streamUrl: '',
       chatter: [
-        'Break voor een tokkie op kanaal 14, iemand in de lucht in regio Utrecht?',
-        'Ja hallo mobiel station, kom maar op kanaal 22 voor een praatje.'
+        'Break voor een tokkie op kanaal 14, iemand in de lucht in regio Midden-Nederland?',
+        'Ja hallo mobiel station, kom maar op kanaal 22 voor een babbel.'
       ]
     },
     {
       id: 'cb_k9_sos',
-      name: '27 MHz Kanaal 9 (Nood & Hulpverlening)',
+      name: '27 MHz Kanaal 9 (Internationaal Noodkanaal)',
       freq: '27.065',
       freqDisplay: '27.065.00',
       category: 'mobilofoon',
+      region: 'EU',
       band: 'cb',
       mod: 'AM',
       callsign: 'EMERGENCY-09',
-      location: 'Internationaal Noodkanaal',
-      desc: 'Historisch en actueel noodoproepkanaal voor strand, polder en pech onderweg',
+      location: 'Internationaal Noodkanaal Europa',
+      desc: 'Historisch en actueel noodoproepkanaal voor pech onderweg, konvooien en polders',
       ctcss: 'CSQ',
       deviceIcon: '🚗',
-      streamUrl: '',
       chatter: [
-        'Kanaal 9 uitluisterdienst actief. Geen actieve noodberichten gemeld.'
+        'Kanaal 9 uitluisterdienst actief. Geen actieve noodberichten gemeld op de corridor.'
       ]
     },
     {
@@ -311,17 +466,17 @@
       freq: '27.005',
       freqDisplay: '27.005.00',
       category: 'mobilofoon',
+      region: 'NL',
       band: 'cb',
       mod: 'FM',
       callsign: '4X4-TRAIL',
-      location: 'Veluwe & Offroad Parcoursen',
+      location: 'Veluwe, Ardennen & Offroad Parcoursen',
       desc: 'Mobilofoons in terreinwagens voor konvooirijden, lieren en zandkuilen',
       ctcss: 'CSQ',
       deviceIcon: '🚙',
-      streamUrl: '',
       chatter: [
         'Konvooi leider voor wagen 3: diepe modderkuil aan stuurboordzijde, hou links aan in lage gearing.',
-        'Wagen 3 begrepen, 4-wielaandrijving ingeschakeld, we volgen spoor.'
+        'Wagen 3 begrepen, 4-wielaandrijving ingeschakeld, we volgen het spoor.'
       ]
     },
     {
@@ -330,56 +485,118 @@
       freq: '27.225',
       freqDisplay: '27.225.00',
       category: 'mobilofoon',
+      region: 'NL',
       band: 'cb',
       mod: 'FM',
       callsign: 'TAKELD-22',
-      location: 'Regio Rijnmond & Drechtsteden',
+      location: 'Rijkswegen & Knooppunten Benelux',
       desc: 'Takelwagens en pechhulpvoertuigen vlootcommunicatie',
       ctcss: 'CSQ',
       deviceIcon: '🛻',
-      streamUrl: '',
       chatter: [
         'Centrale voor Berging 4: gestrand voertuig A15 hectometerpaal 48.2, bergingswagen onderweg.'
       ]
     },
+
+    // --- ✈️ LUCHTVAART & EUROCONTROL (Bovenluchtruim Europa) ---
     {
-      id: 'mob_loonwerk_oogst',
-      name: 'Agrarisch Loonwerk & Oogst Mobilofoon',
-      freq: '27.155',
-      freqDisplay: '27.155.00',
-      category: 'mobilofoon',
-      band: 'cb',
-      mod: 'FM',
-      callsign: 'OOGST-16',
-      location: 'Flevopolder & Gelderse Vallei',
-      desc: 'Hakselaars, tractoren en kiepkarren tijdens het maïsseizoen',
+      id: 'air_eurocontrol_muac',
+      name: 'Eurocontrol Maastricht Upper Area Control (MUAC)',
+      freq: '132.855',
+      freqDisplay: '132.855.00',
+      category: 'air',
+      region: 'EU',
+      band: 'air',
+      mod: 'AM',
+      callsign: 'MAASTRICHT-RADAR',
+      location: 'Bovenluchtruim Benelux & Noordwest-Duitsland',
+      desc: 'Internationale civiele en militaire verkeersleiding boven vliegniveau FL245 (7.5 km hoogte)',
       ctcss: 'CSQ',
-      deviceIcon: '🚜',
-      streamUrl: '',
+      deviceIcon: '✈️',
       chatter: [
-        'Hakselaar 1 roept kar 2: bak is voor 90 procent vol, graag volgende combinatie aansturen.'
+        'Lufthansa 450 heavy, Maastricht Radar, climb to flight level 370, direct SPY.',
+        'KLM 602, radar contact, descend to flight level 280, speed 280 knots.',
+        'Air France 218, contact Brussels Control on 131.100, good day.'
+      ]
+    },
+    {
+      id: 'air_eham_twr',
+      name: 'Schiphol Toren (EHAM Tower)',
+      freq: '119.225',
+      freqDisplay: '119.225.00',
+      category: 'air',
+      region: 'NL',
+      band: 'air',
+      mod: 'AM',
+      callsign: 'EHAM TWR',
+      location: 'Amsterdam Airport Schiphol',
+      desc: 'Plaatselijke verkeersleiding start- en landingsbanen Kaagbaan (24) en Polderbaan (18R)',
+      ctcss: 'CSQ',
+      deviceIcon: '✈️',
+      chatter: [
+        'KLM 1243, wind 240 degrees at 12 knots, runway 24 cleared to land.',
+        'Speedbird 438, turn right next taxiway, contact ground on 121.800.',
+        'Delta 47 heavy, wind 230 at 14 knots, runway 24, line up and wait.'
+      ]
+    },
+    {
+      id: 'air_eham_app',
+      name: 'Schiphol Approach Radar (Inbound TMA)',
+      freq: '121.200',
+      freqDisplay: '121.200.00',
+      category: 'air',
+      region: 'NL',
+      band: 'air',
+      mod: 'AM',
+      callsign: 'EHAM APP',
+      location: 'Schiphol TMA Nadering',
+      desc: 'Naderingsverkeersleiding voor inkomende internationale vluchten',
+      ctcss: 'CSQ',
+      deviceIcon: '✈️',
+      chatter: [
+        'EasyJet 7821, descend altitude 3000 feet, QNH 1018, intercept localizer 18R.',
+        'Transavia 411, reduce to minimum clean speed, report established ILS.'
+      ]
+    },
+    {
+      id: 'air_ebbr_twr',
+      name: 'Brussels Airport Tower (EBBR Zaventem)',
+      freq: '118.600',
+      freqDisplay: '118.600.00',
+      category: 'air',
+      region: 'BE',
+      band: 'air',
+      mod: 'AM',
+      callsign: 'BRUSSELS-TWR',
+      location: 'Brussels Airport Zaventem',
+      desc: 'Luchtverkeersleiding van de nationale luchthaven van België Runway 25L/01',
+      ctcss: 'CSQ',
+      deviceIcon: '✈️',
+      chatter: [
+        'Brussels Tower, Brussels Airlines 330 ready for departure runway 25R.',
+        'Brussels Airlines 330, wind 230 11 knots, runway 25R cleared for takeoff.'
       ]
     },
 
-    // --- 📻 ZENDONTVANGERS / TRANSCEIVERS (Zendamateurs & WebSDR) ---
+    // --- 📻 ZENDONTVANGERS / TRANSCEIVERS (NL & Europa WebSDR) ---
     {
       id: 'ham_pi2nos',
       name: 'PI2NOS Bovenregionale Relaiszender (2m Ham)',
       freq: '145.575',
       freqDisplay: '145.575.00',
       category: 'transceiver',
+      region: 'NL',
       band: 'ham_2m',
       mod: 'FM',
       callsign: 'PI2NOS',
       location: 'Gerbrandytoren IJsselstein (366m NAP)',
-      desc: 'Grootste zendamateur repeater van West-Europa, dekt heel Nederland & Vlaanderen',
+      desc: 'Grootste zendamateur FM repeater van West-Europa, dekt heel Nederland en Vlaanderen',
       ctcss: '77.0 / 88.5 Hz',
       deviceIcon: '📻',
-      streamUrl: '',
       chatter: [
         'PI2NOS via IJsselstein, hier PA3EHQ mobiel nabij Apeldoorn, goedenavond ronde.',
         'Goedenavond PA3EHQ, hier PD0MW in Rotterdam, je modulatie komt 5-9 binnen.',
-        'Mooi rapport Peter, ik werk met de Yaesu transceiver op 50 watt vanuit de auto.'
+        'Mooi rapport Peter, ik werk met de transceiver op 50 watt vanuit de auto.'
       ]
     },
     {
@@ -388,90 +605,73 @@
       freq: '430.125',
       freqDisplay: '430.125.00',
       category: 'transceiver',
+      region: 'NL',
       band: 'ham_70cm',
       mod: 'FM',
       callsign: 'PI3UTR',
       location: 'Gerbrandytoren IJsselstein',
       desc: 'Bovenregionale 70 centimeter FM repeater zendamateurs Midden-Nederland',
       ctcss: '77.0 Hz',
-      deviceIcon: '📡',
-      streamUrl: '',
+      deviceIcon: '📻',
       chatter: [
-        'PI3UTR, PA2XYZ voor een kort signaalrapport, transceiver test op 10 watt.',
+        'PI3UTR, PA2XYZ voor een signaalrapport, transceiver test op 10 watt.',
         'PA2XYZ hier PE1AAA, prima audiosignaal, helder en zuiver.'
       ]
     },
     {
-      id: 'ham_pi1nos_aprs',
-      name: 'PI1NOS APRS & Digipeater (144.800 MHz)',
-      freq: '144.800',
-      freqDisplay: '144.800.00',
+      id: 'ham_db0dx',
+      name: 'DB0DX Eifel / Aachen Repeater (70cm Duitsland)',
+      freq: '438.850',
+      freqDisplay: '438.850.00',
       category: 'transceiver',
-      band: 'ham_2m',
+      region: 'DE',
+      band: 'ham_70cm',
       mod: 'FM',
-      callsign: 'PI1NOS-1',
-      location: 'IJsselstein Data Knooppunt',
-      desc: 'Automatische positierapporten en telemetrie pakketjes zendamateurs (1200 AFSK)',
-      ctcss: 'Data',
-      deviceIcon: '💻',
-      streamUrl: '',
+      callsign: 'DB0DX',
+      location: 'Aachen / Eifel Grensgebied',
+      desc: 'Duitse zendamateur relaiszender bereikbaar in Oost-België, Zuid-Limburg en NRW',
+      ctcss: '67.0 Hz',
+      deviceIcon: '📻',
       chatter: [
-        'APRS Beacon: PI1NOS-1>APN100,WIDE2-1:!5201.00N/00503.00E#Gerbrandytoren Digipeater 144.800'
+        'Hier ist DB0DX Relais Eifel, DL1ABC ruft CQ über die Grenze nach Limburg.',
+        'Guten Abend DL1ABC, hier PA3XYZ aus Maastricht, Signal 5 und 9.'
       ]
     },
     {
       id: 'ham_websdr_20m',
-      name: '20m Amateur Band WebSDR DX Oproep (14.200 MHz)',
+      name: '20m Wereldwijde DX Ronde WebSDR (14.200 MHz)',
       freq: '14.200',
       freqDisplay: '014.200.00',
       category: 'transceiver',
+      region: 'EU',
       band: 'hf',
       mod: 'USB',
       callsign: 'DX-20M',
       location: 'Universiteit Twente WebSDR',
-      desc: 'Korte Golf Wereldwijde verbindingen via ionosferische reflectie (14 MHz)',
+      desc: 'Korte Golf Wereldwijde verbindingen via ionosfeerreflectie over heel Europa en de wereld',
       ctcss: 'None',
       deviceIcon: '🌐',
-      streamUrl: '',
       chatter: [
-        'CQ 20 meter, CQ 20 meter, this is PA0VRO calling CQ DX and listening on 14.200 USB.',
+        'CQ 20 meter, CQ 20 meter, this is PA0VRO calling CQ DX from the Netherlands.',
         'PA0VRO, this is W1AW in Connecticut, you are 5 and 9 into the United States, 73s!'
       ]
     },
     {
       id: 'ham_websdr_40m',
-      name: '40m Avondronde Nederlandstalig (7.085 MHz)',
+      name: '40m Benelux Avondronde WebSDR (7.085 MHz)',
       freq: '7.085',
       freqDisplay: '007.085.00',
       category: 'transceiver',
+      region: 'NL',
       band: 'hf',
       mod: 'LSB',
       callsign: 'RONDE-40M',
-      location: 'Korte Golf HF Band',
-      desc: 'Dagelijkse praatronde van Nederlandse en Vlaamse zendamateurs',
+      location: 'Korte Golf HF Benelux',
+      desc: 'Dagelijkse praatronde van Nederlandse en Vlaamse zendamateurs op de 40 meter band',
       ctcss: 'None',
       deviceIcon: '🌐',
-      streamUrl: '',
       chatter: [
-        'Goedenavond allemaal in de 40 meter ronde, condities zijn uitstekend vanavond over heel de Benelux.'
-      ]
-    },
-    {
-      id: 'ham_websdr_80m',
-      name: '80m Huishoudelijke Ronde (3.650 MHz)',
-      freq: '3.650',
-      freqDisplay: '003.650.00',
-      category: 'transceiver',
-      band: 'hf',
-      mod: 'LSB',
-      callsign: 'PA-80M',
-      location: 'Landelijke Korte Golf NVIS',
-      desc: 'Nationale zendamateur ontmoetingsfrequentie via steile ionosfeerstraling (NVIS)',
-      ctcss: 'None',
-      deviceIcon: '🌐',
-      streamUrl: '',
-      chatter: [
-        'Rondeloper PA3ABC meldt 12 stations ingemeld voor de zaterdagavondronde op 80 meter.'
+        'Goedenavond allemaal in de 40 meter ronde, condities zijn uitstekend over heel de Benelux vanavond.'
       ]
     }
   ];
@@ -480,14 +680,14 @@
   // 2. APPLICATIE STATUS & VOORKEUREN
   // ==========================================================================
   const STORAGE_KEYS = {
-    LAST_CHANNEL: 'pv_uitluisteren_last_channel',
-    FAVORITES: 'pv_uitluisteren_favs',
-    VOLUME: 'pv_uitluisteren_volume',
-    SQUELCH: 'pv_uitluisteren_squelch',
-    ROGER_BEEP: 'pv_uitluisteren_roger_beep',
-    NOISE: 'pv_uitluisteren_noise',
-    VIEW_MODE: 'pv_uitluisteren_view_mode',
-    AUTO_DOWNLOAD: 'pv_uitluisteren_autodownload'
+    LAST_CHANNEL: 'pv_comstudio_last_channel',
+    FAVORITES: 'pv_comstudio_favs',
+    VOLUME: 'pv_comstudio_volume',
+    SQUELCH: 'pv_comstudio_squelch',
+    ROGER_BEEP: 'pv_comstudio_roger_beep',
+    NOISE: 'pv_comstudio_noise',
+    VIEW_MODE: 'pv_comstudio_view_mode',
+    AUTO_DOWNLOAD: 'pv_comstudio_autodownload'
   };
 
   const state = {
@@ -500,7 +700,7 @@
     currentView: 'voorkant', // ALTIJD STANDAARD VOORKANT!
     visMode: 'waterfall',
     filterCategory: 'all',
-    filterBand: '',
+    filterRegion: '',
     searchQuery: '',
     favorites: [],
     recordings: [],
@@ -686,7 +886,7 @@
     if (storedLast && CHANNELS.some(c => c.id === storedLast)) {
       state.activeChannelId = storedLast;
     } else {
-      // Standaard eerste kanaal (Schiphol Toren)
+      // Standaard eerste kanaal (ProRail Treinverkeersleiding Utrecht)
       state.activeChannelId = CHANNELS[0].id;
     }
 
@@ -754,7 +954,7 @@
       state.masterGain = state.audioCtx.createGain();
       state.masterGain.gain.setValueAtTime(state.volume, state.audioCtx.currentTime);
 
-      // 2. Bandpass filter (Authentieke 300Hz - 3200Hz portofoon bandbreedte)
+      // 2. Bandpass filter (Authentieke 300Hz - 3200Hz portofoon/trein/marifoon bandbreedte)
       state.filterNode = state.audioCtx.createBiquadFilter();
       state.filterNode.type = 'bandpass';
       state.filterNode.frequency.setValueAtTime(1400, state.audioCtx.currentTime);
@@ -793,7 +993,6 @@
     const output = noiseBuffer.getChannelData(0);
 
     let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
-    // Roze / ether ruis filter
     for (let i = 0; i < bufferSize; i++) {
       const white = Math.random() * 2 - 1;
       b0 = 0.99886 * b0 + white * 0.0555179;
@@ -826,7 +1025,6 @@
       return;
     }
 
-    // Squelch logica: hoe hoger de squelch, hoe minder ruis
     const squelchFactor = Math.max(0, 1 - state.squelch * 1.8);
     const targetGain = 0.018 * squelchFactor;
     state.noiseGain.gain.setTargetAtTime(targetGain, state.audioCtx.currentTime, 0.08);
@@ -843,7 +1041,6 @@
       const gain = state.audioCtx.createGain();
 
       osc.type = 'sine';
-      // Klassieke marifoon / portofoon roger beep (1000 Hz naar 800 Hz)
       osc.frequency.setValueAtTime(1050, now);
       osc.frequency.setValueAtTime(800, now + 0.07);
 
@@ -862,7 +1059,6 @@
     }
   }
 
-  // Radioklik bij zendstart
   function playTxClick() {
     if (!state.audioCtx) return;
     try {
@@ -894,16 +1090,20 @@
 
     clearTimeout(state.chatterTimeout);
 
-    // Willekeurig bericht uit de zender database
     const phrase = channel.chatter[Math.floor(Math.random() * channel.chatter.length)];
 
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
 
       const utterance = new SpeechSynthesisUtterance(phrase);
-      utterance.rate = 1.08;
-      utterance.pitch = channel.mod === 'AM' ? 1.05 : 0.95;
-      utterance.lang = channel.category === 'scanner' && channel.band === 'air' ? 'en-US' : 'nl-NL';
+      utterance.rate = 1.06;
+      utterance.pitch = channel.category === 'train' ? 0.98 : 1.02;
+
+      // Taal bepalen op basis van kanaalregio
+      if (channel.region === 'DE') utterance.lang = 'de-DE';
+      else if (channel.region === 'FR') utterance.lang = 'fr-FR';
+      else if (channel.category === 'air') utterance.lang = 'en-US';
+      else utterance.lang = 'nl-NL';
 
       utterance.onstart = () => {
         state.speechActive = true;
@@ -937,8 +1137,7 @@
 
   function scheduleNextChatter() {
     if (!state.isPlaying) return;
-    // Volgend bericht over 5 tot 15 seconden
-    const delay = Math.floor(Math.random() * 10000) + 5000;
+    const delay = Math.floor(Math.random() * 8000) + 4000;
     state.chatterTimeout = setTimeout(() => {
       triggerRadioChatter();
     }, delay);
@@ -991,7 +1190,7 @@
     state.isPttActive = false;
     if (DOM.btnPttMic) {
       DOM.btnPttMic.classList.remove('transmitting');
-      DOM.ptkSubText.textContent = 'Houd ingedrukt om uw stem door het portofoonfilter te horen';
+      DOM.ptkSubText.textContent = 'Houd ingedrukt om uw stem door het radiofilter te horen';
     }
 
     if (state.micSourceNode && state.filterNode) {
@@ -1006,7 +1205,6 @@
       state.micMediaStream = null;
     }
 
-    // Authentieke Roger Beep bij loslaten PTT knop!
     playRogerBeep();
   }
 
@@ -1035,16 +1233,13 @@
       state.recBitrate = bitrate;
       state.mp3Data = [];
 
-      // Mono encoder (authentiek voor portofoon/scanner)
       state.recChannels = 1;
       state.lameEncoder = new lamejs.Mp3Encoder(state.recChannels, state.recSampleRate, state.recBitrate);
 
-      // ScriptProcessorNode om ruwe PCM samples op te vangen
       state.recScriptProcessor = state.audioCtx.createScriptProcessor(4096, 1, 1);
       state.recScriptProcessor.onaudioprocess = (e) => {
         if (!state.isRecording || !state.lameEncoder) return;
         const inputData = e.inputBuffer.getChannelData(0);
-        // Converteer Float32Array (-1.0 to 1.0) naar Int16Array (-32768 to 32767)
         const sampleCount = inputData.length;
         const int16Samples = new Int16Array(sampleCount);
         for (let i = 0; i < sampleCount; i++) {
@@ -1058,14 +1253,12 @@
         }
       };
 
-      // Koppel scriptProcessor aan masterGain
       state.masterGain.connect(state.recScriptProcessor);
       state.recScriptProcessor.connect(state.audioCtx.destination);
 
       state.isRecording = true;
       state.recStartTime = Date.now();
 
-      // UI Updates
       if (DOM.btnRecordToggle) {
         DOM.btnRecordToggle.classList.add('recording');
         DOM.recBtnIcon.textContent = '⏹️';
@@ -1075,7 +1268,6 @@
         DOM.recDot.className = 'rec-dot-active';
       }
 
-      // Timer ticker
       state.recInterval = setInterval(updateRecTimerDisplay, 500);
       showToast('🎙️ Live MP3 Opname gestart...');
 
@@ -1091,7 +1283,6 @@
     state.isRecording = false;
     clearInterval(state.recInterval);
 
-    // Koppel nodes los
     if (state.recScriptProcessor && state.masterGain) {
       try {
         state.masterGain.disconnect(state.recScriptProcessor);
@@ -1100,7 +1291,6 @@
       state.recScriptProcessor = null;
     }
 
-    // Flush de MP3 buffer
     if (state.lameEncoder) {
       const mp3End = state.lameEncoder.flush();
       if (mp3End.length > 0) {
@@ -1108,7 +1298,6 @@
       }
     }
 
-    // Maak MP3 Blob
     const mp3Blob = new Blob(state.mp3Data, { type: 'audio/mp3' });
     const channel = getChannelById(state.activeChannelId);
     const dateStr = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
@@ -1116,12 +1305,11 @@
     const fileSizeMb = (mp3Blob.size / (1024 * 1024)).toFixed(2);
     const blobUrl = URL.createObjectURL(mp3Blob);
 
-    // Opslaan in sessiehistorie
     const recItem = {
       id: 'rec_' + Date.now(),
       name: fileName,
-      channelName: channel ? channel.name : 'Ethercommunicatie',
-      freq: channel ? channel.freq : '119.225',
+      channelName: channel ? channel.name : 'Communicatie',
+      freq: channel ? channel.freq : '457.650',
       size: `${fileSizeMb} MB`,
       url: blobUrl,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -1129,7 +1317,6 @@
     state.recordings.unshift(recItem);
     renderRecordingsList();
 
-    // UI Terugzetten
     if (DOM.btnRecordToggle) {
       DOM.btnRecordToggle.classList.remove('recording');
       DOM.recBtnIcon.textContent = '🔴';
@@ -1143,7 +1330,6 @@
 
     showToast(`✅ MP3 opgeslagen (${fileSizeMb} MB)`);
 
-    // Automatisch downloaden indien ingeschakeld
     if (DOM.chkAutoDownload && DOM.chkAutoDownload.checked) {
       downloadBlob(blobUrl, fileName);
     }
@@ -1159,7 +1345,6 @@
 
     if (DOM.recTimer) DOM.recTimer.textContent = `${hrs}:${mins}:${secs}`;
 
-    // Schatting bestandsgrootte op basis van bitrate
     const estMb = ((totalSecs * (state.recBitrate * 1000 / 8)) / (1024 * 1024)).toFixed(2);
     if (DOM.recSizeEstimate) DOM.recSizeEstimate.textContent = `${estMb} MB`;
   }
@@ -1213,19 +1398,14 @@
     state.currentView = mode;
     saveStoredPreferences();
 
-    // Verwijder oude klassen
     DOM.mainContainer.classList.remove('view-voorkant', 'view-achterkant', 'view-split');
     DOM.mainContainer.classList.add(`view-${mode}`);
 
-    // Update Pill Buttons in Header
     DOM.btnViewVoorkant.classList.toggle('active', mode === 'voorkant');
     DOM.btnViewAchterkant.classList.toggle('active', mode === 'achterkant');
     DOM.btnViewSplit.classList.toggle('active', mode === 'split');
 
-    // Toon mini-HUD alleen op voorkant als er een kanaal actief is
     updateMiniHud();
-
-    // Scroll naar bovenzijde paneel
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -1235,16 +1415,23 @@
   function renderChannelList() {
     if (!DOM.channelList) return;
 
-    // 1. Filter kanalen
+    // 1. Filter kanalen op categorie, regio en zoekopdracht
     let filtered = CHANNELS.filter(c => {
       // Categorie filter
       if (state.filterCategory !== 'all' && c.category !== state.filterCategory) {
         return false;
       }
-      // Band filter
-      if (state.filterBand && c.band !== state.filterBand) {
-        return false;
+
+      // Regio filter (NL, EU, BE, DE, FR, CH)
+      if (state.filterRegion) {
+        if (state.filterRegion === 'EU') {
+          // 'EU' filter toont internationale en pan-Europese zenders
+          if (!['EU', 'BE', 'DE', 'FR', 'CH'].includes(c.region)) return false;
+        } else if (c.region !== state.filterRegion) {
+          return false;
+        }
       }
+
       // Zoekopdracht
       if (state.searchQuery) {
         const q = state.searchQuery.toLowerCase();
@@ -1252,7 +1439,8 @@
           c.freq.includes(q) ||
           c.callsign.toLowerCase().includes(q) ||
           c.location.toLowerCase().includes(q) ||
-          c.desc.toLowerCase().includes(q);
+          c.desc.toLowerCase().includes(q) ||
+          c.region.toLowerCase().includes(q);
         if (!match) return false;
       }
       return true;
@@ -1269,7 +1457,7 @@
 
     // 3. Update count badge
     if (DOM.channelCountText) {
-      DOM.channelCountText.textContent = `${filtered.length} kanalen gevonden`;
+      DOM.channelCountText.textContent = `${filtered.length} kanalen gevonden in Nederland & Europa`;
     }
 
     // 4. Render kaarten
@@ -1286,6 +1474,16 @@
       const isFav = state.favorites.includes(c.id);
       const isLastListened = c.id === state.activeChannelId;
 
+      const flagMap = {
+        NL: '🇳🇱',
+        EU: '🇪🇺',
+        BE: '🇧🇪',
+        DE: '🇩🇪',
+        FR: '🇫🇷',
+        CH: '🇨🇭'
+      };
+      const flag = flagMap[c.region] || '🌍';
+
       return `
         <div class="channel-card ${isActive ? 'active' : ''}" data-id="${c.id}" role="button" tabindex="0">
           <div class="card-left">
@@ -1294,6 +1492,7 @@
               <div class="card-freq-row">
                 <span class="card-freq">${c.freq} MHz</span>
                 <span class="card-badge badge-${c.mod.toLowerCase()}">${c.mod}</span>
+                <span class="card-badge" style="background:rgba(255,255,255,0.08);">${flag} ${c.region}</span>
                 ${isLastListened ? '<span class="badge-last-listened">🕒 Laatst Geluisterd</span>' : ''}
               </div>
               <div class="card-name">${escapeHtml(c.name)}</div>
@@ -1310,7 +1509,6 @@
       `;
     }).join('');
 
-    // Update Cockpit & Mini-HUD
     updateCockpitUI();
     updateMiniHud();
   }
@@ -1322,7 +1520,6 @@
     state.activeChannelId = channelId;
     saveStoredPreferences();
 
-    // Breng AudioContext tot leven
     resumeAudioContextIfNeeded();
 
     if (autoPlay) {
@@ -1332,7 +1529,6 @@
       triggerRadioChatter();
     }
 
-    // Her-render de lijst zodat het geselecteerde kanaal direct bovenaan staat met badge!
     renderChannelList();
     showToast(`📻 Afgestemd op ${channel.name} (${channel.freq} MHz)`);
   }
@@ -1344,7 +1540,7 @@
     const channel = getChannelById(state.activeChannelId);
     if (!channel) return;
 
-    if (DOM.vfoDeviceType) DOM.vfoDeviceType.textContent = `${channel.deviceIcon} ${channel.category.toUpperCase()}`;
+    if (DOM.vfoDeviceType) DOM.vfoDeviceType.textContent = `${channel.deviceIcon} ${channel.category.toUpperCase()} • ${channel.region}`;
     if (DOM.vfoBandText) DOM.vfoBandText.textContent = channel.band.toUpperCase();
     if (DOM.vfoFilterText) DOM.vfoFilterText.textContent = `BANDPASS: 300-3000 Hz`;
     if (DOM.vfoFreqMain) DOM.vfoFreqMain.textContent = channel.freqDisplay;
@@ -1353,7 +1549,6 @@
     if (DOM.vfoChannelDesc) DOM.vfoChannelDesc.textContent = `${channel.name} • ${channel.desc}`;
     if (DOM.vfoCtcss) DOM.vfoCtcss.textContent = `CTCSS: ${channel.ctcss}`;
 
-    // Play/Stop knop in Cockpit
     if (DOM.mainPlayIcon && DOM.mainPlayText) {
       if (state.isPlaying) {
         DOM.mainPlayIcon.textContent = '⏹️';
@@ -1364,7 +1559,6 @@
       }
     }
 
-    // Favoriet knop
     const isFav = state.favorites.includes(channel.id);
     if (DOM.btnMainFav) {
       DOM.btnMainFav.classList.toggle('is-fav', isFav);
@@ -1384,14 +1578,12 @@
     DOM.miniDeviceIcon.textContent = channel.deviceIcon;
     DOM.miniFreqText.textContent = `${channel.freq} MHz`;
     DOM.miniModBadge.textContent = channel.mod;
-    DOM.miniChannelName.textContent = channel.name;
+    DOM.miniChannelName.textContent = `${channel.name} (${channel.region})`;
 
-    // Mini Play button icon
     if (DOM.btnMiniPlay) {
       DOM.btnMiniPlay.textContent = state.isPlaying ? '⏸️' : '▶️';
     }
 
-    // Mini DSP buttons
     if (DOM.btnMiniSquelch) {
       DOM.btnMiniSquelch.classList.toggle('active', state.squelch > 0.1);
     }
@@ -1423,7 +1615,6 @@
     const canvas = DOM.scannerCanvas;
     const ctx = canvas.getContext('2d');
 
-    // Buffer canvas voor vloeiende waterval scrolling
     const waterfallBuffer = document.createElement('canvas');
     waterfallBuffer.width = canvas.width;
     waterfallBuffer.height = canvas.height;
@@ -1435,7 +1626,6 @@
       requestAnimationFrame(renderFrame);
 
       if (!state.analyser || !state.isPlaying) {
-        // Idle ruststand S-Meter & canvas
         updateSMeter(0);
         drawIdleCanvas(ctx, canvas);
         return;
@@ -1447,7 +1637,6 @@
         state.analyser.getByteFrequencyData(dataArray);
       }
 
-      // Bereken signaalsterkte voor S-meter (RMS / Piek)
       let sum = 0;
       for (let i = 0; i < dataArray.length; i++) {
         sum += dataArray[i];
@@ -1455,7 +1644,6 @@
       const avg = sum / dataArray.length;
       updateSMeter(avg);
 
-      // Teken gewenste modus
       if (state.visMode === 'waterfall') {
         drawWaterfall(ctx, canvas, bufCtx, waterfallBuffer, dataArray);
       } else if (state.visMode === 'spectrum') {
@@ -1471,11 +1659,9 @@
   function updateSMeter(avgValue) {
     if (!DOM.sMeterNeedle || !DOM.sMeterDbValue) return;
 
-    // Normaliseer naar 0 - 100%
     const normalized = Math.min(100, (avgValue / 180) * 100);
     DOM.sMeterNeedle.style.width = `${normalized.toFixed(1)}%`;
 
-    // S-Schaal interpretatie (S1 tot S9+30dB)
     let sValText = 'S0 (Geen Signaal)';
     if (normalized > 85) sValText = 'S9 +30 dB (Extreem Sterk)';
     else if (normalized > 70) sValText = 'S9 +20 dB (Zeer Sterk)';
@@ -1494,16 +1680,13 @@
     const width = canvas.width;
     const height = canvas.height;
 
-    // 1. Schuif bestaande waterval 2 pixels omlaag
     bufCtx.drawImage(canvas, 0, 0);
     ctx.clearRect(0, 0, width, height);
     ctx.drawImage(waterfallBuffer, 0, 2);
 
-    // 2. Teken de nieuwe bovenste regel
     const sliceWidth = width / dataArray.length;
     for (let i = 0; i < dataArray.length; i++) {
       const val = dataArray[i];
-      // Radar kleurenpalet: diepblauw -> cyaan -> geel -> rood
       let r = 0, g = 0, b = 0;
       if (val < 64) {
         b = Math.floor((val / 64) * 255);
@@ -1660,7 +1843,7 @@
       showToast(state.noise ? '📻 Etherruis AAN' : '🔇 Etherruis UIT');
     });
 
-    // PTT Knop (Mousedown / Mouseup & Touchstart / Touchend)
+    // PTT Knop
     DOM.btnPttMic.addEventListener('mousedown', startPttTransmission);
     window.addEventListener('mouseup', stopPttTransmission);
     DOM.btnPttMic.addEventListener('touchstart', (e) => {
@@ -1692,6 +1875,7 @@
       renderChannelList();
     });
 
+    // Categorie Knoppen
     DOM.catPills.forEach(pill => {
       pill.addEventListener('click', () => {
         DOM.catPills.forEach(p => p.classList.remove('active'));
@@ -1701,23 +1885,24 @@
       });
     });
 
+    // Regio Knoppen (Nederland, Europa, België, Duitsland, Frankrijk, Alpen)
     DOM.bandPills.forEach(pill => {
       pill.addEventListener('click', () => {
         DOM.bandPills.forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
-        state.filterBand = pill.dataset.band;
+        state.filterRegion = pill.dataset.region !== undefined ? pill.dataset.region : '';
         renderChannelList();
       });
     });
 
     DOM.btnResetFilters.addEventListener('click', () => {
       state.filterCategory = 'all';
-      state.filterBand = '';
+      state.filterRegion = '';
       state.searchQuery = '';
       DOM.channelSearch.value = '';
       DOM.btnClearSearch.style.display = 'none';
       DOM.catPills.forEach(p => p.classList.toggle('active', p.dataset.category === 'all'));
-      DOM.bandPills.forEach(p => p.classList.toggle('active', p.dataset.band === ''));
+      DOM.bandPills.forEach(p => p.classList.toggle('active', p.dataset.region === ''));
       renderChannelList();
     });
 
@@ -1760,10 +1945,7 @@
       }
     });
 
-    // Versie Pill Klik
     DOM.verPill.addEventListener('click', checkAppVersion);
-
-    // Toetsenbord Sneltoetsen
     window.addEventListener('keydown', handleKeyboardShortcuts);
   }
 
@@ -1965,7 +2147,7 @@
         <div class="card-left">
           <div class="device-avatar">${c.deviceIcon}</div>
           <div class="card-info">
-            <span class="card-freq">${c.freq} MHz • ${c.mod}</span>
+            <span class="card-freq">${c.freq} MHz • ${c.mod} (${c.region})</span>
             <span class="card-name">${escapeHtml(c.name)}</span>
             <span class="card-subtext">${escapeHtml(c.location)}</span>
           </div>
@@ -2002,7 +2184,7 @@
 
     } catch (err) {
       console.warn('Versie controle via fallback:', err);
-      if (DOM.verPillText) DOM.verPillText.textContent = 'v1.0.0';
+      if (DOM.verPillText) DOM.verPillText.textContent = 'v1.1.0';
     }
   }
 

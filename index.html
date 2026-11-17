@@ -82,25 +82,26 @@
             <button id="btnClearSearch" class="btn-icon-clear" style="display:none;" title="Zoekopdracht wissen">✕</button>
           </div>
 
-          <!-- Apparaatcategorieën Kiezer (Portofoon, Mobilofoon, Transceiver, Scanner) -->
+          <!-- Apparaatcategorieën Kiezer (Treinen, Schepen, Mobiel, Mobilofoon, Portofoon, Luchtvaart, Zendamateur) -->
           <div class="category-pills-bar" role="tablist" aria-label="Apparaat Categorie">
             <button class="cat-pill active" data-category="all">🌍 Alle Apparaten</button>
-            <button class="cat-pill" data-category="scanner">📡 Scanner (Lucht/Zee)</button>
-            <button class="cat-pill" data-category="portofoon">📱 Portofoon (PMR/Sec)</button>
-            <button class="cat-pill" data-category="mobilofoon">🚗 Mobilofoon (27MHz/Vloot)</button>
-            <button class="cat-pill" data-category="transceiver">📻 Zendontvanger (Ham/HF)</button>
+            <button class="cat-pill" data-category="train">🚆 Treinen & Spoor (GSM-R)</button>
+            <button class="cat-pill" data-category="marine">⚓ Schepen & Marifoon</button>
+            <button class="cat-pill" data-category="portofoon">📱 Mobiele Portofoons</button>
+            <button class="cat-pill" data-category="mobilofoon">🚗 Mobilofoon (Trucks/Auto)</button>
+            <button class="cat-pill" data-category="air">✈️ Luchtvaart Scanner</button>
+            <button class="cat-pill" data-category="transceiver">📻 Zendontvangers</button>
           </div>
 
-          <!-- Frequentieband Snelfilters -->
-          <div class="band-scroll-bar">
-            <button class="band-pill active" data-band="">Alle Banden</button>
-            <button class="band-pill" data-band="air">✈️ Luchtvaart (VHF AM)</button>
-            <button class="band-pill" data-band="marine">⚓ Marifoon (VHF FM)</button>
-            <button class="band-pill" data-band="cb">🚛 27 MHz CB / 11m</button>
-            <button class="band-pill" data-band="ham_2m">📻 2m Ham (144-146 MHz)</button>
-            <button class="band-pill" data-band="ham_70cm">📡 70cm Ham (430-440 MHz)</button>
-            <button class="band-pill" data-band="pmr">📱 PMR446 (UHF)</button>
-            <button class="band-pill" data-band="hf">🌐 HF WebSDR</button>
+          <!-- Regio & Band Snelfilters (Nederland & Europa) -->
+          <div class="band-scroll-bar" role="group" aria-label="Regio en Band">
+            <button class="band-pill active" data-region="">🌐 Alle Regio's</button>
+            <button class="band-pill" data-region="NL">🇳🇱 Nederland</button>
+            <button class="band-pill" data-region="EU">🇪🇺 Europa / Transit</button>
+            <button class="band-pill" data-region="BE">🇧🇪 België</button>
+            <button class="band-pill" data-region="DE">🇩🇪 Duitsland</button>
+            <button class="band-pill" data-region="FR">🇫🇷 Frankrijk / Kanaal</button>
+            <button class="band-pill" data-region="CH">🏔️ Alpen / Outdoor</button>
           </div>
 
           <!-- Subbar: Aantal kanalen & Verversknop -->
@@ -416,20 +417,28 @@
           <!-- Tab 2: Apparaten -->
           <div id="helpTabDevices" class="help-tab-pane">
             <div class="device-card-help">
-              <h4>📱 Portofoon (Walkie-Talkie)</h4>
-              <p>Een draagbare, handzame zendontvanger met ingebouwde antenne en batterij. Wordt intensief gebruikt door beveiliging, evenementorganisatie, verkeersregelaars, BHV/EHBO en op PMR446 kanalen.</p>
+              <h4>🚆 Treinen & Spoorwegen (GSM-R & Rangeercommunicatie)</h4>
+              <p>Digitale en analoge treinradio (GSM-R / Telerail) tussen Treindienstleiders (TRDL) en Machinisten van ProRail, NS, DB Netze, SNCB en Eurostar. Cruciaal voor veilige rijwegen, seininstructies, vertragingsberichten en rangeerwerk op emplacementen zoals Kijfhoek.</p>
             </div>
             <div class="device-card-help">
-              <h4>🚗 Mobilofoon (Voertuig Transceiver)</h4>
-              <p>Een krachtige zendontvanger die vast is ingebouwd in een voertuig (auto, vrachtwagen, boot of sleepwagen). Werkt vaak op de 27 MHz CB-band (zoals truckers op Kanaal 19) of op maritieme marifoonkanalen.</p>
+              <h4>⚓ Schepen & Maritiem (VHF Marifoon & Kustwacht)</h4>
+              <p>Marifooncommunicatie tussen zeeschepen, binnenvaart, kustwachtcentrales (Den Helder, Dover, Oostende), havenbedrijven (Rotterdam, Antwerpen, Hamburg) en verkeersposten langs de Rijn en Maas op de internationale VHF-kanalen (K16 nood/oproep, K01, K10, K62).</p>
             </div>
             <div class="device-card-help">
-              <h4>📻 Zendontvanger (Transceiver / Basisstation)</h4>
-              <p>De algemene verzamelnaam voor radioapparatuur die zowel kan zenden als ontvangen. Vaak gebruikt door zendamateurs met grote basisantennes thuis om wereldwijd contact te leggen via repeaters of HF.</p>
+              <h4>📱 Mobiele Portofoons (PMR446 & UHF)</h4>
+              <p>Draagbare, handzame zendontvangers waar u ook bent in Nederland en Europa. Intensief gebruikt door beveiliging, evenementorganisatie, verkeersregelaars, BHV/EHBO, bergredding in de Alpen en op de 8 Europese PMR446 kanalen.</p>
             </div>
             <div class="device-card-help">
-              <h4>📡 Scanner (Ontvanger)</h4>
-              <p>Een apparaat dat uitsluitend radiogolven ontvangt. Hiermee scant u frequenties af om mee te luisteren met luchtvaart (Schiphol Toren), scheepvaart of hulpdiensten, zonder zelf uit te kunnen zenden.</p>
+              <h4>🚗 Mobilofoon (27 MHz CB & Voertuigzendontvangers)</h4>
+              <p>Vast ingebouwde apparatuur in vrachtwagens, auto's en bergingsvoertuigen. Bekend van de internationale truckerskanalen (27 MHz Kanaal 19 Benelux/Duitsland, Kanaal 28 Oost-Europa) voor live waarschuwingen voor files en weersomstandigheden.</p>
+            </div>
+            <div class="device-card-help">
+              <h4>✈️ Luchtvaart Scanners & Eurocontrol</h4>
+              <p>Luisterontvangers voor vliegverkeer tussen piloten en luchtverkeersleiders (Schiphol Tower, Approach, Brussel, Eurocontrol Maastricht Upper Area Control) op de VHF AM band (118-137 MHz).</p>
+            </div>
+            <div class="device-card-help">
+              <h4>📻 Zendontvanger (Transceiver & WebSDR)</h4>
+              <p>Zendamateur basisstations en repeaters voor wereldwijd en landelijk contact (PI2NOS 2m, PI3UTR 70cm, korte golf HF 20m/40m/80m praatrondes).</p>
             </div>
           </div>
 
@@ -438,16 +447,16 @@
             <div class="freq-table-wrapper">
               <table class="freq-table">
                 <thead>
-                  <tr><th>Band</th><th>Frequentiebereik</th><th>Modulatie</th><th>Toepassing</th></tr>
+                  <tr><th>Sector / Apparaat</th><th>Frequentiebereik</th><th>Modulatie</th><th>Toepassing (NL & Europa)</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>✈️ Luchtvaart (Airband)</td><td>118.000 - 137.000 MHz</td><td>AM</td><td>Schiphol Toren, Approach, Radar</td></tr>
-                  <tr><td>⚓ Marifoon (Marine VHF)</td><td>156.000 - 162.025 MHz</td><td>FM</td><td>Kanaal 16 Nood/Oproep, Haven Rotterdam</td></tr>
-                  <tr><td>🚛 27 MHz CB / 11m</td><td>26.965 - 27.405 MHz</td><td>FM / AM / USB</td><td>Truckers (K19), Bakkies, Mobilofoons</td></tr>
-                  <tr><td>📱 PMR446 Portofoons</td><td>446.000 - 446.200 MHz</td><td>FM (NFM)</td><td>8 vergunningsvrije kanalen, Beveiliging</td></tr>
-                  <tr><td>📻 2m Ham Repeater</td><td>145.575 MHz</td><td>FM</td><td>PI2NOS Bovenregionale Relaiszender</td></tr>
-                  <tr><td>📡 70cm Ham Repeater</td><td>430.125 MHz</td><td>FM</td><td>PI3UTR Utrecht Relaiszender</td></tr>
-                  <tr><td>🌐 HF WebSDR</td><td>1.8 - 30 MHz</td><td>USB / LSB / AM</td><td>Korte Golf Wereldomroep & Zendamateurs</td></tr>
+                  <tr><td>🚆 Treinen (GSM-R Spoor)</td><td>457 - 468 MHz / 900 MHz</td><td>FM / Digitaal</td><td>ProRail, NS, DB Netze, NMBS, Kijfhoek</td></tr>
+                  <tr><td>⚓ Schepen (Marifoon VHF)</td><td>156.000 - 162.025 MHz</td><td>FM</td><td>Kustwacht K16, Rotterdam, Antwerpen, Hamburg</td></tr>
+                  <tr><td>📱 Portofoon (PMR446)</td><td>446.000 - 446.200 MHz</td><td>FM (NFM)</td><td>Mobiel NL & Europa, Beveiliging, Alpen SOS</td></tr>
+                  <tr><td>🚛 Mobilofoon (27 MHz CB)</td><td>26.965 - 27.405 MHz</td><td>FM / AM</td><td>Truckers (K19), Bakkies, Bergingsdiensten</td></tr>
+                  <tr><td>✈️ Luchtvaart & Eurocontrol</td><td>118.000 - 137.000 MHz</td><td>AM</td><td>Schiphol, Brussel, Eurocontrol MUAC</td></tr>
+                  <tr><td>📻 Zendontvanger (Ham)</td><td>145.575 / 430.125 MHz</td><td>FM</td><td>PI2NOS 2m, PI3UTR 70cm Repeaters</td></tr>
+                  <tr><td>🌐 Korte Golf WebSDR</td><td>1.8 - 30 MHz</td><td>USB / LSB</td><td>Wereldomroep, DX Ronde, Benelux 40m/80m</td></tr>
                 </tbody>
               </table>
             </div>
