@@ -755,6 +755,21 @@
     DOM.channelPanel = document.getElementById('channelPanel');
     DOM.cockpitPanel = document.getElementById('cockpitPanel');
 
+    // Vaste Zijbalk (Links)
+    DOM.leftSidebar = document.getElementById('leftSidebar');
+    DOM.btnToggleSidebar = document.getElementById('btnToggleSidebar');
+    DOM.btnCloseSidebar = document.getElementById('btnCloseSidebar');
+    DOM.sidebarOverlay = document.getElementById('sidebarOverlay');
+    DOM.sidebarNavItems = document.querySelectorAll('.sidebar-nav-item');
+    DOM.sbLiveStatusText = document.getElementById('sbLiveStatusText');
+    DOM.sbLiveChannelName = document.getElementById('sbLiveChannelName');
+    DOM.sbBtnPlay = document.getElementById('sbBtnPlay');
+    DOM.sbBtnCockpit = document.getElementById('sbBtnCockpit');
+    DOM.sbBtnFavs = document.getElementById('sbBtnFavs');
+    DOM.sbBtnScan = document.getElementById('sbBtnScan');
+    DOM.sbBtnHelp = document.getElementById('sbBtnHelp');
+    DOM.btnScanRandom = document.getElementById('btnScanRandom');
+
     // Weergave schakelaars
     DOM.btnViewVoorkant = document.getElementById('btnViewVoorkant');
     DOM.btnViewAchterkant = document.getElementById('btnViewAchterkant');
@@ -1405,6 +1420,7 @@
     DOM.btnViewAchterkant.classList.toggle('active', mode === 'achterkant');
     DOM.btnViewSplit.classList.toggle('active', mode === 'split');
 
+    syncSidebarActiveStates();
     updateMiniHud();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -1590,6 +1606,29 @@
     if (DOM.btnMiniRoger) {
       DOM.btnMiniRoger.classList.toggle('active', state.rogerBeep);
     }
+
+    // Update Vaste Zijbalk Monitor
+    if (DOM.sbLiveChannelName) {
+      DOM.sbLiveChannelName.textContent = `${channel.name} (${channel.freq} MHz)`;
+    }
+    if (DOM.sbLiveStatusText) {
+      DOM.sbLiveStatusText.textContent = state.isPlaying ? 'RX LIVE ONTVANGST' : 'STANDBY';
+    }
+    if (DOM.sbBtnPlay) {
+      DOM.sbBtnPlay.textContent = state.isPlaying ? '⏸ Pauze' : '▶ Start';
+    }
+  }
+
+  function syncSidebarActiveStates() {
+    document.querySelectorAll('[data-sidebar-view]').forEach(item => {
+      item.classList.toggle('active', item.dataset.sidebarView === state.currentView);
+    });
+    document.querySelectorAll('[data-sidebar-category]').forEach(item => {
+      item.classList.toggle('active', item.dataset.sidebarCategory === state.filterCategory);
+    });
+    document.querySelectorAll('[data-sidebar-region]').forEach(item => {
+      item.classList.toggle('active', item.dataset.sidebarRegion === state.filterRegion);
+    });
   }
 
   function updateDspButtonsUI() {
@@ -1903,6 +1942,7 @@
       DOM.btnClearSearch.style.display = 'none';
       DOM.catPills.forEach(p => p.classList.toggle('active', p.dataset.category === 'all'));
       DOM.bandPills.forEach(p => p.classList.toggle('active', p.dataset.region === ''));
+      syncSidebarActiveStates();
       renderChannelList();
     });
 
@@ -1946,6 +1986,88 @@
     });
 
     DOM.verPill.addEventListener('click', checkAppVersion);
+    if (DOM.btnScanRandom) DOM.btnScanRandom.addEventListener('click', tuneRandomChannel);
+
+    // ========================================================================
+    // VAST MENU LINKS (Sidebar Interactie & Mobile Drawer)
+    // ========================================================================
+    function closeMobileSidebar() {
+      if (DOM.leftSidebar) DOM.leftSidebar.classList.remove('open');
+      if (DOM.sidebarOverlay) DOM.sidebarOverlay.style.display = 'none';
+    }
+
+    if (DOM.btnToggleSidebar) {
+      DOM.btnToggleSidebar.addEventListener('click', () => {
+        const isOpen = DOM.leftSidebar.classList.toggle('open');
+        DOM.sidebarOverlay.style.display = isOpen ? 'block' : 'none';
+      });
+    }
+
+    if (DOM.btnCloseSidebar) {
+      DOM.btnCloseSidebar.addEventListener('click', closeMobileSidebar);
+    }
+
+    if (DOM.sidebarOverlay) {
+      DOM.sidebarOverlay.addEventListener('click', closeMobileSidebar);
+    }
+
+    // Sidebar Weergave Modus Knoppen
+    document.querySelectorAll('[data-sidebar-view]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setViewMode(btn.dataset.sidebarView);
+        closeMobileSidebar();
+      });
+    });
+
+    // Sidebar Apparaat / Sector Knoppen
+    document.querySelectorAll('[data-sidebar-category]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.filterCategory = btn.dataset.sidebarCategory;
+        DOM.catPills.forEach(p => p.classList.toggle('active', p.dataset.category === state.filterCategory));
+        syncSidebarActiveStates();
+        renderChannelList();
+        closeMobileSidebar();
+      });
+    });
+
+    // Sidebar Regio Knoppen
+    document.querySelectorAll('[data-sidebar-region]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.filterRegion = btn.dataset.sidebarRegion;
+        DOM.bandPills.forEach(p => p.classList.toggle('active', (p.dataset.region || '') === state.filterRegion));
+        syncSidebarActiveStates();
+        renderChannelList();
+        closeMobileSidebar();
+      });
+    });
+
+    // Sidebar Extra Tools & Monitor
+    if (DOM.sbBtnPlay) DOM.sbBtnPlay.addEventListener('click', togglePlayback);
+    if (DOM.sbBtnCockpit) {
+      DOM.sbBtnCockpit.addEventListener('click', () => {
+        setViewMode('achterkant');
+        closeMobileSidebar();
+      });
+    }
+    if (DOM.sbBtnFavs) {
+      DOM.sbBtnFavs.addEventListener('click', () => {
+        openFavoritesModal();
+        closeMobileSidebar();
+      });
+    }
+    if (DOM.sbBtnScan) {
+      DOM.sbBtnScan.addEventListener('click', () => {
+        tuneRandomChannel();
+        closeMobileSidebar();
+      });
+    }
+    if (DOM.sbBtnHelp) {
+      DOM.sbBtnHelp.addEventListener('click', () => {
+        openHelpModal();
+        closeMobileSidebar();
+      });
+    }
+
     window.addEventListener('keydown', handleKeyboardShortcuts);
   }
 

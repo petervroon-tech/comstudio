@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Peter Vroon ComStudio • Live Radio Scanner, Portofoon & Mobilofoon</title>
-  <meta name="description" content="Peter Vroon ComStudio: Luister live mee naar Luchtvaart, Scheepvaart/Marifoon, Zendamateurs, Portofoons en 27 MHz Mobilofoons. Inclusief Squelch, Roger Beep, Waterval display en MP3 opnamestudio.">
+  <title>Peter Vroon ComStudio • Live Radio Scanner, Treinen, Schepen & Mobiel</title>
+  <meta name="description" content="Peter Vroon ComStudio: Luister live mee naar Schepen, Treinen (GSM-R), Mobiele Portofoons, 27 MHz Mobilofoons en Luchtvaart in Nederland en Europa. Inclusief Squelch, Roger Beep, Waterval display en MP3 opnamestudio.">
   <meta name="theme-color" content="#00f2fe">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
@@ -18,17 +18,25 @@
 
     <!-- Bovenbalk / Header -->
     <header class="top-nav" role="banner">
-      <div class="nav-brand">
-        <img src="favicon.svg" alt="ComStudio Logo" class="brand-logo" width="34" height="34">
-        <div class="brand-text">
-          <div class="brand-title-row">
-            <h1 class="brand-title">Peter Vroon ComStudio</h1>
-            <button id="verPill" class="ver-pill" title="Klik om te controleren op online updates">
-              <span class="ver-dot"></span>
-              <span id="verPillText">v1.0.0</span>
-            </button>
+      <div class="nav-left-group">
+        <!-- Vaste Zijbalk Toggle Knop (voor mobiel & tablets) -->
+        <button id="btnToggleSidebar" class="sidebar-toggle-btn" aria-label="Zijbalk menu in- of uitschakelen" title="Menu openen / inklappen">
+          <span class="hamburger-icon">☰</span>
+          <span class="hamburger-text">Menu</span>
+        </button>
+
+        <div class="nav-brand">
+          <img src="favicon.svg" alt="ComStudio Logo" class="brand-logo" width="34" height="34">
+          <div class="brand-text">
+            <div class="brand-title-row">
+              <h1 class="brand-title">Peter Vroon ComStudio</h1>
+              <button id="verPill" class="ver-pill" title="Klik om te controleren op online updates">
+                <span class="ver-dot"></span>
+                <span id="verPillText">v1.2.0</span>
+              </button>
+            </div>
+            <span class="brand-subtitle">Schepen • Treinen • Mobiel • Trucks • Scanner • Europa</span>
           </div>
-          <span class="brand-subtitle">Portofoon • Mobilofoon • Zendontvanger • Scanner</span>
         </div>
       </div>
 
@@ -50,321 +58,475 @@
 
       <!-- Snelle Acties Rechts -->
       <div class="nav-actions">
-        <button id="btnFavorites" class="pill-btn action-pill" title="Mijn Opgeslagen Favoriete Frequenties">
+        <button id="btnOpenFavs" class="pill-btn action-pill" title="Mijn Opgeslagen Favoriete Frequenties">
           <span class="pill-icon">⭐</span>
           <span class="action-label">Favorieten</span>
-          <span id="favCountBadge" class="count-badge">0</span>
         </button>
         <button id="btnScanRandom" class="pill-btn action-pill" title="Scan & Verras Me: Zoek willekeurig actief kanaal">
           <span class="pill-icon">📡</span>
           <span class="action-label">Scan Kanaal</span>
         </button>
-        <button id="btnHelp" class="pill-btn action-pill help-pill" title="Help, Apparaatuitleg & Frequenties">
+        <button id="btnOpenHelp" class="pill-btn action-pill help-pill" title="Help, Apparaatuitleg & Frequenties">
           <span class="pill-icon">💡</span>
           <span class="action-label">Help</span>
         </button>
       </div>
     </header>
 
-    <!-- Hoofd Werkgebied (Standaard in Voorkant / Overzicht weergave) -->
-    <main id="mainContainer" class="main-container view-voorkant">
+    <!-- App Body: Vaste Zijbalk Links + Rechter Werkgebied -->
+    <div class="app-body">
 
       <!-- ================================================================
-           VOORKANT / LINKERPANEEL: Kanalenoverzicht, Zoeken & Filters
+           VAST MENU LINKS (Left Sidebar)
            ================================================================ -->
-      <section id="channelPanel" class="panel channel-panel" aria-label="Kanalenoverzicht">
-        <div class="panel-header">
-          <!-- Zoekbalk -->
-          <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="channelSearch" placeholder="Zoek op frequentie (bv. 119.225), kanaal, roepnaam of stad..."
-              autocomplete="off" spellcheck="false">
-            <button id="btnClearSearch" class="btn-icon-clear" style="display:none;" title="Zoekopdracht wissen">✕</button>
+      <aside id="leftSidebar" class="left-sidebar" aria-label="Vast Hoofdmenu">
+        <div class="sidebar-header">
+          <div class="sidebar-brand-box">
+            <span class="sidebar-brand-icon">📻</span>
+            <div class="sidebar-brand-meta">
+              <span class="sidebar-title">Vast Menu</span>
+              <span class="sidebar-sub">Peter Vroon ComStudio</span>
+            </div>
+          </div>
+          <button id="btnCloseSidebar" class="sidebar-close-btn" title="Menu sluiten">✕</button>
+        </div>
+
+        <div class="sidebar-scroll-content">
+          <!-- 1. Weergave Modus -->
+          <div class="sidebar-section">
+            <span class="sidebar-section-title">Weergave Modus</span>
+            <div class="sidebar-nav-list">
+              <button class="sidebar-nav-item active" data-sidebar-view="voorkant">
+                <span class="nav-item-icon">📻</span>
+                <span class="nav-item-label">Voorkant (Overzicht)</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-view="achterkant">
+                <span class="nav-item-icon">🎛️</span>
+                <span class="nav-item-label">Cockpit & Studio</span>
+              </button>
+              <button class="sidebar-nav-item split-nav-item" data-sidebar-view="split">
+                <span class="nav-item-icon">🖥️</span>
+                <span class="nav-item-label">Split Screen</span>
+              </button>
+            </div>
           </div>
 
-          <!-- Apparaatcategorieën Kiezer (Treinen, Schepen, Mobiel, Mobilofoon, Portofoon, Luchtvaart, Zendamateur) -->
-          <div class="category-pills-bar" role="tablist" aria-label="Apparaat Categorie">
-            <button class="cat-pill active" data-category="all">🌍 Alle Apparaten</button>
-            <button class="cat-pill" data-category="train">🚆 Treinen & Spoor (GSM-R)</button>
-            <button class="cat-pill" data-category="marine">⚓ Schepen & Marifoon</button>
-            <button class="cat-pill" data-category="portofoon">📱 Mobiele Portofoons</button>
-            <button class="cat-pill" data-category="mobilofoon">🚗 Mobilofoon (Trucks/Auto)</button>
-            <button class="cat-pill" data-category="air">✈️ Luchtvaart Scanner</button>
-            <button class="cat-pill" data-category="transceiver">📻 Zendontvangers</button>
+          <!-- 2. Apparaten & Sectoren -->
+          <div class="sidebar-section">
+            <span class="sidebar-section-title">Apparaten & Sectoren</span>
+            <div class="sidebar-nav-list">
+              <button class="sidebar-nav-item active" data-sidebar-category="all">
+                <span class="nav-item-icon">🌍</span>
+                <span class="nav-item-label">Alle Apparaten</span>
+                <span class="nav-item-badge">24</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-category="train">
+                <span class="nav-item-icon">🚆</span>
+                <span class="nav-item-label">Treinen & Spoor (GSM-R)</span>
+                <span class="nav-item-badge">6</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-category="marine">
+                <span class="nav-item-icon">⚓</span>
+                <span class="nav-item-label">Schepen & Marifoon</span>
+                <span class="nav-item-badge">7</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-category="portofoon">
+                <span class="nav-item-icon">📱</span>
+                <span class="nav-item-label">Mobiele Portofoons</span>
+                <span class="nav-item-badge">6</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-category="mobilofoon">
+                <span class="nav-item-icon">🚗</span>
+                <span class="nav-item-label">Mobilofoon (Trucks)</span>
+                <span class="nav-item-badge">6</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-category="air">
+                <span class="nav-item-icon">✈️</span>
+                <span class="nav-item-label">Luchtvaart Scanner</span>
+                <span class="nav-item-badge">4</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-category="transceiver">
+                <span class="nav-item-icon">📻</span>
+                <span class="nav-item-label">Zendontvangers (Ham)</span>
+                <span class="nav-item-badge">5</span>
+              </button>
+            </div>
           </div>
 
-          <!-- Regio & Band Snelfilters (Nederland & Europa) -->
-          <div class="band-scroll-bar" role="group" aria-label="Regio en Band">
-            <button class="band-pill active" data-region="">🌐 Alle Regio's</button>
-            <button class="band-pill" data-region="NL">🇳🇱 Nederland</button>
-            <button class="band-pill" data-region="EU">🇪🇺 Europa / Transit</button>
-            <button class="band-pill" data-region="BE">🇧🇪 België</button>
-            <button class="band-pill" data-region="DE">🇩🇪 Duitsland</button>
-            <button class="band-pill" data-region="FR">🇫🇷 Frankrijk / Kanaal</button>
-            <button class="band-pill" data-region="CH">🏔️ Alpen / Outdoor</button>
+          <!-- 3. Regio's (Nederland & Europa) -->
+          <div class="sidebar-section">
+            <span class="sidebar-section-title">Regio's (NL & Europa)</span>
+            <div class="sidebar-nav-list">
+              <button class="sidebar-nav-item active" data-sidebar-region="">
+                <span class="nav-item-icon">🌐</span>
+                <span class="nav-item-label">Alle Regio's</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-region="NL">
+                <span class="nav-item-icon">🇳🇱</span>
+                <span class="nav-item-label">Nederland</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-region="EU">
+                <span class="nav-item-icon">🇪🇺</span>
+                <span class="nav-item-label">Europa / Transit</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-region="BE">
+                <span class="nav-item-icon">🇧🇪</span>
+                <span class="nav-item-label">België</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-region="DE">
+                <span class="nav-item-icon">🇩🇪</span>
+                <span class="nav-item-label">Duitsland</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-region="FR">
+                <span class="nav-item-icon">🇫🇷</span>
+                <span class="nav-item-label">Frankrijk / Kanaal</span>
+              </button>
+              <button class="sidebar-nav-item" data-sidebar-region="CH">
+                <span class="nav-item-icon">🏔️</span>
+                <span class="nav-item-label">Alpen / Outdoor</span>
+              </button>
+            </div>
           </div>
 
-          <!-- Subbar: Aantal kanalen & Verversknop -->
-          <div class="status-subbar">
-            <span id="channelCountText" class="subbar-text">Kanalen laden...</span>
-            <div class="subbar-right">
-              <span id="subbarVerText" class="subbar-ver-text">v1.0.0</span>
-              <button id="btnReloadChannels" class="refresh-sub-btn" title="Lijst verversen">↻ Ververs</button>
+          <!-- 4. Studio & Tools -->
+          <div class="sidebar-section">
+            <span class="sidebar-section-title">Studio & Tools</span>
+            <div class="sidebar-nav-list">
+              <button class="sidebar-nav-item" id="sbBtnFavs">
+                <span class="nav-item-icon">⭐</span>
+                <span class="nav-item-label">Favorieten</span>
+              </button>
+              <button class="sidebar-nav-item" id="sbBtnScan">
+                <span class="nav-item-icon">🎲</span>
+                <span class="nav-item-label">Scan Willekeurig</span>
+              </button>
+              <button class="sidebar-nav-item" id="sbBtnHelp">
+                <span class="nav-item-icon">💡</span>
+                <span class="nav-item-label">Help & Gids</span>
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- Kanalenlijst Scroll Container -->
-        <div id="channelListContainer" class="channel-list-container">
-          <div id="channelList" class="channel-list" role="list">
-            <!-- Dynamisch gevuld via app.js -->
+        <!-- Vaste Mini-Monitor onderaan in het vaste menu -->
+        <div class="sidebar-live-monitor">
+          <div class="monitor-header">
+            <span class="live-dot pulse-green"></span>
+            <span id="sbLiveStatusText" class="monitor-status">STANDBY</span>
           </div>
-
-          <div id="emptyState" class="empty-state" style="display: none;">
-            <span class="empty-icon">📡</span>
-            <h3>Geen uitluisterkanalen gevonden</h3>
-            <p>Probeer een andere zoekterm, frequentie of apparaatcategorie.</p>
-            <button id="btnResetFilters" class="pill-btn primary-pill">Wis Alle Filters</button>
-          </div>
-        </div>
-
-        <!-- Zwevende Mini-HUD (Zichtbaar op de Voorkant wanneer een kanaal actief is) -->
-        <div id="miniScannerHud" class="mini-scanner-hud" style="display: none;" role="region" aria-label="Mini Ontvanger HUD">
-          <div class="mini-hud-left">
-            <div class="mini-device-badge" id="miniDeviceIcon">📡</div>
-            <div class="mini-channel-info">
-              <div class="mini-title-row">
-                <span id="miniFreqText" class="mini-freq">119.225 MHz</span>
-                <span id="miniModBadge" class="mini-badge mod-badge">AM</span>
-                <span id="miniSignalBadge" class="mini-badge s-badge">S9+10</span>
-                <span id="miniLiveBadge" class="mini-badge live-badge">ONTVANGST</span>
-              </div>
-              <div id="miniChannelName" class="mini-channel-name">Schiphol Toren (EHAM Tower)</div>
-            </div>
-          </div>
-
-          <div class="mini-hud-center">
-            <button id="btnMiniPrev" class="mini-ctrl-btn" title="Vorig Kanaal">⏮️</button>
-            <button id="btnMiniPlay" class="mini-play-btn" title="Afspelen of Dempen">▶️</button>
-            <button id="btnMiniNext" class="mini-ctrl-btn" title="Volgend Kanaal">⏭️</button>
-          </div>
-
-          <div class="mini-hud-right">
-            <button id="btnMiniSquelch" class="mini-icon-btn active" title="Squelch (Ruisblokkade)">🔇 SQL</button>
-            <button id="btnMiniRoger" class="mini-icon-btn active" title="Roger Beep">🔔</button>
-            <button id="btnMiniToCockpit" class="pill-btn mini-flip-btn" title="Open de Cockpit, S-Meter & MP3 Studio">
-              <span>🎛️ Naar Cockpit</span>
-              <span>→</span>
-            </button>
+          <div class="monitor-channel" id="sbLiveChannelName">Geen kanaal geselecteerd</div>
+          <div class="monitor-actions">
+            <button id="sbBtnPlay" class="sb-play-btn" title="Afspelen of Pauzeren">▶ Start</button>
+            <button id="sbBtnCockpit" class="sb-cockpit-btn" title="Naar Cockpit">🎛️ Cockpit</button>
           </div>
         </div>
-      </section>
+      </aside>
+
+      <!-- Donkere Overlay voor mobiel wanneer menu geopend is -->
+      <div id="sidebarOverlay" class="sidebar-overlay" style="display:none;"></div>
 
       <!-- ================================================================
-           ACHTERKANT / RECHTERPANEEL: VFO Cockpit, S-Meter, DSP & Studio
+           HOOFD WERKGEBIED (Main Container): Kanalenoverzicht & Cockpit
            ================================================================ -->
-      <section id="cockpitPanel" class="panel cockpit-panel" aria-label="Ontvanger Cockpit & Studio">
+      <main id="mainContainer" class="main-container view-voorkant">
 
-        <!-- Bovenbalk Terug naar Voorkant -->
-        <div class="cockpit-top-bar">
-          <button id="btnBackToVoorkant" class="pill-btn back-voorkant-pill" title="Terug naar Kanalenoverzicht">
-            <span>← 📻 Terug naar Voorkant (Overzicht)</span>
-          </button>
-          <div class="cockpit-status-tag">
-            <span class="pulse-cyan"></span>
-            <span>Radio Ontvanger Cockpit Actief</span>
+        <!-- ================================================================
+             VOORKANT: Kanalenoverzicht, Zoeken & Filters
+             ================================================================ -->
+        <section id="channelPanel" class="panel channel-panel" aria-label="Kanalenoverzicht">
+          <div class="panel-header">
+            <!-- Zoekbalk -->
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="channelSearch" placeholder="Zoek op trein, schip, frequentie (bv. 457.650), kanaal, roepnaam of stad..."
+                autocomplete="off" spellcheck="false">
+              <button id="btnClearSearch" class="btn-icon-clear" style="display:none;" title="Zoekopdracht wissen">✕</button>
+            </div>
+
+            <!-- Apparaatcategorieën Kiezer (Treinen, Schepen, Mobiel, Mobilofoon, Portofoon, Luchtvaart, Zendamateur) -->
+            <div class="category-pills-bar" role="tablist" aria-label="Apparaat Categorie">
+              <button class="cat-pill active" data-category="all">🌍 Alle Apparaten</button>
+              <button class="cat-pill" data-category="train">🚆 Treinen & Spoor (GSM-R)</button>
+              <button class="cat-pill" data-category="marine">⚓ Schepen & Marifoon</button>
+              <button class="cat-pill" data-category="portofoon">📱 Mobiele Portofoons</button>
+              <button class="cat-pill" data-category="mobilofoon">🚗 Mobilofoon (Trucks/Auto)</button>
+              <button class="cat-pill" data-category="air">✈️ Luchtvaart Scanner</button>
+              <button class="cat-pill" data-category="transceiver">📻 Zendontvangers</button>
+            </div>
+
+            <!-- Regio & Band Snelfilters (Nederland & Europa) -->
+            <div class="band-scroll-bar" role="group" aria-label="Regio en Band">
+              <button class="band-pill active" data-region="">🌐 Alle Regio's</button>
+              <button class="band-pill" data-region="NL">🇳🇱 Nederland</button>
+              <button class="band-pill" data-region="EU">🇪🇺 Europa / Transit</button>
+              <button class="band-pill" data-region="BE">🇧🇪 België</button>
+              <button class="band-pill" data-region="DE">🇩🇪 Duitsland</button>
+              <button class="band-pill" data-region="FR">🇫🇷 Frankrijk / Kanaal</button>
+              <button class="band-pill" data-region="CH">🏔️ Alpen / Outdoor</button>
+            </div>
+
+            <!-- Subbar: Aantal kanalen & Verversknop -->
+            <div class="status-subbar">
+              <span id="channelCountText" class="subbar-text">Kanalen laden...</span>
+              <div class="subbar-right">
+                <span id="subbarVerText" class="subbar-ver-text">v1.2.0</span>
+                <button id="btnReloadChannels" class="refresh-sub-btn" title="Lijst verversen">↻ Ververs</button>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- VFO Display & Frequentie Tuning Unit -->
-        <div class="vfo-card">
-          <div class="vfo-screen">
-            <div class="vfo-header-row">
-              <span id="vfoDeviceType" class="vfo-tag">📡 SCANNER</span>
-              <span id="vfoBandText" class="vfo-band">VHF LUCHTVAART</span>
-              <span id="vfoFilterText" class="vfo-filter">BANDPASS: 300-3000 Hz</span>
-              <span id="vfoStatusBadge" class="vfo-rx-badge">RX LIVE</span>
+          <!-- Kanalenlijst Scroll Container -->
+          <div id="channelListContainer" class="channel-list-container">
+            <div id="channelList" class="channel-list" role="list">
+              <!-- Dynamisch gevuld via app.js -->
             </div>
 
-            <!-- Grote Frequentieweergave -->
-            <div class="vfo-digits-row">
-              <span id="vfoFreqMain" class="vfo-freq-digits">119.225.00</span>
-              <span class="vfo-mhz-unit">MHz</span>
-              <span id="vfoModMode" class="vfo-mod-box">AM</span>
-            </div>
-
-            <div class="vfo-channel-meta-row">
-              <span id="vfoCallsign" class="vfo-callsign">EHAM TWR</span>
-              <span id="vfoChannelDesc" class="vfo-desc">Schiphol Toren • Verkeersleiding Start- & Landingsbanen</span>
-              <span id="vfoCtcss" class="vfo-ctcss">CTCSS: CSQ</span>
+            <div id="emptyState" class="empty-state" style="display: none;">
+              <span class="empty-icon">📡</span>
+              <h3>Geen uitluisterkanalen gevonden</h3>
+              <p>Probeer een andere zoekterm, frequentie of selecteer 'Alle Apparaten' in het vaste menu links.</p>
+              <button id="btnResetFilters" class="pill-btn primary-pill">Wis Alle Filters</button>
             </div>
           </div>
 
-          <!-- Tuning Bediening & Snelknoppen -->
-          <div class="tuning-controls-row">
-            <div class="tuning-btn-group">
-              <button id="btnTuneDownFast" class="tune-btn" title="Omlaag -1 MHz">« -1M</button>
-              <button id="btnTuneDown" class="tune-btn" title="Omlaag -25 kHz">‹ -25k</button>
-              <button id="btnTuneUp" class="tune-btn" title="Omhoog +25 kHz">+25k ›</button>
-              <button id="btnTuneUpFast" class="tune-btn" title="Omhoog +1 MHz">+1M »</button>
+          <!-- Zwevende Mini-HUD (Zichtbaar op de Voorkant wanneer een kanaal actief is) -->
+          <div id="miniScannerHud" class="mini-scanner-hud" style="display: none;" role="region" aria-label="Mini Ontvanger HUD">
+            <div class="mini-hud-left">
+              <div class="mini-device-badge" id="miniDeviceIcon">🚆</div>
+              <div class="mini-channel-info">
+                <div class="mini-title-row">
+                  <span id="miniFreqText" class="mini-freq">457.650 MHz</span>
+                  <span id="miniModBadge" class="mini-badge mod-badge">FM</span>
+                  <span id="miniSignalBadge" class="mini-badge s-badge">S9+10</span>
+                  <span id="miniLiveBadge" class="mini-badge live-badge">ONTVANGST</span>
+                </div>
+                <div id="miniChannelName" class="mini-channel-name">ProRail Treinverkeersleiding Midden</div>
+              </div>
             </div>
 
-            <div class="tuning-main-actions">
-              <button id="btnMainPlay" class="main-play-btn" title="Ontvangst Starten / Stoppen (Spatie)">
-                <span id="mainPlayIcon">▶️</span>
-                <span id="mainPlayText">Ontvangst Starten</span>
+            <div class="mini-hud-center">
+              <button id="btnMiniPrev" class="mini-ctrl-btn" title="Vorig Kanaal">⏮️</button>
+              <button id="btnMiniPlay" class="mini-play-btn" title="Afspelen of Dempen">▶️</button>
+              <button id="btnMiniNext" class="mini-ctrl-btn" title="Volgend Kanaal">⏭️</button>
+            </div>
+
+            <div class="mini-hud-right">
+              <button id="btnMiniSquelch" class="mini-icon-btn active" title="Squelch (Ruisblokkade)">🔇 SQL</button>
+              <button id="btnMiniRoger" class="mini-icon-btn active" title="Roger Beep">🔔</button>
+              <button id="btnMiniToCockpit" class="pill-btn mini-flip-btn" title="Open de Cockpit, S-Meter & MP3 Studio">
+                <span>🎛️ Naar Cockpit</span>
+                <span>→</span>
               </button>
-              <button id="btnMainFav" class="action-btn-circle" title="Favoriet maken (F)">
-                <svg id="favSvg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-              </button>
-            </div>
-
-            <!-- Volume & Squelch Sliders -->
-            <div class="knobs-row">
-              <div class="knob-item">
-                <span class="knob-label">Volume: <strong id="volText">80%</strong></span>
-                <input type="range" id="volumeSlider" min="0" max="100" value="80" class="smooth-slider">
-              </div>
-              <div class="knob-item">
-                <span class="knob-label">Squelch (SQL): <strong id="sqlText">40%</strong></span>
-                <input type="range" id="squelchSlider" min="0" max="100" value="40" class="smooth-slider sql-slider">
-              </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- Analoge S-Meter & 60 FPS Waterval Visualizer -->
-        <div class="visualizer-card">
-          <div class="vis-header">
-            <div class="vis-title-group">
-              <span class="vis-indicator"></span>
-              <span class="vis-title">Analoge S-Meter & 60 FPS Watervalscherm</span>
-            </div>
-            <div class="vis-mode-pills">
-              <button id="visModeWaterfall" class="vis-pill active" title="Watervalspectrum">Waterval</button>
-              <button id="visModeSpectrum" class="vis-pill" title="Frequentiebalken">Spectrum</button>
-              <button id="visModeOscilloscope" class="vis-pill" title="Oscilloscoop golf">Golf</button>
-            </div>
-          </div>
+        <!-- ================================================================
+             ACHTERKANT / RECHTERPANEEL: VFO Cockpit, S-Meter, DSP & Studio
+             ================================================================ -->
+        <section id="cockpitPanel" class="panel cockpit-panel" aria-label="Ontvanger Cockpit & Studio">
 
-          <!-- Analoge S-Meter Meterkast -->
-          <div class="s-meter-container">
-            <div class="s-meter-dial">
-              <div class="s-scale-top">
-                <span>1</span><span>3</span><span>5</span><span>7</span><span>9</span>
-                <span class="scale-red">+10</span><span class="scale-red">+20</span><span class="scale-red">+30 dB</span>
-              </div>
-              <div class="s-needle-track">
-                <div id="sMeterNeedle" class="s-meter-needle"></div>
-              </div>
-              <div class="s-meter-sub">
-                <span>SIGNAL STRENGTH (S/RF)</span>
-                <span id="sMeterDbValue" class="s-val-highlight">S9 +10 dB</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Canvas voor 60 FPS Spectrum / Waterval -->
-          <div class="canvas-wrapper">
-            <canvas id="scannerCanvas" width="600" height="130"></canvas>
-          </div>
-        </div>
-
-        <!-- Radio DSP & Filter FX Rack (PTT, Roger Beep, Bandpass) -->
-        <div class="dsp-rack-card">
-          <div class="dsp-header">
-            <span class="dsp-icon">🎚️</span>
-            <div>
-              <h3 class="dsp-title">Radio DSP Audio Filters & PTT Microfoon</h3>
-              <p class="dsp-subtitle">Squelch ruisonderdrukking, authentieke Roger Beep en portofoonbandbreedte</p>
-            </div>
-          </div>
-
-          <div class="dsp-controls-grid">
-            <button id="btnToggleRoger" class="dsp-toggle-btn active" title="Schakel Roger Beep aan of uit">
-              <span class="dsp-btn-icon">🔔</span>
-              <div class="dsp-btn-text">
-                <span class="btn-head">Roger Beep</span>
-                <span id="rogerStatusText" class="btn-sub">Actief (Pieptoon bij zendstop)</span>
-              </div>
+          <!-- Bovenbalk Terug naar Voorkant -->
+          <div class="cockpit-top-bar">
+            <button id="btnBackToVoorkant" class="pill-btn back-voorkant-pill" title="Terug naar Kanalenoverzicht">
+              <span>← 📻 Terug naar Voorkant (Overzicht)</span>
             </button>
-
-            <button id="btnToggleNoise" class="dsp-toggle-btn active" title="Schakel zachte etherruis in/uit">
-              <span class="dsp-btn-icon">📻</span>
-              <div class="dsp-btn-text">
-                <span class="btn-head">Etherruis & Static</span>
-                <span id="noiseStatusText" class="btn-sub">Realistische Squelch Ruis</span>
-              </div>
-            </button>
-
-            <!-- Interactieve PTT Test Microfoon -->
-            <button id="btnPttMic" class="ptt-btn" title="Druk en houd vast om te praten via het radiofilter">
-              <span class="ptt-icon">🎙️</span>
-              <div class="ptt-text">
-                <span class="ptt-main">PUSH-TO-TALK (PTT)</span>
-                <span id="ptkSubText" class="ptt-sub">Houd ingedrukt om uw stem door het portofoonfilter te horen</span>
-              </div>
-            </button>
+            <div class="cockpit-status-tag">
+              <span class="pulse-cyan"></span>
+              <span>Radio Ontvanger Cockpit Actief</span>
+            </div>
           </div>
-        </div>
 
-        <!-- 🎙️ Live MP3 Opname Studio -->
-        <div class="recording-studio-card">
-          <div class="rec-header">
-            <div class="rec-title-group">
-              <span class="rec-icon">🎙️</span>
+          <!-- VFO Display & Frequentie Tuning Unit -->
+          <div class="vfo-card">
+            <div class="vfo-screen">
+              <div class="vfo-header-row">
+                <span id="vfoDeviceType" class="vfo-tag">🚆 TREIN • NL</span>
+                <span id="vfoBandText" class="vfo-band">GSM-R SPOOR</span>
+                <span id="vfoFilterText" class="vfo-filter">BANDPASS: 300-3000 Hz</span>
+                <span id="vfoStatusBadge" class="vfo-rx-badge">RX LIVE</span>
+              </div>
+
+              <!-- Grote Frequentieweergave -->
+              <div class="vfo-digits-row">
+                <span id="vfoFreqMain" class="vfo-freq-digits">457.650.00</span>
+                <span class="vfo-mhz-unit">MHz</span>
+                <span id="vfoModMode" class="vfo-mod-box">FM</span>
+              </div>
+
+              <div class="vfo-channel-meta-row">
+                <span id="vfoCallsign" class="vfo-callsign">TRDL-UTR</span>
+                <span id="vfoChannelDesc" class="vfo-desc">ProRail Treinverkeersleiding Midden • Utrecht Centraal</span>
+                <span id="vfoCtcss" class="vfo-ctcss">CTCSS: CSQ</span>
+              </div>
+            </div>
+
+            <!-- Tuning Bediening & Snelknoppen -->
+            <div class="tuning-controls-row">
+              <div class="tuning-btn-group">
+                <button id="btnTuneDownFast" class="tune-btn" title="Omlaag -1 MHz">« -1M</button>
+                <button id="btnTuneDown" class="tune-btn" title="Omlaag -25 kHz">‹ -25k</button>
+                <button id="btnTuneUp" class="tune-btn" title="Omhoog +25 kHz">+25k ›</button>
+                <button id="btnTuneUpFast" class="tune-btn" title="Omhoog +1 MHz">+1M »</button>
+              </div>
+
+              <div class="tuning-main-actions">
+                <button id="btnMainPlay" class="main-play-btn" title="Ontvangst Starten / Stoppen (Spatie)">
+                  <span id="mainPlayIcon">▶️</span>
+                  <span id="mainPlayText">Ontvangst Starten</span>
+                </button>
+                <button id="btnMainFav" class="action-btn-circle" title="Favoriet maken (F)">
+                  <svg id="favSvg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Volume & Squelch Sliders -->
+              <div class="knobs-row">
+                <div class="knob-item">
+                  <span class="knob-label">Volume: <strong id="volText">80%</strong></span>
+                  <input type="range" id="volumeSlider" min="0" max="100" value="80" class="smooth-slider">
+                </div>
+                <div class="knob-item">
+                  <span class="knob-label">Squelch (SQL): <strong id="sqlText">40%</strong></span>
+                  <input type="range" id="squelchSlider" min="0" max="100" value="40" class="smooth-slider sql-slider">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analoge S-Meter & 60 FPS Waterval Visualizer -->
+          <div class="visualizer-card">
+            <div class="vis-header">
+              <div class="vis-title-group">
+                <span class="vis-indicator"></span>
+                <span class="vis-title">Analoge S-Meter & 60 FPS Watervalscherm</span>
+              </div>
+              <div class="vis-mode-pills">
+                <button id="visModeWaterfall" class="vis-pill active" title="Watervalspectrum">Waterval</button>
+                <button id="visModeSpectrum" class="vis-pill" title="Frequentiebalken">Spectrum</button>
+                <button id="visModeOscilloscope" class="vis-pill" title="Oscilloscoop golf">Golf</button>
+              </div>
+            </div>
+
+            <!-- Analoge S-Meter Meterkast -->
+            <div class="s-meter-container">
+              <div class="s-meter-dial">
+                <div class="s-scale-top">
+                  <span>1</span><span>3</span><span>5</span><span>7</span><span>9</span>
+                  <span class="scale-red">+10</span><span class="scale-red">+20</span><span class="scale-red">+30 dB</span>
+                </div>
+                <div class="s-needle-track">
+                  <div id="sMeterNeedle" class="s-meter-needle"></div>
+                </div>
+                <div class="s-meter-sub">
+                  <span>SIGNAL STRENGTH (S/RF)</span>
+                  <span id="sMeterDbValue" class="s-val-highlight">S9 +10 dB</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Canvas voor 60 FPS Spectrum / Waterval -->
+            <div class="canvas-wrapper">
+              <canvas id="scannerCanvas" width="600" height="130"></canvas>
+            </div>
+          </div>
+
+          <!-- Radio DSP & Filter FX Rack (PTT, Roger Beep, Bandpass) -->
+          <div class="dsp-rack-card">
+            <div class="dsp-header">
+              <span class="dsp-icon">🎚️</span>
               <div>
-                <h3 class="rec-title">Live MP3 Opname Studio</h3>
-                <p class="rec-subtitle">Neem live communicatie met 1 klik direct op en bewaar als authentiek MP3-bestand</p>
+                <h3 class="dsp-title">Radio DSP Audio Filters & PTT Microfoon</h3>
+                <p class="dsp-subtitle">Squelch ruisonderdrukking, authentieke Roger Beep en portofoonbandbreedte</p>
               </div>
             </div>
-            <div class="rec-quality-selector">
-              <label for="recBitrate" class="rec-lbl">Kwaliteit:</label>
-              <select id="recBitrate" class="rec-select">
-                <option value="128">128 kbps (Standaard)</option>
-                <option value="192" selected>192 kbps (Hoge Kwaliteit)</option>
-                <option value="320">320 kbps (Studio MP3)</option>
-              </select>
-            </div>
-          </div>
 
-          <div class="rec-action-panel">
-            <div class="rec-timer-display">
-              <span id="recDot" class="rec-dot-idle"></span>
-              <span id="recTimer" class="rec-clock">00:00:00</span>
-              <span id="recSizeEstimate" class="rec-filesize">0.0 MB</span>
-            </div>
-
-            <div class="rec-controls-row">
-              <button id="btnRecordToggle" class="pill-btn record-btn">
-                <span id="recBtnIcon">🔴</span>
-                <span id="recBtnText">Start MP3 Opname</span>
+            <div class="dsp-controls-grid">
+              <button id="btnToggleRoger" class="dsp-toggle-btn active" title="Schakel Roger Beep aan of uit">
+                <span class="dsp-btn-icon">🔔</span>
+                <div class="dsp-btn-text">
+                  <span class="btn-head">Roger Beep</span>
+                  <span id="rogerStatusText" class="btn-sub">Actief (Pieptoon bij zendstop)</span>
+                </div>
               </button>
-              <label class="auto-download-toggle">
-                <input type="checkbox" id="chkAutoDownload" checked>
-                <span>Direct downloaden na opname</span>
-              </label>
+
+              <button id="btnToggleNoise" class="dsp-toggle-btn active" title="Schakel zachte etherruis in/uit">
+                <span class="dsp-btn-icon">📻</span>
+                <div class="dsp-btn-text">
+                  <span class="btn-head">Etherruis & Static</span>
+                  <span id="noiseStatusText" class="btn-sub">Realistische Squelch Ruis</span>
+                </div>
+              </button>
+
+              <!-- Interactieve PTT Test Microfoon -->
+              <button id="btnPttMic" class="ptt-btn" title="Druk en houd vast om te praten via het radiofilter">
+                <span class="ptt-icon">🎙️</span>
+                <div class="ptt-text">
+                  <span class="ptt-main">PUSH-TO-TALK (PTT)</span>
+                  <span id="ptkSubText" class="ptt-sub">Houd ingedrukt om uw stem door het radiofilter te horen</span>
+                </div>
+              </button>
             </div>
           </div>
 
-          <!-- Lijst met opgeslagen opnames -->
-          <div class="recordings-history">
-            <div class="history-header">
-              <span class="history-title">Sessie Opnames</span>
-              <span id="recCountBadge" class="rec-count-badge">0 opnames</span>
+          <!-- 🎙️ Live MP3 Opname Studio -->
+          <div class="recording-studio-card">
+            <div class="rec-header">
+              <div class="rec-title-group">
+                <span class="rec-icon">🎙️</span>
+                <div>
+                  <h3 class="rec-title">Live MP3 Opname Studio</h3>
+                  <p class="rec-subtitle">Neem live communicatie met 1 klik direct op en bewaar als authentiek MP3-bestand</p>
+                </div>
+              </div>
+              <div class="rec-quality-selector">
+                <label for="recBitrate" class="rec-lbl">Kwaliteit:</label>
+                <select id="recBitrate" class="rec-select">
+                  <option value="128">128 kbps (Standaard)</option>
+                  <option value="192" selected>192 kbps (Hoge Kwaliteit)</option>
+                  <option value="320">320 kbps (Studio MP3)</option>
+                </select>
+              </div>
             </div>
-            <div id="recordingsList" class="recordings-list">
-              <!-- Dynamisch gevuld -->
+
+            <div class="rec-action-panel">
+              <div class="rec-timer-display">
+                <span id="recDot" class="rec-dot-idle"></span>
+                <span id="recTimer" class="rec-clock">00:00:00</span>
+                <span id="recSizeEstimate" class="rec-filesize">0.0 MB</span>
+              </div>
+
+              <div class="rec-controls-row">
+                <button id="btnRecordToggle" class="pill-btn record-btn">
+                  <span id="recBtnIcon">🔴</span>
+                  <span id="recBtnText">Start MP3 Opname</span>
+                </button>
+                <label class="auto-download-toggle">
+                  <input type="checkbox" id="chkAutoDownload" checked>
+                  <span>Direct downloaden na opname</span>
+                </label>
+              </div>
             </div>
-            <div id="noRecordingsState" class="no-recordings-hint">
-              Nog geen communicatie opgenomen in deze sessie.
+
+            <!-- Lijst met opgeslagen opnames -->
+            <div class="recordings-history">
+              <div class="history-header">
+                <span class="history-title">Sessie Opnames</span>
+                <span id="recCountBadge" class="rec-count-badge">0 opnames</span>
+              </div>
+              <div id="recordingsList" class="recordings-list">
+                <!-- Dynamisch gevuld -->
+              </div>
+              <div id="noRecordingsState" class="no-recordings-hint">
+                Nog geen communicatie opgenomen in deze sessie.
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div><!-- /.app-body -->
 
     <!-- Verborgen Audio Element -->
     <audio id="audioPlayer" preload="none"></audio>
@@ -391,7 +553,7 @@
 
         <div class="modal-tabs">
           <button class="help-tab active" data-tab="guide">Handleiding</button>
-          <button class="help-tab" data-tab="devices">Apparaten (4 Types)</button>
+          <button class="help-tab" data-tab="devices">Apparaten (Treinen, Schepen & Mobiel)</button>
           <button class="help-tab" data-tab="frequencies">Frequenties & Banden</button>
           <button class="help-tab" data-tab="features">Functies & Changelog</button>
           <button class="help-tab" data-tab="shortcuts">Sneltoetsen</button>
@@ -402,12 +564,13 @@
           <div id="helpTabGuide" class="help-tab-pane active">
             <div class="help-section">
               <h3>📻 Wat is Peter Vroon ComStudio?</h3>
-              <p>Peter Vroon ComStudio is een modern online communicatieplatform om live mee te luisteren naar ethercommunicatie op Portofoons, Mobilofoons, Zendontvangers (Transceivers) en Scanners. U heeft geen dure radioapparatuur nodig: alles werkt direct in uw webbrowser.</p>
+              <p>Peter Vroon ComStudio is een modern online communicatieplatform om live mee te luisteren naar ethercommunicatie op Schepen, Treinen (GSM-R), Mobiele Portofoons, Mobilofoons en Scanners. Alles werkt direct in uw webbrowser op computer, tablet en smartphone.</p>
             </div>
             <div class="help-section">
-              <h3>🚀 Snelstart</h3>
+              <h3>🚀 Snelstart & Vast Menu Links</h3>
               <ol class="help-steps">
-                <li><strong>Voorkant (Overzicht):</strong> Kies direct een apparaatcategorie (bv. 📡 Scanner of 🚗 Mobilofoon) en klik op een kanaal om meteen te luisteren.</li>
+                <li><strong>Vast Menu Links:</strong> Gebruik het vaste menu aan de linkerzijde om met 1 klik te filteren op 🚆 Treinen, ⚓ Schepen, 📱 Mobiele Portofoons, 🚗 Mobilofoon of Europese Regio's.</li>
+                <li><strong>Voorkant (Overzicht):</strong> Kies direct een kanaal om meteen te luisteren. Het laatst gekozen station staat altijd bovenaan.</li>
                 <li><strong>Zwevende Mini-HUD:</strong> Terwijl u luistert, blijft de speler onderin actief en kunt u met één klik naar de Cockpit.</li>
                 <li><strong>Cockpit & Studio:</strong> Bekijk de analoge S-meter, stem af met de VFO dial, regel de Squelch ruisonderdrukking of neem live audio op als MP3.</li>
               </ol>
@@ -465,7 +628,7 @@
           <!-- Tab 4: Functies & Changelog -->
           <div id="helpTabFeatures" class="help-tab-pane">
             <div class="help-version-banner">
-              <span id="helpVersionBadge" class="help-pill-lg">v1.0.0 Build 1</span>
+              <span id="helpVersionBadge" class="help-pill-lg">v1.2.0 Build 3</span>
               <span id="helpGitHash" class="git-hash-tag">#online</span>
             </div>
             <ul id="helpFeaturesList" class="features-list">

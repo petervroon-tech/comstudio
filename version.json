@@ -1,21 +1,22 @@
 {
   "app_name": "Peter Vroon ComStudio",
-  "version": "1.2.0",
-  "build": 3,
-  "timestamp": "2026-11-17T11:47:58.751954+00:00",
-  "git_hash": "01622de",
+  "version": "1.3.0",
+  "build": 4,
+  "timestamp": "2026-11-17T11:59:24.732016+00:00",
+  "git_hash": "41853bc",
   "features": [
-    "🚀 Uitbreiding Schepen, Treinen & Mobiele Communicatie (NL & Europa): Volledige live ondersteuning voor Treinradio & GSM-R (ProRail Utrecht CS, Knooppunt Zwolle, Kijfhoek Betuweroute, DB Netze ICE, SNCB Brussel, Eurotunnel Kanaaltunnel).",
-    "⚓ Schepen & Maritieme Havencentra: Kustwacht Den Helder K16, Haven Rotterdam Maasmond, Port of Antwerp Zandvliet, Hamburg Elbe Traffic, Dover Coastguard Straat van Dover en Rijnvaart Nijmegen.",
-    "📱 Mobiele Portofoons & Mobilofoons Overal: PMR446 kanalen in heel Europa, Alpen Noodkanaal 8 outdoor, 27 MHz CB truckerskanaal 19 (A1/A2/A3/E30) en Transitcorridor 28.",
-    "🌍 Europese Regiofilter & Apparaatkiezers: Filter direct op Treinen 🚆, Schepen ⚓, Mobiel 📱, Mobilofoon 🚗, Luchtvaart ✈️ en Zendontvangers 📻, en schakel snel tussen 🇳🇱 Nederland, 🇪🇺 Europa, 🇧🇪 België, 🇩🇪 Duitsland, 🇫🇷 Frankrijk en 🏔️ Alpen.",
+    "📋 Vast Navigatiemenu aan de Linkerkant: Permanente vaste zijbalk links met directe categorienavigatie (Treinen 🚆, Schepen ⚓, Mobiel 📱, Trucks 🚗, Air ✈️, Ham 📻), Europese regiofilters (NL, EU, BE, DE, FR, CH), snelle tools én een vaste live monitor onderin het menu.",
+    "📱 Volledig Responsieve Mobile Drawer: Op smartphones en tablets soepel in- en uitschuifbaar met de '☰ Menu' knop in de topbalk met donker glas backdrop.",
+    "🚆 Treinen & Spoorwegen (GSM-R): Live ProRail Utrecht CS, Knooppunt Zwolle, Kijfhoek Betuweroute, DB Netze ICE International, SNCB Brussel en Eurotunnel Kanaaltunnel.",
+    "⚓ Schepen & Maritiem: Kustwacht Den Helder K16, Haven Rotterdam Maasmond, Port of Antwerp Zandvliet, Hamburg Elbe Traffic, Dover Coastguard en Rijnvaart Nijmegen.",
+    "📱 Mobiele Portofoons & Mobilofoons Overal: PMR446 kanalen in heel Europa, Alpen Noodkanaal 8 outdoor, 27 MHz CB truckerskanaal 19 en Transitcorridor 28.",
     "🎯 Altijd Starten met de Voorkant (Kanalenoverzicht): Peter Vroon ComStudio start altijd direct met het ruime overzicht met alle uitluisterkanalen en filters. De cockpit blijft op de achtergrond.",
     "💾 Onthouden van Laatst Beluisterde Kanaal: Het laatst gekozen station staat automatisch op positie 1 met de gouden '🕒 Laatst Geluisterd' badge.",
     "🎛️ 3-in-1 Weergave Model: Vrij schakelen tussen Voorkant (Overzicht), Achterkant (Cockpit & Studio) en Split Screen.",
-    "🎧 Zwevende Mini-HUD: Live mini-balk onderin met actuele frequentie, audio en snelle volumebediening.",
+    "🎧 Zwevende Mini-HUD & Zijbalk Monitor: Live mini-balk onderin met actuele frequentie, audio en snelle volumebediening.",
     "🎚️ Realistische Radio DSP & PTT: Instelbare Squelch ruisonderdrukking, authentieke Roger Beep en PTT testmicrofoon.",
     "📊 60 FPS Audio Visualizer & Waterval: Realtime spectrum en waterval weergave voor analoge etherbeleving.",
-    "🎙️ Live MP3 Opname Studio: Neem radio- en treincommunicatie direct op en download als MP3 (128 / 192 / 320 kbps).",
+    "🎙️ Live MP3 Opname Studio: Neem communicatie direct op en download als MP3 (128 / 192 / 320 kbps).",
     "💡 Dynamische Help & Handleiding: Direct toegankelijke Help-modal met ✓ Altijd Actueel badge, gesynchroniseerd via build.py."
   ]
 }
