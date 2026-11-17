@@ -2994,3 +2994,245 @@ html, body {
   }
 }
 
+/* ==========================================================================
+   UNIEKE RADIO CALLS, STEMMEN & TRANSMISSIE DISPATCHER (v1.7.0 Build 8)
+   ========================================================================== */
+
+/* Call Log Knop in Header */
+.log-pill {
+  border-color: rgba(255, 179, 0, 0.4);
+  background: rgba(255, 179, 0, 0.08);
+}
+.log-pill:hover {
+  background: rgba(255, 179, 0, 0.18);
+  border-color: var(--accent-amber);
+  box-shadow: 0 0 12px rgba(255, 179, 0, 0.35);
+}
+.call-log-count-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  background: rgba(255, 179, 0, 0.25);
+  border: 1px solid rgba(255, 179, 0, 0.5);
+  color: #fde047;
+  border-radius: var(--radius-pill);
+}
+
+/* Audio Bron Modus Selector */
+.audio-mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.28);
+  padding: 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+}
+.mode-pill {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  white-space: nowrap;
+}
+.mode-pill:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+.mode-pill.active {
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.22), rgba(0, 230, 118, 0.18));
+  border-color: rgba(0, 242, 254, 0.5);
+  color: #fff;
+  box-shadow: 0 0 14px rgba(0, 242, 254, 0.25);
+}
+.mode-icon {
+  font-size: 0.9rem;
+}
+.mode-tag-rec {
+  font-size: 0.58rem;
+  font-weight: 800;
+  padding: 1px 5px;
+  background: var(--accent-green);
+  color: #040810;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* Live Ether Call & Stemmen Transmissie Box in VFO Cockpit */
+.vfo-live-transmission-card {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, rgba(255, 51, 102, 0.12), rgba(9, 14, 26, 0.94));
+  border: 1px solid rgba(255, 51, 102, 0.4);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.15);
+  animation: slideDownFade 0.2s ease-out;
+}
+.trans-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.trans-header-left {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.live-trans-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff3366;
+  box-shadow: 0 0 8px #ff3366;
+  animation: pulseRedDot 1.4s infinite;
+}
+@keyframes pulseRedDot {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.trans-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #ff6b8b;
+  letter-spacing: 0.3px;
+  font-family: var(--font-mono);
+}
+.trans-header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.trans-time {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.trans-live-badge {
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  background: rgba(0, 230, 118, 0.2);
+  border: 1px solid rgba(0, 230, 118, 0.45);
+  color: var(--accent-green);
+  border-radius: var(--radius-pill);
+}
+.trans-msg-bubble {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #fff;
+  font-style: italic;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border-left: 3px solid #ff3366;
+}
+
+/* Mini-HUD Live Call Strip */
+.mini-live-call-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 4px 10px;
+  background: rgba(255, 51, 102, 0.12);
+  border-bottom: 1px solid rgba(255, 51, 102, 0.3);
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+.mini-live-call-tag {
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: #ff6b8b;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+.mini-live-call-text {
+  font-size: 0.72rem;
+  color: #fff;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Live Call Log Modal */
+.calls-log-sheet {
+  max-width: 680px;
+}
+.calls-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 58vh;
+  overflow-y: auto;
+}
+.call-log-card {
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all var(--trans-fast);
+}
+.call-log-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 179, 0, 0.35);
+}
+.call-log-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.call-log-station {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+.call-log-time {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+}
+.call-log-msg {
+  font-size: 0.78rem;
+  color: var(--text-main);
+  line-height: 1.4;
+  font-style: italic;
+}
+.call-log-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+.call-log-target {
+  color: var(--accent-amber);
+}
+.call-log-chan {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+

@@ -16,7 +16,7 @@ import subprocess
 from datetime import datetime, timezone
 
 APP_NAME = "Peter Vroon ComStudio"
-DEFAULT_VERSION = "1.6.0"
+DEFAULT_VERSION = "1.7.0"
 
 def get_git_hash() -> str:
     try:

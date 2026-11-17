@@ -72,6 +72,13 @@
           <span class="nodes-count-badge">12</span>
         </button>
 
+        <!-- Knop Live Calls Log -->
+        <button id="btnOpenCallsLog" class="pill-btn action-pill log-pill" title="Live Transmissie & Call Log (Alle gehoorde unieke roepnamen)">
+          <span class="pill-icon">📋</span>
+          <span class="action-label">Call Log</span>
+          <span id="callLogBadge" class="call-log-count-badge">0</span>
+        </button>
+
         <button id="btnOpenFavs" class="pill-btn action-pill" title="Mijn Opgeslagen Favoriete Frequenties">
           <span class="pill-icon">⭐</span>
           <span class="action-label">Favorieten</span>
@@ -264,6 +271,11 @@
           <div class="sidebar-section">
             <span class="sidebar-section-title">Studio & Tools</span>
             <div class="sidebar-nav-list">
+              <button class="sidebar-nav-item" id="sbBtnCallLog">
+                <span class="nav-item-icon">📋</span>
+                <span class="nav-item-label">Live Call Log</span>
+                <span id="sbCallLogBadge" class="nav-item-badge">0</span>
+              </button>
               <button class="sidebar-nav-item" id="sbBtnFavs">
                 <span class="nav-item-icon">⭐</span>
                 <span class="nav-item-label">Favorieten</span>
@@ -403,6 +415,13 @@
 
           <!-- Zwevende Mini-HUD (Zichtbaar op de Voorkant wanneer een kanaal actief is) -->
           <div id="miniScannerHud" class="mini-scanner-hud" style="display: none;" role="region" aria-label="Mini Ontvanger HUD">
+            <!-- Actieve Live Call Strip (Geen herhalende bandjes) -->
+            <div id="miniLiveCallStrip" class="mini-live-call-strip" style="display:none;">
+              <span class="live-trans-dot pulse-red"></span>
+              <span class="mini-live-call-tag" id="miniLiveCallTag">CALL:</span>
+              <span id="miniLiveCallText" class="mini-live-call-text">Actieve roepnaam...</span>
+            </div>
+
             <div class="mini-hud-left">
               <div class="mini-device-badge" id="miniDeviceIcon">🚆</div>
               <div class="mini-channel-info">
@@ -483,10 +502,40 @@
                   <span>Wissel Node ▾</span>
                 </button>
               </div>
+
+              <!-- Live Ether Call & Stemmen Transmissie Box (Geen Herhalende Bandjes!) -->
+              <div class="vfo-live-transmission-card" id="vfoTransmissionCard" style="display: none;">
+                <div class="trans-header">
+                  <div class="trans-header-left">
+                    <span class="live-trans-dot pulse-red"></span>
+                    <span class="trans-label" id="transSenderLabel">RX CALL: TRDL-UTR</span>
+                  </div>
+                  <div class="trans-header-right">
+                    <span class="trans-time" id="transTimeLabel">16:35:00</span>
+                    <span class="trans-live-badge">ECHTE STEM</span>
+                  </div>
+                </div>
+                <div class="trans-msg-bubble" id="transMsgText">
+                  "Trein 3042 voor Treindienstleider Utrecht: sein 412 toont geel, snelheid verlagen naar 40 km/u voor spoor 5a."
+                </div>
+              </div>
             </div>
 
             <!-- Tuning Bediening & Snelknoppen -->
             <div class="tuning-controls-row">
+              <!-- Audio Bron Modus Selector -->
+              <div class="audio-mode-selector" role="group" aria-label="Audio Bron Modus">
+                <button id="btnModeUniqueCalls" class="mode-pill active" title="Unieke live etheroproepen met afwisselende stemmen en callsigns (Geen herhalende bandjes)">
+                  <span class="mode-icon">🎙️</span>
+                  <span>Unieke Calls & Stemmen</span>
+                  <span class="mode-tag-rec">Actief</span>
+                </button>
+                <button id="btnModeLiveStream" class="mode-pill" title="Continue live scanner audiofeed via internet">
+                  <span class="mode-icon">📡</span>
+                  <span>24/7 Live Stream</span>
+                </button>
+              </div>
+
               <div class="tuning-btn-group">
                 <button id="btnTuneDownFast" class="tune-btn" title="Omlaag -1 MHz">« -1M</button>
                 <button id="btnTuneDown" class="tune-btn" title="Omlaag -25 kHz">‹ -25k</button>
@@ -978,6 +1027,41 @@
 
         <div class="modal-footer">
           <button id="btnCloseCustomLocDone" class="pill-btn primary-pill">Sluiten</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📋 Live Ether Call Log Modal -->
+    <div id="callsLogModal" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="callsLogTitle">
+      <div class="modal-sheet calls-log-sheet">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <span class="modal-icon">📋</span>
+            <div>
+              <h2 id="callsLogTitle" class="modal-title">Live Ether Call Log</h2>
+              <span class="modal-subtitle">Realtime overzicht van alle ontvangen unieke oproepen, roepnamen en berichten</span>
+            </div>
+          </div>
+          <div class="modal-header-actions">
+            <span id="callLogModalCount" class="verified-badge">0 Oproepen</span>
+            <button id="btnCloseCallsLog" class="btn-close-modal" aria-label="Sluiten">✕</button>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div id="callsLogList" class="calls-log-list">
+            <!-- Dynamisch opgebouwd in app.js -->
+          </div>
+          <div id="emptyCallsLogState" class="empty-state" style="display: flex;">
+            <span class="empty-icon">📻</span>
+            <h3>Nog geen oproepen ontvangen</h3>
+            <p>Start ontvangst op een willekeurig kanaal om live unieke ethercalls te beluisteren en hier te loggen.</p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="btnClearCallsLog" class="pill-btn danger-pill" style="display:none;">Log Wissen</button>
+          <button id="btnCloseCallsLogDone" class="pill-btn primary-pill">Sluiten</button>
         </div>
       </div>
     </div>

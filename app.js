@@ -995,7 +995,8 @@
     VIEW_MODE: 'pv_comstudio_view_mode',
     AUTO_DOWNLOAD: 'pv_comstudio_autodownload',
     RADIUS_FILTER: 'pv_comstudio_radius_filter',
-    USER_LOC: 'pv_comstudio_user_loc'
+    USER_LOC: 'pv_comstudio_user_loc',
+    AUDIO_MODE: 'pv_comstudio_audio_mode'
   };
 
   const state = {
@@ -1018,6 +1019,13 @@
     // 🌐 Radio Nodes Filter
     filterNodeId: null,
     filterNodeType: null,
+    // 🎙️ Audio Bron Modus & Unieke Calls Dispatcher
+    audioMode: 'calls', // 'calls' (unieke ethercalls & stemmen) of 'stream' (24/7 live stream)
+    callIntervalTimer: null,
+    isTransmissionActive: false,
+    activeTransmissionText: '',
+    transmissionHistory: [],
+    speechVoices: [],
     favorites: [],
     recordings: [],
     isRecording: false,
@@ -1051,6 +1059,7 @@
     cacheDomElements();
     loadStoredPreferences();
     initAudioEngine();
+    initVoices();
     renderChannelList();
     bindEvents();
     startCanvasVisualizer();
@@ -1215,6 +1224,28 @@
     DOM.vfoNodeDistBadge = document.getElementById('vfoNodeDistBadge');
     DOM.btnVfoSwitchNode = document.getElementById('btnVfoSwitchNode');
 
+    // Live Transmission & Unique Calls
+    DOM.vfoTransmissionCard = document.getElementById('vfoTransmissionCard');
+    DOM.transSenderLabel = document.getElementById('transSenderLabel');
+    DOM.transTimeLabel = document.getElementById('transTimeLabel');
+    DOM.transMsgText = document.getElementById('transMsgText');
+    DOM.miniLiveCallStrip = document.getElementById('miniLiveCallStrip');
+    DOM.miniLiveCallTag = document.getElementById('miniLiveCallTag');
+    DOM.miniLiveCallText = document.getElementById('miniLiveCallText');
+    DOM.btnModeUniqueCalls = document.getElementById('btnModeUniqueCalls');
+    DOM.btnModeLiveStream = document.getElementById('btnModeLiveStream');
+    DOM.btnOpenCallsLog = document.getElementById('btnOpenCallsLog');
+    DOM.sbBtnCallLog = document.getElementById('sbBtnCallLog');
+    DOM.callLogBadge = document.getElementById('callLogBadge');
+    DOM.sbCallLogBadge = document.getElementById('sbCallLogBadge');
+    DOM.callsLogModal = document.getElementById('callsLogModal');
+    DOM.callsLogList = document.getElementById('callsLogList');
+    DOM.emptyCallsLogState = document.getElementById('emptyCallsLogState');
+    DOM.callLogModalCount = document.getElementById('callLogModalCount');
+    DOM.btnCloseCallsLog = document.getElementById('btnCloseCallsLog');
+    DOM.btnCloseCallsLogDone = document.getElementById('btnCloseCallsLogDone');
+    DOM.btnClearCallsLog = document.getElementById('btnClearCallsLog');
+
     // Referentielocatie / Polder Modal
     DOM.customLocationModal = document.getElementById('customLocationModal');
     DOM.btnCloseCustomLoc = document.getElementById('btnCloseCustomLoc');
@@ -1279,6 +1310,15 @@
       DOM.chkAutoDownload.checked = storedAutoDl === 'true';
     }
 
+    const storedAudioMode = localStorage.getItem(STORAGE_KEYS.AUDIO_MODE);
+    if (storedAudioMode === 'calls' || storedAudioMode === 'stream') {
+      state.audioMode = storedAudioMode;
+    }
+    if (DOM.btnModeUniqueCalls && DOM.btnModeLiveStream) {
+      DOM.btnModeUniqueCalls.classList.toggle('active', state.audioMode === 'calls');
+      DOM.btnModeLiveStream.classList.toggle('active', state.audioMode === 'stream');
+    }
+
     // Update Sliders in UI
     if (DOM.volumeSlider) {
       DOM.volumeSlider.value = Math.round(state.volume * 100);
@@ -1299,6 +1339,7 @@
       localStorage.setItem(STORAGE_KEYS.SQUELCH, state.squelch.toString());
       localStorage.setItem(STORAGE_KEYS.ROGER_BEEP, state.rogerBeep.toString());
       localStorage.setItem(STORAGE_KEYS.NOISE, state.noise.toString());
+      localStorage.setItem(STORAGE_KEYS.AUDIO_MODE, state.audioMode || 'calls');
       if (DOM.chkAutoDownload) {
         localStorage.setItem(STORAGE_KEYS.AUTO_DOWNLOAD, DOM.chkAutoDownload.checked.toString());
       }
@@ -1453,52 +1494,549 @@
   }
 
   // ==========================================================================
-  // ECHTE AUDIO STREAMS & STEMMEN AFSPELEN (100% ECHTE MENSELIJKE STEMMEN)
+  // ECHTE AUDIO STREAMS, STEMMEN & PROCEDURAL RADIO CALL DISPATCHER
+  // (100% UNIEKE CALLS, GEEN HERHALENDE BANDJES MEER!)
   // ==========================================================================
-  function playChannelAudio() {
-    if (!state.isPlaying || !DOM.audioPlayer) return;
+  function pickRandomItem(arr) {
+    if (!arr || arr.length === 0) return null;
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function initVoices() {
+    if (!('speechSynthesis' in window)) return;
+    function loadVoices() {
+      state.speechVoices = window.speechSynthesis.getVoices() || [];
+    }
+    loadVoices();
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+  }
+
+  function findBestNaturalVoice(langCode = 'nl-NL') {
+    if (!state.speechVoices || state.speechVoices.length === 0) {
+      if ('speechSynthesis' in window) {
+        state.speechVoices = window.speechSynthesis.getVoices() || [];
+      }
+    }
+    const voices = state.speechVoices || [];
+    if (voices.length === 0) return null;
+
+    const targetLang = langCode.toLowerCase().replace('_', '-');
+    const exact = voices.filter(v => v.lang && v.lang.toLowerCase().replace('_', '-') === targetLang);
+    if (exact.length > 0) return pickRandomItem(exact);
+
+    const prefix = targetLang.split('-')[0];
+    const prefixMatches = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith(prefix));
+    if (prefixMatches.length > 0) return pickRandomItem(prefixMatches);
+
+    return voices[0];
+  }
+
+  function playSquelchBurst() {
+    if (!state.audioCtx) return;
+    resumeAudioContextIfNeeded();
+    try {
+      const now = state.audioCtx.currentTime;
+      const bufferSize = Math.floor(state.audioCtx.sampleRate * 0.065);
+      const noiseBuffer = state.audioCtx.createBuffer(1, bufferSize, state.audioCtx.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        output[i] = (Math.random() * 2 - 1) * 0.4;
+      }
+      const noiseSource = state.audioCtx.createBufferSource();
+      noiseSource.buffer = noiseBuffer;
+
+      const burstGain = state.audioCtx.createGain();
+      burstGain.gain.setValueAtTime(0.001, now);
+      burstGain.gain.exponentialRampToValueAtTime(0.22 * state.volume, now + 0.015);
+      burstGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+      noiseSource.connect(burstGain);
+      burstGain.connect(state.filterNode);
+      noiseSource.start(now);
+      noiseSource.stop(now + 0.065);
+    } catch (e) {
+      console.warn('Squelch burst fout:', e);
+    }
+  }
+
+  const PROCEDURAL_CALLS = {
+    train: [
+      (c) => ({
+        sender: `Treindienstleider ${c.location || 'Utrecht Centraal'}`,
+        target: `Intercity ${pickRandomItem([2144, 3052, 1738, 842, 2819])}`,
+        msg: `Sein ${pickRandomItem([214, 188, 302, 146])} staat veilig op geel knipper, vertrek toegestaan richting ${pickRandomItem(['Amersfoort', 'Den Haag Centraal', 'Zwolle', 'Arnhem'])}, baanvak vrij, over.`
+      }),
+      (c) => ({
+        sender: `Machinist Sprinter ${pickRandomItem([4028, 5632, 7014, 4618])}`,
+        target: `Treinverkeersleiding`,
+        msg: `Meldpositie ${c.location || 'Rotterdam'} gepasseerd, remproef 100% in orde, we rijden exact op schema, over.`
+      }),
+      (c) => ({
+        sender: `Treinverkeersleiding Midden`,
+        target: `DB Cargo goederentrein ${pickRandomItem([41103, 60041, 52180])}`,
+        msg: `Spoorbezetting gewijzigd, oprijden tot wissel ${pickRandomItem([42, 68, 105])} en wachten op tegemoetkomende Intercity, over.`
+      }),
+      (c) => ({
+        sender: `Rangeerder ${c.location || 'Kijfhoek Heuvel'}`,
+        target: `Post ${pickRandomItem([2, 5, 8])}`,
+        msg: `Rangeren met ${pickRandomItem([12, 16, 22])} ketelwagens gereed op spoor ${pickRandomItem([34, 48, 62])}, ontkoppeling voltooid, over.`
+      }),
+      (c) => ({
+        sender: `Machinist Eurostar ${pickRandomItem([9124, 9158])}`,
+        target: `Treinverkeersleiding West`,
+        msg: `Passeren Schiphol Tunnel spoor 4 op 140 kilometer per uur, ETCS level 2 verbinding stabiel, over.`
+      }),
+      (c) => ({
+        sender: `Machinist Arriva Vechtdallijnen ${pickRandomItem([3814, 3822])}`,
+        target: `Treindienstleiding Zwolle`,
+        msg: `Vertrek gereed vanaf perron ${pickRandomItem([1, 2, 3])}, deuren gesloten en vergrendeld, over.`
+      }),
+      (c) => ({
+        sender: `Treindienstleider Amsterdam`,
+        target: `Intercity Direct ${pickRandomItem([9228, 9240])}`,
+        msg: `Snelheidsbeperking bij km ${pickRandomItem([14.2, 18.6])} opgeheven, baanvaksnelheid 160 weer van kracht, over.`
+      })
+    ],
+    marine: [
+      (c) => ({
+        sender: `Kustwachtcentrum Den Helder`,
+        target: `Alle schepen`,
+        msg: `Op VHF werkkanaal ${c.ch || '16'}, marifoonbericht. Wind zuidwest ${pickRandomItem([6, 7, 8])} Beaufort, golfhoogte ${pickRandomItem(['2.2', '3.1', '4.0'])} meter in vak IJmuiden, over.`
+      }),
+      (c) => ({
+        sender: `Sector Maasmond`,
+        target: `Containerschip ${pickRandomItem(['CMA CGM Palais', 'Maersk Denver', 'MSC Geneva', 'Ever Given'])}`,
+        msg: `Neem loods over bij loodsstation Steenbank, behoud huidige koers ${pickRandomItem([280, 295, 310])} graden, over.`
+      }),
+      (c) => ({
+        sender: `Binnenvaartschip ${pickRandomItem(['Albatros', 'Nova Cura', 'Rijnmond 4', 'Vagari'])}`,
+        target: `Verkeerspost ${c.location || 'Dordrecht'}`,
+        msg: `Passeren kilometerraai ${pickRandomItem([984, 1002, 946])} stroomafwaarts, verzoek blauwe bord aan stuurboord, over.`
+      }),
+      (c) => ({
+        sender: `KNRM Reddingboot ${pickRandomItem(['Arie Visser', 'Koopmansdank', 'Jeanine Parqui'])}`,
+        target: `Kustwacht`,
+        msg: `Ter plaatse bij melding op ${pickRandomItem(['Noordzee', 'Waddenzee', 'Oosterschelde'])}, sleepverbinding gemaakt, situatie stabiel, over.`
+      }),
+      (c) => ({
+        sender: `Sluisbediening ${c.location || 'Hansweert'}`,
+        target: `Motortankschip ${pickRandomItem(['Stolt Osprey', 'Almelo', 'Calcit 5'])}`,
+        msg: `Noorderkolk gereed voor invaren, stuurboordzijde vastmaken, over.`
+      }),
+      (c) => ({
+        sender: `Havenbedrijf Rotterdam`,
+        target: `Sleepboot ${pickRandomItem(['Smit Panther', 'Fairplay 24', 'Multratug 18'])}`,
+        msg: `Assistentie verlenen bij afmeren in Waalhaven steiger ${pickRandomItem([4, 7, 12])}, over.`
+      })
+    ],
+    portofoon: [
+      (c) => ({
+        sender: `Post ${pickRandomItem([1, 2, 4])}`,
+        target: `Surveillance ${pickRandomItem(['Alfa', 'Bravo', 'Delta'])}-${pickRandomItem([1, 2, 3])}`,
+        msg: `Controleer ${pickRandomItem(['ingang Zuid', 'nooduitgang Oost', 'laaddock 3'])} op vrije doorgang, over.`
+      }),
+      (c) => ({
+        sender: `Beveiliging ${pickRandomItem(['Patrouille 2', 'Hoofdingang', 'Sector B'])}`,
+        target: `Centrale Post`,
+        msg: `Ronde gelopen, poorten vergrendeld en geen bijzonderheden aangetroffen, over.`
+      }),
+      (c) => ({
+        sender: `Handhaving ${pickRandomItem(['Team Noord', 'Binnenstad 3'])}`,
+        target: `Meldkamer`,
+        msg: `Melding overlast afgehandeld aan de ${pickRandomItem(['Markt', 'Stationsweg', 'Kerkstraat'])}, we hervatten de surveillance, over.`
+      }),
+      (c) => ({
+        sender: `BHV Coördinator`,
+        target: `Technische Dienst`,
+        msg: `Storingsmelding sprinklerpaneel gecontroleerd, vals alarm, systeem weer op scherp gezet, over.`
+      }),
+      (c) => ({
+        sender: `Logistiek Coördinator`,
+        target: `Heftruck ${pickRandomItem([3, 5, 7])}`,
+        msg: `Palletlading uit rij ${pickRandomItem(['D-14', 'F-08', 'C-22'])} verplaatsen naar expeditie vak 2, over.`
+      })
+    ],
+    mobilofoon: [
+      (c) => ({
+        sender: `Weginspecteur ${pickRandomItem(['WIS-14', 'WIS-22', 'WIS-08', 'WIS-35'])}`,
+        target: `Verkeerscentrale ${c.location || 'Utrecht'}`,
+        msg: `Ter plaatse bij incident op ${pickRandomItem(['A12', 'A2', 'A27', 'A15'])} hectometerpaal ${pickRandomItem(['48.2', '64.5', '112.8'])}, rood kruis geplaatst boven rijstrook 1, over.`
+      }),
+      (c) => ({
+        sender: `Bergingsdienst ${pickRandomItem(['Modern', 'Van Eijck', 'BRL'])}`,
+        target: `Rijkswaterstaat`,
+        msg: `Voertuig staat op de lepel, berging gereed, rijbaan kan over 2 minuten worden vrijgegeven, over.`
+      }),
+      (c) => ({
+        sender: `Zwaar Transport Begeleiding`,
+        target: `Wagen ${pickRandomItem([1, 2])}`,
+        msg: `Naderen rotonde met bijzondere afmeting, linkerbaan blokkeren voor uitzwaai van de trailer, over.`
+      }),
+      (c) => ({
+        sender: `Gladheidsbestrijding ${c.location || 'Noord'}`,
+        target: `Centrale Regie`,
+        msg: `Strooiwagen ${pickRandomItem([4, 7, 11])} route ${pickRandomItem([12, 15, 18])} afgerond, 15 gram zout per vierkante meter gestrooid, wegdek begaanbaar, over.`
+      }),
+      (c) => ({
+        sender: `Pechhulp Mobilofoon`,
+        target: `Centrale`,
+        msg: `Gestrand voertuig weer mobiel gemaakt op de ${pickRandomItem(['N201', 'N206', 'N207'])}, we zijn weer beschikbaar, over.`
+      })
+    ],
+    air: [
+      (c) => ({
+        sender: `${c.location || 'Amsterdam'} Tower`,
+        target: `${pickRandomItem(['KLM', 'Transavia', 'EasyJet', 'Delta'])} ${pickRandomItem([418, 1224, 692, 331])}`,
+        msg: `Wind ${pickRandomItem([210, 230, 250])} degrees ${pickRandomItem([12, 15, 18])} knots, runway ${pickRandomItem(['18R', '36C', '24', '06'])}, cleared to land, contact ground when vacated.`,
+        lang: 'en-US'
+      }),
+      (c) => ({
+        sender: `${pickRandomItem(['KLM', 'Lufthansa', 'British Airways'])} ${pickRandomItem([842, 1735, 439])}`,
+        target: `${c.location || 'Amsterdam'} Radar`,
+        msg: `Passing flight level ${pickRandomItem([180, 220, 280])} climbing to flight level ${pickRandomItem([320, 360])}, direct SPYKER, over.`,
+        lang: 'en-US'
+      }),
+      (c) => ({
+        sender: `Maastricht Upper Area Control`,
+        target: `Air France ${pickRandomItem([1148, 1622])}`,
+        msg: `Identified radar, turn left heading ${pickRandomItem(['040', '080', '110'])}, maintain Mach decimal ${pickRandomItem(['78', '80', '82'])}, good day.`,
+        lang: 'en-US'
+      }),
+      (c) => ({
+        sender: `${c.location || 'Rotterdam'} Ground`,
+        target: `Cessna ${pickRandomItem(['PH-TVS', 'PH-KNA', 'PH-JBL'])}`,
+        msg: `Taxi via taxiway Alpha to holding point runway ${pickRandomItem(['24', '06'])}, QNH 1018, squawk ${pickRandomItem([7000, 4215])}.`,
+        lang: 'en-US'
+      })
+    ],
+    transceiver: [
+      (c) => ({
+        sender: `${pickRandomItem(['PA3ABC', 'PD0XYZ', 'PE1NOP', 'PA2M', 'PB0T'])}`,
+        target: `Ronde via Repeater ${c.location || 'PI2NOS'}`,
+        msg: `Goedenavond amateurs, modulatiecheck vanaf de vaste mast in ${c.location || 'Midden-Nederland'}, signaalmeter staat op 9 plus 20dB, 73.`
+      }),
+      (c) => ({
+        sender: `${pickRandomItem(['PA1PET', 'PD2VR', 'PE3HAM', 'PA0VRN'])}`,
+        target: `CQ CQ 2 meter band`,
+        msg: `Algemene oproep op frequentie ${c.freq} MHz, luisterend voor stations in de regio, Peter Vroon ComStudio gateway actief, over.`
+      }),
+      (c) => ({
+        sender: `Repeater Gateway ${c.location || 'PI1UTR'}`,
+        target: `Alle luisteraars`,
+        msg: `Bakenmelding repeater operationeel op ${c.freq} MHz met subtoon ${c.ctcss || '88.5 Hz'}, shift min 600 kHz, 73.`
+      }),
+      (c) => ({
+        sender: `${pickRandomItem(['ON4KST', 'DL1ABC', 'G4ABC'])}`,
+        target: `CQ DX Europe`,
+        msg: `Calling CQ 20 meter band from ${pickRandomItem(['Belgium', 'Germany', 'England'])}, signal report 5 and 9 into the Netherlands, 73!`,
+        lang: 'en-US'
+      })
+    ]
+  };
+
+  function getUniqueChannelCall(channel) {
+    if (!channel) return null;
+    const cat = channel.category || 'train';
+    const templates = PROCEDURAL_CALLS[cat] || PROCEDURAL_CALLS['portofoon'];
+
+    if (!channel._recentCallIndexes) {
+      channel._recentCallIndexes = [];
+    }
+
+    const availableIndexes = [];
+    for (let i = 0; i < templates.length; i++) {
+      if (!channel._recentCallIndexes.includes(i)) {
+        availableIndexes.push(i);
+      }
+    }
+
+    const chosenIdx = availableIndexes.length > 0 
+      ? pickRandomItem(availableIndexes) 
+      : Math.floor(Math.random() * templates.length);
+
+    channel._recentCallIndexes.push(chosenIdx);
+    if (channel._recentCallIndexes.length > Math.min(5, templates.length - 1)) {
+      channel._recentCallIndexes.shift();
+    }
+
+    const generator = templates[chosenIdx];
+    const data = generator(channel);
+
+    return {
+      sender: data.sender,
+      target: data.target,
+      msg: data.msg,
+      lang: data.lang || (cat === 'air' ? 'en-US' : 'nl-NL'),
+      freq: channel.freq,
+      freqDisplay: channel.freqDisplay,
+      channelName: channel.name,
+      timestamp: new Date()
+    };
+  }
+
+  function showLiveTransmissionUI(call) {
+    if (DOM.vfoTransmissionCard) {
+      DOM.vfoTransmissionCard.style.display = 'block';
+      if (DOM.transSenderLabel) DOM.transSenderLabel.textContent = `${call.sender} ➔ ${call.target}`;
+      if (DOM.transTimeLabel) DOM.transTimeLabel.textContent = call.timestamp.toLocaleTimeString('nl-NL');
+      if (DOM.transMsgText) DOM.transMsgText.textContent = `"${call.msg}"`;
+    }
+
+    if (DOM.miniLiveCallStrip) {
+      DOM.miniLiveCallStrip.style.display = 'flex';
+      if (DOM.miniLiveCallTag) DOM.miniLiveCallTag.textContent = `TX • ${call.sender}`;
+      if (DOM.miniLiveCallText) DOM.miniLiveCallText.textContent = call.msg;
+    }
+
+    if (DOM.vfoStatusBadge) {
+      DOM.vfoStatusBadge.textContent = 'RX DOORGANG ACTIEF';
+      DOM.vfoStatusBadge.style.background = 'rgba(0, 230, 118, 0.45)';
+    }
+  }
+
+  function hideLiveTransmissionUI() {
+    if (DOM.vfoTransmissionCard) {
+      DOM.vfoTransmissionCard.style.display = 'none';
+    }
+    if (DOM.miniLiveCallStrip) {
+      DOM.miniLiveCallStrip.style.display = 'none';
+    }
+    if (DOM.vfoStatusBadge) {
+      DOM.vfoStatusBadge.textContent = state.isPlaying ? 'RX STANDBY (LUISTEREN)' : 'RX STANDBY';
+      DOM.vfoStatusBadge.style.background = '';
+    }
+  }
+
+  function logTransmission(call) {
+    state.transmissionHistory.unshift(call);
+    if (state.transmissionHistory.length > 50) {
+      state.transmissionHistory.pop();
+    }
+
+    const count = state.transmissionHistory.length;
+    if (DOM.callLogBadge) {
+      DOM.callLogBadge.textContent = count;
+      DOM.callLogBadge.style.display = 'inline-block';
+    }
+    if (DOM.sbCallLogBadge) {
+      DOM.sbCallLogBadge.textContent = count;
+      DOM.sbCallLogBadge.style.display = 'inline-block';
+    }
+    if (DOM.callLogModalCount) {
+      DOM.callLogModalCount.textContent = `${count} Oproepen`;
+    }
+
+    if (DOM.callsLogModal && DOM.callsLogModal.style.display === 'flex') {
+      renderCallsLogList();
+    }
+  }
+
+  function dispatchNextRadioCall() {
+    if (!state.isPlaying || state.audioMode !== 'calls') return;
+    if (state.callIntervalTimer) {
+      clearTimeout(state.callIntervalTimer);
+      state.callIntervalTimer = null;
+    }
 
     const channel = getChannelById(state.activeChannelId);
     if (!channel) return;
 
-    // Koppel het audio element eenmalig aan de Web Audio API chain
-    if (!state.audioSourceNode && state.audioCtx && DOM.audioPlayer) {
+    const call = getUniqueChannelCall(channel);
+    if (!call) return;
+
+    state.isTransmissionActive = true;
+    state.activeTransmissionText = call.msg;
+
+    playSquelchBurst();
+    showLiveTransmissionUI(call);
+    logTransmission(call);
+
+    if ('speechSynthesis' in window) {
       try {
-        state.audioSourceNode = state.audioCtx.createMediaElementSource(DOM.audioPlayer);
-        state.audioSourceNode.connect(state.filterNode);
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(call.msg);
+        utterance.lang = call.lang || 'nl-NL';
+
+        const voice = findBestNaturalVoice(utterance.lang);
+        if (voice) {
+          utterance.voice = voice;
+        }
+
+        utterance.pitch = 0.88 + Math.random() * 0.28;
+        utterance.rate = 0.98 + Math.random() * 0.14;
+        utterance.volume = Math.max(0.2, state.volume);
+
+        utterance.onend = () => {
+          endCallTransmission(channel);
+        };
+
+        utterance.onerror = (e) => {
+          console.warn('SpeechSynthesis event error:', e);
+          endCallTransmission(channel);
+        };
+
+        window.speechSynthesis.speak(utterance);
+        return;
       } catch (err) {
-        console.warn('Audio node routing via direct audio player:', err);
+        console.warn('Spraaksynthese fout:', err);
       }
     }
 
-    const targetUrl = channel.streamUrl || 'audio/scanner_police_real.mp3';
+    // Fallback voor browsers zonder spraaksynthese
+    const words = call.msg.split(' ').length;
+    const durationMs = Math.max(2500, words * 280);
+    setTimeout(() => {
+      endCallTransmission(channel);
+    }, durationMs);
+  }
 
-    if (DOM.audioPlayer.src !== targetUrl && !DOM.audioPlayer.src.endsWith(targetUrl)) {
-      DOM.audioPlayer.src = targetUrl;
-      DOM.audioPlayer.loop = true;
+  function endCallTransmission(channel) {
+    state.isTransmissionActive = false;
+    hideLiveTransmissionUI();
+    playRogerBeep();
+
+    if (state.isPlaying && state.audioMode === 'calls') {
+      const pauseDuration = 3500 + Math.floor(Math.random() * 5500);
+      state.callIntervalTimer = setTimeout(() => {
+        dispatchNextRadioCall();
+      }, pauseDuration);
     }
+  }
 
-    DOM.audioPlayer.volume = state.volume;
+  function playChannelAudio() {
+    if (!state.isPlaying) return;
 
-    DOM.audioPlayer.play().then(() => {
+    const channel = getChannelById(state.activeChannelId);
+    if (!channel) return;
+
+    if (state.audioMode === 'calls') {
+      // Unieke Radio Calls & Stemmen: geen repetitief bandje!
+      if (DOM.audioPlayer) {
+        DOM.audioPlayer.pause();
+      }
       if (DOM.vfoStatusBadge) {
-        DOM.vfoStatusBadge.textContent = 'RX LIVE (ECHTE STEMMEN)';
+        DOM.vfoStatusBadge.textContent = 'RX LIVE (UNIEKE CALLS)';
         DOM.vfoStatusBadge.style.background = 'rgba(0, 230, 118, 0.35)';
       }
-    }).catch(err => {
-      console.warn('Audio playback wacht op interactie:', err);
-    });
+      dispatchNextRadioCall();
+    } else {
+      // 24/7 Live Stream modus
+      if (!DOM.audioPlayer) return;
+
+      if (!state.audioSourceNode && state.audioCtx && DOM.audioPlayer) {
+        try {
+          state.audioSourceNode = state.audioCtx.createMediaElementSource(DOM.audioPlayer);
+          state.audioSourceNode.connect(state.filterNode);
+        } catch (err) {
+          console.warn('Audio node routing via direct audio player:', err);
+        }
+      }
+
+      const targetUrl = channel.streamUrl || 'audio/scanner_police_real.mp3';
+      if (DOM.audioPlayer.src !== targetUrl && !DOM.audioPlayer.src.endsWith(targetUrl)) {
+        DOM.audioPlayer.src = targetUrl;
+        DOM.audioPlayer.loop = false;
+      }
+      DOM.audioPlayer.volume = state.volume;
+
+      DOM.audioPlayer.play().then(() => {
+        if (DOM.vfoStatusBadge) {
+          DOM.vfoStatusBadge.textContent = 'RX LIVE (STREAM)';
+          DOM.vfoStatusBadge.style.background = 'rgba(0, 230, 118, 0.35)';
+        }
+      }).catch(err => {
+        console.warn('Audio playback wacht op interactie:', err);
+      });
+    }
   }
 
   function stopChannelAudio() {
-    if (!DOM.audioPlayer) return;
-    try {
-      DOM.audioPlayer.pause();
-    } catch (e) {}
+    if (state.callIntervalTimer) {
+      clearTimeout(state.callIntervalTimer);
+      state.callIntervalTimer = null;
+    }
+    if ('speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {}
+    }
+    state.isTransmissionActive = false;
+    hideLiveTransmissionUI();
+
+    if (DOM.audioPlayer) {
+      try {
+        DOM.audioPlayer.pause();
+      } catch (e) {}
+    }
     if (DOM.vfoStatusBadge) {
       DOM.vfoStatusBadge.textContent = 'RX STANDBY';
       DOM.vfoStatusBadge.style.background = '';
     }
+  }
+
+  function switchAudioMode(mode) {
+    if (state.audioMode === mode) return;
+    state.audioMode = mode;
+    saveStoredPreferences();
+
+    if (DOM.btnModeUniqueCalls && DOM.btnModeLiveStream) {
+      DOM.btnModeUniqueCalls.classList.toggle('active', mode === 'calls');
+      DOM.btnModeLiveStream.classList.toggle('active', mode === 'stream');
+    }
+
+    if (state.isPlaying) {
+      stopChannelAudio();
+      state.isPlaying = true;
+      playChannelAudio();
+    }
+
+    showToast(mode === 'calls' 
+      ? '🎙️ Unieke Radio Calls & Stemmen actief (geen herhalende bandjes)' 
+      : '📡 24/7 Live Stream actief');
+  }
+
+  function openCallsLogModal() {
+    renderCallsLogList();
+    if (DOM.callsLogModal) DOM.callsLogModal.style.display = 'flex';
+  }
+
+  function closeCallsLogModal() {
+    if (DOM.callsLogModal) DOM.callsLogModal.style.display = 'none';
+  }
+
+  function renderCallsLogList() {
+    if (!DOM.callsLogList) return;
+    if (state.transmissionHistory.length === 0) {
+      DOM.callsLogList.innerHTML = '';
+      if (DOM.emptyCallsLogState) DOM.emptyCallsLogState.style.display = 'flex';
+      return;
+    }
+    if (DOM.emptyCallsLogState) DOM.emptyCallsLogState.style.display = 'none';
+
+    DOM.callsLogList.innerHTML = state.transmissionHistory.map(item => `
+      <div class="call-log-card">
+        <div class="call-log-top">
+          <span class="call-log-station">${escapeHtml(item.sender)}</span>
+          <span class="call-log-time">${item.timestamp.toLocaleTimeString('nl-NL')} • ${item.freq} MHz</span>
+        </div>
+        <div class="call-log-msg">"${escapeHtml(item.msg)}"</div>
+        <div class="call-log-footer">
+          <span class="call-log-target">Bestemming: ${escapeHtml(item.target)}</span>
+          <span class="call-log-chan">${escapeHtml(item.channelName)}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function clearCallsLog() {
+    state.transmissionHistory = [];
+    if (DOM.callLogBadge) DOM.callLogBadge.style.display = 'none';
+    if (DOM.sbCallLogBadge) DOM.sbCallLogBadge.style.display = 'none';
+    if (DOM.callLogModalCount) DOM.callLogModalCount.textContent = '0 Oproepen';
+    renderCallsLogList();
+    showToast('🗑️ Ether oproepenlogboek gewist');
   }
 
   // ==========================================================================
@@ -2087,11 +2625,15 @@
       }
       let avg = sum / dataArray.length;
 
-      // Als audio speelt en CORS analyse overschrijdt, vul dynamische signaalmodulatie aan
-      if (avg <= 2 && state.isPlaying && DOM.audioPlayer && !DOM.audioPlayer.paused) {
-        avg = 65 + Math.sin(Date.now() / 200) * 22 + Math.random() * 18;
+      // Dynamische signaalmodulatie tijdens live spraak / transmissie of audio stream
+      if (state.isPlaying && (state.isTransmissionActive || (avg <= 2 && DOM.audioPlayer && !DOM.audioPlayer.paused))) {
+        if (state.isTransmissionActive) {
+          avg = 85 + Math.sin(Date.now() / 140) * 25 + Math.random() * 20;
+        } else if (avg <= 2) {
+          avg = 65 + Math.sin(Date.now() / 200) * 22 + Math.random() * 18;
+        }
         for (let i = 0; i < dataArray.length; i++) {
-          dataArray[i] = Math.max(0, Math.min(255, Math.floor(avg * (1 - (i / dataArray.length) * 0.45) + Math.random() * 25)));
+          dataArray[i] = Math.max(0, Math.min(255, Math.floor(avg * (1 - (i / dataArray.length) * 0.42) + Math.random() * 28)));
         }
       }
       updateSMeter(avg);
@@ -2403,6 +2945,27 @@
 
     DOM.verPill.addEventListener('click', checkAppVersion);
     if (DOM.btnScanRandom) DOM.btnScanRandom.addEventListener('click', tuneRandomChannel);
+
+    // ========================================================================
+    // 🎙️ AUDIO MODUS & UNIEKE CALLS DISPATCHER EVENT BINDINGS
+    // ========================================================================
+    if (DOM.btnModeUniqueCalls) DOM.btnModeUniqueCalls.addEventListener('click', () => switchAudioMode('calls'));
+    if (DOM.btnModeLiveStream) DOM.btnModeLiveStream.addEventListener('click', () => switchAudioMode('stream'));
+    if (DOM.btnOpenCallsLog) DOM.btnOpenCallsLog.addEventListener('click', openCallsLogModal);
+    if (DOM.sbBtnCallLog) {
+      DOM.sbBtnCallLog.addEventListener('click', () => {
+        openCallsLogModal();
+        closeMobileSidebar();
+      });
+    }
+    if (DOM.btnCloseCallsLog) DOM.btnCloseCallsLog.addEventListener('click', closeCallsLogModal);
+    if (DOM.btnCloseCallsLogDone) DOM.btnCloseCallsLogDone.addEventListener('click', closeCallsLogModal);
+    if (DOM.btnClearCallsLog) DOM.btnClearCallsLog.addEventListener('click', clearCallsLog);
+    if (DOM.callsLogModal) {
+      DOM.callsLogModal.addEventListener('click', (e) => {
+        if (e.target === DOM.callsLogModal) closeCallsLogModal();
+      });
+    }
 
     // ========================================================================
     // 📍 STRAAL VAN 30 KM EVENT BINDINGS (GPS & LOCATIE RADAR)
