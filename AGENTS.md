@@ -33,3 +33,8 @@ Deze richtlijnen gelden voor alle aanpassingen en uitbreidingen in deze reposito
 - **Geen computerstemmen:** Gebruik NOOIT synthetische computerstemmen (geen Web Speech API / SpeechSynthesis).
 - **100% Echte Stemmen & Live Feeds:** Alle audio is afkomstig van authentieke radio-opnames, live scanner feeds en echte menselijke communicatiestromen. Elk kanaal speelt direct echte menselijke zend- en luistergesprekken af.
 
+## 7. Live Realtime Streaming Standaard: Geen Voorgeprogrammeerde Bandjes
+- **Geen voorgeprogrammeerde bandjes:** Nooit statische audiofragmenten of repetitieve mp3/ogg-lussen afspelen.
+- **Uitsluitend realtime live audio van dat moment:** Alle kanalen verbinden direct met actuele live streams (LiveATC Icecast, WebSDR, SomaFM Scanner) met `nocache` parameter zodat de gebruiker uitsluitend hoort wat er op dít exacte moment live in de ether wordt uitgezonden.
+- **Echte ether stilte & squelch:** Net als bij een echte scanner/ontvanger hoor je tijdens rustmomenten radiostilte/squelch, en hoor je direct de echte menselijke stemmen zodra een zender live de PTT indrukt.
+

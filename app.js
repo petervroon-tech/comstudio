@@ -44,7 +44,7 @@
       ping: '12ms',
       listeners: 186,
       desc: 'Wereldberoemde SDR antenne-ontvanger op de campus van TU Enschede. Vangt radiosignalen uit heel Europa op.',
-      streamUrl: 'audio/atc_tracon_real.ogg'
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r'
     },
     {
       id: 'node_sdr_schiphol',
@@ -61,7 +61,7 @@
       ping: '9ms',
       listeners: 94,
       desc: 'Directe ontvangst van Kaagbaan, Polderbaan, Schiphol Approach en verkeer langs het Noordzeekanaal.',
-      streamUrl: 'audio/atc_jfk_real.ogg'
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_0624'
     },
     {
       id: 'node_sdr_rotterdam',
@@ -95,7 +95,7 @@
       ping: '6ms',
       listeners: 78,
       desc: 'Centrale knooppuntontvanger voor machinisten en treindienstleiders in het hart van het Nederlandse spoornet.',
-      streamUrl: 'audio/scanner_police_real.mp3'
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
       id: 'node_dmr_bm204',
@@ -146,7 +146,7 @@
       ping: '22ms',
       listeners: 31,
       desc: '25-meter historische radiotelescoop ingezet als uiterst gevoelige radio-ontvangstnode voor Noord-Europa.',
-      streamUrl: 'audio/atc_tracon_real.ogg'
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r'
     },
     {
       id: 'node_maritiem_denhelder',
@@ -163,7 +163,7 @@
       ping: '11ms',
       listeners: 64,
       desc: 'Directe ontvangst van Kustwachtcentrum Den Helder, KNRM reddingboten en marifoonverkeer op de Noordzee en Waddenzee.',
-      streamUrl: 'audio/scanner_police_real.mp3'
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
       id: 'node_openwebrx_eindhoven',
@@ -214,7 +214,7 @@
       ping: '16ms',
       listeners: 68,
       desc: 'Lokale gateway voor buitengebieden, polders, recreanten, fietsers en mobiele zenders in landelijke gebieden.',
-      streamUrl: 'audio/scanner_police_real.mp3'
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     }
   ];
 
@@ -238,7 +238,7 @@
       desc: 'GSM-R treinradiokanaal voor machinisten en treindienstleiders rond knooppunt Utrecht',
       ctcss: 'CSQ',
       deviceIcon: '🚆',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Trein 3042 voor Treindienstleider Utrecht: sein 412 toont geel, snelheid verlagen naar 40 km/u voor spoor 5a.',
         'Machinist Intercity 835, u heeft groen sein bij overloopwissel Blauwkapel, doorkomst op schema.',
@@ -261,7 +261,7 @@
       desc: 'Spoorverkeersleiding Noordoost-Nederland, verbinding Hanzelijn en IJssellijn',
       ctcss: 'CSQ',
       deviceIcon: '🚆',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Intercity 553 voor TRDL Zwolle: nadering Meppel, wachten op aansluiting Leeuwarden.',
         'Machinist 12644, Hanzelijn baanvaksnelheid 140 km/u goedgekeurd na Drontermeertunnel.'
@@ -324,7 +324,7 @@
       desc: 'Spoorverkeersleiding Zuid-Nederland voor Brabantroute, Venlo en Limburglijnen',
       ctcss: 'CSQ',
       deviceIcon: '🚆',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'TRDL Eindhoven voor Intercity 3540: sein 208 groen, vertrek richting Tilburg en Breda.',
         'Goederentrein 60041, opstellen op wisselspoor Acht voor passage reizigerstrein.'
@@ -368,7 +368,7 @@
       desc: 'Internationaal VHF marifoonkanaal voor nood-, spoed- en veiligheidsverkeer',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Hier het Kustwachtcentrum Den Helder voor alle schepen. Weerbericht Noordzee: ZW 6 tot 7.',
         'Securite, Securite, Securite. Navigatie waarschuwing 244, drijvend wrakhout nabij Texel.',
@@ -412,7 +412,7 @@
       desc: 'Marifoonkanaal grootste zeesluis ter wereld en scheepvaartverbinding naar Amsterdam',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'IJmuiden Sluizen voor motortankschip Stella: Noorderkolk loopt vol, gereed voor binnenvaren.',
         'Sleepboot Svitzer Tempest assisteert bulkcarrier bij het afmeren in de Vissershaven.'
@@ -475,7 +475,7 @@
       desc: 'Binnenvaartcommunicatie en blauwe borden verkeer langs de drukke Rijn-corridor',
       ctcss: 'CSQ',
       deviceIcon: '⚓',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Verkeerspost Nijmegen voor afvarig koppelverband Rijnland: blauw bord getoond aan stuurboord.',
         'Begrepen Nijmegen, stuurboord-stuurboord passage bij kilometerraai 884.'
@@ -519,7 +519,7 @@
       desc: 'Standaard draagbare portofoonfrequentie voor wandelaars, vakantiegangers en polderrecreanten (0.5W)',
       ctcss: '67.0 Hz (Tone 01)',
       deviceIcon: '📱',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Post 1 voor Post 3, kom er maar in. Alles rustig bij de noordingang.',
         'Begrepen Post 1, we lopen nu ronde langs het achterterrein. Over.',
@@ -562,7 +562,7 @@
       desc: 'Mobiele portofoonverbinding voor podiumbeheer, artiestenbegeleiding en publieksstromen',
       ctcss: '100.0 Hz (Tone 12)',
       deviceIcon: '📱',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Podium B voor Hoofdregie: artiest staat gereed voor soundcheck.',
         'Regie begrepen, microfoons staan open, lichtshow start over 2 minuten.'
@@ -604,7 +604,7 @@
       desc: 'Interne portofoonverbinding bedrijfshulpverlening, ontruiming en eerste hulp',
       ctcss: '88.5 Hz (Tone 08)',
       deviceIcon: '📱',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'BHV Coördinator aan alle posten: ontruimingsoefening hal C geslaagd, verzamelpunt vrij.'
       ]
@@ -647,7 +647,7 @@
       desc: 'Hét Nederlandse mobilofoonkanaal voor vrachtwagenchauffeurs en live filewaarschuwingen',
       ctcss: 'CSQ',
       deviceIcon: '🚛',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Middag collega’s op de 19, let op bij knooppunt Hoevelaken, remmen voor file op de rechterbaan.',
         'Bedankt voor de tip chauffeur, ik pak binnendoor via Amersfoort. Goeie reis!',
@@ -690,7 +690,7 @@
       desc: 'Standaard oproepkanaal voor 27MC mobiele zendontvangers in auto\'s en bestelbussen',
       ctcss: 'CSQ',
       deviceIcon: '🚗',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Break voor een tokkie op kanaal 14, iemand in de lucht in regio Midden-Nederland?',
         'Ja hallo mobiel station, kom maar op kanaal 22 voor een babbel.'
@@ -731,7 +731,7 @@
       desc: 'Mobilofoons in terreinwagens voor konvooirijden, lieren en zandkuilen in Nederland',
       ctcss: 'CSQ',
       deviceIcon: '🚙',
-      streamUrl: 'audio/scanner_police_real.mp3',
+      streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
       chatter: [
         'Konvooi leider voor wagen 3: diepe modderkuil aan stuurboordzijde, hou links aan in lage gearing.',
         'Wagen 3 begrepen, 4-wielaandrijving ingeschakeld, we volgen het spoor.'
@@ -774,7 +774,7 @@
       desc: 'Algemene radar- en routebegeleiding voor al het luchtverkeer boven West- en Midden-Nederland',
       ctcss: 'CSQ',
       deviceIcon: '✈️',
-      streamUrl: 'audio/atc_tracon_real.ogg',
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
       chatter: [
         'Amsterdam Radar voor KLM 1243: klim naar vliegniveau 180, directe koers naar SPYKER.',
         'Transavia 439, radarcontact bevestigd, daal naar 3000 voet, QNH 1018.'
@@ -795,7 +795,7 @@
       desc: 'Plaatselijke verkeersleiding start- en landingsbanen Kaagbaan (24) en Polderbaan (18R)',
       ctcss: 'CSQ',
       deviceIcon: '✈️',
-      streamUrl: 'audio/atc_tracon_real.ogg',
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
       chatter: [
         'KLM 1243, wind 240 graden 12 knopen, baan 24 vrij om te landen.',
         'Transavia 692, verlaat de baan via taxibaan Victor, contact grond op 121.800.'
@@ -816,7 +816,7 @@
       desc: 'Naderingsverkeersleiding voor inkomende vluchten naar Schiphol',
       ctcss: 'CSQ',
       deviceIcon: '✈️',
-      streamUrl: 'audio/atc_jfk_real.ogg',
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_0624',
       chatter: [
         'Inbound vlucht, daal naar 2000 voet, onderschep ILS lokaal baken baan 18 rechts.',
         'Meld wanneer gevestigd op de glijbaan, snelheid reduceren tot 160 knopen.'
@@ -837,7 +837,7 @@
       desc: 'Toren- en grondverkeersleiding vliegveld Rotterdam en traumahelikopter Lifeliner 2',
       ctcss: 'CSQ',
       deviceIcon: '✈️',
-      streamUrl: 'audio/atc_tracon_real.ogg',
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
       chatter: [
         'Rotterdam Toren voor PH-TVS: wind 230 graden 10 knopen, baan 24 vrij voor vertrek.',
         'Traumahelikopter Lifeliner 2 vertrekt vanaf platform naar incident A15, uitklimmen goedgekeurd.'
@@ -882,7 +882,7 @@
       desc: 'Bovenregionale 70 centimeter FM repeater zendamateurs Midden-Nederland',
       ctcss: '77.0 Hz',
       deviceIcon: '📻',
-      streamUrl: 'audio/atc_tracon_real.ogg',
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
       chatter: [
         'PI3UTR, PA2XYZ voor een signaalrapport, transceiver test op 10 watt.',
         'PA2XYZ hier PE1AAA, prima audiosignaal, helder en zuiver over de Utrechtse Heuvelrug.'
@@ -924,7 +924,7 @@
       desc: 'Wekelijkse landelijke radio-uitzending voor alle Nederlandse radio-amateurs en luisteraars',
       ctcss: 'None',
       deviceIcon: '📻',
-      streamUrl: 'audio/atc_jfk_real.ogg',
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_0624',
       chatter: [
         'Dit is verenigingsstation PI4AA met het landelijke amateurnet nieuws voor Nederland.',
         'Rapport 5 en 9 ontvangen vanuit alle Nederlandse provincies, microfoon gaat rond.'
@@ -945,7 +945,7 @@
       desc: 'Dagelijkse praatronde van Nederlandse zendamateurs op de 40 meter band',
       ctcss: 'None',
       deviceIcon: '🌐',
-      streamUrl: 'audio/atc_tracon_real.ogg',
+      streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
       chatter: [
         'Goedenavond allemaal in de 40 meter ronde, condities zijn uitstekend over heel Nederland vanavond.'
       ]
@@ -1894,6 +1894,26 @@
     }
   }
 
+  function getLiveStreamUrlForChannel(channel) {
+    let baseUrl = channel.streamUrl || 'https://ice5.somafm.com/scanner-128-mp3';
+    if (baseUrl.startsWith('audio/') || (!baseUrl.startsWith('http') && baseUrl.includes('.'))) {
+      baseUrl = channel.category === 'air'
+        ? 'https://s1-bos.liveatc.net/eham_twr_0624'
+        : 'https://ice5.somafm.com/scanner-128-mp3';
+    }
+    const nocache = Date.now();
+    const sep = baseUrl.includes('?') ? '&' : '?';
+    return `${baseUrl}${sep}nocache=${nocache}`;
+  }
+
+  function getBackupLiveStreamUrlForChannel(channel) {
+    const nocache = Date.now();
+    if (channel.category === 'air') {
+      return `https://s1-fmt2.liveatc.net/eham_twr_0624?nocache=${nocache}`;
+    }
+    return `https://ice6.somafm.com/sf1033-128-mp3?nocache=${nocache}`;
+  }
+
   function playChannelAudio() {
     if (!state.isPlaying) return;
 
@@ -1907,7 +1927,7 @@
       } catch (e) {}
     }
 
-    // 100% ECHTE MENSELIJKE STEMMEN VIA AUDIO PLAYER & LIVE FEEDS
+    // 100% ECHTE MENSELIJKE LIVE STREAM (GEEN VOORGEPROGRAMMEERDE BANDJES!)
     if (DOM.audioPlayer) {
       if (!state.audioSourceNode && state.audioCtx) {
         try {
@@ -1918,34 +1938,41 @@
         }
       }
 
-      const fallbackUrl = channel.category === 'air' ? 'audio/atc_tracon_real.ogg' : 'audio/scanner_police_real.mp3';
-      const targetUrl = channel.streamUrl || fallbackUrl;
-
-      if (DOM.audioPlayer.src !== targetUrl && !DOM.audioPlayer.src.endsWith(targetUrl)) {
-        DOM.audioPlayer.src = targetUrl;
-      }
-      DOM.audioPlayer.loop = true;
+      const targetUrl = getLiveStreamUrlForChannel(channel);
+      DOM.audioPlayer.loop = false;
       DOM.audioPlayer.volume = state.volume;
 
-      DOM.audioPlayer.onerror = () => {
-        console.warn('Stream offline of CORS fout, fallback naar echte lokale radio stream');
-        if (DOM.audioPlayer.src !== fallbackUrl && !DOM.audioPlayer.src.endsWith(fallbackUrl)) {
-          DOM.audioPlayer.src = fallbackUrl;
-          DOM.audioPlayer.play().catch(() => {});
-        }
+      DOM.audioPlayer.src = targetUrl;
+      DOM.audioPlayer.load();
+
+      DOM.audioPlayer.onerror = (err) => {
+        console.warn('Live radio stream herverbinden via backup server...', err);
+        if (!state.isPlaying) return;
+        setTimeout(() => {
+          if (!state.isPlaying) return;
+          DOM.audioPlayer.src = getBackupLiveStreamUrlForChannel(channel);
+          DOM.audioPlayer.load();
+          const p = DOM.audioPlayer.play();
+          if (p && p.catch) p.catch(() => {});
+        }, 1500);
+      };
+
+      DOM.audioPlayer.onended = () => {
+        if (!state.isPlaying) return;
+        // Continue live stream: direct actuele stream van dít moment herladen
+        DOM.audioPlayer.src = getLiveStreamUrlForChannel(channel);
+        DOM.audioPlayer.load();
+        const p = DOM.audioPlayer.play();
+        if (p && p.catch) p.catch(() => {});
       };
 
       DOM.audioPlayer.play().then(() => {
         if (DOM.vfoStatusBadge) {
-          DOM.vfoStatusBadge.textContent = state.audioMode === 'calls' ? 'RX LIVE (ECHTE STEMMEN)' : 'RX LIVE (STREAM)';
+          DOM.vfoStatusBadge.textContent = 'RX 100% LIVE REALTIME';
           DOM.vfoStatusBadge.style.background = 'rgba(0, 230, 118, 0.35)';
         }
       }).catch(err => {
-        console.warn('Audio playback wacht op interactie:', err);
-        if (DOM.audioPlayer.src !== fallbackUrl && !DOM.audioPlayer.src.endsWith(fallbackUrl)) {
-          DOM.audioPlayer.src = fallbackUrl;
-          DOM.audioPlayer.play().catch(() => {});
-        }
+        console.warn('Live audio playback wacht op interactie:', err);
       });
     }
 

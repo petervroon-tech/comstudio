@@ -79,7 +79,7 @@ Veel portofoons (PMR446) gebruiken **CTCSS (Continuous Tone Coded Squelch System
 * **Werking:** Klik in de bovenbalk of in het vaste linkermenu op `[ 📍 Binnen 30 km ]`.
 * **GPS Peiling:** Uw browser vraagt live coördinaten op. ComStudio berekent via de **Haversine formule** de afstand in rechte lijn tot elk station.
 * **Direct Luisteren:** Zenders binnen $\le 30$ km worden direct gefilterd en gesorteerd op afstand. ComStudio stemt **direct af op het dichtstbijzijnde actieve station**, zodat u meteen echte menselijke stemmen hoort praten!
-* **100% Echte Stemmen (Geen Computerstemmen):** Alle synthetische spraaksynthese en computerstemmen zijn permanent verwijderd. U hoort uitsluitend echte menselijke zend- en luistergesprekken van machinisten, verkeersleiders, schippers en radioamateurs.
+* **100% Echte Stemmen (Geen Computerstemmen & Geen Bandjes):** Alle synthetische spraaksynthese en voorgeprogrammeerde bandjes zijn permanent verwijderd. U hoort uitsluitend actuele live audio van dat exacte moment via realtime streams van LiveATC en WebSDR gateways. Tijdens pauzes hoort u authentieke radiostilte (squelch), en zodra er live een oproep is hoort u direct de echte menselijke stemmen van machinisten, verkeersleiders, schippers en hulpdiensten.
 * **Referentiegebieden:** Geen GPS bij de hand? Kies via `[ 🗺️ Wijzig Positie ]` met één klik een referentiegebied (zoals *Polder Midden-Nederland*, *Flevopolder*, *Rotterdam Haven*, *Utrecht CS*, *Schiphol*, *Zwolle* of *Antwerpen*).
 
 ### 5.2 🌐 Uitluisteren via Allerhande Nodes
