@@ -22,3 +22,10 @@ Deze richtlijnen gelden voor alle aanpassingen en uitbreidingen in deze reposito
 ## 4. Deployment & GitHub Online Standaard: Alleen Online via GitHub
 - **Niet lokaal, alleen online via GitHub Pages:** Alle updates worden direct vastgelegd in Git en gepusht naar de `main` branch op GitHub (`https://petervroon-tech.github.io/comstudio/`), waarna GitHub Actions CI/CD de nieuwste versie direct live zet.
 - **Automatische live update:** Apps controleren via `version.json` periodiek of er online een nieuwere build beschikbaar is en verversen direct met 1 klik.
+
+## 5. Mobile/Tablet Conventies & UX Standaard ("KISS")
+- **Mobile-friendly single-focus intent:** Eenvoudig, doelgericht en zonder overbodige desktop-complexiteit ("Keep it Simple and Sweet - KISS").
+- **Directe Feedback op Knoppen/Acties (Click/Tick):** Informeer de gebruiker direct over status (gelukt, fout, aantal geladen kanalen/berichten).
+- **Leesbaarheid & Makkelijke Scroll:** Knoppen en teksten geheel leesbaar zonder afkapping; vloeiende touch-scroll (`-webkit-overflow-scrolling: touch`).
+- **Datavalidatie & Bronvermelding:** Maak in de UI altijd inzichtelijk waar audio, positie- of telemetriedata vandaan komt (bv. Web Speech API, ProRail GSM-R, etc.).
+
