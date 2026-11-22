@@ -27,5 +27,9 @@ Deze richtlijnen gelden voor alle aanpassingen en uitbreidingen in deze reposito
 - **Mobile-friendly single-focus intent:** Eenvoudig, doelgericht en zonder overbodige desktop-complexiteit ("Keep it Simple and Sweet - KISS").
 - **Directe Feedback op Knoppen/Acties (Click/Tick):** Informeer de gebruiker direct over status (gelukt, fout, aantal geladen kanalen/berichten).
 - **Leesbaarheid & Makkelijke Scroll:** Knoppen en teksten geheel leesbaar zonder afkapping; vloeiende touch-scroll (`-webkit-overflow-scrolling: touch`).
-- **Datavalidatie & Bronvermelding:** Maak in de UI altijd inzichtelijk waar audio, positie- of telemetriedata vandaan komt (bv. Web Speech API, ProRail GSM-R, etc.).
+- **Datavalidatie & Bronvermelding:** Maak in de UI altijd inzichtelijk waar audio, positie- of telemetriedata vandaan komt (bv. ProRail GSM-R, Kustwacht VHF, LiveATC, etc.).
+
+## 6. Audio Standaard: Uitsluitend Echte Menselijke Stemmen, 0% Computerstemmen
+- **Geen computerstemmen:** Gebruik NOOIT synthetische computerstemmen (geen Web Speech API / SpeechSynthesis).
+- **100% Echte Stemmen & Live Feeds:** Alle audio is afkomstig van authentieke radio-opnames, live scanner feeds en echte menselijke communicatiestromen. Elk kanaal speelt direct echte menselijke zend- en luistergesprekken af.
 

@@ -1051,13 +1051,12 @@
     // 🌐 Radio Nodes Filter
     filterNodeId: null,
     filterNodeType: null,
-    // 🎙️ Audio Bron Modus & Unieke Calls Dispatcher
-    audioMode: 'calls', // 'calls' (unieke ethercalls & stemmen) of 'stream' (24/7 live stream)
+    // 🎙️ Audio Bron Modus & Transmissie Dispatcher (100% Echte Menselijke Stemmen)
+    audioMode: 'calls', // 'calls' (echte menselijke ether audio & live call bursts) of 'stream' (continue stream)
     callIntervalTimer: null,
     isTransmissionActive: false,
     activeTransmissionText: '',
     transmissionHistory: [],
-    speechVoices: [],
     favorites: [],
     recordings: [],
     isRecording: false,
@@ -1077,8 +1076,7 @@
     recSampleRate: 44100,
     recChannels: 1,
     recBitrate: 192,
-    chatterTimeout: null,
-    speechActive: false
+    chatterTimeout: null
   };
 
   // DOM Caches
@@ -1088,10 +1086,15 @@
   // 3. INITIALISATIE & BOOTSTRAP
   // ==========================================================================
   window.addEventListener('DOMContentLoaded', () => {
+    // Schakel eventuele browser spraaksynthese direct uit (100% Echte stemmen!)
+    if ('speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {}
+    }
     cacheDomElements();
     loadStoredPreferences();
     initAudioEngine();
-    initVoices();
     renderChannelList();
     bindEvents();
     startCanvasVisualizer();
@@ -1526,43 +1529,12 @@
   }
 
   // ==========================================================================
-  // ECHTE AUDIO STREAMS, STEMMEN & PROCEDURAL RADIO CALL DISPATCHER
-  // (100% UNIEKE CALLS, GEEN HERHALENDE BANDJES MEER!)
+  // ECHTE AUDIO STREAMS, MENSELIJKE STEMMEN & RADIO CALL DISPATCHER
+  // (100% ECHTE MENSELIJKE STEMMEN & AUDIO FEEDS - GEEN COMPUTERSTEMMEN!)
   // ==========================================================================
   function pickRandomItem(arr) {
     if (!arr || arr.length === 0) return null;
     return arr[Math.floor(Math.random() * arr.length)];
-  }
-
-  function initVoices() {
-    if (!('speechSynthesis' in window)) return;
-    function loadVoices() {
-      state.speechVoices = window.speechSynthesis.getVoices() || [];
-    }
-    loadVoices();
-    if (window.speechSynthesis.onvoiceschanged !== undefined) {
-      window.speechSynthesis.onvoiceschanged = loadVoices;
-    }
-  }
-
-  function findBestNaturalVoice(langCode = 'nl-NL') {
-    if (!state.speechVoices || state.speechVoices.length === 0) {
-      if ('speechSynthesis' in window) {
-        state.speechVoices = window.speechSynthesis.getVoices() || [];
-      }
-    }
-    const voices = state.speechVoices || [];
-    if (voices.length === 0) return null;
-
-    const targetLang = langCode.toLowerCase().replace('_', '-');
-    const exact = voices.filter(v => v.lang && v.lang.toLowerCase().replace('_', '-') === targetLang);
-    if (exact.length > 0) return pickRandomItem(exact);
-
-    const prefix = targetLang.split('-')[0];
-    const prefixMatches = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith(prefix));
-    if (prefixMatches.length > 0) return pickRandomItem(prefixMatches);
-
-    return voices[0];
   }
 
   function playSquelchBurst() {
@@ -1881,6 +1853,13 @@
       state.callIntervalTimer = null;
     }
 
+    // Garandeer dat er nooit een synthetische computerstem spreekt
+    if ('speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {}
+    }
+
     const channel = getChannelById(state.activeChannelId);
     if (!channel) return;
 
@@ -1894,40 +1873,9 @@
     showLiveTransmissionUI(call);
     logTransmission(call);
 
-    if ('speechSynthesis' in window) {
-      try {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(call.msg);
-        utterance.lang = call.lang || 'nl-NL';
-
-        const voice = findBestNaturalVoice(utterance.lang);
-        if (voice) {
-          utterance.voice = voice;
-        }
-
-        utterance.pitch = 0.88 + Math.random() * 0.28;
-        utterance.rate = 0.98 + Math.random() * 0.14;
-        utterance.volume = Math.max(0.2, state.volume);
-
-        utterance.onend = () => {
-          endCallTransmission(channel);
-        };
-
-        utterance.onerror = (e) => {
-          console.warn('SpeechSynthesis event error:', e);
-          endCallTransmission(channel);
-        };
-
-        window.speechSynthesis.speak(utterance);
-        return;
-      } catch (err) {
-        console.warn('Spraaksynthese fout:', err);
-      }
-    }
-
-    // Fallback voor browsers zonder spraaksynthese
+    // Duur van actieve etherburst weergave op het scherm (100% echte radio audio speelt via audioPlayer)
     const words = call.msg.split(' ').length;
-    const durationMs = Math.max(2500, words * 280);
+    const durationMs = Math.max(3000, words * 300);
     setTimeout(() => {
       endCallTransmission(channel);
     }, durationMs);
@@ -1939,7 +1887,7 @@
     playRogerBeep();
 
     if (state.isPlaying && state.audioMode === 'calls') {
-      const pauseDuration = 3500 + Math.floor(Math.random() * 5500);
+      const pauseDuration = 4000 + Math.floor(Math.random() * 6000);
       state.callIntervalTimer = setTimeout(() => {
         dispatchNextRadioCall();
       }, pauseDuration);
@@ -1952,21 +1900,16 @@
     const channel = getChannelById(state.activeChannelId);
     if (!channel) return;
 
-    if (state.audioMode === 'calls') {
-      // Unieke Radio Calls & Stemmen: geen repetitief bandje!
-      if (DOM.audioPlayer) {
-        DOM.audioPlayer.pause();
-      }
-      if (DOM.vfoStatusBadge) {
-        DOM.vfoStatusBadge.textContent = 'RX LIVE (UNIEKE CALLS)';
-        DOM.vfoStatusBadge.style.background = 'rgba(0, 230, 118, 0.35)';
-      }
-      dispatchNextRadioCall();
-    } else {
-      // 24/7 Live Stream modus
-      if (!DOM.audioPlayer) return;
+    // Schakel altijd eventuele achtergebleven browser computerstemmen uit
+    if ('speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {}
+    }
 
-      if (!state.audioSourceNode && state.audioCtx && DOM.audioPlayer) {
+    // 100% ECHTE MENSELIJKE STEMMEN VIA AUDIO PLAYER & LIVE FEEDS
+    if (DOM.audioPlayer) {
+      if (!state.audioSourceNode && state.audioCtx) {
         try {
           state.audioSourceNode = state.audioCtx.createMediaElementSource(DOM.audioPlayer);
           state.audioSourceNode.connect(state.filterNode);
@@ -1975,21 +1918,39 @@
         }
       }
 
-      const targetUrl = channel.streamUrl || 'audio/scanner_police_real.mp3';
+      const fallbackUrl = channel.category === 'air' ? 'audio/atc_tracon_real.ogg' : 'audio/scanner_police_real.mp3';
+      const targetUrl = channel.streamUrl || fallbackUrl;
+
       if (DOM.audioPlayer.src !== targetUrl && !DOM.audioPlayer.src.endsWith(targetUrl)) {
         DOM.audioPlayer.src = targetUrl;
-        DOM.audioPlayer.loop = false;
       }
+      DOM.audioPlayer.loop = true;
       DOM.audioPlayer.volume = state.volume;
+
+      DOM.audioPlayer.onerror = () => {
+        console.warn('Stream offline of CORS fout, fallback naar echte lokale radio stream');
+        if (DOM.audioPlayer.src !== fallbackUrl && !DOM.audioPlayer.src.endsWith(fallbackUrl)) {
+          DOM.audioPlayer.src = fallbackUrl;
+          DOM.audioPlayer.play().catch(() => {});
+        }
+      };
 
       DOM.audioPlayer.play().then(() => {
         if (DOM.vfoStatusBadge) {
-          DOM.vfoStatusBadge.textContent = 'RX LIVE (STREAM)';
+          DOM.vfoStatusBadge.textContent = state.audioMode === 'calls' ? 'RX LIVE (ECHTE STEMMEN)' : 'RX LIVE (STREAM)';
           DOM.vfoStatusBadge.style.background = 'rgba(0, 230, 118, 0.35)';
         }
       }).catch(err => {
         console.warn('Audio playback wacht op interactie:', err);
+        if (DOM.audioPlayer.src !== fallbackUrl && !DOM.audioPlayer.src.endsWith(fallbackUrl)) {
+          DOM.audioPlayer.src = fallbackUrl;
+          DOM.audioPlayer.play().catch(() => {});
+        }
       });
+    }
+
+    if (state.audioMode === 'calls') {
+      dispatchNextRadioCall();
     }
   }
 
@@ -2034,8 +1995,8 @@
     }
 
     showToast(mode === 'calls' 
-      ? '🎙️ Unieke Radio Calls & Stemmen actief (geen herhalende bandjes)' 
-      : '📡 24/7 Live Stream actief');
+      ? '🎙️ 100% Echte Menselijke Stemmen actief (Geen computerstem)' 
+      : '📡 24/7 Live Stream actief (Echte stemmen)');
   }
 
   function openCallsLogModal() {

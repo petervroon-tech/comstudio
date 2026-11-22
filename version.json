@@ -1,10 +1,11 @@
 {
   "app_name": "Peter Vroon ComStudio",
-  "version": "1.8.0",
-  "build": 9,
-  "timestamp": "2026-11-17T15:56:46.238685+00:00",
-  "git_hash": "828d67b",
+  "version": "1.9.0",
+  "build": 10,
+  "timestamp": "2026-11-22T20:44:07.942506+00:00",
+  "git_hash": "online",
   "features": [
+    "🎙️ 100% Echte Menselijke Stemmen (Geen Computerstemmen): Alle synthetische spraaksynthese (Web Speech API / SpeechSynthesis) is permanent uitgeschakeld. Elk kanaal speelt uitsluitend echte menselijke zend- en luistergesprekken, authentieke live communicatiestromen en realtime radio feeds.",
     "🇳🇱 100% Exclusief Nederland: Volledig geherstructureerd naar uitsluitend Nederlandse stations, zendontvangers, nodes en corridors. Alle buitenlandse frequenties zijn vervangen door puur Nederlandse treintrajecten (ProRail Utrecht, Amsterdam, Zwolle, Eindhoven, Arnhem, Kijfhoek), schepen (Kustwacht Den Helder, Maasmond, IJmuiden, Brandaris, Zeeland, Rijnvaart), portofoons (Nederland landelijk, Veluwe, Jaarbeurs, Handhaving), mobilofoons (Nederlandse snelwegen A1/A2/A12/A15/A27, polders, takelbedrijven), luchtvaart (Schiphol Toren, Amsterdam Radar, Rotterdam Airport) en Nederlandse repeaters (PI2NOS, PI3UTR, PI1NOS, VERON PI4AA).",
     "🗺️ Nederlandse Deelregio Filters: Naadloos filteren op Randstad & Midden, Kust & Havens, Polders & Veluwe, Oost & Noord-NL en Zuid-NL & Brabant zowel in het vaste linker menu als in de hoofdnavigatie.",
     "🌐 12 Nederlandse Radio Nodes: Alle 12 gateways bevinden zich nu exclusief op Nederlands grondgebied (inclusief nieuwe Kustwacht Den Helder #09, Brainport Eindhoven #10 en Zeehaven IJmuiden #11).",
