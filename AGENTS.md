@@ -23,17 +23,40 @@ Deze richtlijnen gelden voor alle aanpassingen en uitbreidingen in deze reposito
 - **Niet lokaal, alleen online via GitHub Pages:** Alle updates worden direct vastgelegd in Git en gepusht naar de `main` branch op GitHub (`https://petervroon-tech.github.io/comstudio/`), waarna GitHub Actions CI/CD de nieuwste versie direct live zet.
 - **Automatische live update:** Apps controleren via `version.json` periodiek of er online een nieuwere build beschikbaar is en verversen direct met 1 klik.
 
-## 5. Mobile/Tablet Conventies & UX Standaard ("KISS")
-- **Mobile-friendly single-focus intent:** Eenvoudig, doelgericht en zonder overbodige desktop-complexiteit ("Keep it Simple and Sweet - KISS").
-- **Directe Feedback op Knoppen/Acties (Click/Tick):** Informeer de gebruiker direct over status (gelukt, fout, aantal geladen kanalen/berichten).
-- **Leesbaarheid & Makkelijke Scroll:** Knoppen en teksten geheel leesbaar zonder afkapping; vloeiende touch-scroll (`-webkit-overflow-scrolling: touch`).
-- **Datavalidatie & Bronvermelding:** Maak in de UI altijd inzichtelijk waar audio, positie- of telemetriedata vandaan komt (bv. ProRail GSM-R, Kustwacht VHF, LiveATC, etc.).
+## 5. Volledige Responsiviteit & Proporties (Smartphones, iPads & Laptops)
+- **Smartphones ($\le$ 680px):**
+  - **Single-focus intent:** Eén duidelijke primaire focus per view (Kanalenoverzicht / Voorkant als startpunt; Studio & VFO als 1-tap dedicated focus).
+  - Geen samengeperste multi-kolommen; kanaalkaarten en bedieningspanelen schalen naar 100% breedte met veilige marges.
+  - Modals schakelen automatisch over naar touch-vriendelijke bottom sheets met veilige marges (`env(safe-area-inset-bottom)`).
+  - Zwevende HUD zweeft gecentreerd boven de schermbodem met veilige marges (`calc(8px + env(safe-area-inset-bottom))`).
+  - Geen enkele horizontale overflow of afgekipte labels; knoppen en lettergroottes schalen strak mee (`0.65rem - 0.78rem`).
+- **iPads & Tablets (681px - 1023px):**
+  - Optimale verhoudingen in zowel **portrait** als **landscape**.
+  - Vaste zijbalk met handige 1-tap inklapfunctie (`☰ Menu`) voor maximale schermruimte.
+  - Vloeiend horizontaal scrollen (`-webkit-overflow-scrolling: touch`) zonder storende scrollbars voor filter- en categoriebalken.
+- **Laptops & Desktops ($\ge$ 1024px):**
+  - Split-screen cockpit weergave mogelijk (links overzicht, rechts VFO cockpit & waterval display).
 
-## 6. Audio Standaard: Uitsluitend Echte Menselijke Stemmen, 0% Computerstemmen
+## 6. Mobile & Tablet Conventies: Single-Focus Intent ("Keep It Simple & Sweet - KISS")
+- **Mobile-friendly single-focus intent i.p.v. desktop-metaforen:**
+  - Structureer schermen rondom één duidelijke primaire focus per view ("KISS"). Voorkom overvolle schermen met tientallen gelijktijdige controles.
+- **Directe Feedback op Knoppen & Acties (Click/Tick & Status):**
+  - Laat de gebruiker bij elke actie of knopklik direct zien wat het resultaat is via een subtiele badge, tick of status-indicator:
+    - *Gelukt:* "✓ 12 kanalen binnen 30 km geladen" of "✓ Live stream actief".
+    - *Fout:* Duidelijke, behulpzame toelichting waarom een verbinding buffert of retry uitvoert.
+    - *Aantal:* Toon altijd het aantal verkregen resultaten na een zoek- of filteractie (bv. badge in Call Log, aantal zenders in regio).
+  - Tactiele tap-respons: directe `transform: scale(0.96)` op alle knoppen en interactieve kaarten.
+- **Volledige Leesbaarheid & Touch Scroll:**
+  - Knoppen en teksten zijn altijd helder, contrastrijk en geheel leesbaar zonder afkapping van essentiële frequenties of roepnamen.
+  - Makkelijk en natuurlijk verticaal scrollen in containers (`-webkit-overflow-scrolling: touch; overscroll-behavior: contain`).
+- **Datavalidatie & Bronvermelding in de UI:**
+  - Toon altijd transparant waar gegevens vandaan komen (bv. "📍 GPS Satelliet (±4m)", "🚆 Live ProRail GSM-R", "⚓ Kustwacht VHF K16", "✈️ LiveATC Schiphol 118.100 MHz").
+
+## 7. Audio Standaard: Uitsluitend Echte Menselijke Stemmen, 0% Computerstemmen
 - **Geen computerstemmen:** Gebruik NOOIT synthetische computerstemmen (geen Web Speech API / SpeechSynthesis).
 - **100% Echte Stemmen & Live Feeds:** Alle audio is afkomstig van authentieke radio-opnames, live scanner feeds en echte menselijke communicatiestromen. Elk kanaal speelt direct echte menselijke zend- en luistergesprekken af.
 
-## 7. Live Realtime Streaming Standaard: Geen Voorgeprogrammeerde Bandjes
+## 8. Live Realtime Streaming Standaard: Geen Voorgeprogrammeerde Bandjes
 - **Geen voorgeprogrammeerde bandjes:** Nooit statische audiofragmenten of repetitieve mp3/ogg-lussen afspelen.
 - **Uitsluitend realtime live audio van dat moment:** Alle kanalen verbinden direct met actuele live streams (LiveATC Icecast, WebSDR, SomaFM Scanner) met `nocache` parameter zodat de gebruiker uitsluitend hoort wat er op dít exacte moment live in de ether wordt uitgezonden.
 - **Echte ether stilte & squelch:** Net als bij een echte scanner/ontvanger hoor je tijdens rustmomenten radiostilte/squelch, en hoor je direct de echte menselijke stemmen zodra een zender live de PTT indrukt.

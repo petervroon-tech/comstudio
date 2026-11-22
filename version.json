@@ -2,8 +2,8 @@
   "app_name": "Peter Vroon ComStudio",
   "version": "1.9.0",
   "build": 12,
-  "timestamp": "2026-11-22T20:59:42.853336+00:00",
-  "git_hash": "ab82f50",
+  "timestamp": "2026-11-22T21:05:27.927538+00:00",
+  "git_hash": "online",
   "features": [
     "📡 100% Realtime Live Streaming (Geen Bandjes): Alle statische voorgeprogrammeerde audiobestanden en lussen zijn permanent verwijderd. Elk kanaal verbindt direct met actuele live streams (LiveATC Icecast, WebSDR gateways, SomaFM Scanner) via realtime nocache streaming van dít exacte moment.",
     "🎙️ 100% Echte Menselijke Stemmen (Geen Computerstemmen): Alle synthetische spraaksynthese (Web Speech API / SpeechSynthesis) is permanent uitgeschakeld. U hoort uitsluitend echte menselijke zend- en luistergesprekken van dat actuele moment.",
