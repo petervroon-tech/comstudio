@@ -1310,60 +1310,62 @@
   }
 
   function loadStoredPreferences() {
-    // 1. Favorieten
     try {
+      // 1. Favorieten
       const storedFavs = localStorage.getItem(STORAGE_KEYS.FAVORITES);
       if (storedFavs) state.favorites = JSON.parse(storedFavs);
+
+      // 2. Laatst gekozen kanaal (onthouden en bovenaan zetten!)
+      const storedLast = localStorage.getItem(STORAGE_KEYS.LAST_CHANNEL);
+      if (storedLast && CHANNELS.some(c => c.id === storedLast)) {
+        state.activeChannelId = storedLast;
+      } else if (CHANNELS && CHANNELS.length > 0) {
+        state.activeChannelId = CHANNELS[0].id;
+      }
+
+      // 3. Audio instellingen
+      const storedVol = localStorage.getItem(STORAGE_KEYS.VOLUME);
+      if (storedVol !== null) state.volume = parseFloat(storedVol);
+
+      const storedSql = localStorage.getItem(STORAGE_KEYS.SQUELCH);
+      if (storedSql !== null) state.squelch = parseFloat(storedSql);
+
+      const storedRoger = localStorage.getItem(STORAGE_KEYS.ROGER_BEEP);
+      if (storedRoger !== null) state.rogerBeep = storedRoger === 'true';
+
+      const storedNoise = localStorage.getItem(STORAGE_KEYS.NOISE);
+      if (storedNoise !== null) state.noise = storedNoise === 'true';
+
+      const storedAutoDl = localStorage.getItem(STORAGE_KEYS.AUTO_DOWNLOAD);
+      if (storedAutoDl !== null && DOM.chkAutoDownload) {
+        DOM.chkAutoDownload.checked = storedAutoDl === 'true';
+      }
+
+      const storedAudioMode = localStorage.getItem(STORAGE_KEYS.AUDIO_MODE);
+      if (storedAudioMode === 'calls' || storedAudioMode === 'stream') {
+        state.audioMode = storedAudioMode;
+      }
+      if (DOM.btnModeUniqueCalls && DOM.btnModeLiveStream) {
+        DOM.btnModeUniqueCalls.classList.toggle('active', state.audioMode === 'calls');
+        DOM.btnModeLiveStream.classList.toggle('active', state.audioMode === 'stream');
+      }
+
+      // Update Sliders in UI
+      if (DOM.volumeSlider) {
+        DOM.volumeSlider.value = Math.round(state.volume * 100);
+        DOM.volText.textContent = `${Math.round(state.volume * 100)}%`;
+      }
+      if (DOM.squelchSlider) {
+        DOM.squelchSlider.value = Math.round(state.squelch * 100);
+        DOM.sqlText.textContent = `${Math.round(state.squelch * 100)}%`;
+      }
+      updateDspButtonsUI();
     } catch (e) {
-      state.favorites = [];
+      console.warn('Fout bij laden van opgeslagen voorkeuren:', e);
+      if (CHANNELS && CHANNELS.length > 0) {
+        state.activeChannelId = CHANNELS[0].id;
+      }
     }
-
-    // 2. Laatst gekozen kanaal (onthouden en bovenaan zetten!)
-    const storedLast = localStorage.getItem(STORAGE_KEYS.LAST_CHANNEL);
-    if (storedLast && CHANNELS.some(c => c.id === storedLast)) {
-      state.activeChannelId = storedLast;
-    } else {
-      // Standaard eerste kanaal (ProRail Treinverkeersleiding Utrecht)
-      state.activeChannelId = CHANNELS[0].id;
-    }
-
-    // 3. Audio instellingen
-    const storedVol = localStorage.getItem(STORAGE_KEYS.VOLUME);
-    if (storedVol !== null) state.volume = parseFloat(storedVol);
-
-    const storedSql = localStorage.getItem(STORAGE_KEYS.SQUELCH);
-    if (storedSql !== null) state.squelch = parseFloat(storedSql);
-
-    const storedRoger = localStorage.getItem(STORAGE_KEYS.ROGER_BEEP);
-    if (storedRoger !== null) state.rogerBeep = storedRoger === 'true';
-
-    const storedNoise = localStorage.getItem(STORAGE_KEYS.NOISE);
-    if (storedNoise !== null) state.noise = storedNoise === 'true';
-
-    const storedAutoDl = localStorage.getItem(STORAGE_KEYS.AUTO_DOWNLOAD);
-    if (storedAutoDl !== null && DOM.chkAutoDownload) {
-      DOM.chkAutoDownload.checked = storedAutoDl === 'true';
-    }
-
-    const storedAudioMode = localStorage.getItem(STORAGE_KEYS.AUDIO_MODE);
-    if (storedAudioMode === 'calls' || storedAudioMode === 'stream') {
-      state.audioMode = storedAudioMode;
-    }
-    if (DOM.btnModeUniqueCalls && DOM.btnModeLiveStream) {
-      DOM.btnModeUniqueCalls.classList.toggle('active', state.audioMode === 'calls');
-      DOM.btnModeLiveStream.classList.toggle('active', state.audioMode === 'stream');
-    }
-
-    // Update Sliders in UI
-    if (DOM.volumeSlider) {
-      DOM.volumeSlider.value = Math.round(state.volume * 100);
-      DOM.volText.textContent = `${Math.round(state.volume * 100)}%`;
-    }
-    if (DOM.squelchSlider) {
-      DOM.squelchSlider.value = Math.round(state.squelch * 100);
-      DOM.sqlText.textContent = `${Math.round(state.squelch * 100)}%`;
-    }
-    updateDspButtonsUI();
   }
 
   function saveStoredPreferences() {
@@ -1928,16 +1930,8 @@
     }
 
     // 100% ECHTE MENSELIJKE LIVE STREAM (GEEN VOORGEPROGRAMMEERDE BANDJES!)
+    // Speelt native via HTMLAudioElement om CORS-blokkades van externe live radio streams te voorkomen
     if (DOM.audioPlayer) {
-      if (!state.audioSourceNode && state.audioCtx) {
-        try {
-          state.audioSourceNode = state.audioCtx.createMediaElementSource(DOM.audioPlayer);
-          state.audioSourceNode.connect(state.filterNode);
-        } catch (err) {
-          console.warn('Audio node routing via direct audio player:', err);
-        }
-      }
-
       const targetUrl = getLiveStreamUrlForChannel(channel);
       DOM.audioPlayer.loop = false;
       DOM.audioPlayer.volume = state.volume;
@@ -3592,7 +3586,7 @@
       if (DOM.verPillText) DOM.verPillText.textContent = `v${vData.version}`;
       if (DOM.subbarVerText) DOM.subbarVerText.textContent = `v${vData.version} Build ${vData.build}`;
       if (DOM.helpVersionBadge) DOM.helpVersionBadge.textContent = `v${vData.version} Build ${vData.build}`;
-      if (DOM.helpGitHash) DOM.helpGitHash.textContent = `#${vData.git_commit_hash || 'online'}`;
+      if (DOM.helpGitHash) DOM.helpGitHash.textContent = `#${vData.git_hash || vData.git_commit_hash || 'online'}`;
 
       if (DOM.helpFeaturesList && Array.isArray(vData.features)) {
         DOM.helpFeaturesList.innerHTML = vData.features.map(f => `<li>${escapeHtml(f)}</li>`).join('');
@@ -3600,7 +3594,7 @@
 
     } catch (err) {
       console.warn('Versie controle via fallback:', err);
-      if (DOM.verPillText) DOM.verPillText.textContent = 'v1.1.0';
+      if (DOM.verPillText) DOM.verPillText.textContent = 'v1.9.0';
     }
   }
 
