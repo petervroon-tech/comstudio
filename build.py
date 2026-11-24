@@ -72,7 +72,8 @@ def verify_assets():
         "style.css",
         "HELP.md",
         "version.json",
-        "favicon.svg"
+        "favicon.svg",
+        "WebSDR_Twente_ComStudio_Dossier.pdf"
     ]
     missing = []
     base_dir = os.path.dirname(__file__)

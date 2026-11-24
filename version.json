@@ -1,10 +1,11 @@
 {
   "app_name": "Peter Vroon ComStudio",
   "version": "1.9.0",
-  "build": 15,
-  "timestamp": "2026-11-24T07:33:55.279611+00:00",
-  "git_hash": "681d2a7",
+  "build": 16,
+  "timestamp": "2026-11-24T07:44:08.270811+00:00",
+  "git_hash": "3146cc8",
   "features": [
+    "📄 Officieel WebSDR Twente PDF Dossier: Compleet technisch naslagwerk (3 pagina's vector PDF) direct geïntegreerd en downloadbaar in de app ('WebSDR_Twente_ComStudio_Dossier.pdf'). Bevat diepgaande analyses van Software Defined Radio, spectrum- en watervalvisualisatie, signaalherkenning (AM, SSB, CW, FT8) en frequentietabellen.",
     "📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek: Direct geïntegreerd commentaar- en frequentielogboek geïnspireerd op de beroemde Universiteit Twente WebSDR (dr. Pieter-Tjerk de Boer). Luisteraars kunnen interessante frequenties bekijken, filteren op zendamateurs, piratenmuziek, FT8 digitaal en 27MC, en zelf nieuwe ether-vondsten achterlaten. Met 1-tap direct afstemmen op de live WebSDR ontvanger op de campus in Enschede (via http://websdr.ewi.utwente.nl:8901/?tune=...) en 1-tap live meeluisteren in ComStudio.",
     "📡 100% Realtime Live Streaming (Geen Bandjes): Alle statische voorgeprogrammeerde audiobestanden en lussen zijn permanent verwijderd. Elk kanaal verbindt direct met actuele live streams (LiveATC Icecast, WebSDR gateways, SomaFM Scanner) via realtime nocache streaming van dít exacte moment.",
     "🎙️ 100% Echte Menselijke Stemmen (Geen Computerstemmen): Alle synthetische spraaksynthese (Web Speech API / SpeechSynthesis) is permanent uitgeschakeld. U hoort uitsluitend echte menselijke zend- en luistergesprekken van dat actuele moment.",

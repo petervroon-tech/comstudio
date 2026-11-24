@@ -100,6 +100,7 @@ ComStudio is direct gekoppeld aan **12 actieve Radio Nodes en Gateways** in heel
 ### 5.3 📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek
 Geïnspireerd op het live WebSDR logboek van de Universiteit Twente (`http://websdr.ewi.utwente.nl:8901/`):
 * **Interessante Frequenties & Opmerkingen:** Luisteraars laten in het logboek interessante ontdekkingen achter over signalen, praatrondes, piratenmuziek, FT8 digitaal verkeer en mysterieuze zenders (zoals *The Buzzer* of de Duitse DCF77 atoomklok).
+* **📄 Download Technisch PDF Dossier:** Direct in de app te downloaden als vectorieel PDF-document (`WebSDR_Twente_ComStudio_Dossier.pdf`) met 3 pagina's diepgaande achtergrond over SDR-architectuur, spectrum- en watervalvisualisatie en frequentietabellen.
 * **1-Tap Direct Afstemmen op WebSDR Twente:** Klik op `[ 🌐 Luister op WebSDR ↗ ]` bij een gespotte frequentie om de live ontvanger op de campus van de TU Enschede direct op die exacte frequentie en modulatie (LSB, USB, AM, FM, CW) te openen en te beluisteren.
 * **1-Tap Afstemmen in ComStudio:** Klik op `[ 📻 Stem af in Studio ]` om een gespot station direct in ComStudio te openen en live uit te luisteren.
 * **Zelf Frequenties Achterlaten:** Deel eenvoudig uw eigen ether-vondsten via het formulier `➕ Deel een interessante frequentie`. Uw spot wordt direct opgeslagen en getoond met realtime badge.
@@ -111,7 +112,7 @@ Geïnspireerd op het live WebSDR logboek van de Universiteit Twente (`http://web
 * **60 FPS Watervalscherm:** Toont realtime het frequentiespectrum van de audio met dynamische kleurverlopen.
 * **MP3 Opnamestudio:** Neem echte communicatie direct op in 128, 192 of 320 kbps MP3 en download automatisch naar uw apparaat.
 
-### 5.4 ⌨️ Handige Sneltoetsen
+### 5.5 ⌨️ Handige Sneltoetsen
 * `Spatie` - Ontvangst starten / pauzeren
 * `M` - Geluid dempen / herstellen
 * `F` - Kanaal toevoegen aan favorieten
