@@ -1057,6 +1057,9 @@
     isTransmissionActive: false,
     activeTransmissionText: '',
     transmissionHistory: [],
+    // 📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek
+    webSdrSpots: [],
+    spotterFilter: 'all',
     favorites: [],
     recordings: [],
     isRecording: false,
@@ -1095,6 +1098,7 @@
     cacheDomElements();
     loadStoredPreferences();
     initAudioEngine();
+    initWebSDRSpots();
     renderChannelList();
     bindEvents();
     startCanvasVisualizer();
@@ -1280,6 +1284,24 @@
     DOM.btnCloseCallsLog = document.getElementById('btnCloseCallsLog');
     DOM.btnCloseCallsLogDone = document.getElementById('btnCloseCallsLogDone');
     DOM.btnClearCallsLog = document.getElementById('btnClearCallsLog');
+
+    // 📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek
+    DOM.btnOpenWebSDRSpotter = document.getElementById('btnOpenWebSDRSpotter');
+    DOM.sbBtnWebSDRSpotter = document.getElementById('sbBtnWebSDRSpotter');
+    DOM.spotterBadge = document.getElementById('spotterBadge');
+    DOM.sbSpotterBadge = document.getElementById('sbSpotterBadge');
+    DOM.websdrSpotterModal = document.getElementById('websdrSpotterModal');
+    DOM.spotterList = document.getElementById('spotterList');
+    DOM.spotterForm = document.getElementById('spotterForm');
+    DOM.btnSubmitSpot = document.getElementById('btnSubmitSpot');
+    DOM.btnCloseSpotter = document.getElementById('btnCloseSpotter');
+    DOM.btnCloseSpotterDone = document.getElementById('btnCloseSpotterDone');
+    DOM.spotterTabs = document.querySelectorAll('.spotter-tab');
+    DOM.spotFreqInput = document.getElementById('spotFreqInput');
+    DOM.spotModInput = document.getElementById('spotModInput');
+    DOM.spotCategoryInput = document.getElementById('spotCategoryInput');
+    DOM.spotNameInput = document.getElementById('spotNameInput');
+    DOM.spotCommentInput = document.getElementById('spotCommentInput');
 
     // Referentielocatie / Polder Modal
     DOM.customLocationModal = document.getElementById('customLocationModal');
@@ -2060,6 +2082,289 @@
     if (DOM.callLogModalCount) DOM.callLogModalCount.textContent = '0 Oproepen';
     renderCallsLogList();
     showToast('🗑️ Ether oproepenlogboek gewist');
+  }
+
+  // ==========================================================================
+  // 4b. 📡 WEBSDR TWENTE FREQUENTIE SPOTTER & COMMENTAAR LOGBOEK
+  // ==========================================================================
+  const DEFAULT_WEBSDR_SPOTS = [
+    {
+      id: 'spot_7085',
+      freqKhz: '7085',
+      freqFormatted: '7.085 kHz (40m Band)',
+      mod: 'LSB',
+      category: 'ham',
+      categoryName: 'Zendamateurs',
+      badge: '🎙️ 40m Avondronde',
+      spotter: 'PA3FWM Luistervink',
+      timeStr: '14 min geleden',
+      comment: 'Nederlandse 40m avondronde actief. Rapport 5 en 9 over heel Nederland op de Twente Mini-Whip antenne.',
+      channelId: 'ham_websdr_40m'
+    },
+    {
+      id: 'spot_6300',
+      freqKhz: '6300',
+      freqFormatted: '6.300 kHz (48m Piraten)',
+      mod: 'AM',
+      category: 'pirate',
+      categoryName: 'Piraten & Muziek',
+      badge: '📻 Vrije Radio Piraten',
+      spotter: 'Etherzoeker Twente',
+      timeStr: '28 min geleden',
+      comment: 'Mooie doorkomst van piratenstation met Nederlandstalige muziek en polka. Duidelijk te zien als felle lijn op het watervalspectrum.',
+      channelId: null
+    },
+    {
+      id: 'spot_14074',
+      freqKhz: '14074',
+      freqFormatted: '14.074 kHz (20m FT8)',
+      mod: 'USB',
+      category: 'digital',
+      categoryName: 'Digitaal & FT8',
+      badge: '📡 FT8 Digitaal',
+      spotter: 'NL-DX-Spotter',
+      timeStr: '42 min geleden',
+      comment: 'FT8 gekkenhuis op 20 meter! Duidelijke parallelle toontjes op het watervalspectrum van stations uit Japan, USA en Brazilië.',
+      channelId: null
+    },
+    {
+      id: 'spot_3650',
+      freqKhz: '3650',
+      freqFormatted: '3.650 kHz (80m Band)',
+      mod: 'LSB',
+      category: 'ham',
+      categoryName: 'Zendamateurs',
+      badge: '🎙️ 80m Ochtendronde',
+      spotter: 'PD2Ochtend',
+      timeStr: '1 uur geleden',
+      comment: 'Ochtendronde van Nederlandse en Vlaamse amateurs, sterke grondgolf signalen in Enschede.',
+      channelId: null
+    },
+    {
+      id: 'spot_27205',
+      freqKhz: '27205',
+      freqFormatted: '27.205 kHz (11m CB)',
+      mod: 'FM',
+      category: 'cb',
+      categoryName: '27MC Bakkies',
+      badge: '🚚 CB Kanaal 20',
+      spotter: 'Trucker-NL',
+      timeStr: '2 uur geleden',
+      comment: 'Kanaal 20 CB oproepkanaal, truckers op de A1 en A35 communiceren over wegwerkzaamheden bij Deventer.',
+      channelId: 'cb_polder_k19'
+    },
+    {
+      id: 'spot_8942',
+      freqKhz: '8942',
+      freqFormatted: '8.942 kHz (HF Aero)',
+      mod: 'USB',
+      category: 'aero',
+      categoryName: 'Luchtvaart & VOLMET',
+      badge: '✈️ Shannon VOLMET',
+      spotter: 'AeroEnschede',
+      timeStr: '2 uur geleden',
+      comment: 'Shannon VOLMET trans-Atlantisch weerbericht voor piloten boven de oceaan. Glashelder te horen via de campus antenne.',
+      channelId: null
+    },
+    {
+      id: 'spot_4625',
+      freqKhz: '4625',
+      freqFormatted: '4.625 kHz (HF)',
+      mod: 'USB',
+      category: 'signals',
+      categoryName: 'Signalen & Bakens',
+      badge: '☢️ UVB-76 Buzzer',
+      spotter: 'SignalenJager',
+      timeStr: '3 uur geleden',
+      comment: 'De beroemde Russische kortegolf zoemer (The Buzzer) tikt onafgebroken met zijn karakteristieke 25 pulsen per minuut.',
+      channelId: null
+    },
+    {
+      id: 'spot_77_5',
+      freqKhz: '77.5',
+      freqFormatted: '77.5 kHz (LF)',
+      mod: 'AM',
+      category: 'signals',
+      categoryName: 'Atoomklok & Tijd',
+      badge: '⏱️ DCF77 Mainflingen',
+      spotter: 'Tijdsein-Fan',
+      timeStr: '4 uur geleden',
+      comment: 'Lange golf zender van de Duitse atoomklok in Mainflingen. Geeft elke seconde een tijdpuls waarmee radioklokken synchroniseren.',
+      channelId: null
+    }
+  ];
+
+  function initWebSDRSpots() {
+    let userSpots = [];
+    try {
+      const stored = localStorage.getItem('comstudio_user_spots');
+      if (stored) {
+        userSpots = JSON.parse(stored);
+      }
+    } catch (e) {
+      console.warn('Kon opgeslagen spots niet laden:', e);
+    }
+    state.webSdrSpots = [...userSpots, ...DEFAULT_WEBSDR_SPOTS];
+    updateSpotterBadges();
+  }
+
+  function updateSpotterBadges() {
+    const total = state.webSdrSpots.length;
+    if (DOM.spotterBadge) DOM.spotterBadge.textContent = total;
+    if (DOM.sbSpotterBadge) DOM.sbSpotterBadge.textContent = total;
+
+    const countAll = total;
+    const countHam = state.webSdrSpots.filter(s => s.category === 'ham').length;
+    const countPirate = state.webSdrSpots.filter(s => s.category === 'pirate').length;
+    const countDigital = state.webSdrSpots.filter(s => s.category === 'digital').length;
+    const countCb = state.webSdrSpots.filter(s => s.category === 'cb').length;
+    const countSignals = state.webSdrSpots.filter(s => s.category === 'signals').length;
+    const countAero = state.webSdrSpots.filter(s => s.category === 'aero').length;
+
+    const elCountAll = document.getElementById('countSpotsAll');
+    if (elCountAll) elCountAll.textContent = countAll;
+    const elCountHam = document.getElementById('countSpotsHam');
+    if (elCountHam) elCountHam.textContent = countHam;
+    const elCountPirate = document.getElementById('countSpotsPirate');
+    if (elCountPirate) elCountPirate.textContent = countPirate;
+    const elCountDigital = document.getElementById('countSpotsDigital');
+    if (elCountDigital) elCountDigital.textContent = countDigital;
+    const elCountCb = document.getElementById('countSpotsCb');
+    if (elCountCb) elCountCb.textContent = countCb;
+    const elCountSignals = document.getElementById('countSpotsSignals');
+    if (elCountSignals) elCountSignals.textContent = countSignals;
+    const elCountAero = document.getElementById('countSpotsAero');
+    if (elCountAero) elCountAero.textContent = countAero;
+  }
+
+  function openWebSDRSpotterModal(filter = 'all') {
+    state.spotterFilter = filter;
+    if (DOM.spotterTabs) {
+      DOM.spotterTabs.forEach(t => {
+        t.classList.toggle('active', t.dataset.spotFilter === filter);
+      });
+    }
+    renderWebSDRSpotterList(filter);
+    if (DOM.websdrSpotterModal) DOM.websdrSpotterModal.style.display = 'flex';
+  }
+
+  function closeWebSDRSpotterModal() {
+    if (DOM.websdrSpotterModal) DOM.websdrSpotterModal.style.display = 'none';
+  }
+
+  function renderWebSDRSpotterList(filter = 'all') {
+    if (!DOM.spotterList) return;
+
+    let spots = state.webSdrSpots;
+    if (filter !== 'all') {
+      spots = spots.filter(s => s.category === filter);
+    }
+
+    if (spots.length === 0) {
+      DOM.spotterList.innerHTML = `
+        <div class="empty-state" style="display:flex;">
+          <span class="empty-icon">📡</span>
+          <h3>Geen frequenties gevonden in deze categorie</h3>
+          <p>Wees de eerste en laat hierboven een interessante frequentie achter in het logboek!</p>
+        </div>
+      `;
+      return;
+    }
+
+    DOM.spotterList.innerHTML = spots.map(spot => {
+      const sdrUrl = `http://websdr.ewi.utwente.nl:8901/?tune=${encodeURIComponent(spot.freqKhz)}${encodeURIComponent(spot.mod.toLowerCase())}`;
+      const matchingChannel = spot.channelId ? getChannelById(spot.channelId) : null;
+
+      return `
+        <div class="spotter-card ${spot.isUserAdded ? 'user-added-spot' : ''}">
+          <div class="spotter-card-top">
+            <div class="spotter-freq-group">
+              <span class="spotter-freq-title">📻 ${escapeHtml(spot.freqFormatted || (spot.freqKhz + ' kHz'))}</span>
+              <span class="spotter-mod-badge">${escapeHtml(spot.mod)}</span>
+              <span class="spotter-cat-badge">${escapeHtml(spot.badge || spot.categoryName)}</span>
+            </div>
+            <span class="spotter-meta-info">🕒 ${escapeHtml(spot.timeStr || 'Zojuist')}</span>
+          </div>
+
+          <div class="spotter-card-comment">
+            "${escapeHtml(spot.comment)}"
+          </div>
+
+          <div class="spotter-card-bottom">
+            <div class="spotter-author-tag">
+              Gespot door: <strong>${escapeHtml(spot.spotter || 'Luisteraar')}</strong>
+            </div>
+            <div class="spotter-actions-group">
+              <a href="${sdrUrl}" target="_blank" rel="noopener noreferrer" class="spotter-sdr-tune-btn" title="Open WebSDR Twente op ${spot.freqKhz} kHz ${spot.mod}">
+                🌐 Luister op WebSDR ↗
+              </a>
+              ${matchingChannel ? `
+                <button class="spotter-studio-tune-btn" onclick="window.tuneStudioDirect('${matchingChannel.id}')" title="Stem direct af in ComStudio">
+                  📻 Stem af in Studio
+                </button>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function handleAddNewSpot() {
+    if (!DOM.spotFreqInput || !DOM.spotCommentInput) return;
+
+    const rawFreq = DOM.spotFreqInput.value.trim();
+    const comment = DOM.spotCommentInput.value.trim();
+    if (!rawFreq || !comment) {
+      showToast('⚠️ Vul minimaal een frequentie en commentaar in.');
+      return;
+    }
+
+    let cleanFreq = rawFreq.replace(',', '.');
+    let numFreq = parseFloat(cleanFreq);
+    let freqKhz = cleanFreq;
+    if (!isNaN(numFreq) && numFreq < 35) {
+      freqKhz = Math.round(numFreq * 1000).toString();
+    }
+
+    const mod = DOM.spotModInput ? DOM.spotModInput.value : 'LSB';
+    const category = DOM.spotCategoryInput ? DOM.spotCategoryInput.value : 'ham';
+    const spotter = (DOM.spotNameInput && DOM.spotNameInput.value.trim()) || 'ComStudio Luisteraar';
+
+    const newSpot = {
+      id: 'spot_' + Date.now(),
+      freqKhz: freqKhz,
+      freqFormatted: `${cleanFreq} ${!isNaN(numFreq) && numFreq < 35 ? 'MHz' : 'kHz'}`,
+      mod: mod,
+      category: category,
+      categoryName: category.toUpperCase(),
+      badge: '👤 Luisteraar Spot',
+      spotter: spotter,
+      timeStr: 'Zojuist',
+      comment: comment,
+      channelId: null,
+      isUserAdded: true
+    };
+
+    state.webSdrSpots.unshift(newSpot);
+
+    try {
+      const stored = localStorage.getItem('comstudio_user_spots');
+      const userList = stored ? JSON.parse(stored) : [];
+      userList.unshift(newSpot);
+      localStorage.setItem('comstudio_user_spots', JSON.stringify(userList.slice(0, 50)));
+    } catch (e) {
+      console.warn('Kon spot niet opslaan in localStorage:', e);
+    }
+
+    updateSpotterBadges();
+    renderWebSDRSpotterList(state.spotterFilter);
+
+    DOM.spotFreqInput.value = '';
+    DOM.spotCommentInput.value = '';
+    if (DOM.spotNameInput) DOM.spotNameInput.value = '';
+
+    showToast(`✓ Frequentie ${newSpot.freqFormatted} toegevoegd aan het WebSDR Logboek!`);
   }
 
   // ==========================================================================
@@ -2998,6 +3303,38 @@
     }
 
     // ========================================================================
+    // 📡 WEBSDR TWENTE SPOTTER & LOGBOEK EVENT BINDINGS
+    // ========================================================================
+    if (DOM.btnOpenWebSDRSpotter) DOM.btnOpenWebSDRSpotter.addEventListener('click', () => openWebSDRSpotterModal());
+    if (DOM.sbBtnWebSDRSpotter) {
+      DOM.sbBtnWebSDRSpotter.addEventListener('click', () => {
+        openWebSDRSpotterModal();
+        closeMobileSidebar();
+      });
+    }
+    if (DOM.btnCloseSpotter) DOM.btnCloseSpotter.addEventListener('click', closeWebSDRSpotterModal);
+    if (DOM.btnCloseSpotterDone) DOM.btnCloseSpotterDone.addEventListener('click', closeWebSDRSpotterModal);
+    if (DOM.websdrSpotterModal) {
+      DOM.websdrSpotterModal.addEventListener('click', (e) => {
+        if (e.target === DOM.websdrSpotterModal) closeWebSDRSpotterModal();
+      });
+    }
+    if (DOM.btnSubmitSpot) DOM.btnSubmitSpot.addEventListener('click', handleAddNewSpot);
+    if (DOM.spotterForm) DOM.spotterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleAddNewSpot();
+    });
+    if (DOM.spotterTabs) {
+      DOM.spotterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          DOM.spotterTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          openWebSDRSpotterModal(tab.dataset.spotFilter);
+        });
+      });
+    }
+
+    // ========================================================================
     // 📍 STRAAL VAN 30 KM EVENT BINDINGS (GPS & LOCATIE RADAR)
     // ========================================================================
     if (DOM.btnRadius30km) DOM.btnRadius30km.addEventListener('click', toggleRadius30km);
@@ -3461,6 +3798,10 @@
               <span>${node.status} • Ping: ${node.ping} • 👥 ${node.listeners}</span>
             </div>
             <div class="node-card-actions">
+              ${node.id === 'node_websdr_twente' ? `
+                <button class="node-websdr-spots-btn" onclick="window.openWebSDRSpotterModal()">💬 Frequentie Logboek</button>
+                <a href="http://websdr.ewi.utwente.nl:8901/" target="_blank" rel="noopener noreferrer" class="node-websdr-external-btn">🌐 UTwente WebSDR ↗</a>
+              ` : ''}
               <button class="node-filter-btn" onclick="window.filterBySpecificNode('${node.id}')">Kanalen</button>
               <button class="node-listen-btn" onclick="window.listenViaSpecificNode('${node.id}')">▶ Luister</button>
             </div>
@@ -3629,5 +3970,14 @@
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
   }
+
+  // Window exports for WebSDR Spotter & Logboek
+  window.openWebSDRSpotterModal = openWebSDRSpotterModal;
+  window.closeWebSDRSpotterModal = closeWebSDRSpotterModal;
+  window.tuneStudioDirect = (channelId) => {
+    closeWebSDRSpotterModal();
+    selectChannel(channelId, true);
+    showToast('📻 Afgestemd op kanaal in ComStudio!');
+  };
 
 })();

@@ -3251,4 +3251,323 @@ button:active, .pill-btn:active, .mode-pill:active, .cat-pill:active, .band-pill
   font-family: var(--font-mono);
 }
 
+/* ==========================================================================
+   WebSDR Twente Frequentie Spotter & Commentaar Logboek
+   ========================================================================== */
+.spotter-pill {
+  border-color: rgba(0, 242, 254, 0.4);
+}
+.spotter-modal-sheet {
+  max-width: 820px;
+  max-height: 90vh;
+}
+.live-sdr-link-btn {
+  text-decoration: none;
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.4);
+  color: var(--accent-cyan);
+}
+.live-sdr-link-btn:hover {
+  background: rgba(0, 242, 254, 0.22);
+  color: #fff;
+}
+.spotter-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 8px 16px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-overflow-scrolling: touch;
+}
+.spotter-tab {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--trans-fast);
+}
+.spotter-tab:hover,
+.spotter-tab.active {
+  background: rgba(0, 242, 254, 0.15);
+  border-color: var(--accent-cyan);
+  color: #fff;
+}
+
+/* Spotter Form Card */
+.spotter-form-card {
+  background: rgba(0, 242, 254, 0.03);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.spotter-form-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.spotter-form-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+.spotter-form-sub {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+.spotter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.spotter-form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.spotter-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 140px;
+}
+.spotter-field-group label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.spotter-field-group input,
+.spotter-field-group select {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  font-size: 0.78rem;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color var(--trans-fast);
+}
+.spotter-field-group input:focus,
+.spotter-field-group select:focus {
+  border-color: var(--accent-cyan);
+}
+.spotter-comment-group {
+  flex: 2;
+  min-width: 220px;
+}
+.spotter-form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.spotter-form-actions button {
+  padding: 7px 18px;
+  font-size: 0.76rem;
+}
+
+/* Spotter Cards List */
+.spotter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 52vh;
+  overflow-y: auto;
+  padding-right: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+.spotter-card {
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all var(--trans-fast);
+}
+.spotter-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 242, 254, 0.4);
+}
+.spotter-card.user-added-spot {
+  border-left: 3px solid var(--accent-amber);
+}
+.spotter-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.spotter-freq-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.spotter-freq-title {
+  font-family: var(--font-mono);
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  letter-spacing: 0.02em;
+}
+.spotter-mod-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  background: rgba(0, 242, 254, 0.15);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  color: var(--accent-cyan);
+  border-radius: var(--radius-pill);
+}
+.spotter-cat-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+  border-radius: var(--radius-pill);
+}
+.spotter-meta-info {
+  font-size: 0.70rem;
+  color: var(--text-dim);
+}
+.spotter-card-comment {
+  font-size: 0.80rem;
+  color: var(--text-main);
+  line-height: 1.45;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border-left: 2px solid var(--accent-cyan);
+}
+.spotter-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.spotter-author-tag {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+.spotter-author-tag strong {
+  color: var(--accent-amber);
+}
+.spotter-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.spotter-sdr-tune-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.4);
+  color: var(--accent-cyan);
+  border-radius: var(--radius-pill);
+  padding: 4px 11px;
+  font-size: 0.70rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--trans-fast);
+}
+.spotter-sdr-tune-btn:hover {
+  background: rgba(0, 242, 254, 0.25);
+  color: #fff;
+  border-color: var(--accent-cyan);
+  transform: translateY(-1px);
+}
+.spotter-studio-tune-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 179, 0, 0.12);
+  border: 1px solid rgba(255, 179, 0, 0.35);
+  color: var(--accent-amber);
+  border-radius: var(--radius-pill);
+  padding: 4px 11px;
+  font-size: 0.70rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+.spotter-studio-tune-btn:hover {
+  background: rgba(255, 179, 0, 0.22);
+  color: #fff;
+  border-color: var(--accent-amber);
+  transform: translateY(-1px);
+}
+
+/* Node card extra buttons */
+.node-websdr-spots-btn {
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.4);
+  color: var(--accent-cyan);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  font-size: 0.70rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+.node-websdr-spots-btn:hover {
+  background: rgba(0, 242, 254, 0.25);
+  color: #fff;
+}
+.node-websdr-external-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+  border-radius: var(--radius-pill);
+  padding: 4px 9px;
+  font-size: 0.70rem;
+  text-decoration: none;
+  transition: all var(--trans-fast);
+}
+.node-websdr-external-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+@media (max-width: 680px) {
+  .spotter-modal-sheet {
+    max-height: 92vh;
+    padding: 12px;
+  }
+  .spotter-form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .spotter-field-group,
+  .spotter-comment-group {
+    width: 100%;
+    min-width: 100%;
+  }
+  .spotter-card-top,
+  .spotter-card-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .spotter-actions-group {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
 

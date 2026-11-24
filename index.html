@@ -79,6 +79,13 @@
           <span id="callLogBadge" class="call-log-count-badge">0</span>
         </button>
 
+        <!-- Knop WebSDR Twente Frequentie Spotter & Logboek -->
+        <button id="btnOpenWebSDRSpotter" class="pill-btn action-pill spotter-pill" title="WebSDR Twente Frequentie Spotter & Commentaar Logboek (Interessante frequenties achtergelaten door luisteraars)">
+          <span class="pill-icon">📡</span>
+          <span class="action-label">WebSDR Spots</span>
+          <span id="spotterBadge" class="call-log-count-badge">8</span>
+        </button>
+
         <button id="btnOpenFavs" class="pill-btn action-pill" title="Mijn Opgeslagen Favoriete Frequenties">
           <span class="pill-icon">⭐</span>
           <span class="action-label">Favorieten</span>
@@ -271,6 +278,11 @@
                 <span class="nav-item-icon">📋</span>
                 <span class="nav-item-label">Live Call Log</span>
                 <span id="sbCallLogBadge" class="nav-item-badge">0</span>
+              </button>
+              <button class="sidebar-nav-item" id="sbBtnWebSDRSpotter">
+                <span class="nav-item-icon">📡</span>
+                <span class="nav-item-label">WebSDR Spotter & Log</span>
+                <span id="sbSpotterBadge" class="nav-item-badge">8</span>
               </button>
               <button class="sidebar-nav-item" id="sbBtnFavs">
                 <span class="nav-item-icon">⭐</span>
@@ -1057,6 +1069,101 @@
         <div class="modal-footer">
           <button id="btnClearCallsLog" class="pill-btn danger-pill" style="display:none;">Log Wissen</button>
           <button id="btnCloseCallsLogDone" class="pill-btn primary-pill">Sluiten</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek Modal -->
+    <div id="websdrSpotterModal" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="spotterTitle">
+      <div class="modal-sheet spotter-modal-sheet">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <span class="modal-icon">📡</span>
+            <div>
+              <h2 id="spotterTitle" class="modal-title">WebSDR Twente Frequentie Spotter</h2>
+              <span class="modal-subtitle">Commentaarlogboek & interessante ether-frequenties achtergelaten door luisteraars</span>
+            </div>
+          </div>
+          <div class="modal-header-actions">
+            <a href="http://websdr.ewi.utwente.nl:8901/" target="_blank" rel="noopener noreferrer" class="pill-btn action-pill live-sdr-link-btn" title="Open officiële WebSDR Twente ontvanger in nieuw venster">
+              <span class="pill-icon">🌐</span>
+              <span class="action-label">WebSDR Twente ↗</span>
+            </a>
+            <button id="btnCloseSpotter" class="btn-close-modal" aria-label="Sluiten">✕</button>
+          </div>
+        </div>
+
+        <!-- Snelfilters -->
+        <div class="modal-tabs spotter-tabs">
+          <button class="spotter-tab active" data-spot-filter="all">Alle Frequenties (<span id="countSpotsAll">8</span>)</button>
+          <button class="spotter-tab" data-spot-filter="ham">🎙️ Zendamateurs (<span id="countSpotsHam">2</span>)</button>
+          <button class="spotter-tab" data-spot-filter="pirate">📻 Piraten & Muziek (<span id="countSpotsPirate">1</span>)</button>
+          <button class="spotter-tab" data-spot-filter="digital">📡 Digitaal & FT8 (<span id="countSpotsDigital">1</span>)</button>
+          <button class="spotter-tab" data-spot-filter="cb">🚚 27MC Bakkies (<span id="countSpotsCb">1</span>)</button>
+          <button class="spotter-tab" data-spot-filter="signals">⏱️ Tijd & Signalen (<span id="countSpotsSignals">2</span>)</button>
+          <button class="spotter-tab" data-spot-filter="aero">✈️ Luchtvaart (<span id="countSpotsAero">1</span>)</button>
+        </div>
+
+        <div class="modal-body spotter-modal-body">
+          <!-- Formulier: Laat zelf een interessante frequentie achter -->
+          <div class="spotter-form-card">
+            <div class="spotter-form-header">
+              <span class="spotter-form-title">➕ Deel een interessante frequentie in het Logboek</span>
+              <span class="spotter-form-sub">Heb je een signaal, baken of praatronde gehoord? Deel het met mede-luisteraars.</span>
+            </div>
+            <form id="spotterForm" class="spotter-form" onsubmit="return false;">
+              <div class="spotter-form-row">
+                <div class="spotter-field-group">
+                  <label for="spotFreqInput">Frequentie (kHz of MHz)*</label>
+                  <input type="text" id="spotFreqInput" placeholder="bv. 7085 of 6300" required autocomplete="off" />
+                </div>
+                <div class="spotter-field-group">
+                  <label for="spotModInput">Modulatie</label>
+                  <select id="spotModInput">
+                    <option value="LSB">LSB (Kortegolf < 10 MHz)</option>
+                    <option value="USB">USB (Kortegolf > 10 MHz & VHF)</option>
+                    <option value="AM">AM (Middengolf & Piraten)</option>
+                    <option value="FM">FM (27MC & Marifoon)</option>
+                    <option value="CW">CW (Morsesignalen)</option>
+                  </select>
+                </div>
+                <div class="spotter-field-group">
+                  <label for="spotCategoryInput">Categorie</label>
+                  <select id="spotCategoryInput">
+                    <option value="ham">Zendamateurs</option>
+                    <option value="pirate">Piraten & Muziek</option>
+                    <option value="digital">Digitaal & FT8</option>
+                    <option value="cb">27MC Bakkies</option>
+                    <option value="signals">Signalen & Bakens</option>
+                    <option value="aero">Luchtvaart & Weer</option>
+                  </select>
+                </div>
+              </div>
+              <div class="spotter-form-row">
+                <div class="spotter-field-group">
+                  <label for="spotNameInput">Naam of Roepnaam</label>
+                  <input type="text" id="spotNameInput" placeholder="bv. Luistervink of PA3..." autocomplete="off" />
+                </div>
+                <div class="spotter-field-group spotter-comment-group">
+                  <label for="spotCommentInput">Wat is er te horen? (Commentaar)*</label>
+                  <input type="text" id="spotCommentInput" placeholder="bv. Nederlandse avondronde, sterke zender uit Groningen..." required autocomplete="off" />
+                </div>
+              </div>
+              <div class="spotter-form-actions">
+                <button type="submit" id="btnSubmitSpot" class="pill-btn primary-pill">Plaats in Logboek</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Gespotte Frequenties Lijst -->
+          <div id="spotterList" class="spotter-list">
+            <!-- Dynamisch opgebouwd in app.js -->
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <span class="footer-note">Klik op 'Luister op WebSDR' om de ontvanger in Twente direct af te stemmen op de frequentie.</span>
+          <button id="btnCloseSpotterDone" class="pill-btn primary-pill">Sluiten</button>
         </div>
       </div>
     </div>

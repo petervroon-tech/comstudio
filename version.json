@@ -1,10 +1,11 @@
 {
   "app_name": "Peter Vroon ComStudio",
   "version": "1.9.0",
-  "build": 12,
-  "timestamp": "2026-11-22T21:17:27.681180+00:00",
-  "git_hash": "online",
+  "build": 15,
+  "timestamp": "2026-11-24T07:33:55.279611+00:00",
+  "git_hash": "681d2a7",
   "features": [
+    "📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek: Direct geïntegreerd commentaar- en frequentielogboek geïnspireerd op de beroemde Universiteit Twente WebSDR (dr. Pieter-Tjerk de Boer). Luisteraars kunnen interessante frequenties bekijken, filteren op zendamateurs, piratenmuziek, FT8 digitaal en 27MC, en zelf nieuwe ether-vondsten achterlaten. Met 1-tap direct afstemmen op de live WebSDR ontvanger op de campus in Enschede (via http://websdr.ewi.utwente.nl:8901/?tune=...) en 1-tap live meeluisteren in ComStudio.",
     "📡 100% Realtime Live Streaming (Geen Bandjes): Alle statische voorgeprogrammeerde audiobestanden en lussen zijn permanent verwijderd. Elk kanaal verbindt direct met actuele live streams (LiveATC Icecast, WebSDR gateways, SomaFM Scanner) via realtime nocache streaming van dít exacte moment.",
     "🎙️ 100% Echte Menselijke Stemmen (Geen Computerstemmen): Alle synthetische spraaksynthese (Web Speech API / SpeechSynthesis) is permanent uitgeschakeld. U hoort uitsluitend echte menselijke zend- en luistergesprekken van dat actuele moment.",
     "🇳🇱 100% Exclusief Nederland: Volledig geherstructureerd naar uitsluitend Nederlandse stations, zendontvangers, nodes en corridors. Alle buitenlandse frequenties zijn vervangen door puur Nederlandse treintrajecten (ProRail Utrecht, Amsterdam, Zwolle, Eindhoven, Arnhem, Kijfhoek), schepen (Kustwacht Den Helder, Maasmond, IJmuiden, Brandaris, Zeeland, Rijnvaart), portofoons (Nederland landelijk, Veluwe, Jaarbeurs, Handhaving), mobilofoons (Nederlandse snelwegen A1/A2/A12/A15/A27, polders, takelbedrijven), luchtvaart (Schiphol Toren, Amsterdam Radar, Rotterdam Airport) en Nederlandse repeaters (PI2NOS, PI3UTR, PI1NOS, VERON PI4AA).",

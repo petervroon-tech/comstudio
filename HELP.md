@@ -97,7 +97,14 @@ ComStudio is direct gekoppeld aan **12 actieve Radio Nodes en Gateways** in heel
 11. **Zeehaven IJmuiden & Sluizen Node #11 (IJmuiden, NH, NL):** Zeesluis IJmuiden, Vissershaven en Noordzeekanaal.
 12. **Polder Mesh & Mobile CB Node #12 (Flevoland, NL):** Landelijke gebieden, dijkwegen, polders en fietsers.
 
-### 5.3 🎛️ VFO Cockpit & Audio DSP
+### 5.3 📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek
+Geïnspireerd op het live WebSDR logboek van de Universiteit Twente (`http://websdr.ewi.utwente.nl:8901/`):
+* **Interessante Frequenties & Opmerkingen:** Luisteraars laten in het logboek interessante ontdekkingen achter over signalen, praatrondes, piratenmuziek, FT8 digitaal verkeer en mysterieuze zenders (zoals *The Buzzer* of de Duitse DCF77 atoomklok).
+* **1-Tap Direct Afstemmen op WebSDR Twente:** Klik op `[ 🌐 Luister op WebSDR ↗ ]` bij een gespotte frequentie om de live ontvanger op de campus van de TU Enschede direct op die exacte frequentie en modulatie (LSB, USB, AM, FM, CW) te openen en te beluisteren.
+* **1-Tap Afstemmen in ComStudio:** Klik op `[ 📻 Stem af in Studio ]` om een gespot station direct in ComStudio te openen en live uit te luisteren.
+* **Zelf Frequenties Achterlaten:** Deel eenvoudig uw eigen ether-vondsten via het formulier `➕ Deel een interessante frequentie`. Uw spot wordt direct opgeslagen en getoond met realtime badge.
+
+### 5.4 🎛️ VFO Cockpit & Audio DSP
 * **Squelch (SQL):** Onderdrukt de ruis wanneer er niemand praat. Zet de schuifregelaar op 40% voor een stille achtergrond, of zet hem op 0% om zwakke stations hoorbaar te maken.
 * **Roger Beep:** Geeft de authentieke bevestigingstoon (Quindar Beep 1050/800 Hz) zodra een zending stopt.
 * **Analoge S-Meter:** Geeft realtime signaalsterkte weer van **S1** (ruisgrens) tot **S9 +30 dB** (extreem sterk signaal).
