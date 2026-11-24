@@ -1,0 +1,410 @@
+%PDF-1.4
+%Äåòåë§ó ÐÄÆ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 9 0 R /F2 10 0 R /F3 11 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 5813 >>
+stream
+0.05 0.12 0.22 rg
+0 811.89 595.28 30 re f
+BT /F2 8.5 Tf 46.00 822.89 Td 1 1 1 rg (PETER VROON COMSTUDIO  |  TECHNISCH DOSSIER & ONDERZOEK) Tj ET
+BT /F1 8.0 Tf 404.28 822.89 Td 0.00 0.95 1.00 rg (UNIVERSITEIT TWENTE WebSDR) Tj ET
+0.00 0.75 0.95 RG 1.5 w
+0 810.89 m 595.28 810.89 l S
+0.040 0.150 0.280 rg
+46.00 694.89 503.28 75.00 re f
+0.000 0.850 1.000 RG
+2.00 w
+46.00 694.89 m 549.28 694.89 l S
+0.000 0.850 1.000 rg
+BT /F2 9 Tf 62.00 749.89 Td (TECHNISCH DOSSIER & HANDLEIDING) Tj ET
+1.000 1.000 1.000 rg
+BT /F2 15 Tf 62.00 727.89 Td (Universiteit Twente WebSDR & Het Live Frequentie Logboek) Tj ET
+0.820 0.900 0.980 rg
+BT /F1 9 Tf 62.00 709.89 Td (Analyse van Software Defined Radio, Spectrumvisualisatie en de Integratie in ComStudio) Tj ET
+0.040 0.200 0.380 rg
+BT /F2 14 Tf 46.00 666.89 Td (1. Inleiding: De Revolutie van WebSDR aan de Universiteit Twente) Tj ET
+0.000 0.650 0.850 RG
+1.50 w
+46.00 660.89 m 549.28 660.89 l S
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 646.89 Td (De WebSDR van de Universiteit Twente \(http://websdr.ewi.utwente.nl:8901/\) is wereldwijd een) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 633.39 Td (van de meest gerenommeerde en baanbrekende radio-ontvangststations. Ontwikkeld door dr.) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 619.89 Td (Pieter-Tjerk de Boer \(zendamateur PA3FWM\) aan de faculteit Elektrotechniek, Wiskunde en) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 606.39 Td (Informatica \(EWI\) in Enschede, introduceerde dit project een volledig nieuw paradigma in) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 592.89 Td (radio-observatie: Software Defined Radio via het web.) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 575.39 Td (Waar traditionele scanners en wereldontvangers slechts op een enkele frequentie tegelijk) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 561.89 Td (kunnen afstemmen, digitaliseert de Twente WebSDR het volledige kortegolfspectrum van 0 tot) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 548.39 Td (29.16 MHz in een continue stroom. Dit betekent dat honderden luisteraars over de hele wereld) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 534.89 Td (tegelijkertijd en volledig onafhankelijk van elkaar kunnen afstemmen op willekeurige) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 521.39 Td (frequenties, zonder elkaar in de weg te zitten.) Tj ET
+0.940 0.970 1.000 rg
+0.000 0.650 0.850 RG
+1.00 w
+46.00 409.89 503.28 94.00 re B
+0.040 0.250 0.450 rg
+BT /F2 10 Tf 58.00 489.89 Td ([KENMERKEN]  Belangrijkste Specificaties van Universiteit Twente WebSDR) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 475.89 Td (-  Locatie: Campus Universiteit Twente, Enschede \(Overijssel, NL\) - 52.2435 N, 6.8530 E) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 462.39 Td (-  Antenne: Actieve 'Mini-Whip' breedbandantenne, gemonteerd op het dak van de faculteit EWI) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 448.89 Td (-  Frequentiebereik: 0 kHz tot 29.160 kHz \(LF, MF en complete HF korte golfbanden\)) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 435.39 Td (-  Gelijktijdige gebruikers: Meer dan 400 gelijktijdige onafhankelijke luisteraars) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 421.89 Td (-  Hardware: Snelle AD-converters gekoppeld aan krachtige Linux signaalverwerkingsservers) Tj ET
+0.040 0.200 0.380 rg
+BT /F2 14 Tf 46.00 389.89 Td (2. Spectrumvisualisatie & Het Watervaldiagram) Tj ET
+0.000 0.650 0.850 RG
+1.50 w
+46.00 383.89 m 549.28 383.89 l S
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 369.89 Td (Een van de meest indrukwekkende eigenschappen van WebSDR is het realtime watervaldiagram) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 356.39 Td (\(waterfall display\). In deze visuele weergave stelt de horizontale as de frequentie voor) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 342.89 Td (\(van laag naar hoog\) en de verticale as het tijdsverloop \(naar beneden scrollend\). De) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 329.39 Td (signaalsterkte wordt weergegeven door lichtintensiteit en kleur: zwakke signalen zijn) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 315.89 Td (donkerblauw of zwart \(de ruisvloer\), terwijl actieve radio-uitzendingen verschijnen als) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 302.39 Td (felle gele, groene of witte lijnen.) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 284.89 Td (Aan de hand van het watervalpatroon kan een geoefend luisteraar direct zien wat voor type) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 271.39 Td (signaal er actief is:) Tj ET
+0.940 0.970 1.000 rg
+0.000 0.650 0.850 RG
+1.00 w
+46.00 159.89 503.28 94.00 re B
+0.040 0.250 0.450 rg
+BT /F2 10 Tf 58.00 239.89 Td ([SIGNAALHERKENNING]  Herkenning van Signalen op de Waterval) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 225.89 Td (-  AM \(Middengolf & Piraten\): Een felle rechte middellijn \(draaggolf\) met symmetrische sporen links en rechts.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 212.39 Td (-  SSB / LSB / USB \(Zendamateurs\): Grillige, sprekende lijnen zonder draaggolf die dansen op het ritme van de stem.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 198.89 Td (-  CW \(Morse\): Korte, ritmische puntjes en streepjes die helder oplichten op een exacte frequentie.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 185.39 Td (-  FT8 & Digitaal: Strakke parallelle toontjes die exact 15 seconden duren en simultaan tientallen verbindingen coderen.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 171.89 Td (-  Militaire Bakens & Radars: Brede sweep-patronen of ritmische tikken \(zoals 'The Buzzer' UVB-76\).) Tj ET
+0.82 0.88 0.92 RG 0.75 w
+46.00 36.00 m 549.28 36.00 l S
+BT /F1 8.0 Tf 46.00 24.00 Td 0.45 0.50 0.55 rg (ComStudio v1.9.0 - https://petervroon-tech.github.io/comstudio/) Tj ET
+BT /F2 8.0 Tf 474.28 24.00 Td 0.08 0.22 0.38 rg (Pagina 1 van 3) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 9 0 R /F2 10 0 R /F3 11 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 6957 >>
+stream
+0.05 0.12 0.22 rg
+0 811.89 595.28 30 re f
+BT /F2 8.5 Tf 46.00 822.89 Td 1 1 1 rg (PETER VROON COMSTUDIO  |  TECHNISCH DOSSIER & ONDERZOEK) Tj ET
+BT /F1 8.0 Tf 404.28 822.89 Td 0.00 0.95 1.00 rg (UNIVERSITEIT TWENTE WebSDR) Tj ET
+0.00 0.75 0.95 RG 1.5 w
+0 810.89 m 595.28 810.89 l S
+0.040 0.200 0.380 rg
+BT /F2 14 Tf 46.00 783.89 Td (3. Het Commentaaronderdeel: Het WebSDR Logboek & Chatbox) Tj ET
+0.000 0.650 0.850 RG
+1.50 w
+46.00 777.89 m 549.28 777.89 l S
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 763.89 Td (Onderaan de WebSDR pagina van de Universiteit Twente bevindt zich een essentieel onderdeel) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 750.39 Td (voor luisteraars: het Logboek \(de commentaar- en chatsectie\). Omdat de radiocondities) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 736.89 Td (\(propagatie\) op korte golf continu veranderen door de zon en ionosfeer, is het radiospectrum) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 723.39 Td (een levend ecosysteem. Signalen die om 20:00 uur onhoorbaar zijn, kunnen om 20:15 uur) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 709.89 Td (plotseling met rapport 5 en 9 uit Japan of Zuid-Amerika doorkomen.) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 692.39 Td (In dit logboek laten radioamateurs, kortegolfluisteraars \(SWL\) en geïnteresseerden realtime) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 678.89 Td (berichten en frequentietips achter. Zij noteren bijvoorbeeld wanneer er een zeldzame) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 665.39 Td (expeditie actief is, waar een piratenzender met polka-muziek uitzendt, of op welke) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 651.89 Td (frequentie een noodoproep te horen is. Voor luisteraars fungeert dit als een gezamenlijke) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 638.39 Td (etherradar.) Tj ET
+0.040 0.200 0.380 rg
+BT /F2 14 Tf 46.00 612.89 Td (4. Veelgespotte Frequenties op de Twente WebSDR) Tj ET
+0.000 0.650 0.850 RG
+1.50 w
+46.00 606.89 m 549.28 606.89 l S
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 592.89 Td (Onderstaande tabel toont de meest actieve en historische frequenties die luisteraars) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 579.39 Td (frequent in het Twente logboek achterlaten:) Tj ET
+0.080 0.220 0.380 rg
+46.00 543.89 503.28 18.00 re f
+1.000 1.000 1.000 rg
+BT /F2 8.5 Tf 52.00 549.39 Td (Frequentie) Tj ET
+1.000 1.000 1.000 rg
+BT /F2 8.5 Tf 122.00 549.39 Td (Band / Mod) Tj ET
+1.000 1.000 1.000 rg
+BT /F2 8.5 Tf 182.00 549.39 Td (Station / Doel) Tj ET
+1.000 1.000 1.000 rg
+BT /F2 8.5 Tf 297.00 549.39 Td (Bijzonderheden & Herkenning) Tj ET
+0.850 0.900 0.950 RG
+0.50 w
+46.00 527.89 m 549.28 527.89 l S
+0.040 0.400 0.650 rg
+BT /F2 8.0 Tf 52.00 532.39 Td (7.085 kHz) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 122.00 532.39 Td (40m / LSB) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 182.00 532.39 Td (NL Avondronde) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 297.00 532.39 Td (Dagelijkse praatronde zendamateurs heel NL) Tj ET
+0.960 0.980 1.000 rg
+46.00 511.89 503.28 16.00 re f
+0.850 0.900 0.950 RG
+0.50 w
+46.00 511.89 m 549.28 511.89 l S
+0.040 0.400 0.650 rg
+BT /F2 8.0 Tf 52.00 516.39 Td (6.300 kHz) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 122.00 516.39 Td (48m / AM) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 182.00 516.39 Td (Kortegolf Piraten) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 297.00 516.39 Td (Vrije radiostations met muziek in weekenden) Tj ET
+0.850 0.900 0.950 RG
+0.50 w
+46.00 495.89 m 549.28 495.89 l S
+0.040 0.400 0.650 rg
+BT /F2 8.0 Tf 52.00 500.39 Td (14.074 kHz) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 122.00 500.39 Td (20m / USB) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 182.00 500.39 Td (FT8 Digitaal) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 297.00 500.39 Td (Wereldwijd digitaal dataverkeer; parallelle lijnen) Tj ET
+0.960 0.980 1.000 rg
+46.00 479.89 503.28 16.00 re f
+0.850 0.900 0.950 RG
+0.50 w
+46.00 479.89 m 549.28 479.89 l S
+0.040 0.400 0.650 rg
+BT /F2 8.0 Tf 52.00 484.39 Td (3.650 kHz) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 122.00 484.39 Td (80m / LSB) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 182.00 484.39 Td (NL/BE Ochtend) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 297.00 484.39 Td (Vaste ochtendronde van Nederland en Belgie) Tj ET
+0.850 0.900 0.950 RG
+0.50 w
+46.00 463.89 m 549.28 463.89 l S
+0.040 0.400 0.650 rg
+BT /F2 8.0 Tf 52.00 468.39 Td (27.205 kHz) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 122.00 468.39 Td (11m / FM) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 182.00 468.39 Td (CB Kanaal 20) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 297.00 468.39 Td (Truckers op de A1 en A35; 27MC bakkies) Tj ET
+0.960 0.980 1.000 rg
+46.00 447.89 503.28 16.00 re f
+0.850 0.900 0.950 RG
+0.50 w
+46.00 447.89 m 549.28 447.89 l S
+0.040 0.400 0.650 rg
+BT /F2 8.0 Tf 52.00 452.39 Td (8.942 kHz) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 122.00 452.39 Td (HF / USB) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 182.00 452.39 Td (Shannon VOLMET) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 297.00 452.39 Td (Continu gesproken luchtvaartweerberichten trans-Atlantisch) Tj ET
+0.850 0.900 0.950 RG
+0.50 w
+46.00 431.89 m 549.28 431.89 l S
+0.040 0.400 0.650 rg
+BT /F2 8.0 Tf 52.00 436.39 Td (4.625 kHz) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 122.00 436.39 Td (HF / USB) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 182.00 436.39 Td (UVB-76 The Buzzer) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 297.00 436.39 Td (Beroemde Russische militaire marker met 25 pulsen/min) Tj ET
+0.960 0.980 1.000 rg
+46.00 415.89 503.28 16.00 re f
+0.850 0.900 0.950 RG
+0.50 w
+46.00 415.89 m 549.28 415.89 l S
+0.040 0.400 0.650 rg
+BT /F2 8.0 Tf 52.00 420.39 Td (77.5 kHz) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 122.00 420.39 Td (LF / AM) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 182.00 420.39 Td (DCF77 Atoomklok) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 8.0 Tf 297.00 420.39 Td (Mainflingen tijdsein; stuurt radiogestuurde klokken aan) Tj ET
+0.080 0.220 0.380 RG
+1.00 w
+46.00 415.89 503.28 146.00 re S
+0.080 0.300 0.500 rg
+BT /F2 11.5 Tf 46.00 395.89 Td (De Kracht van URL-Afstemparameters \(?tune=\)) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 381.89 Td (Een geniale eigenschap van de Universiteit Twente WebSDR is dat de ontvanger rechtstreeks) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 368.39 Td (via URL-parameters kan worden aangestuurd. Door de parameter '?tune=' toe te voegen, springt) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 354.89 Td (de ontvanger direct naar de gewenste frequentie en modulatie. Voorbeeld:) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 341.39 Td ('http://websdr.ewi.utwente.nl:8901/?tune=7085lsb' stemt de ontvanger in Enschede direct af) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 327.89 Td (op de 40m avondronde!) Tj ET
+0.82 0.88 0.92 RG 0.75 w
+46.00 36.00 m 549.28 36.00 l S
+BT /F1 8.0 Tf 46.00 24.00 Td 0.45 0.50 0.55 rg (ComStudio v1.9.0 - https://petervroon-tech.github.io/comstudio/) Tj ET
+BT /F2 8.0 Tf 474.28 24.00 Td 0.08 0.22 0.38 rg (Pagina 2 van 3) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 9 0 R /F2 10 0 R /F3 11 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 5061 >>
+stream
+0.05 0.12 0.22 rg
+0 811.89 595.28 30 re f
+BT /F2 8.5 Tf 46.00 822.89 Td 1 1 1 rg (PETER VROON COMSTUDIO  |  TECHNISCH DOSSIER & ONDERZOEK) Tj ET
+BT /F1 8.0 Tf 404.28 822.89 Td 0.00 0.95 1.00 rg (UNIVERSITEIT TWENTE WebSDR) Tj ET
+0.00 0.75 0.95 RG 1.5 w
+0 810.89 m 595.28 810.89 l S
+0.040 0.200 0.380 rg
+BT /F2 14 Tf 46.00 783.89 Td (5. De Integratie in Peter Vroon ComStudio \(v1.9.0 Build 15\)) Tj ET
+0.000 0.650 0.850 RG
+1.50 w
+46.00 777.89 m 549.28 777.89 l S
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 763.89 Td (In de nieuwste release van Peter Vroon ComStudio is de Universiteit Twente WebSDR op twee) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 750.39 Td (manieren diepgaand verankerd:) Tj ET
+0.940 0.970 1.000 rg
+0.000 0.650 0.850 RG
+1.00 w
+46.00 652.89 503.28 80.00 re B
+0.040 0.250 0.450 rg
+BT /F2 10 Tf 58.00 718.89 Td ([NODE #02]  Pijler 1: Universiteit Twente SDR Node #02 als Primaire Gateway) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 704.89 Td (-  Locatie & Dekking: Enschede \(Overijssel, NL - 52.2435 N, 6.8530 E\) voor complete HF dekking.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 691.39 Td (-  Koppeling met Kanalen: Het kanaal '40m Nederlandse Avondronde WebSDR' is direct aan deze node gekoppeld.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 677.89 Td (-  Afstandsberekening: ComStudio berekent realtime de afstand van uw GPS-positie tot de campus in Enschede.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 664.39 Td (-  Directe Snelle Toegang: In de Node Explorer \([ ? Nodes ]\) kunt u direct filteren op kanalen via deze node.) Tj ET
+0.940 0.970 1.000 rg
+0.000 0.650 0.850 RG
+1.00 w
+46.00 532.89 503.28 108.00 re B
+0.040 0.250 0.450 rg
+BT /F2 10 Tf 58.00 626.89 Td ([SPOTTER MODULE]  Pijler 2: De Interactieve WebSDR Frequentie Spotter & Commentaar Logboek) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 612.89 Td (-  Direct Toegankelijk: Knop '[ ? WebSDR Spots ]' in de topbalk en '[ ? WebSDR Spotter & Log ]' in de vaste zijbalk.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 599.39 Td (-  Interactief Logboek: Realtime lijst van gespotte frequenties, modulaties, signaalrapporten en luisteraarsopmerkingen.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 585.89 Td (-  1-Tap WebSDR Direct Afstemmen: Klik op '[ ? Luister op WebSDR ? ]' om de Twente ontvanger direct op de exacte frequentie te openen.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 572.39 Td (-  1-Tap Afstemmen in Studio: Klik op '[ ? Stem af in Studio ]' om het kanaal direct live in ComStudio te horen.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 558.89 Td (-  Zelf Frequenties Achterlaten: Formulier om zelf vondsten te delen; bewaard via automatische localStorage persistentie.) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 545.39 Td (-  Snelfilters: Filter met 1 klik op Zendamateurs, Piraten & Muziek, FT8 Digitaal, 27MC Bakkies of Tijd & Signalen.) Tj ET
+0.080 0.300 0.500 rg
+BT /F2 11.5 Tf 46.00 514.89 Td (Conformiteit met de Hoogste Kwaliteits- & Mobile Randvoorwaarden) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 500.89 Td (De implementatie voldoet strikt aan alle kernrichtlijnen van het Peter Vroon ComStudio) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 487.39 Td (project:) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 469.89 Td (1. 100% Echte Menselijke Stemmen: Geen enkele synthetische computerstem \(Web Speech API) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 456.39 Td (permanent verwijderd\).
+2. Geen Voorgeprogrammeerde Bandjes: Geen statische mp3-loops;) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 442.89 Td (uitsluitend actuele realtime live audio van dít exacte moment.
+3. Mobile-First \(KISS\):) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 429.39 Td (Touch-vriendelijke bottom-sheets met haptische tap-respons \(scale 0.96\) en veilige marges) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 415.89 Td (\(safe-area insets\).
+4. Alleen Online via GitHub: Direct vastgelegd in Git en door GitHub) Tj ET
+0.150 0.180 0.220 rg
+BT /F1 9.5 Tf 46.00 402.39 Td (Actions CI/CD gedeployed naar GitHub Pages.) Tj ET
+0.940 0.970 1.000 rg
+0.000 0.650 0.850 RG
+1.00 w
+46.00 304.89 503.28 80.00 re B
+0.040 0.250 0.450 rg
+BT /F2 10 Tf 58.00 370.89 Td ([STATUS & VERIFICATIE]  Projectkoppelingen & Live Omgeving) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 356.89 Td (-  Live Web Applicatie: https://petervroon-tech.github.io/comstudio/) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 343.39 Td (-  GitHub Repository: https://github.com/petervroon-tech/comstudio \(branch 'main', commit a13cdca\)) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 329.89 Td (-  Universiteit Twente WebSDR: http://websdr.ewi.utwente.nl:8901/) Tj ET
+0.150 0.200 0.250 rg
+BT /F1 8.5 Tf 62.00 316.39 Td (-  Versie & Status: Peter Vroon ComStudio v1.9.0 Build 15 - Verified Release) Tj ET
+0.82 0.88 0.92 RG 0.75 w
+46.00 36.00 m 549.28 36.00 l S
+BT /F1 8.0 Tf 46.00 24.00 Td 0.45 0.50 0.55 rg (ComStudio v1.9.0 - https://petervroon-tech.github.io/comstudio/) Tj ET
+BT /F2 8.0 Tf 474.28 24.00 Td 0.08 0.22 0.38 rg (Pagina 3 van 3) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+10 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+11 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000022 00000 n 
+0000000071 00000 n 
+0000000140 00000 n 
+0000000294 00000 n 
+0000006159 00000 n 
+0000006313 00000 n 
+0000013322 00000 n 
+0000013476 00000 n 
+0000018589 00000 n 
+0000018686 00000 n 
+0000018789 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R /Info << /Title (WebSDR Twente & Frequentie Logboek Dossier) /Author (Peter Vroon ComStudio) /Creator (ComStudio PDF Engine) >> >>
+startxref
+18885
+%%EOF
