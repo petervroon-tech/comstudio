@@ -1,0 +1,50 @@
+name: Dagelijkse Apps Gezondheidscheck & PDF Mailer
+
+on:
+  schedule:
+    # Elke ochtend om 08:30 CET (Nederlandse tijd = 07:30 UTC)
+    - cron: '30 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-and-email:
+    name: Controleer 6 Apps, Genereer PDF en Mail
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Repository ophalen
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Python instellen
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 🔍 Voer gezondheidscheck uit & Genereer PDF
+        run: |
+          python3 generate_healthcheck_pdf.py
+
+      - name: 📦 Bewaar PDF Rapport als GitHub Release Artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Peter_Vroon_Apps_Statusrapport
+          path: Peter_Vroon_Apps_Statusrapport.pdf
+          retention-days: 30
+
+      - name: 📧 Verstuur Rapport & PDF naar peter@vroon.net
+        if: env.MAIL_USERNAME != ''
+        uses: dawidd6/action-send-mail@v3
+        env:
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+        with:
+          server_address: ${{ secrets.MAIL_SERVER || 'smtp.gmail.com' }}
+          server_port: ${{ secrets.MAIL_PORT || 465 }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "Peter Vroon Apps - Dagelijks Statusrapport (${{ env.REPORT_DATE || 'Actueel' }})"
+          to: peter@vroon.net
+          from: "Peter Vroon Cloud Monitor <${{ secrets.MAIL_FROM || secrets.MAIL_USERNAME }}>"
+          body: "Beste Peter,\n\nHierbij het dagelijkse statusrapport van al je 6 GitHub applicaties, direct verstuurd vanuit GitHub Actions in de cloud.\n\nIn de bijgevoegde PDF vind je de volledige controle van alle 6 webapps, laadtijden en CI/CD status.\n\nMet vriendelijke groet,\nGitHub Actions Cloud Runner"
+          attachments: Peter_Vroon_Apps_Statusrapport.pdf
