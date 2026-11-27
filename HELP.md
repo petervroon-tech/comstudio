@@ -13,7 +13,7 @@
   U heeft in Nederland **geen vergunning of zendmachtiging nodig** om te luisteren naar:
   - ✈️ Luchtvaartcommunicatie (Schiphol Tower, Approach, Eurocontrol MUAC).
   - ⚓ Maritieme scheepvaart & marifoon (Kustwacht Den Helder Kanaal 16, Sector Maasmond, Antwerpen, Elbe).
-  - 🚆 Spoorwegen & GSM-R (Treindienstleiders ProRail, rangeerterreinen zoals Kijfhoek).
+  - 🚆 Spoorwegen & GSM-R (let op: ComStudio ontvangt dit niet; alleen een label).
   - 📱 Mobiele portofoons (PMR446, evenementen, beveiliging).
   - 🚗 Mobilofoons (27 MHz CB bakkies, truckerskanaal 19).
   - 📻 Zendamateurs en relaiszenders (PI2NOS, PI3UTR, 20m/40m/80m korte golf).
@@ -73,22 +73,24 @@ Veel portofoons (PMR446) gebruiken **CTCSS (Continuous Tone Coded Squelch System
 
 ---
 
+> **ℹ️ Eerlijk over de bron:** Alle kanalen spelen één van twee echte streams (Schiphol Tower via LiveATC of de SomaFM Scanner-mix). Frequentie en categorie zijn alleen labels; deze app ontvangt geen echte GSM-R/marifoon/amateurfrequenties.
+
 ## 5. Bediening van Peter Vroon ComStudio
 
 ### 5.1 📍 Binnen 30 km Scanner (GPS & Polder)
 * **Werking:** Klik in de bovenbalk of in het vaste linkermenu op `[ 📍 Binnen 30 km ]`.
 * **GPS Peiling:** Uw browser vraagt live coördinaten op. ComStudio berekent via de **Haversine formule** de afstand in rechte lijn tot elk station.
-* **Direct Luisteren:** Zenders binnen $\le 30$ km worden direct gefilterd en gesorteerd op afstand. ComStudio stemt **direct af op het dichtstbijzijnde actieve station**, zodat u meteen echte menselijke stemmen hoort praten!
-* **100% Echte Stemmen (Geen Computerstemmen & Geen Bandjes):** Alle synthetische spraaksynthese en voorgeprogrammeerde bandjes zijn permanent verwijderd. U hoort uitsluitend actuele live audio van dat exacte moment via realtime streams van LiveATC en WebSDR gateways. Tijdens pauzes hoort u authentieke radiostilte (squelch), en zodra er live een oproep is hoort u direct de echte menselijke stemmen van machinisten, verkeersleiders, schippers en hulpdiensten.
+* **Direct Luisteren:** Zenders binnen $\le 30$ km worden direct gefilterd en gesorteerd op afstand. ComStudio selecteert het dichtstbijzijnde kanaallabel (let op: alleen een label; de audio is een van de twee echte streams).
+* **Echte streams, geen nep:** Alle synthetische spraak, voorgeprogrammeerde bandjes en verzonnen oproepen zijn verwijderd. U hoort uitsluitend de live stream (LiveATC Schiphol Tower of SomaFM Scanner-mix). Alle kanalen spelen één van twee echte streams (Schiphol Tower via LiveATC of de SomaFM Scanner-mix). Frequentie en categorie zijn alleen labels; deze app ontvangt geen echte GSM-R/marifoon/amateurfrequenties. Wat u hoort is dus geen live treindienstleider, marifoon- of amateurverkeer op de getoonde frequentie.
 * **Referentiegebieden:** Geen GPS bij de hand? Kies via `[ 🗺️ Wijzig Positie ]` met één klik een referentiegebied (zoals *Polder Midden-Nederland*, *Flevopolder*, *Rotterdam Haven*, *Utrecht CS*, *Schiphol*, *Zwolle* of *Antwerpen*).
 
 ### 5.2 🌐 Uitluisteren via Allerhande Nodes
-ComStudio is direct gekoppeld aan **12 actieve Radio Nodes en Gateways** in heel Nederland:
+ComStudio toont **12 node-labels** van locaties in Nederland. Let op: dit zijn alleen labels; elke node speelt één van de twee echte streams (LiveATC Schiphol Tower of SomaFM Scanner) en er worden geen ping, luisteraars of online-status getoond:
 1. **Maasbree WebSDR #01 (Limburg, NL):** VHF/UHF amateurrepeaters, 27MC en Rijnvaart.
 2. **Univ. Twente SDR #02 (Overijssel, NL):** Wereldberoemde campus-SDR voor HF korte golf (0-30 MHz).
 3. **Randstad Schiphol Air & Marine #03 (NH, NL):** Luchtvaartverkeer Kaagbaan/Polderbaan en Noordzeekanaal.
 4. **Rotterdam Maasmond Gateway #04 (ZH, NL):** Europoort, Maasvlakte en naderende zeeschepen op de Noordzee.
-5. **ProRail GSM-R Node Midden #05 (Utrecht, NL):** Centraal knooppunt voor machinisten en treindienstleiders.
+5. **ProRail GSM-R Node Midden #05 (Utrecht, NL):** Label; er wordt geen GSM-R ontvangen.
 6. **BrandMeister DMR Master 2041 #06 (Amsterdam, NL):** Digitale mobilofoons, beveiliging en talkgroups.
 7. **EchoLink Gerbrandytoren Lopik #07 (IJsselstein, NL - 366m NAP):** Hoogste zendmast van Nederland.
 8. **CAMRAS Dwingeloo Node #08 (Drenthe, NL):** 25-meter radiotelescoop voor Noord-Nederland.
@@ -110,7 +112,7 @@ Geïnspireerd op het live WebSDR logboek van de Universiteit Twente (`http://web
 * **Roger Beep:** Geeft de authentieke bevestigingstoon (Quindar Beep 1050/800 Hz) zodra een zending stopt.
 * **Analoge S-Meter:** Geeft realtime signaalsterkte weer van **S1** (ruisgrens) tot **S9 +30 dB** (extreem sterk signaal).
 * **60 FPS Watervalscherm:** Toont realtime het frequentiespectrum van de audio met dynamische kleurverlopen.
-* **MP3 Opnamestudio:** Neem echte communicatie direct op in 128, 192 of 320 kbps MP3 en download automatisch naar uw apparaat.
+* **MP3 Opnamestudio:** Neem de afgespeelde stream direct op in 128, 192 of 320 kbps MP3 en download automatisch naar uw apparaat.
 
 ### 5.5 ⌨️ Handige Sneltoetsen
 * `Spatie` - Ontvangst starten / pauzeren

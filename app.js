@@ -23,9 +23,6 @@
       lon: 5.9980,
       bands: '144 - 432 MHz & HF',
       freqCoverage: '2m / 70cm / 27MC / PMR / Rijnvaart',
-      status: 'ONLINE',
-      ping: '18ms',
-      listeners: 42,
       desc: 'Bovenregionale SDR ontvanger met richtantennes voor Zuid-Nederland, Vlaanderen en Nordrhein-Westfalen.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
@@ -40,9 +37,6 @@
       lon: 6.8530,
       bands: '0 - 30 MHz HF Korte Golf',
       freqCoverage: 'HF DX / 40m / 20m / 11m CB / Hamburg Marine',
-      status: 'ONLINE',
-      ping: '12ms',
-      listeners: 186,
       desc: 'Wereldberoemde SDR antenne-ontvanger op de campus van TU Enschede. Vangt radiosignalen uit heel Europa op.',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r'
     },
@@ -57,9 +51,6 @@
       lon: 4.7680,
       bands: '118 - 137 MHz VHF Air & 156 MHz Marifoon',
       freqCoverage: 'Schiphol Tower, Approach, Noordzeekanaal, K16',
-      status: 'ONLINE',
-      ping: '9ms',
-      listeners: 94,
       desc: 'Directe ontvangst van Kaagbaan, Polderbaan, Schiphol Approach en verkeer langs het Noordzeekanaal.',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_0624'
     },
@@ -74,9 +65,6 @@
       lon: 4.1200,
       bands: '156.000 - 162.000 MHz VHF Marine & Spoor',
       freqCoverage: 'Sector Maasmond, Calandkanaal, Kijfhoek Betuwe',
-      status: 'ONLINE',
-      ping: '14ms',
-      listeners: 65,
       desc: 'Havenmonding Rotterdam, Europoort, Maasvlakte en naderende zeeschepen op de Noordzee.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
@@ -91,9 +79,6 @@
       lon: 5.1103,
       bands: '457 - 468 MHz GSM-R & Rangeer',
       freqCoverage: 'Utrecht CS, Blauwkapel, Gouda, Hilversum',
-      status: 'ONLINE',
-      ping: '6ms',
-      listeners: 78,
       desc: 'Centrale knooppuntontvanger voor machinisten en treindienstleiders in het hart van het Nederlandse spoornet.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
@@ -108,9 +93,6 @@
       lon: 4.9041,
       bands: 'Digital Mobile Radio (DMR Tier II)',
       freqCoverage: 'Talkgroup 204 (Landelijk), TG 2041, 2042, Evenementen',
-      status: 'ONLINE',
-      ping: '8ms',
-      listeners: 142,
       desc: 'Centrale digitale node voor professionele portofoons, beveiliging en mobiele communicatie.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
@@ -125,9 +107,6 @@
       lon: 5.0533,
       bands: '145.575 MHz FM Repeater',
       freqCoverage: 'Heel Nederland, Randstad & Vlaanderen',
-      status: 'ONLINE',
-      ping: '15ms',
-      listeners: 110,
       desc: 'Hoogste zendmast van Nederland. Biedt landelijke dekking voor mobiele zenders in auto’s en handheld portofoons.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
@@ -142,9 +121,6 @@
       lon: 6.3961,
       bands: '144 / 432 / 1296 MHz & Spoor',
       freqCoverage: 'Knooppunt Zwolle, Noordoost-NL, Ruimtevaart',
-      status: 'ONLINE',
-      ping: '22ms',
-      listeners: 31,
       desc: '25-meter historische radiotelescoop ingezet als uiterst gevoelige radio-ontvangstnode voor Noord-Europa.',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r'
     },
@@ -159,9 +135,6 @@
       lon: 4.7590,
       bands: '156 - 162 MHz VHF Marine & SAR',
       freqCoverage: 'Kustwacht K16, Waddenzee, Vliestroom, Noordzee',
-      status: 'ONLINE',
-      ping: '11ms',
-      listeners: 64,
       desc: 'Directe ontvangst van Kustwachtcentrum Den Helder, KNRM reddingboten en marifoonverkeer op de Noordzee en Waddenzee.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
@@ -176,9 +149,6 @@
       lon: 5.4697,
       bands: '457 MHz GSM-R & RWS Mobilofoon 467 MHz',
       freqCoverage: 'Knooppunt Eindhoven, Venlo, A2/A58/A67 corridors',
-      status: 'ONLINE',
-      ping: '14ms',
-      listeners: 52,
       desc: 'Ontvangstnode voor treinverkeer in Brabant en Limburg, Rijkswaterstaat weginspecteurs en logistieke mobilofoons.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
@@ -193,9 +163,6 @@
       lon: 4.5880,
       bands: '156.100 - 156.800 MHz VHF Marine',
       freqCoverage: 'Zeesluis IJmuiden K22, Noordzeekanaal, Vissersvloot',
-      status: 'ONLINE',
-      ping: '10ms',
-      listeners: 58,
       desc: 'Grootste zeesluis ter wereld, Noordzeekanaalverbinding naar Amsterdam en inkomende zeeschepen vanaf de Noordzee.',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3'
     },
@@ -210,9 +177,6 @@
       lon: 5.5000,
       bands: '27 MHz CB & PMR446 Outdoor',
       freqCoverage: 'Polders, dijkwegen, truckers A6/A27, fietsers',
-      status: 'ONLINE',
-      ping: '16ms',
-      listeners: 68,
       desc: 'Lokale gateway voor buitengebieden, polders, recreanten, fietsers en mobiele zenders in landelijke gebieden.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     }
@@ -1051,12 +1015,6 @@
     // 🌐 Radio Nodes Filter
     filterNodeId: null,
     filterNodeType: null,
-    // 🎙️ Audio Bron Modus & Transmissie Dispatcher (100% Echte Menselijke Stemmen)
-    audioMode: 'calls', // 'calls' (echte menselijke ether audio & live call bursts) of 'stream' (continue stream)
-    callIntervalTimer: null,
-    isTransmissionActive: false,
-    activeTransmissionText: '',
-    transmissionHistory: [],
     // 📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek
     webSdrSpots: [],
     spotterFilter: 'all',
@@ -1264,26 +1222,6 @@
     DOM.btnVfoSwitchNode = document.getElementById('btnVfoSwitchNode');
 
     // Live Transmission & Unique Calls
-    DOM.vfoTransmissionCard = document.getElementById('vfoTransmissionCard');
-    DOM.transSenderLabel = document.getElementById('transSenderLabel');
-    DOM.transTimeLabel = document.getElementById('transTimeLabel');
-    DOM.transMsgText = document.getElementById('transMsgText');
-    DOM.miniLiveCallStrip = document.getElementById('miniLiveCallStrip');
-    DOM.miniLiveCallTag = document.getElementById('miniLiveCallTag');
-    DOM.miniLiveCallText = document.getElementById('miniLiveCallText');
-    DOM.btnModeUniqueCalls = document.getElementById('btnModeUniqueCalls');
-    DOM.btnModeLiveStream = document.getElementById('btnModeLiveStream');
-    DOM.btnOpenCallsLog = document.getElementById('btnOpenCallsLog');
-    DOM.sbBtnCallLog = document.getElementById('sbBtnCallLog');
-    DOM.callLogBadge = document.getElementById('callLogBadge');
-    DOM.sbCallLogBadge = document.getElementById('sbCallLogBadge');
-    DOM.callsLogModal = document.getElementById('callsLogModal');
-    DOM.callsLogList = document.getElementById('callsLogList');
-    DOM.emptyCallsLogState = document.getElementById('emptyCallsLogState');
-    DOM.callLogModalCount = document.getElementById('callLogModalCount');
-    DOM.btnCloseCallsLog = document.getElementById('btnCloseCallsLog');
-    DOM.btnCloseCallsLogDone = document.getElementById('btnCloseCallsLogDone');
-    DOM.btnClearCallsLog = document.getElementById('btnClearCallsLog');
 
     // 📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek
     DOM.btnOpenWebSDRSpotter = document.getElementById('btnOpenWebSDRSpotter');
@@ -1363,14 +1301,6 @@
         DOM.chkAutoDownload.checked = storedAutoDl === 'true';
       }
 
-      const storedAudioMode = localStorage.getItem(STORAGE_KEYS.AUDIO_MODE);
-      if (storedAudioMode === 'calls' || storedAudioMode === 'stream') {
-        state.audioMode = storedAudioMode;
-      }
-      if (DOM.btnModeUniqueCalls && DOM.btnModeLiveStream) {
-        DOM.btnModeUniqueCalls.classList.toggle('active', state.audioMode === 'calls');
-        DOM.btnModeLiveStream.classList.toggle('active', state.audioMode === 'stream');
-      }
 
       // Update Sliders in UI
       if (DOM.volumeSlider) {
@@ -1398,7 +1328,6 @@
       localStorage.setItem(STORAGE_KEYS.SQUELCH, state.squelch.toString());
       localStorage.setItem(STORAGE_KEYS.ROGER_BEEP, state.rogerBeep.toString());
       localStorage.setItem(STORAGE_KEYS.NOISE, state.noise.toString());
-      localStorage.setItem(STORAGE_KEYS.AUDIO_MODE, state.audioMode || 'calls');
       if (DOM.chkAutoDownload) {
         localStorage.setItem(STORAGE_KEYS.AUTO_DOWNLOAD, DOM.chkAutoDownload.checked.toString());
       }
@@ -1556,368 +1485,6 @@
   // ECHTE AUDIO STREAMS, MENSELIJKE STEMMEN & RADIO CALL DISPATCHER
   // (100% ECHTE MENSELIJKE STEMMEN & AUDIO FEEDS - GEEN COMPUTERSTEMMEN!)
   // ==========================================================================
-  function pickRandomItem(arr) {
-    if (!arr || arr.length === 0) return null;
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
-
-  function playSquelchBurst() {
-    if (!state.audioCtx) return;
-    resumeAudioContextIfNeeded();
-    try {
-      const now = state.audioCtx.currentTime;
-      const bufferSize = Math.floor(state.audioCtx.sampleRate * 0.065);
-      const noiseBuffer = state.audioCtx.createBuffer(1, bufferSize, state.audioCtx.sampleRate);
-      const output = noiseBuffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        output[i] = (Math.random() * 2 - 1) * 0.4;
-      }
-      const noiseSource = state.audioCtx.createBufferSource();
-      noiseSource.buffer = noiseBuffer;
-
-      const burstGain = state.audioCtx.createGain();
-      burstGain.gain.setValueAtTime(0.001, now);
-      burstGain.gain.exponentialRampToValueAtTime(0.22 * state.volume, now + 0.015);
-      burstGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
-
-      noiseSource.connect(burstGain);
-      burstGain.connect(state.filterNode);
-      noiseSource.start(now);
-      noiseSource.stop(now + 0.065);
-    } catch (e) {
-      console.warn('Squelch burst fout:', e);
-    }
-  }
-
-  const PROCEDURAL_CALLS = {
-    train: [
-      (c) => ({
-        sender: `Treindienstleider ${c.location || 'Utrecht Centraal'}`,
-        target: `Intercity ${pickRandomItem([2144, 3052, 1738, 842, 2819])}`,
-        msg: `Sein ${pickRandomItem([214, 188, 302, 146])} staat veilig op geel knipper, vertrek toegestaan richting ${pickRandomItem(['Amersfoort', 'Den Haag Centraal', 'Zwolle', 'Arnhem'])}, baanvak vrij, over.`
-      }),
-      (c) => ({
-        sender: `Machinist Sprinter ${pickRandomItem([4028, 5632, 7014, 4618])}`,
-        target: `Treinverkeersleiding`,
-        msg: `Meldpositie ${c.location || 'Rotterdam'} gepasseerd, remproef 100% in orde, we rijden exact op schema, over.`
-      }),
-      (c) => ({
-        sender: `Treinverkeersleiding Midden`,
-        target: `DB Cargo goederentrein ${pickRandomItem([41103, 60041, 52180])}`,
-        msg: `Spoorbezetting gewijzigd, oprijden tot wissel ${pickRandomItem([42, 68, 105])} en wachten op tegemoetkomende Intercity, over.`
-      }),
-      (c) => ({
-        sender: `Rangeerder ${c.location || 'Kijfhoek Heuvel'}`,
-        target: `Post ${pickRandomItem([2, 5, 8])}`,
-        msg: `Rangeren met ${pickRandomItem([12, 16, 22])} ketelwagens gereed op spoor ${pickRandomItem([34, 48, 62])}, ontkoppeling voltooid, over.`
-      }),
-      (c) => ({
-        sender: `Machinist Eurostar ${pickRandomItem([9124, 9158])}`,
-        target: `Treinverkeersleiding West`,
-        msg: `Passeren Schiphol Tunnel spoor 4 op 140 kilometer per uur, ETCS level 2 verbinding stabiel, over.`
-      }),
-      (c) => ({
-        sender: `Machinist Arriva Vechtdallijnen ${pickRandomItem([3814, 3822])}`,
-        target: `Treindienstleiding Zwolle`,
-        msg: `Vertrek gereed vanaf perron ${pickRandomItem([1, 2, 3])}, deuren gesloten en vergrendeld, over.`
-      }),
-      (c) => ({
-        sender: `Treindienstleider Amsterdam`,
-        target: `Intercity Direct ${pickRandomItem([9228, 9240])}`,
-        msg: `Snelheidsbeperking bij km ${pickRandomItem([14.2, 18.6])} opgeheven, baanvaksnelheid 160 weer van kracht, over.`
-      })
-    ],
-    marine: [
-      (c) => ({
-        sender: `Kustwachtcentrum Den Helder`,
-        target: `Alle schepen`,
-        msg: `Op VHF werkkanaal ${c.ch || '16'}, marifoonbericht. Wind zuidwest ${pickRandomItem([6, 7, 8])} Beaufort, golfhoogte ${pickRandomItem(['2.2', '3.1', '4.0'])} meter in vak IJmuiden, over.`
-      }),
-      (c) => ({
-        sender: `Sector Maasmond`,
-        target: `Containerschip ${pickRandomItem(['CMA CGM Palais', 'Maersk Denver', 'MSC Geneva', 'Ever Given'])}`,
-        msg: `Neem loods over bij loodsstation Steenbank, behoud huidige koers ${pickRandomItem([280, 295, 310])} graden, over.`
-      }),
-      (c) => ({
-        sender: `Binnenvaartschip ${pickRandomItem(['Albatros', 'Nova Cura', 'Rijnmond 4', 'Vagari'])}`,
-        target: `Verkeerspost ${c.location || 'Dordrecht'}`,
-        msg: `Passeren kilometerraai ${pickRandomItem([984, 1002, 946])} stroomafwaarts, verzoek blauwe bord aan stuurboord, over.`
-      }),
-      (c) => ({
-        sender: `KNRM Reddingboot ${pickRandomItem(['Arie Visser', 'Koopmansdank', 'Jeanine Parqui'])}`,
-        target: `Kustwacht`,
-        msg: `Ter plaatse bij melding op ${pickRandomItem(['Noordzee', 'Waddenzee', 'Oosterschelde'])}, sleepverbinding gemaakt, situatie stabiel, over.`
-      }),
-      (c) => ({
-        sender: `Sluisbediening ${c.location || 'Hansweert'}`,
-        target: `Motortankschip ${pickRandomItem(['Stolt Osprey', 'Almelo', 'Calcit 5'])}`,
-        msg: `Noorderkolk gereed voor invaren, stuurboordzijde vastmaken, over.`
-      }),
-      (c) => ({
-        sender: `Havenbedrijf Rotterdam`,
-        target: `Sleepboot ${pickRandomItem(['Smit Panther', 'Fairplay 24', 'Multratug 18'])}`,
-        msg: `Assistentie verlenen bij afmeren in Waalhaven steiger ${pickRandomItem([4, 7, 12])}, over.`
-      })
-    ],
-    portofoon: [
-      (c) => ({
-        sender: `Post ${pickRandomItem([1, 2, 4])}`,
-        target: `Surveillance ${pickRandomItem(['Alfa', 'Bravo', 'Delta'])}-${pickRandomItem([1, 2, 3])}`,
-        msg: `Controleer ${pickRandomItem(['ingang Zuid', 'nooduitgang Oost', 'laaddock 3'])} op vrije doorgang, over.`
-      }),
-      (c) => ({
-        sender: `Beveiliging ${pickRandomItem(['Patrouille 2', 'Hoofdingang', 'Sector B'])}`,
-        target: `Centrale Post`,
-        msg: `Ronde gelopen, poorten vergrendeld en geen bijzonderheden aangetroffen, over.`
-      }),
-      (c) => ({
-        sender: `Handhaving ${pickRandomItem(['Team Noord', 'Binnenstad 3'])}`,
-        target: `Meldkamer`,
-        msg: `Melding overlast afgehandeld aan de ${pickRandomItem(['Markt', 'Stationsweg', 'Kerkstraat'])}, we hervatten de surveillance, over.`
-      }),
-      (c) => ({
-        sender: `BHV Coördinator`,
-        target: `Technische Dienst`,
-        msg: `Storingsmelding sprinklerpaneel gecontroleerd, vals alarm, systeem weer op scherp gezet, over.`
-      }),
-      (c) => ({
-        sender: `Logistiek Coördinator`,
-        target: `Heftruck ${pickRandomItem([3, 5, 7])}`,
-        msg: `Palletlading uit rij ${pickRandomItem(['D-14', 'F-08', 'C-22'])} verplaatsen naar expeditie vak 2, over.`
-      })
-    ],
-    mobilofoon: [
-      (c) => ({
-        sender: `Weginspecteur ${pickRandomItem(['WIS-14', 'WIS-22', 'WIS-08', 'WIS-35'])}`,
-        target: `Verkeerscentrale ${c.location || 'Utrecht'}`,
-        msg: `Ter plaatse bij incident op ${pickRandomItem(['A12', 'A2', 'A27', 'A15'])} hectometerpaal ${pickRandomItem(['48.2', '64.5', '112.8'])}, rood kruis geplaatst boven rijstrook 1, over.`
-      }),
-      (c) => ({
-        sender: `Bergingsdienst ${pickRandomItem(['Modern', 'Van Eijck', 'BRL'])}`,
-        target: `Rijkswaterstaat`,
-        msg: `Voertuig staat op de lepel, berging gereed, rijbaan kan over 2 minuten worden vrijgegeven, over.`
-      }),
-      (c) => ({
-        sender: `Zwaar Transport Begeleiding`,
-        target: `Wagen ${pickRandomItem([1, 2])}`,
-        msg: `Naderen rotonde met bijzondere afmeting, linkerbaan blokkeren voor uitzwaai van de trailer, over.`
-      }),
-      (c) => ({
-        sender: `Gladheidsbestrijding ${c.location || 'Noord'}`,
-        target: `Centrale Regie`,
-        msg: `Strooiwagen ${pickRandomItem([4, 7, 11])} route ${pickRandomItem([12, 15, 18])} afgerond, 15 gram zout per vierkante meter gestrooid, wegdek begaanbaar, over.`
-      }),
-      (c) => ({
-        sender: `Pechhulp Mobilofoon`,
-        target: `Centrale`,
-        msg: `Gestrand voertuig weer mobiel gemaakt op de ${pickRandomItem(['N201', 'N206', 'N207'])}, we zijn weer beschikbaar, over.`
-      })
-    ],
-    air: [
-      (c) => ({
-        sender: `${c.location || 'Schiphol'} Toren`,
-        target: `${pickRandomItem(['KLM 1242', 'Transavia 692', 'PH-BXB', 'Lifeliner 1'])}`,
-        msg: `Wind ${pickRandomItem([210, 230, 250])} graden ${pickRandomItem([12, 15, 18])} knopen, baan ${pickRandomItem(['18 rechts', '24', '36 centrum', '06'])}, landingsklaring verleend, verlaat de baan via taxibaan Bravo, over.`,
-        lang: 'nl-NL'
-      }),
-      (c) => ({
-        sender: `Amsterdam Radar Luchtverkeersleiding`,
-        target: `${pickRandomItem(['KLM 842', 'Transavia 439', 'PH-TVS'])}`,
-        msg: `Radarcontact bevestigd, klim naar vliegniveau ${pickRandomItem([180, 220, 260])}, directe koers naar baken SPYKER, over.`,
-        lang: 'nl-NL'
-      }),
-      (c) => ({
-        sender: `Rotterdam The Hague Toren`,
-        target: `Cessna ${pickRandomItem(['PH-TVS', 'PH-KNA', 'PH-JBL'])}`,
-        msg: `Taxie via taxibaan Alpha naar wachtplaats baan 24, QNH 1018, transponder ${pickRandomItem([7000, 4215])}, over.`,
-        lang: 'nl-NL'
-      }),
-      (c) => ({
-        sender: `Groningen Eelde Nadering`,
-        target: `Traumahelikopter Lifeliner 4`,
-        msg: `Aanvliegroute goedgekeurd richting Universitair Medisch Centrum Groningen, wind zuidwest 10 knopen, over.`,
-        lang: 'nl-NL'
-      }),
-      (c) => ({
-        sender: `Eindhoven Toren`,
-        target: `Vliegbasis verkeer`,
-        msg: `Baan 03 gereed voor vertrek, wind 220 graden 8 knopen, vertrek goedgekeurd, over.`,
-        lang: 'nl-NL'
-      })
-    ],
-    transceiver: [
-      (c) => ({
-        sender: `${pickRandomItem(['PA3ABC', 'PD0XYZ', 'PE1NOP', 'PA2M', 'PB0T'])}`,
-        target: `Ronde via Repeater ${c.location || 'PI2NOS Lopik'}`,
-        msg: `Goedenavond amateurs, modulatiecheck vanaf de vaste mast in ${c.location || 'Midden-Nederland'}, signaalmeter staat op 9 plus 20dB, 73.`,
-        lang: 'nl-NL'
-      }),
-      (c) => ({
-        sender: `${pickRandomItem(['PA1PET', 'PD2VR', 'PE3HAM', 'PA0VRN'])}`,
-        target: `CQ CQ 2 meter band Nederland`,
-        msg: `Algemene oproep op frequentie ${c.freq} MHz, luisterend voor stations in de regio, Peter Vroon ComStudio gateway actief, over.`,
-        lang: 'nl-NL'
-      }),
-      (c) => ({
-        sender: `Repeater Gateway ${c.location || 'PI1UTR Lopikertoren'}`,
-        target: `Alle Nederlandse luisteraars`,
-        msg: `Bakenmelding repeater operationeel op ${c.freq} MHz met subtoon ${c.ctcss || '88.5 Hz'}, shift min 600 kHz, 73.`,
-        lang: 'nl-NL'
-      }),
-      (c) => ({
-        sender: `VERON Afdeling Midden-Nederland`,
-        target: `Landelijke Luisterronde`,
-        msg: `Dit is verenigingsstation PI4AA in de landelijke amateurnet uitzending, microfoon gaat rond naar de provincies, 73 aan alle luisteraars!`,
-        lang: 'nl-NL'
-      })
-    ]
-  };
-
-  function getUniqueChannelCall(channel) {
-    if (!channel) return null;
-    const cat = channel.category || 'train';
-    const templates = PROCEDURAL_CALLS[cat] || PROCEDURAL_CALLS['portofoon'];
-
-    if (!channel._recentCallIndexes) {
-      channel._recentCallIndexes = [];
-    }
-
-    const availableIndexes = [];
-    for (let i = 0; i < templates.length; i++) {
-      if (!channel._recentCallIndexes.includes(i)) {
-        availableIndexes.push(i);
-      }
-    }
-
-    const chosenIdx = availableIndexes.length > 0 
-      ? pickRandomItem(availableIndexes) 
-      : Math.floor(Math.random() * templates.length);
-
-    channel._recentCallIndexes.push(chosenIdx);
-    if (channel._recentCallIndexes.length > Math.min(5, templates.length - 1)) {
-      channel._recentCallIndexes.shift();
-    }
-
-    const generator = templates[chosenIdx];
-    const data = generator(channel);
-
-    return {
-      sender: data.sender,
-      target: data.target,
-      msg: data.msg,
-      lang: data.lang || 'nl-NL',
-      freq: channel.freq,
-      freqDisplay: channel.freqDisplay,
-      channelName: channel.name,
-      timestamp: new Date()
-    };
-  }
-
-  function showLiveTransmissionUI(call) {
-    if (DOM.vfoTransmissionCard) {
-      DOM.vfoTransmissionCard.style.display = 'block';
-      if (DOM.transSenderLabel) DOM.transSenderLabel.textContent = `${call.sender} ➔ ${call.target}`;
-      if (DOM.transTimeLabel) DOM.transTimeLabel.textContent = call.timestamp.toLocaleTimeString('nl-NL');
-      if (DOM.transMsgText) DOM.transMsgText.textContent = `"${call.msg}"`;
-    }
-
-    if (DOM.miniLiveCallStrip) {
-      DOM.miniLiveCallStrip.style.display = 'flex';
-      if (DOM.miniLiveCallTag) DOM.miniLiveCallTag.textContent = `TX • ${call.sender}`;
-      if (DOM.miniLiveCallText) DOM.miniLiveCallText.textContent = call.msg;
-    }
-
-    if (DOM.vfoStatusBadge) {
-      DOM.vfoStatusBadge.textContent = 'RX DOORGANG ACTIEF';
-      DOM.vfoStatusBadge.style.background = 'rgba(0, 230, 118, 0.45)';
-    }
-  }
-
-  function hideLiveTransmissionUI() {
-    if (DOM.vfoTransmissionCard) {
-      DOM.vfoTransmissionCard.style.display = 'none';
-    }
-    if (DOM.miniLiveCallStrip) {
-      DOM.miniLiveCallStrip.style.display = 'none';
-    }
-    if (DOM.vfoStatusBadge) {
-      DOM.vfoStatusBadge.textContent = state.isPlaying ? 'RX STANDBY (LUISTEREN)' : 'RX STANDBY';
-      DOM.vfoStatusBadge.style.background = '';
-    }
-  }
-
-  function logTransmission(call) {
-    state.transmissionHistory.unshift(call);
-    if (state.transmissionHistory.length > 50) {
-      state.transmissionHistory.pop();
-    }
-
-    const count = state.transmissionHistory.length;
-    if (DOM.callLogBadge) {
-      DOM.callLogBadge.textContent = count;
-      DOM.callLogBadge.style.display = 'inline-block';
-    }
-    if (DOM.sbCallLogBadge) {
-      DOM.sbCallLogBadge.textContent = count;
-      DOM.sbCallLogBadge.style.display = 'inline-block';
-    }
-    if (DOM.callLogModalCount) {
-      DOM.callLogModalCount.textContent = `${count} Oproepen`;
-    }
-
-    if (DOM.callsLogModal && DOM.callsLogModal.style.display === 'flex') {
-      renderCallsLogList();
-    }
-  }
-
-  function dispatchNextRadioCall() {
-    if (!state.isPlaying || state.audioMode !== 'calls') return;
-    if (state.callIntervalTimer) {
-      clearTimeout(state.callIntervalTimer);
-      state.callIntervalTimer = null;
-    }
-
-    // Garandeer dat er nooit een synthetische computerstem spreekt
-    if ('speechSynthesis' in window) {
-      try {
-        window.speechSynthesis.cancel();
-      } catch (e) {}
-    }
-
-    const channel = getChannelById(state.activeChannelId);
-    if (!channel) return;
-
-    const call = getUniqueChannelCall(channel);
-    if (!call) return;
-
-    state.isTransmissionActive = true;
-    state.activeTransmissionText = call.msg;
-
-    playSquelchBurst();
-    showLiveTransmissionUI(call);
-    logTransmission(call);
-
-    // Duur van actieve etherburst weergave op het scherm (100% echte radio audio speelt via audioPlayer)
-    const words = call.msg.split(' ').length;
-    const durationMs = Math.max(3000, words * 300);
-    setTimeout(() => {
-      endCallTransmission(channel);
-    }, durationMs);
-  }
-
-  function endCallTransmission(channel) {
-    state.isTransmissionActive = false;
-    hideLiveTransmissionUI();
-    playRogerBeep();
-
-    if (state.isPlaying && state.audioMode === 'calls') {
-      const pauseDuration = 4000 + Math.floor(Math.random() * 6000);
-      state.callIntervalTimer = setTimeout(() => {
-        dispatchNextRadioCall();
-      }, pauseDuration);
-    }
-  }
-
   function getLiveStreamUrlForChannel(channel) {
     let baseUrl = channel.streamUrl || 'https://ice5.somafm.com/scanner-128-mp3';
     if (baseUrl.startsWith('audio/') || (!baseUrl.startsWith('http') && baseUrl.includes('.'))) {
@@ -1984,7 +1551,7 @@
 
       DOM.audioPlayer.play().then(() => {
         if (DOM.vfoStatusBadge) {
-          DOM.vfoStatusBadge.textContent = 'RX 100% LIVE REALTIME';
+          DOM.vfoStatusBadge.textContent = 'STREAM ACTIEF';
           DOM.vfoStatusBadge.style.background = 'rgba(0, 230, 118, 0.35)';
         }
       }).catch(err => {
@@ -1992,23 +1559,9 @@
       });
     }
 
-    if (state.audioMode === 'calls') {
-      dispatchNextRadioCall();
-    }
   }
 
   function stopChannelAudio() {
-    if (state.callIntervalTimer) {
-      clearTimeout(state.callIntervalTimer);
-      state.callIntervalTimer = null;
-    }
-    if ('speechSynthesis' in window) {
-      try {
-        window.speechSynthesis.cancel();
-      } catch (e) {}
-    }
-    state.isTransmissionActive = false;
-    hideLiveTransmissionUI();
 
     if (DOM.audioPlayer) {
       try {
@@ -2019,69 +1572,6 @@
       DOM.vfoStatusBadge.textContent = 'RX STANDBY';
       DOM.vfoStatusBadge.style.background = '';
     }
-  }
-
-  function switchAudioMode(mode) {
-    if (state.audioMode === mode) return;
-    state.audioMode = mode;
-    saveStoredPreferences();
-
-    if (DOM.btnModeUniqueCalls && DOM.btnModeLiveStream) {
-      DOM.btnModeUniqueCalls.classList.toggle('active', mode === 'calls');
-      DOM.btnModeLiveStream.classList.toggle('active', mode === 'stream');
-    }
-
-    if (state.isPlaying) {
-      stopChannelAudio();
-      state.isPlaying = true;
-      playChannelAudio();
-    }
-
-    showToast(mode === 'calls' 
-      ? '🎙️ 100% Echte Menselijke Stemmen actief (Geen computerstem)' 
-      : '📡 24/7 Live Stream actief (Echte stemmen)');
-  }
-
-  function openCallsLogModal() {
-    renderCallsLogList();
-    if (DOM.callsLogModal) DOM.callsLogModal.style.display = 'flex';
-  }
-
-  function closeCallsLogModal() {
-    if (DOM.callsLogModal) DOM.callsLogModal.style.display = 'none';
-  }
-
-  function renderCallsLogList() {
-    if (!DOM.callsLogList) return;
-    if (state.transmissionHistory.length === 0) {
-      DOM.callsLogList.innerHTML = '';
-      if (DOM.emptyCallsLogState) DOM.emptyCallsLogState.style.display = 'flex';
-      return;
-    }
-    if (DOM.emptyCallsLogState) DOM.emptyCallsLogState.style.display = 'none';
-
-    DOM.callsLogList.innerHTML = state.transmissionHistory.map(item => `
-      <div class="call-log-card">
-        <div class="call-log-top">
-          <span class="call-log-station">${escapeHtml(item.sender)}</span>
-          <span class="call-log-time">${item.timestamp.toLocaleTimeString('nl-NL')} • ${item.freq} MHz</span>
-        </div>
-        <div class="call-log-msg">"${escapeHtml(item.msg)}"</div>
-        <div class="call-log-footer">
-          <span class="call-log-target">Bestemming: ${escapeHtml(item.target)}</span>
-          <span class="call-log-chan">${escapeHtml(item.channelName)}</span>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  function clearCallsLog() {
-    state.transmissionHistory = [];
-    if (DOM.callLogBadge) DOM.callLogBadge.style.display = 'none';
-    if (DOM.sbCallLogBadge) DOM.sbCallLogBadge.style.display = 'none';
-    if (DOM.callLogModalCount) DOM.callLogModalCount.textContent = '0 Oproepen';
-    renderCallsLogList();
-    showToast('🗑️ Ether oproepenlogboek gewist');
   }
 
   // ==========================================================================
@@ -2943,7 +2433,7 @@
       requestAnimationFrame(renderFrame);
 
       if (!state.analyser || !state.isPlaying) {
-        updateSMeter(0);
+        updateSMeter(null);
         drawIdleCanvas(ctx, canvas);
         return;
       }
@@ -2960,18 +2450,8 @@
       }
       let avg = sum / dataArray.length;
 
-      // Dynamische signaalmodulatie tijdens live spraak / transmissie of audio stream
-      if (state.isPlaying && (state.isTransmissionActive || (avg <= 2 && DOM.audioPlayer && !DOM.audioPlayer.paused))) {
-        if (state.isTransmissionActive) {
-          avg = 85 + Math.sin(Date.now() / 140) * 25 + Math.random() * 20;
-        } else if (avg <= 2) {
-          avg = 65 + Math.sin(Date.now() / 200) * 22 + Math.random() * 18;
-        }
-        for (let i = 0; i < dataArray.length; i++) {
-          dataArray[i] = Math.max(0, Math.min(255, Math.floor(avg * (1 - (i / dataArray.length) * 0.42) + Math.random() * 28)));
-        }
-      }
-      updateSMeter(avg);
+      // Alleen echte analyser-data (bij CORS-stilte blijft het vlak)
+      updateSMeter(avg, true);
 
       if (state.visMode === 'waterfall') {
         drawWaterfall(ctx, canvas, bufCtx, waterfallBuffer, dataArray);
@@ -2985,8 +2465,14 @@
     renderFrame();
   }
 
-  function updateSMeter(avgValue) {
+  function updateSMeter(avgValue, real) {
     if (!DOM.sMeterNeedle || !DOM.sMeterDbValue) return;
+    if (avgValue === null || avgValue === undefined || !real || avgValue <= 0) {
+      DOM.sMeterNeedle.style.width = '0%';
+      DOM.sMeterDbValue.textContent = '—';
+      if (DOM.miniSignalBadge) DOM.miniSignalBadge.textContent = '—';
+      return;
+    }
 
     const normalized = Math.min(100, (avgValue / 180) * 100);
     DOM.sMeterNeedle.style.width = `${normalized.toFixed(1)}%`;
@@ -3284,23 +2770,6 @@
     // ========================================================================
     // 🎙️ AUDIO MODUS & UNIEKE CALLS DISPATCHER EVENT BINDINGS
     // ========================================================================
-    if (DOM.btnModeUniqueCalls) DOM.btnModeUniqueCalls.addEventListener('click', () => switchAudioMode('calls'));
-    if (DOM.btnModeLiveStream) DOM.btnModeLiveStream.addEventListener('click', () => switchAudioMode('stream'));
-    if (DOM.btnOpenCallsLog) DOM.btnOpenCallsLog.addEventListener('click', openCallsLogModal);
-    if (DOM.sbBtnCallLog) {
-      DOM.sbBtnCallLog.addEventListener('click', () => {
-        openCallsLogModal();
-        closeMobileSidebar();
-      });
-    }
-    if (DOM.btnCloseCallsLog) DOM.btnCloseCallsLog.addEventListener('click', closeCallsLogModal);
-    if (DOM.btnCloseCallsLogDone) DOM.btnCloseCallsLogDone.addEventListener('click', closeCallsLogModal);
-    if (DOM.btnClearCallsLog) DOM.btnClearCallsLog.addEventListener('click', clearCallsLog);
-    if (DOM.callsLogModal) {
-      DOM.callsLogModal.addEventListener('click', (e) => {
-        if (e.target === DOM.callsLogModal) closeCallsLogModal();
-      });
-    }
 
     // ========================================================================
     // 📡 WEBSDR TWENTE SPOTTER & LOGBOEK EVENT BINDINGS
@@ -3795,7 +3264,7 @@
           <div class="node-card-bottom">
             <div class="node-status-group">
               <span class="node-status-dot"></span>
-              <span>${node.status} • Ping: ${node.ping} • 👥 ${node.listeners}</span>
+              <span>${escapeHtml(describeStream(node.streamUrl))}</span>
             </div>
             <div class="node-card-actions">
               ${node.id === 'node_websdr_twente' ? `
@@ -3809,6 +3278,11 @@
         </div>
       `;
     }).join('');
+  }
+
+  function describeStream(url) {
+    if (url && url.indexOf('liveatc') !== -1) return '🎧 Echte stream: LiveATC Schiphol Tower';
+    return '🎧 Echte stream: SomaFM Scanner (VS politie/brandweer-mix)';
   }
 
   window.filterBySpecificNode = (nodeId) => {
@@ -3847,7 +3321,7 @@
     }
 
     renderChannelList();
-    showToast(`📡 Live verbonden met ${node.name} (${node.ping})`);
+    showToast(`📡 Speelt: ${describeStream(node.streamUrl)}`);
   };
 
   function clearNodeFilter() {
