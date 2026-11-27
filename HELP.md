@@ -86,14 +86,14 @@ Veel portofoons (PMR446) gebruiken **CTCSS (Continuous Tone Coded Squelch System
 
 ### 5.2 🌐 Uitluisteren via Allerhande Nodes
 ComStudio toont **12 node-labels** van locaties in Nederland. Let op: dit zijn alleen labels; elke node speelt één van de twee echte streams (LiveATC Schiphol Tower of SomaFM Scanner) en er worden geen ping, luisteraars of online-status getoond:
-1. **Maasbree WebSDR #01 (Limburg, NL):** VHF/UHF amateurrepeaters, 27MC en Rijnvaart.
-2. **Univ. Twente SDR #02 (Overijssel, NL):** Wereldberoemde campus-SDR voor HF korte golf (0-30 MHz).
+1. **Maasbree WebSDR #01 (Limburg, NL):** categorie-label (amateur/27MC/Rijnvaart).
+2. **Univ. Twente SDR #02 (Overijssel, NL):** categorie-label (HF); ComStudio ontvangt deze SDR niet.
 3. **Randstad Schiphol Air & Marine #03 (NH, NL):** Luchtvaartverkeer Kaagbaan/Polderbaan en Noordzeekanaal.
 4. **Rotterdam Maasmond Gateway #04 (ZH, NL):** Europoort, Maasvlakte en naderende zeeschepen op de Noordzee.
 5. **ProRail GSM-R Node Midden #05 (Utrecht, NL):** Label; er wordt geen GSM-R ontvangen.
 6. **BrandMeister DMR Master 2041 #06 (Amsterdam, NL):** Digitale mobilofoons, beveiliging en talkgroups.
 7. **EchoLink Gerbrandytoren Lopik #07 (IJsselstein, NL - 366m NAP):** Hoogste zendmast van Nederland.
-8. **CAMRAS Dwingeloo Node #08 (Drenthe, NL):** 25-meter radiotelescoop voor Noord-Nederland.
+8. **CAMRAS Dwingeloo Node #08 (Drenthe, NL):** categorie-label; geen verbinding met de telescoop.
 9. **Kustwacht Den Helder & Waddenzee #09 (Den Helder, NH, NL):** Scheepvaartbegeleiding Waddenzee, Vliestroom en SAR.
 10. **Brainport Eindhoven Gateway #10 (Eindhoven, NB, NL):** Spoorwegknooppunt Zuid, Brabantse corridors en mobilofoons.
 11. **Zeehaven IJmuiden & Sluizen Node #11 (IJmuiden, NH, NL):** Zeesluis IJmuiden, Vissershaven en Noordzeekanaal.
@@ -101,11 +101,11 @@ ComStudio toont **12 node-labels** van locaties in Nederland. Let op: dit zijn a
 
 ### 5.3 📡 WebSDR Twente Frequentie Spotter & Commentaar Logboek
 Geïnspireerd op het live WebSDR logboek van de Universiteit Twente (`http://websdr.ewi.utwente.nl:8901/`):
-* **Interessante Frequenties & Opmerkingen:** Luisteraars laten in het logboek interessante ontdekkingen achter over signalen, praatrondes, piratenmuziek, FT8 digitaal verkeer en mysterieuze zenders (zoals *The Buzzer* of de Duitse DCF77 atoomklok).
+* **Interessante Frequenties & Opmerkingen:** Het logboek is leeg tot u zelf spots toevoegt (bewaard in uw browser); u kunt er bijvoorbeeld interessante ontdekkingen achter over signalen, praatrondes, piratenmuziek, FT8 digitaal verkeer en mysterieuze zenders (zoals *The Buzzer* of de Duitse DCF77 atoomklok).
 * **📄 Download Technisch PDF Dossier:** Direct in de app te downloaden als vectorieel PDF-document (`WebSDR_Twente_ComStudio_Dossier.pdf`) met 3 pagina's diepgaande achtergrond over SDR-architectuur, spectrum- en watervalvisualisatie en frequentietabellen.
-* **1-Tap Direct Afstemmen op WebSDR Twente:** Klik op `[ 🌐 Luister op WebSDR ↗ ]` bij een gespotte frequentie om de live ontvanger op de campus van de TU Enschede direct op die exacte frequentie en modulatie (LSB, USB, AM, FM, CW) te openen en te beluisteren.
-* **1-Tap Afstemmen in ComStudio:** Klik op `[ 📻 Stem af in Studio ]` om een gespot station direct in ComStudio te openen en live uit te luisteren.
-* **Zelf Frequenties Achterlaten:** Deel eenvoudig uw eigen ether-vondsten via het formulier `➕ Deel een interessante frequentie`. Uw spot wordt direct opgeslagen en getoond met realtime badge.
+* **1-Tap Direct Afstemmen op WebSDR Twente:** Klik op `[ 🌐 Luister op WebSDR ↗ ]` bij een eigen spot om de externe WebSDR van de TU Enschede (een aparte website, niet ComStudio) direct op die exacte frequentie en modulatie (LSB, USB, AM, FM, CW) te openen en te beluisteren.
+* **1-Tap Afstemmen in ComStudio:** Eigen spots hebben geen gekoppeld kanaal; de knop `[ 📻 Stem af in Studio ]` verschijnt alleen als er een kanaallabel aan gekoppeld is.
+* **Zelf Frequenties Achterlaten:** Deel eenvoudig uw eigen ether-vondsten via het formulier `➕ Deel een interessante frequentie`. Uw spot wordt opgeslagen in uw browser (localStorage) met de echte tijd van invoer.
 
 ### 5.4 🎛️ VFO Cockpit & Audio DSP
 * **Squelch (SQL):** Onderdrukt de ruis wanneer er niemand praat. Zet de schuifregelaar op 40% voor een stille achtergrond, of zet hem op 0% om zwakke stations hoorbaar te maken.

@@ -14,170 +14,86 @@
   const NODES = [
     {
       id: 'node_websdr_maasbree',
-      name: 'Maasbree WebSDR Gateway #01',
+      name: 'Maasbree WebSDR Gateway #01 (label)',
       type: 'WebSDR',
       typeBadge: '📡 WebSDR',
-      operator: 'Stichting Scoop Hobbyfonds',
-      location: 'Maasbree (Limburg, NL)',
-      lat: 51.3570,
-      lon: 5.9980,
-      bands: '144 - 432 MHz & HF',
-      freqCoverage: '2m / 70cm / 27MC / PMR / Rijnvaart',
-      desc: 'Bovenregionale SDR ontvanger met richtantennes voor Zuid-Nederland, Vlaanderen en Nordrhein-Westfalen.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
       id: 'node_websdr_twente',
-      name: 'Universiteit Twente SDR Node #02',
+      name: 'Universiteit Twente SDR Node #02 (label)',
       type: 'WebSDR',
       typeBadge: '📡 WebSDR',
-      operator: 'Amateur Radio Club ETGD Twente',
-      location: 'Enschede (Overijssel, NL)',
-      lat: 52.2435,
-      lon: 6.8530,
-      bands: '0 - 30 MHz HF Korte Golf',
-      freqCoverage: 'HF DX / 40m / 20m / 11m CB / Hamburg Marine',
-      desc: 'Wereldberoemde SDR antenne-ontvanger op de campus van TU Enschede. Vangt radiosignalen uit heel Europa op.',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r'
     },
     {
       id: 'node_sdr_schiphol',
-      name: 'Randstad Schiphol Air & Marine #03',
+      name: 'Randstad Schiphol Air & Marine #03 (label)',
       type: 'OpenWebRX',
       typeBadge: '✈️ OpenWebRX',
-      operator: 'AeroTraffic Netherlands',
-      location: 'Haarlemmermeer / Schiphol (NH, NL)',
-      lat: 52.3100,
-      lon: 4.7680,
-      bands: '118 - 137 MHz VHF Air & 156 MHz Marifoon',
-      freqCoverage: 'Schiphol Tower, Approach, Noordzeekanaal, K16',
-      desc: 'Directe ontvangst van Kaagbaan, Polderbaan, Schiphol Approach en verkeer langs het Noordzeekanaal.',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_0624'
     },
     {
       id: 'node_sdr_rotterdam',
-      name: 'Rotterdam Maasmond Gateway #04',
+      name: 'Rotterdam Maasmond Gateway #04 (label)',
       type: 'OpenWebRX',
       typeBadge: '⚓ OpenWebRX',
-      operator: 'Havenbedrijf Rotterdam VTS',
-      location: 'Hoek van Holland / Europoort (ZH, NL)',
-      lat: 51.9800,
-      lon: 4.1200,
-      bands: '156.000 - 162.000 MHz VHF Marine & Spoor',
-      freqCoverage: 'Sector Maasmond, Calandkanaal, Kijfhoek Betuwe',
-      desc: 'Havenmonding Rotterdam, Europoort, Maasvlakte en naderende zeeschepen op de Noordzee.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
       id: 'node_prorail_utrecht',
-      name: 'ProRail GSM-R Node Midden #05',
+      name: 'ProRail GSM-R Node Midden #05 (label)',
       type: 'RailNode',
       typeBadge: '🚆 RailNode',
-      operator: 'Railverkeersleiding Nederland',
-      location: 'Utrecht Centraal Verkeersleidingspost (UT, NL)',
-      lat: 52.0894,
-      lon: 5.1103,
-      bands: '457 - 468 MHz GSM-R & Rangeer',
-      freqCoverage: 'Utrecht CS, Blauwkapel, Gouda, Hilversum',
-      desc: 'Centrale knooppuntontvanger voor machinisten en treindienstleiders in het hart van het Nederlandse spoornet.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
       id: 'node_dmr_bm204',
-      name: 'BrandMeister DMR Master Node 2041 #06',
+      name: 'BrandMeister DMR Master Node 2041 #06 (label)',
       type: 'DMR',
       typeBadge: '📟 DMR Master',
-      operator: 'BrandMeister Network NL',
-      location: 'Landelijke DMR Server Amsterdam (NH, NL)',
-      lat: 52.3676,
-      lon: 4.9041,
-      bands: 'Digital Mobile Radio (DMR Tier II)',
-      freqCoverage: 'Talkgroup 204 (Landelijk), TG 2041, 2042, Evenementen',
-      desc: 'Centrale digitale node voor professionele portofoons, beveiliging en mobiele communicatie.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
       id: 'node_el_pi2nos',
-      name: 'EchoLink Gerbrandytoren Node #257088 #07',
+      name: 'EchoLink Gerbrandytoren Node #257088 #07 (label)',
       type: 'EchoLink',
       typeBadge: '🎙️ EchoLink',
-      operator: 'Vereniging Experimenteel Radio Onderzoek',
-      location: 'IJsselstein Lopikertoren (366m NAP, NL)',
-      lat: 52.0100,
-      lon: 5.0533,
-      bands: '145.575 MHz FM Repeater',
-      freqCoverage: 'Heel Nederland, Randstad & Vlaanderen',
-      desc: 'Hoogste zendmast van Nederland. Biedt landelijke dekking voor mobiele zenders in auto’s en handheld portofoons.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
       id: 'node_dwingeloo_sdr',
-      name: 'CAMRAS Dwingeloo Node #08',
+      name: 'CAMRAS Dwingeloo Node #08 (label)',
       type: 'WebSDR',
       typeBadge: '🛰️ WebSDR',
-      operator: 'CAMRAS Dwingeloo',
-      location: 'Dwingeloo (Drenthe, NL)',
-      lat: 52.8122,
-      lon: 6.3961,
-      bands: '144 / 432 / 1296 MHz & Spoor',
-      freqCoverage: 'Knooppunt Zwolle, Noordoost-NL, Ruimtevaart',
-      desc: '25-meter historische radiotelescoop ingezet als uiterst gevoelige radio-ontvangstnode voor Noord-Europa.',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r'
     },
     {
       id: 'node_maritiem_denhelder',
-      name: 'Kustwacht Den Helder & Waddenzee #09',
+      name: 'Kustwacht Den Helder & Waddenzee #09 (label)',
       type: 'OpenWebRX',
       typeBadge: '⚓ OpenWebRX',
-      operator: 'Kustwacht Nederland & KNRM',
-      location: 'Den Helder & Texelstroom (NH, NL)',
-      lat: 52.9560,
-      lon: 4.7590,
-      bands: '156 - 162 MHz VHF Marine & SAR',
-      freqCoverage: 'Kustwacht K16, Waddenzee, Vliestroom, Noordzee',
-      desc: 'Directe ontvangst van Kustwachtcentrum Den Helder, KNRM reddingboten en marifoonverkeer op de Noordzee en Waddenzee.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
       id: 'node_openwebrx_eindhoven',
-      name: 'Brainport Eindhoven Gateway #10',
+      name: 'Brainport Eindhoven Gateway #10 (label)',
       type: 'RailNode',
       typeBadge: '🚆 Spoor & Mobilofoon',
-      operator: 'Zuidoost-NL Spoor & Verkeersregie',
-      location: 'Eindhoven Knooppunt (NB, NL)',
-      lat: 51.4416,
-      lon: 5.4697,
-      bands: '457 MHz GSM-R & RWS Mobilofoon 467 MHz',
-      freqCoverage: 'Knooppunt Eindhoven, Venlo, A2/A58/A67 corridors',
-      desc: 'Ontvangstnode voor treinverkeer in Brabant en Limburg, Rijkswaterstaat weginspecteurs en logistieke mobilofoons.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     },
     {
       id: 'node_openwebrx_ijmuiden',
-      name: 'Zeehaven IJmuiden & Sluizen Node #11',
+      name: 'Zeehaven IJmuiden & Sluizen Node #11 (label)',
       type: 'OpenWebRX',
       typeBadge: '⚓ OpenWebRX',
-      operator: 'Rijkswaterstaat & Havenbedrijf Amsterdam',
-      location: 'IJmuiden Zeesluis & Vissershaven (NH, NL)',
-      lat: 52.4630,
-      lon: 4.5880,
-      bands: '156.100 - 156.800 MHz VHF Marine',
-      freqCoverage: 'Zeesluis IJmuiden K22, Noordzeekanaal, Vissersvloot',
-      desc: 'Grootste zeesluis ter wereld, Noordzeekanaalverbinding naar Amsterdam en inkomende zeeschepen vanaf de Noordzee.',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3'
     },
     {
       id: 'node_mesh_polder',
-      name: 'Polder Mesh & Mobile CB Node #12',
+      name: 'Polder Mesh & Mobile CB Node #12 (label)',
       type: 'MeshLoRa',
       typeBadge: '📱 Mesh / CB Node',
-      operator: 'Polder Comms Community',
-      location: 'Flevoland / Eemland Randmeren (FL, NL)',
-      lat: 52.4200,
-      lon: 5.5000,
-      bands: '27 MHz CB & PMR446 Outdoor',
-      freqCoverage: 'Polders, dijkwegen, truckers A6/A27, fietsers',
-      desc: 'Lokale gateway voor buitengebieden, polders, recreanten, fietsers en mobiele zenders in landelijke gebieden.',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3'
     }
   ];
@@ -203,12 +119,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚆',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Trein 3042 voor Treindienstleider Utrecht: sein 412 toont geel, snelheid verlagen naar 40 km/u voor spoor 5a.',
-        'Machinist Intercity 835, u heeft groen sein bij overloopwissel Blauwkapel, doorkomst op schema.',
-        'TRDL Utrecht aan Sprinter 7440: vertrekspoor gewijzigd naar spoor 14, deuren sluiten en vertrekken.',
-        'Centrale post Utrecht: wisselstoring bij Vleuten opgelost, baanvak weer vrijgegeven.'
-      ]
     },
     {
       id: 'train_prorail_zwolle',
@@ -226,10 +136,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚆',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Intercity 553 voor TRDL Zwolle: nadering Meppel, wachten op aansluiting Leeuwarden.',
-        'Machinist 12644, Hanzelijn baanvaksnelheid 140 km/u goedgekeurd na Drontermeertunnel.'
-      ]
     },
     {
       id: 'train_kijfhoek_shunting',
@@ -247,10 +153,6 @@
       ctcss: '118.8 Hz',
       deviceIcon: '🚆',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Heuvelmeester voor rangeerloc 6400: heuvelproces spoor 24 gestart, afremmen via railremmen.',
-        'Kijfhoek Post voor Betuweroute goederentrein 41200: rijweg naar Zevenaar gereed.'
-      ]
     },
     {
       id: 'train_prorail_ams',
@@ -268,10 +170,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚆',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Intercity Direct 9228 voor TRDL Amsterdam: Schiphol Tunnel spoor 3 vrij, vertrek naar Rotterdam.',
-        'Machinist Sprinter 4614, wissel bij Sloterdijk gereed, binnenrijden op spoor 8.'
-      ]
     },
     {
       id: 'train_prorail_ehv',
@@ -289,10 +187,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚆',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'TRDL Eindhoven voor Intercity 3540: sein 208 groen, vertrek richting Tilburg en Breda.',
-        'Goederentrein 60041, opstellen op wisselspoor Acht voor passage reizigerstrein.'
-      ]
     },
     {
       id: 'train_prorail_arnhem',
@@ -310,10 +204,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚆',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3',
-      chatter: [
-        'TRDL Arnhem voor trein 3624: sein op Arnhem Berg veilig, baanvaksnelheid 130 km/u.',
-        'Betuweroute verkeersleiding: doorkomst goederenkonvooi bij Zevenaar op schema.'
-      ]
     },
 
     // --- ⚓ SCHEPEN (Zeevaart, Kustwacht & Binnenvaart Nederland) ---
@@ -333,11 +223,6 @@
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Hier het Kustwachtcentrum Den Helder voor alle schepen. Weerbericht Noordzee: ZW 6 tot 7.',
-        'Securite, Securite, Securite. Navigatie waarschuwing 244, drijvend wrakhout nabij Texel.',
-        'Pan-Pan, Pan-Pan, Pan-Pan. Zeiljacht Albatros meldt motorstoring nabij Maasvlakte.'
-      ]
     },
     {
       id: 'mar_maasmond_k01',
@@ -355,11 +240,6 @@
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Maasmond, hier containerschip Ever Given, positie boei 3, loods aan boord.',
-        'Ever Given, goedgekeurd, doorvaren naar Calandkanaal, tegenverkeer Smit Denemarken.',
-        'Loodsboot Explorer verlaat steiger Pistoolhaven voor inkomende tanker.'
-      ]
     },
     {
       id: 'mar_ijmuiden_k22',
@@ -377,10 +257,6 @@
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'IJmuiden Sluizen voor motortankschip Stella: Noorderkolk loopt vol, gereed voor binnenvaren.',
-        'Sleepboot Svitzer Tempest assisteert bulkcarrier bij het afmeren in de Vissershaven.'
-      ]
     },
     {
       id: 'mar_terschelling_k02',
@@ -398,10 +274,6 @@
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Brandaris voor snelveerboot Koegelwieck: vaarwater Schuitengat vrij, wind zuidwest 6.',
-        'Garnalenkotter TX-32 meldt positie nadering Vliestroom, diepgang 2.10 meter.'
-      ]
     },
     {
       id: 'mar_zeeland_k14',
@@ -419,10 +291,6 @@
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3',
-      chatter: [
-        'Verkeerscentrale Hansweert voor containerschip Maersk: stroming 2 knopen eb, passeer boei 44.',
-        'Loodsboot Vlissingen brengt loods over bij Steenbank station, over.'
-      ]
     },
     {
       id: 'mar_rhein_k10',
@@ -440,10 +308,6 @@
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Verkeerspost Nijmegen voor afvarig koppelverband Rijnland: blauw bord getoond aan stuurboord.',
-        'Begrepen Nijmegen, stuurboord-stuurboord passage bij kilometerraai 884.'
-      ]
     },
     {
       id: 'mar_adam_k14',
@@ -461,10 +325,6 @@
       ctcss: 'CSQ',
       deviceIcon: '⚓',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Havendienst Amsterdam voor vrachtschip Stella Polaris, ligplaats Houtrak beschikbaar.',
-        'Havendienst Amsterdam meldt cruiseschip passeert Houthavens op weg naar PTA.'
-      ]
     },
 
     // --- 📱 MOBIELE PORTOFOONS (Nederland Landelijk & Lokaal) ---
@@ -484,11 +344,6 @@
       ctcss: '67.0 Hz (Tone 01)',
       deviceIcon: '📱',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Post 1 voor Post 3, kom er maar in. Alles rustig bij de noordingang.',
-        'Begrepen Post 1, we lopen nu ronde langs het achterterrein. Over.',
-        'Roger, luisterkanaal blijft 1, batterij 90 procent.'
-      ]
     },
     {
       id: 'pmr_ch8_sos',
@@ -506,10 +361,6 @@
       ctcss: '114.8 Hz (Tone 16)',
       deviceIcon: '📱',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3',
-      chatter: [
-        'Oproep op recreatiekanaal 8: fietser met pech in het bosgebied nabij Lage Vuursche.',
-        'Boswachterspost ontvangt oproep: mobiele eenheid is onderweg, kanaal vrijhouden.'
-      ]
     },
     {
       id: 'pmr_ch2_event',
@@ -527,10 +378,6 @@
       ctcss: '100.0 Hz (Tone 12)',
       deviceIcon: '📱',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Podium B voor Hoofdregie: artiest staat gereed voor soundcheck.',
-        'Regie begrepen, microfoons staan open, lichtshow start over 2 minuten.'
-      ]
     },
     {
       id: 'pmr_ch4_security',
@@ -548,10 +395,6 @@
       ctcss: '131.8 Hz (Tone 20)',
       deviceIcon: '📱',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Surveillance 2 voor Meldkamer: controle parkeergarage afgerond, geen bijzonderheden.',
-        'Meldkamer ontvangt, sluitronde hoofdgebouw kan gestart worden. Over.'
-      ]
     },
     {
       id: 'port_bhv_calamiteit',
@@ -569,9 +412,6 @@
       ctcss: '88.5 Hz (Tone 08)',
       deviceIcon: '📱',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'BHV Coördinator aan alle posten: ontruimingsoefening hal C geslaagd, verzamelpunt vrij.'
-      ]
     },
     {
       id: 'port_logistiek_dc',
@@ -589,10 +429,6 @@
       ctcss: '77.0 Hz (Tone 04)',
       deviceIcon: '📱',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Heftruck 4 naar dock 12, trailer met pallets gereed voor lossen.',
-        'Onderweg, dock 12 binnen 1 minuut vrij.'
-      ]
     },
 
     // --- 🚗 MOBILOFOONS (Truckers, Vloten & Konvooien Nederland) ---
@@ -612,11 +448,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚛',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Middag collega’s op de 19, let op bij knooppunt Hoevelaken, remmen voor file op de rechterbaan.',
-        'Bedankt voor de tip chauffeur, ik pak binnendoor via Amersfoort. Goeie reis!',
-        'Attentie op de A2 richting Utrecht, pechgeval op de vluchtstrook bij Maarssen.'
-      ]
     },
     {
       id: 'cb_k28_transit',
@@ -634,10 +465,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚛',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Break voor de polderrijders, zwaar transport op de dijk Lelystad - Enkhuizen, tegenliggers voorzichtig.',
-        'Begrepen collega, we wachten even bij de uitwijkstrook.'
-      ]
     },
     {
       id: 'cb_k14_oproep',
@@ -655,10 +482,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚗',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Break voor een tokkie op kanaal 14, iemand in de lucht in regio Midden-Nederland?',
-        'Ja hallo mobiel station, kom maar op kanaal 22 voor een babbel.'
-      ]
     },
     {
       id: 'cb_k9_sos',
@@ -676,9 +499,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚗',
       streamUrl: 'https://ice6.somafm.com/sf1033-128-mp3',
-      chatter: [
-        'Kanaal 9 uitluisterdienst actief. Geen actieve noodberichten gemeld op de corridor.'
-      ]
     },
     {
       id: 'cb_k4_4x4',
@@ -696,10 +516,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🚙',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Konvooi leider voor wagen 3: diepe modderkuil aan stuurboordzijde, hou links aan in lage gearing.',
-        'Wagen 3 begrepen, 4-wielaandrijving ingeschakeld, we volgen het spoor.'
-      ]
     },
     {
       id: 'mob_berging_takel',
@@ -717,9 +533,6 @@
       ctcss: 'CSQ',
       deviceIcon: '🛻',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'Centrale voor Berging 4: gestrand voertuig A15 hectometerpaal 48.2, bergingswagen onderweg.'
-      ]
     },
 
     // --- ✈️ LUCHTVAART SCANNERS (Nederlandse Luchthavens & Luchtruim) ---
@@ -739,10 +552,6 @@
       ctcss: 'CSQ',
       deviceIcon: '✈️',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
-      chatter: [
-        'Amsterdam Radar voor KLM 1243: klim naar vliegniveau 180, directe koers naar SPYKER.',
-        'Transavia 439, radarcontact bevestigd, daal naar 3000 voet, QNH 1018.'
-      ]
     },
     {
       id: 'air_eham_twr',
@@ -760,10 +569,6 @@
       ctcss: 'CSQ',
       deviceIcon: '✈️',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
-      chatter: [
-        'KLM 1243, wind 240 graden 12 knopen, baan 24 vrij om te landen.',
-        'Transavia 692, verlaat de baan via taxibaan Victor, contact grond op 121.800.'
-      ]
     },
     {
       id: 'air_eham_app',
@@ -781,10 +586,6 @@
       ctcss: 'CSQ',
       deviceIcon: '✈️',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_0624',
-      chatter: [
-        'Inbound vlucht, daal naar 2000 voet, onderschep ILS lokaal baken baan 18 rechts.',
-        'Meld wanneer gevestigd op de glijbaan, snelheid reduceren tot 160 knopen.'
-      ]
     },
     {
       id: 'air_rotterdam_twr',
@@ -802,10 +603,6 @@
       ctcss: 'CSQ',
       deviceIcon: '✈️',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
-      chatter: [
-        'Rotterdam Toren voor PH-TVS: wind 230 graden 10 knopen, baan 24 vrij voor vertrek.',
-        'Traumahelikopter Lifeliner 2 vertrekt vanaf platform naar incident A15, uitklimmen goedgekeurd.'
-      ]
     },
 
     // --- 📻 ZENDONTVANGERS / TRANSCEIVERS (Nederlandse Repeaters & VERON) ---
@@ -825,11 +622,6 @@
       ctcss: '77.0 / 88.5 Hz',
       deviceIcon: '📻',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'PI2NOS via IJsselstein, hier PA3EHQ mobiel nabij Apeldoorn, goedenavond ronde.',
-        'Goedenavond PA3EHQ, hier PD0MW in Rotterdam, je modulatie komt 5-9 binnen.',
-        'Mooi rapport Peter, ik werk met de transceiver op 50 watt vanuit de auto.'
-      ]
     },
     {
       id: 'ham_pi3utr',
@@ -847,10 +639,6 @@
       ctcss: '77.0 Hz',
       deviceIcon: '📻',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
-      chatter: [
-        'PI3UTR, PA2XYZ voor een signaalrapport, transceiver test op 10 watt.',
-        'PA2XYZ hier PE1AAA, prima audiosignaal, helder en zuiver over de Utrechtse Heuvelrug.'
-      ]
     },
     {
       id: 'ham_pi1nos_dstar',
@@ -868,10 +656,6 @@
       ctcss: 'DMR TG204',
       deviceIcon: '📻',
       streamUrl: 'https://ice5.somafm.com/scanner-128-mp3',
-      chatter: [
-        'PI1NOS digitale reflector gateway gekoppeld met Groningen en Eindhoven, modulatie 100 procent.',
-        'Hallo amateurs, PD1VRN meldt zich in via de digitale reflector vanuit Flevoland.'
-      ]
     },
     {
       id: 'ham_veron_pi4aa',
@@ -889,10 +673,6 @@
       ctcss: 'None',
       deviceIcon: '📻',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_0624',
-      chatter: [
-        'Dit is verenigingsstation PI4AA met het landelijke amateurnet nieuws voor Nederland.',
-        'Rapport 5 en 9 ontvangen vanuit alle Nederlandse provincies, microfoon gaat rond.'
-      ]
     },
     {
       id: 'ham_websdr_40m',
@@ -910,48 +690,45 @@
       ctcss: 'None',
       deviceIcon: '🌐',
       streamUrl: 'https://s1-bos.liveatc.net/eham_twr_042218l36r',
-      chatter: [
-        'Goedenavond allemaal in de 40 meter ronde, condities zijn uitstekend over heel Nederland vanavond.'
-      ]
     }
   ];
 
   // Koppel Geografische Coördinaten en Primaire Ontvangst-Nodes aan elk kanaal (100% NL)
   const CHANNEL_LOCATIONS = {
-    train_prorail_utr: { lat: 52.0894, lon: 5.1103, primaryNodeId: 'node_prorail_utrecht', nodeName: 'ProRail GSM-R Node Midden #05' },
-    train_prorail_zwolle: { lat: 52.5050, lon: 6.0910, primaryNodeId: 'node_dwingeloo_sdr', nodeName: 'CAMRAS Dwingeloo Node #08' },
-    train_kijfhoek_shunting: { lat: 51.8267, lon: 4.6033, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    train_prorail_ams: { lat: 52.3792, lon: 4.9003, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
-    train_prorail_ehv: { lat: 51.4416, lon: 5.4697, primaryNodeId: 'node_openwebrx_eindhoven', nodeName: 'Brainport Eindhoven Gateway #10' },
-    train_prorail_arnhem: { lat: 51.9851, lon: 5.8987, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' },
-    mar_k16: { lat: 52.9560, lon: 4.7600, primaryNodeId: 'node_maritiem_denhelder', nodeName: 'Kustwacht Den Helder & Waddenzee #09' },
-    mar_maasmond_k01: { lat: 51.9890, lon: 4.0750, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    mar_ijmuiden_k22: { lat: 52.4630, lon: 4.5880, primaryNodeId: 'node_openwebrx_ijmuiden', nodeName: 'Zeehaven IJmuiden & Sluizen Node #11' },
-    mar_terschelling_k02: { lat: 53.3610, lon: 5.2150, primaryNodeId: 'node_maritiem_denhelder', nodeName: 'Kustwacht Den Helder & Waddenzee #09' },
-    mar_zeeland_k14: { lat: 51.4480, lon: 4.0080, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    mar_rhein_k10: { lat: 51.8420, lon: 5.8600, primaryNodeId: 'node_websdr_maasbree', nodeName: 'Maasbree WebSDR Gateway #01' },
-    mar_adam_k14: { lat: 52.4630, lon: 4.5900, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
-    pmr_ch1: { lat: 52.1550, lon: 5.2500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
-    pmr_ch8_sos: { lat: 52.1326, lon: 5.8500, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
-    pmr_ch2_event: { lat: 52.0900, lon: 5.1100, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06' },
-    pmr_ch4_security: { lat: 52.3700, lon: 4.8900, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06' },
-    port_bhv_calamiteit: { lat: 51.9500, lon: 4.1500, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    port_logistiek_dc: { lat: 51.5600, lon: 5.0800, primaryNodeId: 'node_openwebrx_eindhoven', nodeName: 'Brainport Eindhoven Gateway #10' },
-    cb_k19_truckers: { lat: 52.1550, lon: 5.3878, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
-    cb_k28_transit: { lat: 52.4200, lon: 5.5000, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
-    cb_k14_oproep: { lat: 52.2000, lon: 5.2500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
-    cb_k9_sos: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
-    cb_k4_4x4: { lat: 52.1326, lon: 5.8500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12' },
-    mob_berging_takel: { lat: 51.8500, lon: 4.7000, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    air_amsterdam_radar: { lat: 52.3086, lon: 4.7639, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
-    air_eham_twr: { lat: 52.3086, lon: 4.7639, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
-    air_eham_app: { lat: 52.3100, lon: 4.7600, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03' },
-    air_rotterdam_twr: { lat: 51.9569, lon: 4.4372, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04' },
-    ham_pi2nos: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
-    ham_pi3utr: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
-    ham_pi1nos_dstar: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07' },
-    ham_veron_pi4aa: { lat: 52.1550, lon: 5.3878, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' },
-    ham_websdr_40m: { lat: 52.2435, lon: 6.8530, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02' }
+    train_prorail_utr: { lat: 52.0894, lon: 5.1103, primaryNodeId: 'node_prorail_utrecht', nodeName: 'ProRail GSM-R Node Midden #05 (label)' },
+    train_prorail_zwolle: { lat: 52.5050, lon: 6.0910, primaryNodeId: 'node_dwingeloo_sdr', nodeName: 'CAMRAS Dwingeloo Node #08 (label)' },
+    train_kijfhoek_shunting: { lat: 51.8267, lon: 4.6033, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04 (label)' },
+    train_prorail_ams: { lat: 52.3792, lon: 4.9003, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03 (label)' },
+    train_prorail_ehv: { lat: 51.4416, lon: 5.4697, primaryNodeId: 'node_openwebrx_eindhoven', nodeName: 'Brainport Eindhoven Gateway #10 (label)' },
+    train_prorail_arnhem: { lat: 51.9851, lon: 5.8987, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02 (label)' },
+    mar_k16: { lat: 52.9560, lon: 4.7600, primaryNodeId: 'node_maritiem_denhelder', nodeName: 'Kustwacht Den Helder & Waddenzee #09 (label)' },
+    mar_maasmond_k01: { lat: 51.9890, lon: 4.0750, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04 (label)' },
+    mar_ijmuiden_k22: { lat: 52.4630, lon: 4.5880, primaryNodeId: 'node_openwebrx_ijmuiden', nodeName: 'Zeehaven IJmuiden & Sluizen Node #11 (label)' },
+    mar_terschelling_k02: { lat: 53.3610, lon: 5.2150, primaryNodeId: 'node_maritiem_denhelder', nodeName: 'Kustwacht Den Helder & Waddenzee #09 (label)' },
+    mar_zeeland_k14: { lat: 51.4480, lon: 4.0080, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04 (label)' },
+    mar_rhein_k10: { lat: 51.8420, lon: 5.8600, primaryNodeId: 'node_websdr_maasbree', nodeName: 'Maasbree WebSDR Gateway #01 (label)' },
+    mar_adam_k14: { lat: 52.4630, lon: 4.5900, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03 (label)' },
+    pmr_ch1: { lat: 52.1550, lon: 5.2500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12 (label)' },
+    pmr_ch8_sos: { lat: 52.1326, lon: 5.8500, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07 (label)' },
+    pmr_ch2_event: { lat: 52.0900, lon: 5.1100, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06 (label)' },
+    pmr_ch4_security: { lat: 52.3700, lon: 4.8900, primaryNodeId: 'node_dmr_bm204', nodeName: 'BrandMeister DMR Master Node 2041 #06 (label)' },
+    port_bhv_calamiteit: { lat: 51.9500, lon: 4.1500, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04 (label)' },
+    port_logistiek_dc: { lat: 51.5600, lon: 5.0800, primaryNodeId: 'node_openwebrx_eindhoven', nodeName: 'Brainport Eindhoven Gateway #10 (label)' },
+    cb_k19_truckers: { lat: 52.1550, lon: 5.3878, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07 (label)' },
+    cb_k28_transit: { lat: 52.4200, lon: 5.5000, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12 (label)' },
+    cb_k14_oproep: { lat: 52.2000, lon: 5.2500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12 (label)' },
+    cb_k9_sos: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07 (label)' },
+    cb_k4_4x4: { lat: 52.1326, lon: 5.8500, primaryNodeId: 'node_mesh_polder', nodeName: 'Polder Mesh & Mobile CB Node #12 (label)' },
+    mob_berging_takel: { lat: 51.8500, lon: 4.7000, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04 (label)' },
+    air_amsterdam_radar: { lat: 52.3086, lon: 4.7639, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03 (label)' },
+    air_eham_twr: { lat: 52.3086, lon: 4.7639, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03 (label)' },
+    air_eham_app: { lat: 52.3100, lon: 4.7600, primaryNodeId: 'node_sdr_schiphol', nodeName: 'Randstad Schiphol Air & Marine #03 (label)' },
+    air_rotterdam_twr: { lat: 51.9569, lon: 4.4372, primaryNodeId: 'node_sdr_rotterdam', nodeName: 'Rotterdam Maasmond Gateway #04 (label)' },
+    ham_pi2nos: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07 (label)' },
+    ham_pi3utr: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07 (label)' },
+    ham_pi1nos_dstar: { lat: 52.0100, lon: 5.0533, primaryNodeId: 'node_el_pi2nos', nodeName: 'EchoLink Gerbrandytoren Node #07 (label)' },
+    ham_veron_pi4aa: { lat: 52.1550, lon: 5.3878, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02 (label)' },
+    ham_websdr_40m: { lat: 52.2435, lon: 6.8530, primaryNodeId: 'node_websdr_twente', nodeName: 'Universiteit Twente SDR Node #02 (label)' }
   };
 
   CHANNELS.forEach(c => {
@@ -1577,112 +1354,8 @@
   // ==========================================================================
   // 4b. 📡 WEBSDR TWENTE FREQUENTIE SPOTTER & COMMENTAAR LOGBOEK
   // ==========================================================================
-  const DEFAULT_WEBSDR_SPOTS = [
-    {
-      id: 'spot_7085',
-      freqKhz: '7085',
-      freqFormatted: '7.085 kHz (40m Band)',
-      mod: 'LSB',
-      category: 'ham',
-      categoryName: 'Zendamateurs',
-      badge: '🎙️ 40m Avondronde',
-      spotter: 'PA3FWM Luistervink',
-      timeStr: '14 min geleden',
-      comment: 'Nederlandse 40m avondronde actief. Rapport 5 en 9 over heel Nederland op de Twente Mini-Whip antenne.',
-      channelId: 'ham_websdr_40m'
-    },
-    {
-      id: 'spot_6300',
-      freqKhz: '6300',
-      freqFormatted: '6.300 kHz (48m Piraten)',
-      mod: 'AM',
-      category: 'pirate',
-      categoryName: 'Piraten & Muziek',
-      badge: '📻 Vrije Radio Piraten',
-      spotter: 'Etherzoeker Twente',
-      timeStr: '28 min geleden',
-      comment: 'Mooie doorkomst van piratenstation met Nederlandstalige muziek en polka. Duidelijk te zien als felle lijn op het watervalspectrum.',
-      channelId: null
-    },
-    {
-      id: 'spot_14074',
-      freqKhz: '14074',
-      freqFormatted: '14.074 kHz (20m FT8)',
-      mod: 'USB',
-      category: 'digital',
-      categoryName: 'Digitaal & FT8',
-      badge: '📡 FT8 Digitaal',
-      spotter: 'NL-DX-Spotter',
-      timeStr: '42 min geleden',
-      comment: 'FT8 gekkenhuis op 20 meter! Duidelijke parallelle toontjes op het watervalspectrum van stations uit Japan, USA en Brazilië.',
-      channelId: null
-    },
-    {
-      id: 'spot_3650',
-      freqKhz: '3650',
-      freqFormatted: '3.650 kHz (80m Band)',
-      mod: 'LSB',
-      category: 'ham',
-      categoryName: 'Zendamateurs',
-      badge: '🎙️ 80m Ochtendronde',
-      spotter: 'PD2Ochtend',
-      timeStr: '1 uur geleden',
-      comment: 'Ochtendronde van Nederlandse en Vlaamse amateurs, sterke grondgolf signalen in Enschede.',
-      channelId: null
-    },
-    {
-      id: 'spot_27205',
-      freqKhz: '27205',
-      freqFormatted: '27.205 kHz (11m CB)',
-      mod: 'FM',
-      category: 'cb',
-      categoryName: '27MC Bakkies',
-      badge: '🚚 CB Kanaal 20',
-      spotter: 'Trucker-NL',
-      timeStr: '2 uur geleden',
-      comment: 'Kanaal 20 CB oproepkanaal, truckers op de A1 en A35 communiceren over wegwerkzaamheden bij Deventer.',
-      channelId: 'cb_polder_k19'
-    },
-    {
-      id: 'spot_8942',
-      freqKhz: '8942',
-      freqFormatted: '8.942 kHz (HF Aero)',
-      mod: 'USB',
-      category: 'aero',
-      categoryName: 'Luchtvaart & VOLMET',
-      badge: '✈️ Shannon VOLMET',
-      spotter: 'AeroEnschede',
-      timeStr: '2 uur geleden',
-      comment: 'Shannon VOLMET trans-Atlantisch weerbericht voor piloten boven de oceaan. Glashelder te horen via de campus antenne.',
-      channelId: null
-    },
-    {
-      id: 'spot_4625',
-      freqKhz: '4625',
-      freqFormatted: '4.625 kHz (HF)',
-      mod: 'USB',
-      category: 'signals',
-      categoryName: 'Signalen & Bakens',
-      badge: '☢️ UVB-76 Buzzer',
-      spotter: 'SignalenJager',
-      timeStr: '3 uur geleden',
-      comment: 'De beroemde Russische kortegolf zoemer (The Buzzer) tikt onafgebroken met zijn karakteristieke 25 pulsen per minuut.',
-      channelId: null
-    },
-    {
-      id: 'spot_77_5',
-      freqKhz: '77.5',
-      freqFormatted: '77.5 kHz (LF)',
-      mod: 'AM',
-      category: 'signals',
-      categoryName: 'Atoomklok & Tijd',
-      badge: '⏱️ DCF77 Mainflingen',
-      spotter: 'Tijdsein-Fan',
-      timeStr: '4 uur geleden',
-      comment: 'Lange golf zender van de Duitse atoomklok in Mainflingen. Geeft elke seconde een tijdpuls waarmee radioklokken synchroniseren.',
-      channelId: null
-    }
-  ];
+  // Geen voorgeprogrammeerde spots: het logboek bevat alleen eigen spots (localStorage).
+  const DEFAULT_WEBSDR_SPOTS = [];
 
   function initWebSDRSpots() {
     let userSpots = [];
@@ -1754,8 +1427,8 @@
       DOM.spotterList.innerHTML = `
         <div class="empty-state" style="display:flex;">
           <span class="empty-icon">📡</span>
-          <h3>Geen frequenties gevonden in deze categorie</h3>
-          <p>Wees de eerste en laat hierboven een interessante frequentie achter in het logboek!</p>
+          <h3>Nog geen eigen spots</h3>
+          <p>Dit logboek bevat alleen uw eigen spots, bewaard in deze browser (localStorage). Voeg hierboven een frequentie toe.</p>
         </div>
       `;
       return;
@@ -1773,7 +1446,7 @@
               <span class="spotter-mod-badge">${escapeHtml(spot.mod)}</span>
               <span class="spotter-cat-badge">${escapeHtml(spot.badge || spot.categoryName)}</span>
             </div>
-            <span class="spotter-meta-info">🕒 ${escapeHtml(spot.timeStr || 'Zojuist')}</span>
+            <span class="spotter-meta-info">🕒 ${escapeHtml(spot.timeStr || '')}</span>
           </div>
 
           <div class="spotter-card-comment">
@@ -1782,7 +1455,7 @@
 
           <div class="spotter-card-bottom">
             <div class="spotter-author-tag">
-              Gespot door: <strong>${escapeHtml(spot.spotter || 'Luisteraar')}</strong>
+              Gespot door (u): <strong>${escapeHtml(spot.spotter || 'Luisteraar')}</strong>
             </div>
             <div class="spotter-actions-group">
               <a href="${sdrUrl}" target="_blank" rel="noopener noreferrer" class="spotter-sdr-tune-btn" title="Open WebSDR Twente op ${spot.freqKhz} kHz ${spot.mod}">
@@ -1830,7 +1503,7 @@
       categoryName: category.toUpperCase(),
       badge: '👤 Luisteraar Spot',
       spotter: spotter,
-      timeStr: 'Zojuist',
+      timeStr: new Date().toLocaleString('nl-NL'),
       comment: comment,
       channelId: null,
       isUserAdded: true
@@ -2317,8 +1990,8 @@
     if (DOM.vfoFreqMain) DOM.vfoFreqMain.textContent = channel.freqDisplay;
     if (DOM.vfoModMode) DOM.vfoModMode.textContent = channel.mod;
     if (DOM.vfoCallsign) DOM.vfoCallsign.textContent = channel.callsign;
-    if (DOM.vfoChannelDesc) DOM.vfoChannelDesc.textContent = `${channel.name} • ${channel.desc}`;
-    if (DOM.vfoCtcss) DOM.vfoCtcss.textContent = `CTCSS: ${channel.ctcss}`;
+    if (DOM.vfoChannelDesc) DOM.vfoChannelDesc.textContent = `${channel.name} • ${channel.desc} (label)`;
+    if (DOM.vfoCtcss) DOM.vfoCtcss.textContent = `CTCSS-label: ${channel.ctcss}`;
 
     // Actieve Ontvangst-Node & Afstand
     if (DOM.vfoNodeName) {
@@ -3238,9 +2911,6 @@
     }
 
     DOM.nodesGrid.innerHTML = list.map(node => {
-      const distKm = state.userLat !== null && state.userLon !== null
-        ? haversineDistance(state.userLat, state.userLon, node.lat, node.lon)
-        : null;
 
       const isCurrentNode = CHANNELS.some(c => c.id === state.activeChannelId && c.primaryNodeId === node.id);
 
@@ -3250,16 +2920,11 @@
             <div class="node-card-top">
               <div class="node-card-title-group">
                 <span class="node-card-name">${escapeHtml(node.name)}</span>
-                <span class="node-card-loc">📍 ${escapeHtml(node.location)} ${distKm !== null ? `(${distKm.toFixed(1)} km)` : ''}</span>
+                <span class="node-card-loc">🏷️ Categorie-label (geen echte ontvanger/locatie)</span>
               </div>
               <span class="node-type-pill">${escapeHtml(node.typeBadge)}</span>
             </div>
-            <div class="node-card-meta">
-              <div class="node-meta-item"><span>Beheerder:</span> <strong>${escapeHtml(node.operator)}</strong></div>
-              <div class="node-meta-item"><span>Frequentiebereik:</span> <strong>${escapeHtml(node.bands)}</strong></div>
-              <div class="node-meta-item"><span>Dekkingsgebied:</span> <strong>${escapeHtml(node.freqCoverage)}</strong></div>
-            </div>
-            <p class="node-card-desc">${escapeHtml(node.desc)}</p>
+            <p class="node-card-desc">Label voor kanalen in de categorie ‘${escapeHtml(node.typeBadge)}’. Geen beschrijving van een echte ontvanger, beheerder, locatie of frequentiebereik: de audio is de hier getoonde echte stream.</p>
           </div>
           <div class="node-card-bottom">
             <div class="node-status-group">
@@ -3294,7 +2959,7 @@
     if (DOM.nodeBanner) {
       DOM.nodeBanner.style.display = 'flex';
       if (DOM.nodeBannerName) DOM.nodeBannerName.textContent = `Ontvangen via Node: ${node.name}`;
-      if (DOM.nodeBannerSub) DOM.nodeBannerSub.textContent = `Toont alleen kanalen die via deze actieve gateway worden ontvangen (${node.freqCoverage}).`;
+      if (DOM.nodeBannerSub) DOM.nodeBannerSub.textContent = `Toont alleen kanalen met dit node-label (label; geen echte ontvanger).`;
     }
 
     renderChannelList();
